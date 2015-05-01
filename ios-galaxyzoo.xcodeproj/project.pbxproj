@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48D55635CD7E987F876BFD55 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A954E3F1E1E0A5D9E3193A97 /* libPods.a */; };
 		F21F87A01AF3657400C95B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F879F1AF3657400C95B52 /* main.m */; };
 		F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A21AF3657400C95B52 /* AppDelegate.m */; };
 		F21F87A61AF3657400C95B52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ViewController.m */; };
@@ -27,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4893014CE1515354F03EFCF8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		96004F6F685BA528B384638E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A954E3F1E1E0A5D9E3193A97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-galaxyzoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879E1AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D55635CD7E987F876BFD55 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +65,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D17636F3096CD1E9762DF410 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4893014CE1515354F03EFCF8 /* Pods.debug.xcconfig */,
+				96004F6F685BA528B384638E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E3A6F259A91A31B9D91FC016 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A954E3F1E1E0A5D9E3193A97 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F21F87911AF3657400C95B52 = {
 			isa = PBXGroup;
 			children = (
 				F21F879C1AF3657400C95B52 /* ios-galaxyzoo */,
 				F21F87B61AF3657400C95B52 /* ios-galaxyzooTests */,
 				F21F879B1AF3657400C95B52 /* Products */,
+				D17636F3096CD1E9762DF410 /* Pods */,
+				E3A6F259A91A31B9D91FC016 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F21F87BD1AF3657400C95B52 /* Build configuration list for PBXNativeTarget "ios-galaxyzoo" */;
 			buildPhases = (
+				416A50CD15DF3C73B6082883 /* Check Pods Manifest.lock */,
 				F21F87961AF3657400C95B52 /* Sources */,
 				F21F87971AF3657400C95B52 /* Frameworks */,
 				F21F87981AF3657400C95B52 /* Resources */,
+				3EC07E6349AD0E7032D78647 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +239,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3EC07E6349AD0E7032D78647 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		416A50CD15DF3C73B6082883 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F21F87961AF3657400C95B52 /* Sources */ = {
@@ -347,6 +406,7 @@
 		};
 		F21F87BE1AF3657400C95B52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4893014CE1515354F03EFCF8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
@@ -357,6 +417,7 @@
 		};
 		F21F87BF1AF3657400C95B52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96004F6F685BA528B384638E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
@@ -418,6 +479,7 @@
 				F21F87BF1AF3657400C95B52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F21F87C01AF3657400C95B52 /* Build configuration list for PBXNativeTarget "ios-galaxyzooTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +488,7 @@
 				F21F87C21AF3657400C95B52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
