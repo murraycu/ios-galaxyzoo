@@ -15,6 +15,8 @@
 		F21F87AB1AF3657400C95B52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AA1AF3657400C95B52 /* Images.xcassets */; };
 		F21F87AE1AF3657400C95B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */; };
 		F21F87BA1AF3657400C95B52 /* ios_galaxyzooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */; };
+		F21F87D21AF3850300C95B52 /* ZooniverseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87D11AF3850300C95B52 /* ZooniverseClient.m */; };
+		F21F87D51AF386D300C95B52 /* ZooniverseRkSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,10 @@
 		F21F87B31AF3657400C95B52 /* ios-galaxyzooTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-galaxyzooTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F87B81AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_galaxyzooTests.m; sourceTree = "<group>"; };
+		F21F87D01AF3850300C95B52 /* ZooniverseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClient.h; path = client/ZooniverseClient.h; sourceTree = "<group>"; };
+		F21F87D11AF3850300C95B52 /* ZooniverseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClient.m; path = client/ZooniverseClient.m; sourceTree = "<group>"; };
+		F21F87D31AF386D300C95B52 /* ZooniverseRkSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseRkSubject.h; path = client/ZooniverseRkSubject.h; sourceTree = "<group>"; };
+		F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseRkSubject.m; path = client/ZooniverseRkSubject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 		F21F879C1AF3657400C95B52 /* ios-galaxyzoo */ = {
 			isa = PBXGroup;
 			children = (
+				F21F87CF1AF384BF00C95B52 /* client */,
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
 				F21F87A41AF3657400C95B52 /* ViewController.h */,
@@ -141,6 +148,17 @@
 				F21F87B81AF3657400C95B52 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F21F87CF1AF384BF00C95B52 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				F21F87D01AF3850300C95B52 /* ZooniverseClient.h */,
+				F21F87D11AF3850300C95B52 /* ZooniverseClient.m */,
+				F21F87D31AF386D300C95B52 /* ZooniverseRkSubject.h */,
+				F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */,
+			);
+			name = client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,8 +296,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21F87D21AF3850300C95B52 /* ZooniverseClient.m in Sources */,
 				F21F87A61AF3657400C95B52 /* ViewController.m in Sources */,
 				F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */,
+				F21F87D51AF386D300C95B52 /* ZooniverseRkSubject.m in Sources */,
 				F21F87A01AF3657400C95B52 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,12 +7,17 @@
 //
 
 #import "ViewController.h"
+#import "client/ZooniverseClient.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+- (IBAction)buttonAction:(id)sender {
+    ZooniverseClient *client = [[ZooniverseClient alloc] init];
+    [client querySubjects];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
