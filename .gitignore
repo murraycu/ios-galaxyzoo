@@ -23,4 +23,6 @@ DerivedData
 # you should judge for yourself, the pros and cons are mentioned at:
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
-#Pods/
+# murrayc: I disagree. I don't want to fork the code of dependencies and I don't want to deal with the conflicts
+# that it would cause when we do merge, rebase or cherry-pick.
+Pods/
