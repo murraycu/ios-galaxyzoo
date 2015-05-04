@@ -9,14 +9,8 @@
 #import "Config.h"
 #import "ConfigSubjectGroup.h"
 
-@interface Config ()  {
-    NSDictionary *_subjectGroups;
-}
-@end
 
 @implementation Config
-
-@synthesize subjectGroups = _subjectGroups;
 
 
 - (Config *)init {
