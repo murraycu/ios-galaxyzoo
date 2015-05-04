@@ -50,8 +50,12 @@ static NSString * QUERY_PATH = @"groups/50251c3b516bcb6ecb000002/subjects";
 {
     RKObjectMapping *subjectMapping = [RKObjectMapping mappingForClass:[ZooniverseRkSubject class]];
     [subjectMapping addAttributeMappingsFromDictionary:@{
-                                                  @"id":   @"zooniverseId",
-                                                  @"group_id":     @"groupId",
+                                                         @"id":   @"subjectId",
+                                                         @"zooniverse_id":   @"zooniverseId",
+                                                         @"group_id":     @"groupId",
+                                                         @"location.standard":   @"locationStandard",
+                                                         @"location.inverted":   @"locationInverted",
+                                                         @"location.thumbnail":   @"locationThumbnail",
                                                   }];
     
     // Register our mappings with the provider using a response descriptor

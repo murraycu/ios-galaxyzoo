@@ -10,7 +10,13 @@
 
 @interface ZooniverseRkSubject : NSObject
 
+@property (nonatomic, copy) NSString *subjectId;
 @property (nonatomic, copy) NSString *zooniverseId;
 @property (nonatomic, copy) NSString *groupId;
+@property (nonatomic, copy) NSString *locationStandard;
+@property (nonatomic, copy) NSString *locationInverted;
+@property (nonatomic, copy) NSString *locationThumbnail;
+
+
 
 @end
