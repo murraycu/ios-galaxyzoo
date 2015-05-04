@@ -17,6 +17,17 @@
 		F21F87BA1AF3657400C95B52 /* ios_galaxyzooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */; };
 		F21F87D21AF3850300C95B52 /* ZooniverseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87D11AF3850300C95B52 /* ZooniverseClient.m */; };
 		F21F87D51AF386D300C95B52 /* ZooniverseRkSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */; };
+		F248296F1AF754D60060D9B0 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296A1AF754D60060D9B0 /* DecisionTree.m */; };
+		F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */; };
+		F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296E1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m */; };
+		F24829741AF7558A0060D9B0 /* DecisionTreeBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829731AF7558A0060D9B0 /* DecisionTreeBaseButton.m */; };
+		F24829771AF7562F0060D9B0 /* DecisionTreeCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829761AF7562F0060D9B0 /* DecisionTreeCheckbox.m */; };
+		F248297D1AF759110060D9B0 /* candels_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F248297A1AF759110060D9B0 /* candels_tree.xml */; };
+		F248297E1AF759110060D9B0 /* goods_full_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F248297B1AF759110060D9B0 /* goods_full_tree.xml */; };
+		F24829821AF759FD0060D9B0 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829811AF759FD0060D9B0 /* Singleton.m */; };
+		F24829891AF75D9C0060D9B0 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829881AF75D9C0060D9B0 /* Config.m */; };
+		F248298C1AF75DB10060D9B0 /* ConfigSubjectGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F248298B1AF75DB10060D9B0 /* ConfigSubjectGroup.m */; };
+		F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F248298E1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +61,26 @@
 		F21F87D11AF3850300C95B52 /* ZooniverseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClient.m; path = client/ZooniverseClient.m; sourceTree = "<group>"; };
 		F21F87D31AF386D300C95B52 /* ZooniverseRkSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseRkSubject.h; path = client/ZooniverseRkSubject.h; sourceTree = "<group>"; };
 		F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseRkSubject.m; path = client/ZooniverseRkSubject.m; sourceTree = "<group>"; };
+		F24829691AF754D60060D9B0 /* DecisionTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTree.h; path = DecisionTree/DecisionTree.h; sourceTree = "<group>"; };
+		F248296A1AF754D60060D9B0 /* DecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTree.m; path = DecisionTree/DecisionTree.m; sourceTree = "<group>"; };
+		F248296B1AF754D60060D9B0 /* DecisionTreeQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeQuestion.h; path = DecisionTree/DecisionTreeQuestion.h; sourceTree = "<group>"; };
+		F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeQuestion.m; path = DecisionTree/DecisionTreeQuestion.m; sourceTree = "<group>"; };
+		F248296D1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeQuestionAnswer.h; path = DecisionTree/DecisionTreeQuestionAnswer.h; sourceTree = "<group>"; };
+		F248296E1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeQuestionAnswer.m; path = DecisionTree/DecisionTreeQuestionAnswer.m; sourceTree = "<group>"; };
+		F24829721AF7558A0060D9B0 /* DecisionTreeBaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeBaseButton.h; path = DecisionTree/DecisionTreeBaseButton.h; sourceTree = "<group>"; };
+		F24829731AF7558A0060D9B0 /* DecisionTreeBaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeBaseButton.m; path = DecisionTree/DecisionTreeBaseButton.m; sourceTree = "<group>"; };
+		F24829751AF7562F0060D9B0 /* DecisionTreeCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeCheckbox.h; path = DecisionTree/DecisionTreeCheckbox.h; sourceTree = "<group>"; };
+		F24829761AF7562F0060D9B0 /* DecisionTreeCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeCheckbox.m; path = DecisionTree/DecisionTreeCheckbox.m; sourceTree = "<group>"; };
+		F248297A1AF759110060D9B0 /* candels_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = candels_tree.xml; sourceTree = "<group>"; };
+		F248297B1AF759110060D9B0 /* goods_full_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = goods_full_tree.xml; sourceTree = "<group>"; };
+		F24829801AF759FD0060D9B0 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		F24829811AF759FD0060D9B0 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
+		F24829871AF75D9C0060D9B0 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		F24829881AF75D9C0060D9B0 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		F248298A1AF75DB10060D9B0 /* ConfigSubjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigSubjectGroup.h; sourceTree = "<group>"; };
+		F248298B1AF75DB10060D9B0 /* ConfigSubjectGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigSubjectGroup.m; sourceTree = "<group>"; };
+		F248298D1AF787310060D9B0 /* DecisionTreeDiscussQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeDiscussQuestion.h; path = DecisionTree/DecisionTreeDiscussQuestion.h; sourceTree = "<group>"; };
+		F248298E1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeDiscussQuestion.m; path = DecisionTree/DecisionTreeDiscussQuestion.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +142,9 @@
 		F21F879C1AF3657400C95B52 /* ios-galaxyzoo */ = {
 			isa = PBXGroup;
 			children = (
+				F24829861AF75D9C0060D9B0 /* Config */,
+				F24829781AF759110060D9B0 /* Assets */,
+				F24829681AF7547F0060D9B0 /* DecisionTree */,
 				F21F87CF1AF384BF00C95B52 /* client */,
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
@@ -120,6 +154,8 @@
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
 				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
 				F21F879D1AF3657400C95B52 /* Supporting Files */,
+				F24829801AF759FD0060D9B0 /* Singleton.h */,
+				F24829811AF759FD0060D9B0 /* Singleton.m */,
 			);
 			path = "ios-galaxyzoo";
 			sourceTree = "<group>";
@@ -159,6 +195,53 @@
 				F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */,
 			);
 			name = client;
+			sourceTree = "<group>";
+		};
+		F24829681AF7547F0060D9B0 /* DecisionTree */ = {
+			isa = PBXGroup;
+			children = (
+				F24829691AF754D60060D9B0 /* DecisionTree.h */,
+				F248296A1AF754D60060D9B0 /* DecisionTree.m */,
+				F248296B1AF754D60060D9B0 /* DecisionTreeQuestion.h */,
+				F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */,
+				F248296D1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.h */,
+				F248296E1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m */,
+				F24829721AF7558A0060D9B0 /* DecisionTreeBaseButton.h */,
+				F24829731AF7558A0060D9B0 /* DecisionTreeBaseButton.m */,
+				F24829751AF7562F0060D9B0 /* DecisionTreeCheckbox.h */,
+				F24829761AF7562F0060D9B0 /* DecisionTreeCheckbox.m */,
+				F248298D1AF787310060D9B0 /* DecisionTreeDiscussQuestion.h */,
+				F248298E1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m */,
+			);
+			name = DecisionTree;
+			sourceTree = "<group>";
+		};
+		F24829781AF759110060D9B0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F24829791AF759110060D9B0 /* DecisionTrees */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		F24829791AF759110060D9B0 /* DecisionTrees */ = {
+			isa = PBXGroup;
+			children = (
+				F248297A1AF759110060D9B0 /* candels_tree.xml */,
+				F248297B1AF759110060D9B0 /* goods_full_tree.xml */,
+			);
+			path = DecisionTrees;
+			sourceTree = "<group>";
+		};
+		F24829861AF75D9C0060D9B0 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F24829871AF75D9C0060D9B0 /* Config.h */,
+				F24829881AF75D9C0060D9B0 /* Config.m */,
+				F248298A1AF75DB10060D9B0 /* ConfigSubjectGroup.h */,
+				F248298B1AF75DB10060D9B0 /* ConfigSubjectGroup.m */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +326,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F248297E1AF759110060D9B0 /* goods_full_tree.xml in Resources */,
+				F248297D1AF759110060D9B0 /* candels_tree.xml in Resources */,
 				F21F87A91AF3657400C95B52 /* Main.storyboard in Resources */,
 				F21F87AE1AF3657400C95B52 /* LaunchScreen.xib in Resources */,
 				F21F87AB1AF3657400C95B52 /* Images.xcassets in Resources */,
@@ -297,10 +382,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F21F87D21AF3850300C95B52 /* ZooniverseClient.m in Sources */,
+				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,
 				F21F87A61AF3657400C95B52 /* ViewController.m in Sources */,
 				F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */,
 				F21F87D51AF386D300C95B52 /* ZooniverseRkSubject.m in Sources */,
+				F24829741AF7558A0060D9B0 /* DecisionTreeBaseButton.m in Sources */,
 				F21F87A01AF3657400C95B52 /* main.m in Sources */,
+				F24829771AF7562F0060D9B0 /* DecisionTreeCheckbox.m in Sources */,
+				F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */,
+				F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */,
+				F24829821AF759FD0060D9B0 /* Singleton.m in Sources */,
+				F248296F1AF754D60060D9B0 /* DecisionTree.m in Sources */,
+				F248298C1AF75DB10060D9B0 /* ConfigSubjectGroup.m in Sources */,
+				F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
