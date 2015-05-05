@@ -32,9 +32,7 @@
     if(![parser parse]) {
         return nil;
     }
-    
-    _firstQuestionId = @"test";
-    
+
     return self;
 }
 
@@ -48,6 +46,10 @@
 - (void)addQuestion:(DecisionTreeQuestion *)question {
     [_questions setObject:question
                    forKey:[question questionId]];
+    
+    if (!_firstQuestionId) {
+        _firstQuestionId = [question questionId];
+    }
 }
 
 @end
