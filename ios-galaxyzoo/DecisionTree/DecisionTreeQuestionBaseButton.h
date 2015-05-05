@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DecisionTreeBaseButton : NSObject
+@interface DecisionTreeQuestionBaseButton : NSObject
 
 @property (nonatomic, copy) NSString *answerId;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *icon;
 @property (nonatomic) NSUInteger examplesCount;
+
+- (DecisionTreeQuestionBaseButton *)init:(NSString *)answerId
+                                    icon:(NSString *)icon
+                           examplesCount:(NSUInteger)examplesCount
+                                   text:(NSString *)text;
 
 @end

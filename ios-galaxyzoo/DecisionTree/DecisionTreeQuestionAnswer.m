@@ -10,5 +10,18 @@
 
 @implementation DecisionTreeQuestionAnswer
 
+- (DecisionTreeQuestionAnswer *)init:(NSString *)answerId
+                                icon:(NSString *)icon
+                       examplesCount:(NSUInteger)examplesCount
+                                text:(NSString *)text
+                   leadsToQuestionId:(NSString *)leadsToQuestionId {
+    self = [super init:answerId
+                  icon:icon
+         examplesCount:examplesCount
+                  text:text];
+    _leadsToQuestionId = leadsToQuestionId;
+    
+    return self;
+}
 
 @end

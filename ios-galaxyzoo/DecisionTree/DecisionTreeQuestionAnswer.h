@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DecisionTreeBaseButton.h"
+#import "DecisionTreeQuestionBaseButton.h"
 
-@interface DecisionTreeQuestionAnswer : DecisionTreeBaseButton
+@interface DecisionTreeQuestionAnswer : DecisionTreeQuestionBaseButton
 
 @property (nonatomic, copy) NSString *leadsToQuestionId;
+
+- (DecisionTreeQuestionAnswer *)init:(NSString *)answerId
+                                icon:(NSString *)icon
+                       examplesCount:(NSUInteger)examplesCount
+                                text:(NSString *)text
+                             leadsToQuestionId:(NSString *)leadsToQuestionId;
 
 @end

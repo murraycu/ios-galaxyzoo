@@ -7,7 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "Singleton.h"
+#import "DecisionTree/DecisionTree.h"
 #import "client/ZooniverseClient.h"
+
 
 @interface ViewController ()
 
@@ -15,6 +18,9 @@
 
 @implementation ViewController
 - (IBAction)buttonAction:(id)sender {
+    Singleton *singleton = [Singleton sharedSingleton];
+    DecisionTree *DecisionTree = [singleton getDecisionTree:@"TODO"];
+
     ZooniverseClient *client = [[ZooniverseClient alloc] init];
     [client querySubjects];
 }

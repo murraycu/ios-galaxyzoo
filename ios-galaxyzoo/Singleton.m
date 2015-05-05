@@ -35,8 +35,14 @@ static Singleton *sharedSingleton = nil;    // static instance variable
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
         ConfigSubjectGroup *subjectGroup = [dict objectForKey:groupId];
-        DecisionTree *tree = [[DecisionTree alloc] init:[subjectGroup filename]];
         
+        NSURL *url = [[NSBundle mainBundle] URLForResource:[subjectGroup filename]
+                                             withExtension:nil];
+        if (!url) {
+            continue;
+        }
+        
+        DecisionTree *tree = [[DecisionTree alloc] init:url];
         [_decisionTrees setObject:tree
                            forKey:groupId];
     }

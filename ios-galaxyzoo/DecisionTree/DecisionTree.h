@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "DecisionTreeQuestion.h"
 
+//TODO: Separate the parser?
 @interface DecisionTree : NSObject
 
-- (DecisionTree *)init:(NSString *)filename;
+- (DecisionTree *)init:(NSURL *)url;
 
-- (DecisionTreeQuestion *) getFirstQuestion;
+@property (nonatomic, copy, readonly) NSString *firstQuestionId;
+
 - (DecisionTreeQuestion *) getNextQuestion:(NSString *)questionId forAnswer:(NSString *)answerId;
+
+- (void)addQuestion:(DecisionTreeQuestion *)question;
 @end
