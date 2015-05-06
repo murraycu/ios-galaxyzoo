@@ -12,6 +12,7 @@
         <attribute name="uploaded" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
         <attribute name="zooniverseId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <fetchRequest name="fetchRequestNotDone" entity="ZooniverseSubject" predicateString="done != 1"/>
     <elements>
         <element name="ZooniverseSubject" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>

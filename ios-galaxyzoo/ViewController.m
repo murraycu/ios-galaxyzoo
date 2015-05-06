@@ -81,7 +81,11 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([ZooniverseSubject class])];
+    // Get the FetchRequest from our data model.
+    // We have to copy it so we can set a sort order (sortDescriptors).
+    // There doesn't seem to be a way to set the sort order in the data model GUI editor.
+    NSFetchRequest *fetchRequest = [[_client.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
+ 
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"subjectId" ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
