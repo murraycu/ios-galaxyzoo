@@ -26,6 +26,7 @@ static Singleton *sharedSingleton = nil;    // static instance variable
 - (Singleton *)init {
     self = [super init];
     
+    //TODO: Store this just once in Singleton instead of reinstantiating it in ZooniverseClient:
     Config *config = [[Config alloc] init];
     
     _decisionTrees = [[NSMutableDictionary alloc] init];

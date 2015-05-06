@@ -8,11 +8,11 @@
 
 #import "ZooniverseClient.h"
 #import "ZooniverseSubject.h"
+#import "Config.h"
+#import "ConfigSubjectGroup.h"
 #import <RestKit/RestKit.h>
 
 static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
-static NSString * QUERY_PATH = @"groups/50251c3b516bcb6ecb000002/subjects";
-
 
 @interface ZooniverseClient () {
     RKObjectManager * _objectManager;
@@ -70,17 +70,30 @@ static NSString * QUERY_PATH = @"groups/50251c3b516bcb6ecb000002/subjects";
     
     [subjectMapping addAttributeMappingsFromDictionary:parentObjectMapping];
     
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:subjectMapping
+    // Register our mappings with the provider using response descriptors:
+    //TODO: Instantiate this just once in the singleton:
+    Config *config = [[Config alloc] init];
+    NSDictionary *dict = [config subjectGroups];
+    for (NSString *groupId in dict) {
+        //Apparently it's (now) OK to do this extra lookup due to some optimization:
+        //See http://stackoverflow.com/a/12454766/1123654
+        ConfigSubjectGroup *subjectGroup = [dict objectForKey:groupId];
+        if (!subjectGroup.useForNewQueries) {
+            continue;
+        }
+        
+        NSString *path = [self getQueryMoreItemsPathForGroupId:groupId];
+        RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:subjectMapping
                                                                                             method:RKRequestMethodGET
-                                                                                       pathPattern:QUERY_PATH
+                                                                                       pathPattern:path
                                                                                            keyPath:nil
                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    //TODO: statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ?
-    [_objectManager addResponseDescriptor:responseDescriptor];
+        //TODO: statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ?
+        [_objectManager addResponseDescriptor:responseDescriptor];
+    }
     
     
-    //Creatie the SQLite file on disk and create the managed object context:
+    //Create the SQLite file on disk and create the managed object context:
     [managedObjectStore createPersistentStoreCoordinator];
     
     NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Zooniverse.sqlite"];
@@ -99,12 +112,37 @@ static NSString * QUERY_PATH = @"groups/50251c3b516bcb6ecb000002/subjects";
     managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc] initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
 }
 
+- (NSString *)getQueryMoreItemsPath {
+    return [self getQueryMoreItemsPathForGroupId:[self getGroupIdForNextQuery]];
+}
+
+- (NSString *)getQueryMoreItemsPathForGroupId:(NSString *)groupId {
+    return [NSString stringWithFormat:@"groups/%@/subjects", groupId];
+}
+
+- (NSString *)getGroupIdForNextQuery {
+    NSMutableArray *groupIds = [[NSMutableArray alloc] init];
+    //TODO: Store this just once in Singleton instead of reinstantiating it:
+    Config *config = [[Config alloc] init];
+    NSDictionary *dict = [config subjectGroups];
+    for (NSString *groupId in dict) {
+        //Apparently it's (now) OK to do this extra lookup due to some optimization:
+        //See http://stackoverflow.com/a/12454766/1123654
+        ConfigSubjectGroup *subjectGroup = [dict objectForKey:groupId];
+        if (subjectGroup.useForNewQueries) {
+            [groupIds addObject:groupId];
+        }
+    }
+
+    NSUInteger idx = arc4random_uniform((u_int32_t)[groupIds count]);
+    return [groupIds objectAtIndex:idx];
+}
+
 - (void)querySubjects
 {
-    
+    NSString *path = [self getQueryMoreItemsPath];
     NSDictionary *queryParams = @{@"limit" : @"5"};
-    
-    [_objectManager getObjectsAtPath:QUERY_PATH
+    [_objectManager getObjectsAtPath:path
                           parameters:queryParams
                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                  NSArray* subjects = [mappingResult array];
