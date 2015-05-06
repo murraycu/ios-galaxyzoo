@@ -16,6 +16,8 @@
 
 @property (nonatomic, copy, readonly) NSString *firstQuestionId;
 
+- (DecisionTreeQuestion *) getQuestion:(NSString *)questionId;
+
 - (DecisionTreeQuestion *) getNextQuestion:(NSString *)questionId forAnswer:(NSString *)answerId;
 
 - (void)addQuestion:(DecisionTreeQuestion *)question;

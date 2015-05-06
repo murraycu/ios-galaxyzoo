@@ -36,11 +36,20 @@
     return self;
 }
 
+- (DecisionTreeQuestion *) getQuestion:(NSString *)questionId {
+    return [_questions objectForKey:questionId];
+}
 
 - (DecisionTreeQuestion *) getNextQuestion:(NSString *)questionId forAnswer:(NSString *)answerId {
-    DecisionTreeQuestion *result = nil;
-    //TODO
-    return result;
+    DecisionTreeQuestion *current = [self getQuestion:questionId];
+    for (DecisionTreeQuestionAnswer *answer in current.answers) {
+        if ([answer.answerId isEqualToString:answerId]) {
+            NSString *leadsToQuestionId = answer.leadsToQuestionId;
+            return [self getQuestion:leadsToQuestionId];
+        }
+    }
+
+    return nil;
 }
 
 - (void)addQuestion:(DecisionTreeQuestion *)question {
