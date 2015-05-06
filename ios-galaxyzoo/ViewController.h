@@ -11,5 +11,10 @@
 
 @interface ViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
+
+- (ViewController *)init;
+- (ViewController *)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+- (ViewController *)initWithCoder:(NSCoder *)aDecoder;
+
 @end
 

@@ -14,20 +14,46 @@
 #import <RestKit/RestKit.h>
 
 
-@interface ViewController ()
+@interface ViewController () {
+    ZooniverseClient *_client;
+}
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
 @implementation ViewController
+
+- (void)setup {
+    _client = [[ZooniverseClient alloc] init];
+}
+
+- (ViewController *)init {
+    self = [super init];
+    [self setup];
+    return self;
+}
+
+- (ViewController *)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil
+                bundle:nibBundleOrNil];
+    [self setup];
+    return self;
+}
+
+- (ViewController *)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    [self setup];
+    return self;
+}
+
 - (IBAction)buttonAction:(id)sender {
     Singleton *singleton = [Singleton sharedSingleton];
     DecisionTree *DecisionTree = [singleton getDecisionTree:@"TODO"];
 
     //Get more subjects from the server, putting them in CoreData:
-    ZooniverseClient *client = [[ZooniverseClient alloc] init];
-    [client querySubjects];
+    
+    [_client querySubjects];
     
     // Get the subjects from CoreData:
     for (id <NSFetchedResultsSectionInfo> sectionInfo in [self.fetchedResultsController sections]) {

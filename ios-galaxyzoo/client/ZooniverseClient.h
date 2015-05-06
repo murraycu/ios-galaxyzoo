@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit/RestKit.h>
 
-@interface ZooniverseClient : NSObject {
-    NSArray *_subjects;
-}
+@interface ZooniverseClient : NSObject
+    //TODO: Make this readonly:
+    @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 
 - (ZooniverseClient *) init;
 - (void)querySubjects;

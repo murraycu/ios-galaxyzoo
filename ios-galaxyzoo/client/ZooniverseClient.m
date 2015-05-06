@@ -51,8 +51,8 @@ static NSString * QUERY_PATH = @"groups/50251c3b516bcb6ecb000002/subjects";
     
     
     // Connect the RestKit object manager to our Core Data model:
-    NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
+    self.managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:self.managedObjectModel];
     _objectManager.managedObjectStore = managedObjectStore;
     
     NSDictionary *parentObjectMapping = @{
@@ -109,7 +109,6 @@ static NSString * QUERY_PATH = @"groups/50251c3b516bcb6ecb000002/subjects";
                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                  NSArray* subjects = [mappingResult array];
                                  //NSLog(@"Loaded subjects: %@", subjects);
-                                 _subjects = subjects;
                                  
                                  for (ZooniverseSubject *subject in subjects) {
                                      NSLog(@"  debug: subject zooniverseId: %@", [subject zooniverseId]);
