@@ -60,9 +60,7 @@ static Singleton *sharedSingleton = nil;    // static instance variable
 }
 
 - (DecisionTree *) getDecisionTree:(NSString *)groupId {
-    DecisionTree *result = nil;
-    
-    return result;
+    return [_decisionTrees objectForKey:groupId];
 }
 
 @end
