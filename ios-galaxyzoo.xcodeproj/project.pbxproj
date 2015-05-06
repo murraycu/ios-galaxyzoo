@@ -15,8 +15,8 @@
 		F21F87AB1AF3657400C95B52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AA1AF3657400C95B52 /* Images.xcassets */; };
 		F21F87AE1AF3657400C95B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */; };
 		F21F87BA1AF3657400C95B52 /* ios_galaxyzooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */; };
-		F21F87D21AF3850300C95B52 /* ZooniverseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87D11AF3850300C95B52 /* ZooniverseClient.m */; };
-		F21F87D51AF386D300C95B52 /* ZooniverseRkSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */; };
+		F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */; };
+		F24618021AF9FEE20001784E /* ZooniverseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = F24618011AF9FEE20001784E /* ZooniverseSubject.m */; };
 		F248296F1AF754D60060D9B0 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296A1AF754D60060D9B0 /* DecisionTree.m */; };
 		F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */; };
 		F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296E1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m */; };
@@ -60,9 +60,9 @@
 		F21F87B81AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_galaxyzooTests.m; sourceTree = "<group>"; };
 		F21F87D01AF3850300C95B52 /* ZooniverseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClient.h; path = client/ZooniverseClient.h; sourceTree = "<group>"; };
-		F21F87D11AF3850300C95B52 /* ZooniverseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClient.m; path = client/ZooniverseClient.m; sourceTree = "<group>"; };
-		F21F87D31AF386D300C95B52 /* ZooniverseRkSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseRkSubject.h; path = client/ZooniverseRkSubject.h; sourceTree = "<group>"; };
-		F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseRkSubject.m; path = client/ZooniverseRkSubject.m; sourceTree = "<group>"; };
+		F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClient.m; path = client/ZooniverseClient.m; sourceTree = "<group>"; };
+		F24618011AF9FEE20001784E /* ZooniverseSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseSubject.m; path = ZooniverseModel/ZooniverseSubject.m; sourceTree = "<group>"; };
+		F24618031AF9FEEB0001784E /* ZooniverseSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseSubject.h; path = ZooniverseModel/ZooniverseSubject.h; sourceTree = "<group>"; };
 		F24829691AF754D60060D9B0 /* DecisionTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTree.h; path = DecisionTree/DecisionTree.h; sourceTree = "<group>"; };
 		F248296A1AF754D60060D9B0 /* DecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTree.m; path = DecisionTree/DecisionTree.m; sourceTree = "<group>"; };
 		F248296B1AF754D60060D9B0 /* DecisionTreeQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeQuestion.h; path = DecisionTree/DecisionTreeQuestion.h; sourceTree = "<group>"; };
@@ -147,6 +147,7 @@
 		F21F879C1AF3657400C95B52 /* ios-galaxyzoo */ = {
 			isa = PBXGroup;
 			children = (
+				F24618001AF9F01F0001784E /* ZooniverseModel */,
 				F24829861AF75D9C0060D9B0 /* Config */,
 				F24829781AF759110060D9B0 /* Assets */,
 				F24829681AF7547F0060D9B0 /* DecisionTree */,
@@ -196,11 +197,18 @@
 			isa = PBXGroup;
 			children = (
 				F21F87D01AF3850300C95B52 /* ZooniverseClient.h */,
-				F21F87D11AF3850300C95B52 /* ZooniverseClient.m */,
-				F21F87D31AF386D300C95B52 /* ZooniverseRkSubject.h */,
-				F21F87D41AF386D300C95B52 /* ZooniverseRkSubject.m */,
+				F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */,
 			);
 			name = client;
+			sourceTree = "<group>";
+		};
+		F24618001AF9F01F0001784E /* ZooniverseModel */ = {
+			isa = PBXGroup;
+			children = (
+				F24618031AF9FEEB0001784E /* ZooniverseSubject.h */,
+				F24618011AF9FEE20001784E /* ZooniverseSubject.m */,
+			);
+			name = ZooniverseModel;
 			sourceTree = "<group>";
 		};
 		F24829681AF7547F0060D9B0 /* DecisionTree */ = {
@@ -389,11 +397,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F21F87D21AF3850300C95B52 /* ZooniverseClient.m in Sources */,
+				F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */,
+				F24618021AF9FEE20001784E /* ZooniverseSubject.m in Sources */,
 				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,
 				F21F87A61AF3657400C95B52 /* ViewController.m in Sources */,
 				F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */,
-				F21F87D51AF386D300C95B52 /* ZooniverseRkSubject.m in Sources */,
 				F24829741AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m in Sources */,
 				F21F87A01AF3657400C95B52 /* main.m in Sources */,
 				F24829771AF7562F0060D9B0 /* DecisionTreeQuestionCheckbox.m in Sources */,

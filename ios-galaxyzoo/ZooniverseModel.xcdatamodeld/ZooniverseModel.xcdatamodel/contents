@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+    <entity name="ZooniverseSubject" representedClassName="ZooniverseSubject" syncable="YES">
+        <attribute name="groupId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationInverted" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationStandard" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationThumbnail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zooniverseId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ZooniverseSubject" positionX="-63" positionY="-18" width="128" height="135"/>
+    </elements>
 </model>

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface ZooniverseRkSubject : NSObject
+@interface ZooniverseSubject : NSManagedObject
 
 @property (nonatomic, copy) NSString *subjectId;
 @property (nonatomic, copy) NSString *zooniverseId;
