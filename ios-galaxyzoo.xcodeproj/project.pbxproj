@@ -10,14 +10,13 @@
 		48D55635CD7E987F876BFD55 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A954E3F1E1E0A5D9E3193A97 /* libPods.a */; };
 		F21F87A01AF3657400C95B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F879F1AF3657400C95B52 /* main.m */; };
 		F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A21AF3657400C95B52 /* AppDelegate.m */; };
-		F21F87A61AF3657400C95B52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ViewController.m */; };
+		F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ClassifyViewController.m */; };
 		F21F87A91AF3657400C95B52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21F87A71AF3657400C95B52 /* Main.storyboard */; };
 		F21F87AB1AF3657400C95B52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AA1AF3657400C95B52 /* Images.xcassets */; };
 		F21F87AE1AF3657400C95B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */; };
 		F21F87BA1AF3657400C95B52 /* ios_galaxyzooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */; };
 		F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */; };
 		F24618021AF9FEE20001784E /* ZooniverseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = F24618011AF9FEE20001784E /* ZooniverseSubject.m */; };
-		F248296F1AF754D60060D9B0 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296A1AF754D60060D9B0 /* DecisionTree.m */; };
 		F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */; };
 		F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296E1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m */; };
 		F24829741AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829731AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m */; };
@@ -30,6 +29,7 @@
 		F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F248298E1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m */; };
 		F24829921AF8B54B0060D9B0 /* DecisionTreeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829911AF8B54B0060D9B0 /* DecisionTreeParser.m */; };
 		F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F248FAD01AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld */; };
+		F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +51,8 @@
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F21F87A11AF3657400C95B52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F21F87A21AF3657400C95B52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F21F87A41AF3657400C95B52 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F21F87A51AF3657400C95B52 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F21F87A41AF3657400C95B52 /* ClassifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassifyViewController.h; sourceTree = "<group>"; };
+		F21F87A51AF3657400C95B52 /* ClassifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassifyViewController.m; sourceTree = "<group>"; };
 		F21F87A81AF3657400C95B52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F21F87AA1AF3657400C95B52 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F21F87AD1AF3657400C95B52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -64,7 +64,6 @@
 		F24618011AF9FEE20001784E /* ZooniverseSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseSubject.m; path = ZooniverseModel/ZooniverseSubject.m; sourceTree = "<group>"; };
 		F24618031AF9FEEB0001784E /* ZooniverseSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseSubject.h; path = ZooniverseModel/ZooniverseSubject.h; sourceTree = "<group>"; };
 		F24829691AF754D60060D9B0 /* DecisionTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTree.h; path = DecisionTree/DecisionTree.h; sourceTree = "<group>"; };
-		F248296A1AF754D60060D9B0 /* DecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTree.m; path = DecisionTree/DecisionTree.m; sourceTree = "<group>"; };
 		F248296B1AF754D60060D9B0 /* DecisionTreeQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeQuestion.h; path = DecisionTree/DecisionTreeQuestion.h; sourceTree = "<group>"; };
 		F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeQuestion.m; path = DecisionTree/DecisionTreeQuestion.m; sourceTree = "<group>"; };
 		F248296D1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeQuestionAnswer.h; path = DecisionTree/DecisionTreeQuestionAnswer.h; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		F24829901AF8B54B0060D9B0 /* DecisionTreeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeParser.h; path = DecisionTree/DecisionTreeParser.h; sourceTree = "<group>"; };
 		F24829911AF8B54B0060D9B0 /* DecisionTreeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeParser.m; path = DecisionTree/DecisionTreeParser.m; sourceTree = "<group>"; };
 		F248FAD11AF9EEB100E8733A /* ZooniverseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZooniverseModel.xcdatamodel; sourceTree = "<group>"; };
+		F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTree.m; path = DecisionTree/DecisionTree.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +154,8 @@
 				F21F87CF1AF384BF00C95B52 /* client */,
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
-				F21F87A41AF3657400C95B52 /* ViewController.h */,
-				F21F87A51AF3657400C95B52 /* ViewController.m */,
+				F21F87A41AF3657400C95B52 /* ClassifyViewController.h */,
+				F21F87A51AF3657400C95B52 /* ClassifyViewController.m */,
 				F21F87A71AF3657400C95B52 /* Main.storyboard */,
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
 				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
@@ -214,10 +214,10 @@
 		F24829681AF7547F0060D9B0 /* DecisionTree */ = {
 			isa = PBXGroup;
 			children = (
+				F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */,
 				F24829691AF754D60060D9B0 /* DecisionTree.h */,
 				F24829901AF8B54B0060D9B0 /* DecisionTreeParser.h */,
 				F24829911AF8B54B0060D9B0 /* DecisionTreeParser.m */,
-				F248296A1AF754D60060D9B0 /* DecisionTree.m */,
 				F248296B1AF754D60060D9B0 /* DecisionTreeQuestion.h */,
 				F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */,
 				F248296D1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.h */,
@@ -400,16 +400,16 @@
 				F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */,
 				F24618021AF9FEE20001784E /* ZooniverseSubject.m in Sources */,
 				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,
-				F21F87A61AF3657400C95B52 /* ViewController.m in Sources */,
+				F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */,
 				F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */,
 				F24829741AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m in Sources */,
 				F21F87A01AF3657400C95B52 /* main.m in Sources */,
+				F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */,
 				F24829771AF7562F0060D9B0 /* DecisionTreeQuestionCheckbox.m in Sources */,
 				F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */,
 				F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */,
 				F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */,
 				F24829821AF759FD0060D9B0 /* Singleton.m in Sources */,
-				F248296F1AF754D60060D9B0 /* DecisionTree.m in Sources */,
 				F24829921AF8B54B0060D9B0 /* DecisionTreeParser.m in Sources */,
 				F248298C1AF75DB10060D9B0 /* ConfigSubjectGroup.m in Sources */,
 				F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */,
