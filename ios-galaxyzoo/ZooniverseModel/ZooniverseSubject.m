@@ -13,8 +13,13 @@
 @dynamic subjectId;
 @dynamic zooniverseId;
 @dynamic groupId;
-@dynamic locationStandard;
-@dynamic locationInverted;
-@dynamic locationThumbnail;
+@dynamic locationStandardRemote;
+@dynamic locationInvertedRemote;
+@dynamic locationThumbnailRemote;
+
+@dynamic done;
+@dynamic uploaded;
+@dynamic favorite;
+@dynamic datetimeDone;
 
 @end

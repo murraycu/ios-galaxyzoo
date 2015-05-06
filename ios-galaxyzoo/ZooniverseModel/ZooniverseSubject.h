@@ -11,13 +11,18 @@
 
 @interface ZooniverseSubject : NSManagedObject
 
+//From the server, via the JSON REST response:
 @property (nonatomic, copy) NSString *subjectId;
 @property (nonatomic, copy) NSString *zooniverseId;
 @property (nonatomic, copy) NSString *groupId;
-@property (nonatomic, copy) NSString *locationStandard;
-@property (nonatomic, copy) NSString *locationInverted;
-@property (nonatomic, copy) NSString *locationThumbnail;
+@property (nonatomic, copy) NSString *locationStandardRemote;
+@property (nonatomic, copy) NSString *locationInvertedRemote;
+@property (nonatomic, copy) NSString *locationThumbnailRemote;
 
-
+//Others:
+@property (nonatomic) BOOL done;
+@property (nonatomic) BOOL uploaded;
+@property (nonatomic) BOOL favorite;
+@property (nonatomic, copy) NSString *datetimeDone;
 
 @end

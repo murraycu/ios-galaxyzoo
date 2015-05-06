@@ -59,9 +59,9 @@ static NSString * QUERY_PATH = @"groups/50251c3b516bcb6ecb000002/subjects";
                                           @"id":   @"subjectId",
                                           @"zooniverse_id":   @"zooniverseId",
                                           @"group_id":     @"groupId",
-                                          @"location.standard":   @"locationStandard",
-                                          @"location.inverted":   @"locationInverted",
-                                          @"location.thumbnail":   @"locationThumbnail",
+                                          @"location.standard":   @"locationStandardRemote",
+                                          @"location.inverted":   @"locationInvertedRemote",
+                                          @"location.thumbnail":   @"locationThumbnailRemote",
                                           };
     
     RKEntityMapping *subjectMapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([ZooniverseSubject class])
@@ -108,7 +108,7 @@ static NSString * QUERY_PATH = @"groups/50251c3b516bcb6ecb000002/subjects";
                           parameters:queryParams
                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                  NSArray* subjects = [mappingResult array];
-                                 NSLog(@"Loaded subjects: %@", subjects);
+                                 //NSLog(@"Loaded subjects: %@", subjects);
                                  _subjects = subjects;
                                  
                                  for (ZooniverseSubject *subject in subjects) {
