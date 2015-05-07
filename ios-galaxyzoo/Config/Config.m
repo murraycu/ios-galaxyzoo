@@ -18,12 +18,12 @@
     
     _subjectGroups = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [[ConfigSubjectGroup alloc] init:@"candels_tree.xml"
-                                      useForNewQueries:TRUE
+                                      useForNewQueries:YES
                                        discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"candels-17"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]], @"551456e02f0eef2535000001",
                       [[ConfigSubjectGroup alloc] init:@"goods_full_tree.xml"
-                                      useForNewQueries:TRUE
+                                      useForNewQueries:YES
                                        discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"goods_full-16"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]], @"551453e12f0eef21f2000001",
