@@ -9,12 +9,15 @@
 #import "Config.h"
 #import "ConfigSubjectGroup.h"
 
+static NSDictionary *_subjectGroups; //Of Group ID to ConfigSubjectGroup.
 
 @implementation Config
 
++ (void)initialize {
 
-- (Config *)init {
-    self = [super init];
+    if (self != [Config self]) {
+        return;
+    }
     
     _subjectGroups = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [[ConfigSubjectGroup alloc] init:@"candels_tree.xml"
@@ -28,9 +31,16 @@
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]], @"551453e12f0eef21f2000001",
                       nil];
-    
+}
+
+- (Config *)init {
+    self = [super init];
     
     return self;
+}
+
++ (NSDictionary *)subjectGroups {
+    return _subjectGroups;
 }
 
 @end

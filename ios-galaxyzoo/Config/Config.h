@@ -10,8 +10,11 @@
 
 @interface Config : NSObject
 
-@property (nonatomic, copy) NSDictionary *subjectGroups; //Of Group ID to ConfigSubjectGroup.
++ (void)initialize;
 
 - (Config *) init;
+
++ (NSDictionary *)subjectGroups; //Of Group ID to ConfigSubjectGroup.
+
 
 @end

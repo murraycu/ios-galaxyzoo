@@ -26,12 +26,9 @@ static Singleton *sharedSingleton = nil;    // static instance variable
 - (Singleton *)init {
     self = [super init];
     
-    //TODO: Store this just once in Singleton instead of reinstantiating it in ZooniverseClient:
-    Config *config = [[Config alloc] init];
-    
     _decisionTrees = [[NSMutableDictionary alloc] init];
     
-    NSDictionary *dict = [config subjectGroups];
+    NSDictionary *dict = [Config subjectGroups];
     for (NSString *groupId in dict) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654

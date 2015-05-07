@@ -71,9 +71,7 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
     [subjectMapping addAttributeMappingsFromDictionary:parentObjectMapping];
     
     // Register our mappings with the provider using response descriptors:
-    //TODO: Instantiate this just once in the singleton:
-    Config *config = [[Config alloc] init];
-    NSDictionary *dict = [config subjectGroups];
+    NSDictionary *dict = [Config subjectGroups];
     for (NSString *groupId in dict) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
@@ -122,9 +120,7 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 
 - (NSString *)getGroupIdForNextQuery {
     NSMutableArray *groupIds = [[NSMutableArray alloc] init];
-    //TODO: Store this just once in Singleton instead of reinstantiating it:
-    Config *config = [[Config alloc] init];
-    NSDictionary *dict = [config subjectGroups];
+    NSDictionary *dict = [Config subjectGroups];
     for (NSString *groupId in dict) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
