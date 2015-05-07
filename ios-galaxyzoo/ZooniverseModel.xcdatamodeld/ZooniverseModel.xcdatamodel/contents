@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ZooniverseClassification" representedClassName="ZooniverseClassification" syncable="YES">
+        <attribute name="favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ZooniverseClassificationAnswer" inverseName="classification" inverseEntity="ZooniverseClassificationAnswer" syncable="YES"/>
+        <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseSubject" inverseName="classification" inverseEntity="ZooniverseSubject" syncable="YES"/>
+    </entity>
+    <entity name="ZooniverseClassificationAnswer" syncable="YES">
+        <attribute name="answerId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="classification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseClassification" inverseName="answers" inverseEntity="ZooniverseClassification" syncable="YES"/>
+    </entity>
     <entity name="ZooniverseSubject" representedClassName="ZooniverseSubject" syncable="YES">
         <attribute name="datetimeDone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="done" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
@@ -11,9 +21,12 @@
         <attribute name="subjectId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="uploaded" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
         <attribute name="zooniverseId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="classification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseClassification" inverseName="subject" inverseEntity="ZooniverseClassification" syncable="YES"/>
     </entity>
     <fetchRequest name="fetchRequestNotDone" entity="ZooniverseSubject" predicateString="done != 1"/>
     <elements>
-        <element name="ZooniverseSubject" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="ZooniverseSubject" positionX="-434" positionY="-120" width="128" height="208"/>
+        <element name="ZooniverseClassification" positionX="-63" positionY="54" width="128" height="88"/>
+        <element name="ZooniverseClassificationAnswer" positionX="-243" positionY="0" width="128" height="90"/>
     </elements>
 </model>
