@@ -89,8 +89,9 @@ static NSString *TAG_TEXT = @"text";
 - (void)parseBaseButton:(NSDictionary *)attributeDict {
     _answerIdInProgress = [attributeDict objectForKey:@"id"];
     _answerIconInProgress = [attributeDict objectForKey:@"icon"];
-    //_answerExamplesCountInProgress = [[attributeDict objectForKey:@"examplesCount"] unsignedIntegerValue];
-;
+    
+    NSString *strCount = [attributeDict objectForKey:@"examplesCount"];
+    _answerExamplesCountInProgress = [strCount integerValue];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
