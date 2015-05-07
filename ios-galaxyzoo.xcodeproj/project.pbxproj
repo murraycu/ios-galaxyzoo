@@ -32,6 +32,7 @@
 		F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */; };
 		F2D6FC841AFB768F002E3E15 /* ZooniverseClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC831AFB768F002E3E15 /* ZooniverseClassification.m */; };
 		F2D6FC871AFB76A7002E3E15 /* ZooniverseClassificationAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC861AFB76A7002E3E15 /* ZooniverseClassificationAnswer.m */; };
+		F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		F2D6FC831AFB768F002E3E15 /* ZooniverseClassification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClassification.m; path = ZooniverseModel/ZooniverseClassification.m; sourceTree = "<group>"; };
 		F2D6FC851AFB76A7002E3E15 /* ZooniverseClassificationAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClassificationAnswer.h; path = ZooniverseModel/ZooniverseClassificationAnswer.h; sourceTree = "<group>"; };
 		F2D6FC861AFB76A7002E3E15 /* ZooniverseClassificationAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClassificationAnswer.m; path = ZooniverseModel/ZooniverseClassificationAnswer.m; sourceTree = "<group>"; };
+		F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
 				F21F87A41AF3657400C95B52 /* ClassifyViewController.h */,
+				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
+				F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */,
 				F21F87A51AF3657400C95B52 /* ClassifyViewController.m */,
 				F21F87A71AF3657400C95B52 /* Main.storyboard */,
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
@@ -408,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */,
+				F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */,
 				F24618021AF9FEE20001784E /* ZooniverseSubject.m in Sources */,
 				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,
 				F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */,

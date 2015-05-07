@@ -7,6 +7,7 @@
 //
 
 #import "ClassifyViewController.h"
+#import "QuestionViewController.h"
 #import "Singleton.h"
 #import "DecisionTree/DecisionTree.h"
 #import "client/ZooniverseClient.h"
@@ -16,9 +17,9 @@
 
 @interface ClassifyViewController () {
     ZooniverseClient *_client;
-    __weak IBOutlet UILabel *labelTitle;
-    __weak IBOutlet UITextView *textView;
     __weak IBOutlet UIImageView *imageView;
+    
+    QuestionViewController *_questionViewController;
 }
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -73,9 +74,7 @@
             DecisionTree *decisionTree = [singleton getDecisionTree:groupID];
             NSString *questionId = decisionTree.firstQuestionId;
             DecisionTreeQuestion *question = [decisionTree getQuestion:questionId];
-            
-            labelTitle.text = question.title;
-            textView.text = question.text;
+            _questionViewController.question = question;
             break;
         }
     }
@@ -116,6 +115,13 @@
     NSAssert(!error, @"Error performing fetch request: %@", error);
     
     return _fetchedResultsController;
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSString *segueName = segue.identifier;
+    if ([segueName isEqualToString:@"questionViewEmbed"]) {
+        _questionViewController = [segue destinationViewController];
+    }
 }
 
 @end
