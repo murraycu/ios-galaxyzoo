@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Classify View Controller-->
@@ -12,12 +13,12 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="ClassifyView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5p-50-7xJ">
-                                <rect key="frame" x="56" y="534" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5p-50-7xJ">
+                                <rect key="frame" x="249" y="324" width="90" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,17 +26,26 @@
                                     <action selector="buttonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="adp-MY-eAe"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="50" y="20" width="534" height="253"/>
-                            </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-2T-OaH" userLabel="containerViewQuestion">
-                                <rect key="frame" x="56" y="398" width="528" height="128"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-2T-OaH" userLabel="containerViewQuestion">
+                                <rect key="frame" x="0.0" y="368" width="600" height="232"/>
                                 <connections>
                                     <segue destination="XN1-Ge-G0W" kind="embed" identifier="questionViewEmbed" id="WlM-lJ-dLY"/>
                                 </connections>
                             </containerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="290"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ycy-2T-OaH" secondAttribute="trailing" id="4HC-Hc-TRa"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="t5p-50-7xJ" secondAttribute="bottom" constant="14" id="65q-g4-JBs"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="trailing" secondItem="I6z-DG-hlX" secondAttribute="trailing" id="8vH-Ht-d1X"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="368" id="9xS-Nn-h6S"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="exk-bT-eLI"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="I6z-DG-hlX" secondAttribute="leading" id="n6F-v3-2cO"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xJL-c5-eT9"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="I6z-DG-hlX" id="vy1-XY-SYd"/>
@@ -54,24 +64,34 @@
                         <viewControllerLayoutGuide type="bottom" id="Noc-ep-P9D"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BaE-tr-Tgr">
-                        <rect key="frame" x="0.0" y="0.0" width="528" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="232"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="labelTitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-nN-vq3">
-                                <rect key="frame" x="18" y="20" width="465" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-nN-vq3">
+                                <rect key="frame" x="18" y="20" width="566" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxB-VU-f3G" userLabel="textView">
-                                <rect key="frame" x="18" y="55" width="534" height="65"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="yadda1 yadda2 yadda3 yadda4 yadda5 yadda6 yadda7 yadda8 yadda9 yadda10 yadda11 yadda12" translatesAutoresizingMaskIntoConstraints="NO" id="qxB-VU-f3G" userLabel="textView">
+                                <rect key="frame" x="18" y="55" width="566" height="138"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="138" id="ygZ-jf-vg1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qxB-VU-f3G" firstAttribute="trailing" secondItem="BaE-tr-Tgr" secondAttribute="trailingMargin" id="5fv-cI-fKc"/>
+                            <constraint firstItem="qxB-VU-f3G" firstAttribute="leading" secondItem="v9c-nN-vq3" secondAttribute="leading" id="PBP-wp-AJ8"/>
+                            <constraint firstItem="qxB-VU-f3G" firstAttribute="leading" secondItem="BaE-tr-Tgr" secondAttribute="leadingMargin" constant="2" id="abr-WW-n5a"/>
+                            <constraint firstItem="qxB-VU-f3G" firstAttribute="top" secondItem="v9c-nN-vq3" secondAttribute="bottom" constant="14" id="ihH-ly-ghm"/>
+                            <constraint firstItem="qxB-VU-f3G" firstAttribute="trailing" secondItem="v9c-nN-vq3" secondAttribute="trailing" id="rng-qn-ip4"/>
+                            <constraint firstItem="Noc-ep-P9D" firstAttribute="top" secondItem="qxB-VU-f3G" secondAttribute="bottom" constant="39" id="ur5-Wp-Y8g"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
