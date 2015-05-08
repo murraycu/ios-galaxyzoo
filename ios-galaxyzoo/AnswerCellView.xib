@@ -13,24 +13,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="248" height="202"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vi0-HU-da8">
-                        <rect key="frame" x="0.0" y="0.0" width="143" height="115"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1v-86-xMQ">
+                        <rect key="frame" x="-6" y="0.0" width="254" height="202"/>
+                        <state key="normal" title="Button">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" red="0.65532905682567089" green="1" blue="0.49724035604227856" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Vi0-HU-da8" secondAttribute="trailing" constant="-25" id="2yj-ty-KvL"/>
-                <constraint firstItem="Vi0-HU-da8" firstAttribute="top" secondItem="RFT-MN-nD5" secondAttribute="top" constant="5" id="4Nv-MR-MPS"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vi0-HU-da8" secondAttribute="trailing" constant="-5" id="QYG-MH-z2V"/>
-                <constraint firstAttribute="bottom" secondItem="Vi0-HU-da8" secondAttribute="bottom" constant="5" id="hfo-9a-RlE"/>
-                <constraint firstAttribute="bottom" secondItem="Vi0-HU-da8" secondAttribute="bottom" id="nlU-Nu-D4W"/>
-                <constraint firstItem="Vi0-HU-da8" firstAttribute="top" secondItem="RFT-MN-nD5" secondAttribute="top" id="ojS-Qb-08d"/>
-                <constraint firstItem="Vi0-HU-da8" firstAttribute="leading" secondItem="RFT-MN-nD5" secondAttribute="leading" id="zaU-ju-qKE"/>
+                <constraint firstAttribute="trailing" secondItem="L1v-86-xMQ" secondAttribute="trailing" id="9Kh-fP-uRx"/>
+                <constraint firstItem="L1v-86-xMQ" firstAttribute="leading" secondItem="RFT-MN-nD5" secondAttribute="leading" constant="-6" id="Qtt-fj-a1B"/>
+                <constraint firstItem="L1v-86-xMQ" firstAttribute="top" secondItem="RFT-MN-nD5" secondAttribute="top" id="deq-RK-hId"/>
+                <constraint firstAttribute="bottom" secondItem="L1v-86-xMQ" secondAttribute="bottom" id="ehc-zs-YDu"/>
             </constraints>
             <size key="customSize" width="248" height="202"/>
             <point key="canvasLocation" x="409" y="69"/>

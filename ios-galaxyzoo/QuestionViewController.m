@@ -75,11 +75,20 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
 
     
-    UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+    UIButton *button = (UIButton *)[cell viewWithTag:100];
     
     NSInteger i = [indexPath indexAtPosition:0] * MAX_BUTTONS_PER_ROW + [indexPath indexAtPosition:1];
     DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
-    [titleLabel setText:answer.text];
+    [button setTitle:answer.text
+     forState:UIControlStateNormal];
+
+    //TODO: Move the adding of the icon_ prefix into a reusable method.
+    NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", answer.icon, nil];
+    UIImage *image = [UIImage imageNamed:filenameIcon];
+    //[button setImage:image
+    //        forState:UIControlStateNormal];
+    [button setBackgroundImage:image
+            forState:UIControlStateNormal];
     
     return cell;
 }
