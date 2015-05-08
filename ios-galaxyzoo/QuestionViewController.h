@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DecisionTree/DecisionTreeQuestion.h"
 
-@interface QuestionViewController : UIViewController
+@interface QuestionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 //TODO: Use copy instead of retain?
 //See http://stackoverflow.com/questions/387959/nsstring-property-copy-or-retain
