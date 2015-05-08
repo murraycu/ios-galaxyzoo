@@ -90,7 +90,21 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     [button setBackgroundImage:image
             forState:UIControlStateNormal];
     
+    //Respond to button touches:
+    button.tag = i; //So we know which button was clicked.
+    [button addTarget:self
+               action:@selector(onAnswerButtonClick:)
+     forControlEvents:UIControlEventTouchUpInside];
+
     return cell;
+}
+
+-(void)onAnswerButtonClick:(UIView*)clickedButton
+{
+    NSInteger i = clickedButton.tag;
+    DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
+
+    NSLog(@"Answer clicked:%@", answer.text);
 }
 
 
