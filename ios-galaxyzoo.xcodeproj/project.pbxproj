@@ -33,6 +33,8 @@
 		F2D6FC841AFB768F002E3E15 /* ZooniverseClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC831AFB768F002E3E15 /* ZooniverseClassification.m */; };
 		F2D6FC871AFB76A7002E3E15 /* ZooniverseClassificationAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC861AFB76A7002E3E15 /* ZooniverseClassificationAnswer.m */; };
 		F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */; };
+		F2D6FC8C1AFCA166002E3E15 /* TestDecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */; };
+		F2D6FC8F1AFCA40C002E3E15 /* test_decision_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FC8E1AFCA40C002E3E15 /* test_decision_tree.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		F2D6FC861AFB76A7002E3E15 /* ZooniverseClassificationAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClassificationAnswer.m; path = ZooniverseModel/ZooniverseClassificationAnswer.m; sourceTree = "<group>"; };
 		F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDecisionTree.m; sourceTree = "<group>"; };
+		F2D6FC8E1AFCA40C002E3E15 /* test_decision_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test_decision_tree.xml; path = Assets/test_decision_tree.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,8 @@
 		F21F87B61AF3657400C95B52 /* ios-galaxyzooTests */ = {
 			isa = PBXGroup;
 			children = (
+				F2D6FC8D1AFCA3F8002E3E15 /* Assets */,
+				F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */,
 				F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */,
 				F21F87B71AF3657400C95B52 /* Supporting Files */,
 			);
@@ -273,6 +279,14 @@
 				F248298B1AF75DB10060D9B0 /* ConfigSubjectGroup.m */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		F2D6FC8D1AFCA3F8002E3E15 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F2D6FC8E1AFCA40C002E3E15 /* test_decision_tree.xml */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2D6FC8F1AFCA40C002E3E15 /* test_decision_tree.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F21F87BA1AF3657400C95B52 /* ios_galaxyzooTests.m in Sources */,
+				F2D6FC8C1AFCA166002E3E15 /* TestDecisionTree.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

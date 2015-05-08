@@ -36,6 +36,20 @@
     return self;
 }
 
+- (NSArray *)getAllQuestions {
+    
+    NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:_questions.count];
+    
+    for (NSString *questionId in _questions) {
+        //Apparently it's (now) OK to do this extra lookup due to some optimization:
+        //See http://stackoverflow.com/a/12454766/1123654
+        DecisionTreeQuestion *question = [_questions objectForKey:questionId];
+        [result addObject:question];
+    }
+    
+    return result;
+}
+
 - (DecisionTreeQuestion *) getQuestion:(NSString *)questionId {
     return [_questions objectForKey:questionId];
 }
