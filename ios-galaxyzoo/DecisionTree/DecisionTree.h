@@ -16,6 +16,9 @@
 
 @property (nonatomic, copy, readonly) NSString *firstQuestionId;
 
+//TODO: Create a read-only property instead?
+- (NSArray *)getAllQuestions;
+
 - (DecisionTreeQuestion *) getQuestion:(NSString *)questionId;
 
 - (DecisionTreeQuestion *) getNextQuestion:(NSString *)questionId forAnswer:(NSString *)answerId;

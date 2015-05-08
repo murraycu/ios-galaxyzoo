@@ -12,7 +12,12 @@
 
 @interface DecisionTree () {
     NSMutableDictionary *_questions;
+    
+    //Make this writable, so we can change it in our implementation:
 }
+
+@property (nonatomic, copy) NSString *firstQuestionId;
+
 @end
 
 @implementation DecisionTree
@@ -70,8 +75,8 @@
     [_questions setObject:question
                    forKey:[question questionId]];
     
-    if (!_firstQuestionId) {
-        _firstQuestionId = [question questionId];
+    if (!self.firstQuestionId) {
+        self.firstQuestionId = question.questionId;
     }
 }
 

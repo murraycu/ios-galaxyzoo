@@ -17,12 +17,12 @@
                        answers:(NSArray *)answers
                     checkboxes:(NSArray *)checkboxes {
     self = [super init];
-    _questionId = questionId;
-    _title = title;
-    _text = text;
-    _help = help;
-    _answers = answers;
-    _checkboxes = checkboxes;
+    self.questionId = questionId;
+    self.title = title;
+    self.text = text;
+    self.help = help;
+    self.answers = answers;
+    self.checkboxes = checkboxes;
     return self;
 }
 

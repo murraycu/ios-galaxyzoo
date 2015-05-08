@@ -16,10 +16,10 @@
                            examplesCount:(NSUInteger)examplesCount
                                     text:(NSString *)text {
     self = [super init];
-    _answerId = answerId;
-     _icon = icon;
-     _examplesCount = examplesCount;
-     _text = text;
+    self.answerId = answerId;
+    self.icon = icon;
+    self.examplesCount = examplesCount;
+    self.text = text;
     return self;
 }
 

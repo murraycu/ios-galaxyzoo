@@ -19,7 +19,7 @@
                   icon:icon
          examplesCount:examplesCount
                   text:text];
-    _leadsToQuestionId = leadsToQuestionId;
+    self.leadsToQuestionId = leadsToQuestionId;
     
     return self;
 }
