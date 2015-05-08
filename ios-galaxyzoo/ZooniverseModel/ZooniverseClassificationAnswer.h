@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface ZooniverseClassificationAnswer : NSObject
+@interface ZooniverseClassificationAnswer : NSManagedObject
 
 // The question that was answered.
 @property (nonatomic, copy) NSString *questionId;

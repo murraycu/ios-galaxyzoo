@@ -8,8 +8,9 @@
 
 #import "ZooniverseClassificationAnswer.h"
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface ZooniverseClassification : NSObject
+@interface ZooniverseClassification : NSManagedObject
 
 @property (nonatomic, copy) NSMutableArray *answers; //Of ZooniverseClassificationAnswer
 @property (nonatomic) BOOL favorite;

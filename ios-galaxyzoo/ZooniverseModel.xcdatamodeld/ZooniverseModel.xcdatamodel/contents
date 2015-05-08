@@ -5,7 +5,7 @@
         <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ZooniverseClassificationAnswer" inverseName="classification" inverseEntity="ZooniverseClassificationAnswer" syncable="YES"/>
         <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseSubject" inverseName="classification" inverseEntity="ZooniverseSubject" syncable="YES"/>
     </entity>
-    <entity name="ZooniverseClassificationAnswer" syncable="YES">
+    <entity name="ZooniverseClassificationAnswer" representedClassName="ZooniverseClassificationAnswer" syncable="YES">
         <attribute name="answerId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questionId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="classification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseClassification" inverseName="answers" inverseEntity="ZooniverseClassification" syncable="YES"/>
@@ -27,6 +27,6 @@
     <elements>
         <element name="ZooniverseSubject" positionX="-434" positionY="-120" width="128" height="208"/>
         <element name="ZooniverseClassification" positionX="-63" positionY="54" width="128" height="88"/>
-        <element name="ZooniverseClassificationAnswer" positionX="-243" positionY="0" width="128" height="90"/>
+        <element name="ZooniverseClassificationAnswer" positionX="-243" positionY="0" width="128" height="88"/>
     </elements>
 </model>
