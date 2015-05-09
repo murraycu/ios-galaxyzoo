@@ -7,6 +7,8 @@
 //
 
 #import "QuestionViewController.h"
+#import "QuestionAnswersCollectionViewCell.h"
+#import "DecisionTree.h"
 #import "DecisionTreeQuestionAnswer.h"
 
 const NSInteger MAX_BUTTONS_PER_ROW = 4;
@@ -71,11 +73,11 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"answerCell";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
-
+    UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
+    QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
     
-    UIButton *button = (UIButton *)[cell viewWithTag:100];
+    UIButton *button = cell.button;
     
     NSInteger i = [indexPath indexAtPosition:0] * MAX_BUTTONS_PER_ROW + [indexPath indexAtPosition:1];
     DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
