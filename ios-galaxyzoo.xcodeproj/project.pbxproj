@@ -620,6 +620,7 @@
 		F2D6FEAD1AFDF6FE002E3E15 /* ZooniverseSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseSubject.m; path = ZooniverseModel/ZooniverseSubject.m; sourceTree = "<group>"; };
 		F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswersCollectionViewCell.h; sourceTree = "<group>"; };
 		F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswersCollectionViewCell.m; sourceTree = "<group>"; };
+		F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyViewControllerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -689,6 +690,7 @@
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
 				F21F87A41AF3657400C95B52 /* ClassifyViewController.h */,
+				F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */,
 				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
 				F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */,
 				F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */,

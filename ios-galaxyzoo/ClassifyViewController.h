@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "ClassifyViewControllerDelegate.h"
 
-@interface ClassifyViewController : UIViewController <NSFetchedResultsControllerDelegate>
+@interface ClassifyViewController : UIViewController <NSFetchedResultsControllerDelegate, ClassifyViewControllerDelegate>
 
 
 - (ClassifyViewController *)init;
 - (ClassifyViewController *)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 - (ClassifyViewController *)initWithCoder:(NSCoder *)aDecoder;
+
+- (void)onClassificationFinished;
 
 @end
 

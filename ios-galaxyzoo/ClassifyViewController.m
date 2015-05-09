@@ -51,9 +51,9 @@
     return self;
 }
 
-- (IBAction)buttonAction:(id)sender {
+- (void)showNextSubject {
     Singleton *singleton = [Singleton sharedSingleton];
-
+    
     //Get more subjects from the server, putting them in CoreData:
     
     [_client querySubjects];
@@ -65,7 +65,7 @@
             NSLog(@"debugFromCoreData: subjectId=%@, groupId=%@, locationStandardRemote=%@",
                   subject.subjectId, subject.groupId, subject.locationStandardRemote);
             
-
+            
             //Show the subject's image:
             NSURL *urlStandard = [NSURL URLWithString:subject.locationStandardRemote];
             [imageView setImageWithURL:urlStandard];
@@ -80,6 +80,10 @@
             break;
         }
     }
+}
+
+- (IBAction)buttonAction:(id)sender {
+    [self showNextSubject];
 }
 
 - (void)viewDidLoad {
@@ -124,6 +128,10 @@
     if ([segueName isEqualToString:@"questionViewEmbed"]) {
         _questionViewController = [segue destinationViewController];
     }
+}
+
+- (void)onClassificationFinished {
+    [self showNextSubject];
 }
 
 @end

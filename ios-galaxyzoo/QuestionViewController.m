@@ -8,6 +8,7 @@
 
 #import "QuestionViewController.h"
 #import "QuestionAnswersCollectionViewCell.h"
+#import "ClassifyViewControllerDelegate.h"
 #import "DecisionTree.h"
 #import "DecisionTreeQuestionAnswer.h"
 #import "ZooniverseModel/ZooniverseClassification.h"
@@ -92,7 +93,9 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 }
 
 - (void)saveClassification {
-    //TODO
+    //Tell the parent ViewController to start another subject:
+    UIViewController <ClassifyViewControllerDelegate> *parent = (UIViewController <ClassifyViewControllerDelegate> *)self.parentViewController;
+    [parent onClassificationFinished];
     
     [self initClassificationInProgress];
 }
