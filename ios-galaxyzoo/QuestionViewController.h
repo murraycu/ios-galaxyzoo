@@ -11,6 +11,8 @@
 
 @interface QuestionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
+@property (nonatomic, copy) NSString *groupId;
+
 //TODO: Use copy instead of retain?
 //See http://stackoverflow.com/questions/387959/nsstring-property-copy-or-retain
 @property (nonatomic, retain) DecisionTreeQuestion *question;

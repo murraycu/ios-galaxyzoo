@@ -64,16 +64,18 @@
         for (ZooniverseSubject *subject in [sectionInfo objects]) {
             NSLog(@"debugFromCoreData: subjectId=%@, groupId=%@, locationStandardRemote=%@",
                   subject.subjectId, subject.groupId, subject.locationStandardRemote);
+            
 
             //Show the subject's image:
             NSURL *urlStandard = [NSURL URLWithString:subject.locationStandardRemote];
             [imageView setImageWithURL:urlStandard];
             
             //Show the current question for the subject:
-            NSString *groupID = subject.groupId;
-            DecisionTree *decisionTree = [singleton getDecisionTree:groupID];
+            NSString *groupId = subject.groupId;
+            DecisionTree *decisionTree = [singleton getDecisionTree:groupId];
             NSString *questionId = decisionTree.firstQuestionId;
             DecisionTreeQuestion *question = [decisionTree getQuestion:questionId];
+            _questionViewController.groupId = groupId; //So it can get the DecisionTree itself.
             _questionViewController.question = question;
             break;
         }

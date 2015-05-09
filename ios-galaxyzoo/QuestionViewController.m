@@ -10,10 +10,19 @@
 #import "QuestionAnswersCollectionViewCell.h"
 #import "DecisionTree.h"
 #import "DecisionTreeQuestionAnswer.h"
+#import "ZooniverseModel/ZooniverseClassification.h"
+#import "ZooniverseModel/ZooniverseClassificationAnswer.h"
+#import "Singleton.h"
+
+
+#import <RestKit/RestKit.h>
 
 const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
-@interface QuestionViewController ()
+@interface QuestionViewController () {
+    ZooniverseClassification *_classificationInProgress;
+}
+
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewAnswers;
@@ -22,6 +31,18 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 @implementation QuestionViewController
 
+- (void)initClassificationInProgress {
+    //NSManagedObjects don't work (property setters don't work, for instance)
+    //if they are just created with init:
+    //  _classificationInProgress = [[ZooniverseClassification alloc] init];
+    // and when we generate the classes, we don't have an init anyway.
+    //
+    //Note: This will be saved to the model, so we should remove it later if necessary:
+    _classificationInProgress =
+    (ZooniverseClassification *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassification"
+                                                              inManagedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -29,7 +50,8 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     UINib *cellNib = [UINib nibWithNibName:@"AnswerCellView" bundle:nil];
     [self.collectionViewAnswers registerNib:cellNib forCellWithReuseIdentifier:@"answerCell"];
     self.collectionViewAnswers.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+    
+    [self initClassificationInProgress];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +70,59 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     _question = question;
     
     [self updateUI];
+}
+
+- (DecisionTree *)getDecisionTree {
+    Singleton *singleton = [Singleton sharedSingleton];
+    return [singleton getDecisionTree:self.groupId];
+}
+
+- (void)showNextQuestion:(NSString *)questionId answerId:(NSString *)answerId {
+
+    
+    DecisionTree *decisionTree = [self getDecisionTree];
+    _question =[decisionTree getNextQuestion:questionId
+                                   forAnswer:answerId];
+    if (_question == nil) {
+        [self saveClassification];
+        _question = [decisionTree getQuestion:decisionTree.firstQuestionId];
+    }
+    
+    [self updateUI];
+}
+
+- (void)saveClassification {
+    //TODO
+    
+    [self initClassificationInProgress];
+}
+
+-(void)onAnswerButtonClick:(UIView*)clickedButton
+{
+    NSInteger i = clickedButton.tag;
+    
+    DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
+    NSLog(@"Answer clicked:%@", answer.text);
+    
+    ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
+                 inManagedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext];
+    classificationAnswer.questionId = _question.questionId;
+    classificationAnswer.answerId = answer.answerId;
+    
+    //TODO: Checkboxes.
+    
+    // This results in an exception:
+    // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
+    // apparently because NSOrderedSet is not derived from NSSet.
+    // This seems to be a well-known problem with ordered to-many relationships in Core Data.
+    // See http://stackoverflow.com/questions/15993619/coredata-to-many-add-error
+    // and http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
+    //[_classificationInProgress addAnswersObject:classificationAnswer];
+    //This is the simple workaround:
+    classificationAnswer.classification = _classificationInProgress;
+    
+    [self showNextQuestion:_question.questionId
+                  answerId:answer.answerId];
 }
 
 #pragma mark - UICollectionView
@@ -100,15 +175,6 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
     return cell;
 }
-
--(void)onAnswerButtonClick:(UIView*)clickedButton
-{
-    NSInteger i = clickedButton.tag;
-    DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
-
-    NSLog(@"Answer clicked:%@", answer.text);
-}
-
 
 /*
 #pragma mark - Navigation
