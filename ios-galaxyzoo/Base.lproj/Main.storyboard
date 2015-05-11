@@ -32,8 +32,8 @@
                                     <segue destination="XN1-Ge-G0W" kind="embed" identifier="questionViewEmbed" id="WlM-lJ-dLY"/>
                                 </connections>
                             </containerView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="290"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
+                                <rect key="frame" x="0.0" y="72" width="600" height="244"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -42,6 +42,8 @@
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="t5p-50-7xJ" secondAttribute="bottom" constant="14" id="65q-g4-JBs"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="trailing" secondItem="I6z-DG-hlX" secondAttribute="trailing" id="8vH-Ht-d1X"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="368" id="9xS-Nn-h6S"/>
+                            <constraint firstItem="t5p-50-7xJ" firstAttribute="top" secondItem="I6z-DG-hlX" secondAttribute="bottom" constant="8" symbolic="YES" id="Joo-Nr-IOE"/>
+                            <constraint firstItem="I6z-DG-hlX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="QSz-Fm-Spn"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="exk-bT-eLI"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="I6z-DG-hlX" secondAttribute="leading" id="n6F-v3-2cO"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xJL-c5-eT9"/>
