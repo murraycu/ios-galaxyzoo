@@ -99,11 +99,11 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     NSDictionary *subs = [NSDictionary dictionaryWithObject:self.subjectId
                                                      forKey:@"SUBJECT_ID"];
     NSManagedObjectModel *model = [self managedObjectModel];
-    NSFetchRequest *req = [model fetchRequestFromTemplateWithName:@"fetchRequestSubjectById"
+    NSFetchRequest *fetchRequest = [model fetchRequestFromTemplateWithName:@"fetchRequestSubjectById"
                                             substitutionVariables:subs];
     NSError *error = nil; //TODO: Check this.
     NSArray *results = [[self managedObjectContext]
-                        executeFetchRequest:req
+                        executeFetchRequest:fetchRequest
                         error:&error];
     NSLog(@"debug: Found %ld record.", [results count]);
     
