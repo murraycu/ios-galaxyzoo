@@ -24,6 +24,7 @@
         <relationship name="classification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseClassification" inverseName="subject" inverseEntity="ZooniverseClassification" syncable="YES"/>
     </entity>
     <fetchRequest name="fetchRequestNotDone" entity="ZooniverseSubject" predicateString="done != 1"/>
+    <fetchRequest name="fetchRequestSubjectById" entity="ZooniverseSubject" predicateString="subjectId == $SUBJECT_ID" fetchLimit="1"/>
     <elements>
         <element name="ZooniverseSubject" positionX="-434" positionY="-120" width="128" height="208"/>
         <element name="ZooniverseClassification" positionX="-63" positionY="54" width="128" height="88"/>

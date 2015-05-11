@@ -75,6 +75,7 @@
             DecisionTree *decisionTree = [singleton getDecisionTree:groupId];
             NSString *questionId = decisionTree.firstQuestionId;
             DecisionTreeQuestion *question = [decisionTree getQuestion:questionId];
+            _questionViewController.subjectId = subject.subjectId; //So it can get the Subject itself.
             _questionViewController.groupId = groupId; //So it can get the DecisionTree itself.
             _questionViewController.question = question;
             break;

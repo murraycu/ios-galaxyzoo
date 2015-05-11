@@ -13,6 +13,8 @@
 #import "DecisionTreeQuestionAnswer.h"
 #import "ZooniverseModel/ZooniverseClassification.h"
 #import "ZooniverseModel/ZooniverseClassificationAnswer.h"
+#import "ZooniverseModel/ZooniverseSubject.h"
+
 #import "Singleton.h"
 
 
@@ -93,11 +95,41 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 }
 
 - (void)saveClassification {
+    NSDictionary *subs = [NSDictionary dictionaryWithObject:self.subjectId
+                                                     forKey:@"SUBJECT_ID"];
+    NSManagedObjectModel *model = [self managedObjectModel];
+    NSFetchRequest *req = [model fetchRequestFromTemplateWithName:@"fetchRequestSubjectById"
+                                            substitutionVariables:subs];
+    NSError *error = nil; //TODO: Check this.
+    NSArray *results = [[self managedObjectContext] executeFetchRequest:req error:&error];
+    NSLog(@"debug: Found %ld record.", [results count]);
+    
+    if (results.count < 1) {
+        NSLog(@"Subject not found with ID=%@", self.subjectId);
+        return;
+    }
+    
+    ZooniverseSubject *subject = (ZooniverseSubject *)[results objectAtIndex:0];
+    subject.done = YES;
+    
+    //Save the ZooniverseClassification and the Subject to disk:
+    //TODO: This doesn't seem to work: We still get the same subject next time, though we have marked this one as done.
+    error = nil;
+    [[self managedObjectContext] save:&error];  //saves the context to disk
+
     //Tell the parent ViewController to start another subject:
     UIViewController <ClassifyViewControllerDelegate> *parent = (UIViewController <ClassifyViewControllerDelegate> *)self.parentViewController;
     [parent onClassificationFinished];
     
     [self initClassificationInProgress];
+}
+
+- (NSManagedObjectContext*)managedObjectContext {
+    return [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+}
+
+- (NSManagedObjectModel*)managedObjectModel {
+    return [NSManagedObjectModel mergedModelFromBundles:nil];
 }
 
 -(void)onAnswerButtonClick:(UIView*)clickedButton
@@ -108,7 +140,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     NSLog(@"Answer clicked:%@", answer.text);
     
     ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
-                 inManagedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext];
+                 inManagedObjectContext:[self managedObjectContext]];
     classificationAnswer.questionId = _question.questionId;
     classificationAnswer.answerId = answer.answerId;
     
