@@ -57,6 +57,11 @@
     return [NSManagedObjectModel mergedModelFromBundles:nil];
 }
 
++ (void)fetchRequestSortByDateTimeRetrieved:(NSFetchRequest *)fetchRequest {
+    //TODO: Move this to somewhere reusable for ClassifyViewController?
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"datetimeRetrieved" ascending:YES]];
+}
+
 - (NSFetchedResultsController *)fetchedResultsController {
     
     if (_fetchedResultsController) {
@@ -68,8 +73,7 @@
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
     NSFetchRequest *fetchRequest = [[[self managedObjectModel] fetchRequestTemplateForName:@"fetchRequestSubjects"] copy];
     
-    //TODO: Check what sort order we use in android-galaxyzoo:
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"subjectId" ascending:YES]];
+    [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext

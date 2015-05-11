@@ -8,6 +8,7 @@
 
 #import "ClassifyViewController.h"
 #import "QuestionViewController.h"
+#import "ListViewController.h"
 #import "Singleton.h"
 #import "DecisionTree/DecisionTree.h"
 #import "client/ZooniverseClient.h"
@@ -101,12 +102,13 @@
         return _fetchedResultsController;
     }
     
-    // Get the FetchRequest from our data model.
+    // Get the FetchRequest from our data model,
+    // and use the same sort order as the ListViewController:
     // We have to copy it so we can set a sort order (sortDescriptors).
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
     NSFetchRequest *fetchRequest = [[_client.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
- 
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"subjectId" ascending:YES]];
+    [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
+
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext sectionNameKeyPath:nil cacheName:@"ZooniverseSubject"];

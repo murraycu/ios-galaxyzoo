@@ -11,4 +11,6 @@
 
 @interface ListViewController : UICollectionViewController <UICollectionViewDataSource, NSFetchedResultsControllerDelegate>
 
++ (void)fetchRequestSortByDateTimeRetrieved:(NSFetchRequest *)fetchRequest;
+
 @end

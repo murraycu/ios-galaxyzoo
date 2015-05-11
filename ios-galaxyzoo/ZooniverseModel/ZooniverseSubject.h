@@ -1,9 +1,9 @@
 //
 //  ZooniverseSubject.h
-//  ios-galaxyzoo
+//  
 //
-//  Created by Murray Cumming on 09/05/2015.
-//  Copyright (c) 2015 Murray Cumming. All rights reserved.
+//  Created by Murray Cumming on 11/05/2015.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSString * subjectId;
 @property (nonatomic) BOOL uploaded;
 @property (nonatomic, retain) NSString * zooniverseId;
+@property (nonatomic, retain) NSString * datetimeRetrieved;
 @property (nonatomic, retain) ZooniverseClassification *classification;
 
 @end

@@ -1,9 +1,9 @@
 //
 //  ZooniverseSubject.m
-//  ios-galaxyzoo
+//  
 //
-//  Created by Murray Cumming on 09/05/2015.
-//  Copyright (c) 2015 Murray Cumming. All rights reserved.
+//  Created by Murray Cumming on 11/05/2015.
+//
 //
 
 #import "ZooniverseSubject.h"
@@ -22,6 +22,7 @@
 @dynamic subjectId;
 @dynamic uploaded;
 @dynamic zooniverseId;
+@dynamic datetimeRetrieved;
 @dynamic classification;
 
 @end

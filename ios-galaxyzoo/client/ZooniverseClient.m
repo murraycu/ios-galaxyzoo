@@ -141,6 +141,18 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
     return [groupIds objectAtIndex:idx];
 }
 
+NSString * currentTimeAsIso8601(void)
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+    
+    NSDate *now = [NSDate date];
+    NSString *iso8601String = [dateFormatter stringFromDate:now];
+    return iso8601String;
+}
+
 - (void)querySubjects
 {
     NSString *path = [self getQueryMoreItemsPath];
@@ -148,12 +160,21 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
     [_objectManager getObjectsAtPath:path
                           parameters:queryParams
                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                 
+                                 NSString *iso8601String;
+                                 iso8601String = currentTimeAsIso8601();
+
+                                 
                                  NSArray* subjects = [mappingResult array];
                                  //NSLog(@"Loaded subjects: %@", subjects);
                                  
                                  for (ZooniverseSubject *subject in subjects) {
                                      NSLog(@"  debug: subject zooniverseId: %@", [subject zooniverseId]);
+                                     
+                                     //Remember when we downloaded it, so we can always look at the earliest ones first:
+                                     subject.datetimeRetrieved = iso8601String;
                                  }
+                                 
                                  /*
                                   if(self.isViewLoaded)
                                   [_tableView reloadData];

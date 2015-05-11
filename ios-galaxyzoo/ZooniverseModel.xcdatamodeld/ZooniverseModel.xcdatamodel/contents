@@ -12,6 +12,7 @@
     </entity>
     <entity name="ZooniverseSubject" representedClassName="ZooniverseSubject" syncable="YES">
         <attribute name="datetimeDone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="datetimeRetrieved" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="done" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="groupId" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,7 +28,7 @@
     <fetchRequest name="fetchRequestSubjectById" entity="ZooniverseSubject" predicateString="subjectId == $SUBJECT_ID" fetchLimit="1"/>
     <fetchRequest name="fetchRequestSubjects" entity="ZooniverseSubject"/>
     <elements>
-        <element name="ZooniverseSubject" positionX="-434" positionY="-120" width="128" height="208"/>
+        <element name="ZooniverseSubject" positionX="-434" positionY="-120" width="128" height="223"/>
         <element name="ZooniverseClassification" positionX="-63" positionY="54" width="128" height="88"/>
         <element name="ZooniverseClassificationAnswer" positionX="-243" positionY="0" width="128" height="88"/>
     </elements>
