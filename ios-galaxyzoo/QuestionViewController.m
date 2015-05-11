@@ -119,6 +119,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     //TODO: This doesn't seem to work: We still get the same subject next time, though we have marked this one as done.
     error = nil;
     [[self managedObjectContext] save:&error];  //saves the context to disk
+    
 
     //Tell the parent ViewController to start another subject:
     UIViewController <ClassifyViewControllerDelegate> *parent = (UIViewController <ClassifyViewControllerDelegate> *)self.parentViewController;

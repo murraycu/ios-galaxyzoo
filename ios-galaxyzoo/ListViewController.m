@@ -75,7 +75,7 @@
     // We have to copy it so we can set a sort order (sortDescriptors).
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
     NSFetchRequest *fetchRequest = [[[self managedObjectModel] fetchRequestTemplateForName:@"fetchRequestSubjects"] copy];
-    
+
     [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest

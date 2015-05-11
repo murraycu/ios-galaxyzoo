@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "ClassifyViewControllerDelegate.h"
 
-@interface ClassifyViewController : UIViewController <NSFetchedResultsControllerDelegate, ClassifyViewControllerDelegate>
+@interface ClassifyViewController : UIViewController <ClassifyViewControllerDelegate>
 
 
 - (ClassifyViewController *)init;

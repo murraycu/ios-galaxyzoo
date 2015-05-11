@@ -12,7 +12,7 @@
 @interface ZooniverseClient : NSObject
 
 - (ZooniverseClient *) init;
-- (void)querySubjects;
+- (void)querySubjects:(NSUInteger)count;
 
 @end
 

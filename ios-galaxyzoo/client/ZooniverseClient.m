@@ -160,10 +160,11 @@ NSString * currentTimeAsIso8601(void)
     return iso8601String;
 }
 
-- (void)querySubjects
+- (void)querySubjects:(NSUInteger)count
 {
+    NSString *countAsStr = [NSString stringWithFormat:@"%i", (unsigned int)count]; //TODO: Is this locale-independent?
     NSString *path = [self getQueryMoreItemsPath];
-    NSDictionary *queryParams = @{@"limit" : @"5"};
+    NSDictionary *queryParams = @{@"limit" : countAsStr};
     [_objectManager getObjectsAtPath:path
                           parameters:queryParams
                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

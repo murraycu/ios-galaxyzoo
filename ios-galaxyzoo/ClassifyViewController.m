@@ -16,6 +16,7 @@
 #import "ZooniverseModel/ZooniverseSubject.h"
 #import <RestKit/RestKit.h>
 
+static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 @interface ClassifyViewController () {
     ZooniverseClient *_client;
@@ -23,8 +24,6 @@
     
     QuestionViewController *_questionViewController;
 }
-
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -57,37 +56,52 @@
     Singleton *singleton = [Singleton sharedSingleton];
     
     //Get more subjects from the server, putting them in CoreData:
-    
-    [_client querySubjects];
-    
+
     // Get the subjects from CoreData:
-    for (id <NSFetchedResultsSectionInfo> sectionInfo in [self.fetchedResultsController sections]) {
-        
-        for (ZooniverseSubject *subject in [sectionInfo objects]) {
-            //NSLog(@"debugFromCoreData: subjectId=%@, groupId=%@, locationStandardRemote=%@",
-            //      subject.subjectId, subject.groupId, subject.locationStandardRemote);
-            
-            
-            //Show the subject's image:
-            NSURL *urlStandard = [NSURL URLWithString:subject.locationStandardRemote];
-            [imageView setImageWithURL:urlStandard];
-            
-            //Show the current question for the subject:
-            NSString *groupId = subject.groupId;
-            DecisionTree *decisionTree = [singleton getDecisionTree:groupId];
-            NSString *questionId = decisionTree.firstQuestionId;
-            DecisionTreeQuestion *question = [decisionTree getQuestion:questionId];
-            _questionViewController.subjectId = subject.subjectId; //So it can get the Subject itself.
-            _questionViewController.groupId = groupId; //So it can get the DecisionTree itself.
-            _questionViewController.question = question;
-            break;
-        }
+
+    // Get the FetchRequest from our data model,
+    // and use the same sort order as the ListViewController:
+    // We have to copy it so we can set a sort order (sortDescriptors).
+    // There doesn't seem to be a way to set the sort order in the data model GUI editor.
+    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
+    [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
+
+    //Get more items from the server if necessary:
+    NSError *error = nil; //TODO: Check this.
+    NSArray *results = [[self managedObjectContext]
+                        executeFetchRequest:fetchRequest
+                        error:&error];
+
+    NSUInteger count = [results count];
+    if (count < MIN_CACHED_NOT_DONE) {
+        [_client querySubjects:(MIN_CACHED_NOT_DONE - count)];
     }
+
+    if (count == 0) {
+        //TODO: Wait/Retry/Tell the user.
+        NSLog(@"No Subjects Found.");
+        return;
+    }
+
+    ZooniverseSubject *subject = (ZooniverseSubject *)[results objectAtIndex:0];
+
+    //Show the subject's image:
+    NSURL *urlStandard = [NSURL URLWithString:subject.locationStandardRemote];
+    [imageView setImageWithURL:urlStandard];
+
+    //Show the current question for the subject:
+    NSString *groupId = subject.groupId;
+    DecisionTree *decisionTree = [singleton getDecisionTree:groupId];
+    NSString *questionId = decisionTree.firstQuestionId;
+    DecisionTreeQuestion *question = [decisionTree getQuestion:questionId];
+    _questionViewController.subjectId = subject.subjectId; //So it can get the Subject itself.
+    _questionViewController.groupId = groupId; //So it can get the DecisionTree itself.
+    _questionViewController.question = question;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self showNextSubject];
 
 }
@@ -102,34 +116,9 @@
     return appDelegate.managedObjectModel;
 }
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    
-    if (_fetchedResultsController) {
-        return _fetchedResultsController;
-    }
-    
-    // Get the FetchRequest from our data model,
-    // and use the same sort order as the ListViewController:
-    // We have to copy it so we can set a sort order (sortDescriptors).
-    // There doesn't seem to be a way to set the sort order in the data model GUI editor.
-    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
-    [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
-
+- (NSManagedObjectContext*)managedObjectContext {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                        managedObjectContext:[appDelegate managedObjectContext]
-                                                                          sectionNameKeyPath:nil
-                                                                                   cacheName:@"ZooniverseSubject"];
-    self.fetchedResultsController.delegate = self;
-    
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
-    
-    NSLog(@"%@",[self.fetchedResultsController fetchedObjects]);
-    
-    NSAssert(!error, @"Error performing fetch request: %@", error);
-    
-    return _fetchedResultsController;
+    return appDelegate.managedObjectContext;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
