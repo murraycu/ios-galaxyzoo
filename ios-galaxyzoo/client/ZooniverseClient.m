@@ -31,8 +31,15 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 }
 
 - (void)setupRestkit {
-    //RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
-    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    //Some RestKit logging is on (RKLogLevelTrace, I think) by default,
+    //which is annoying:
+    //However, it still seems to log stuff in debug builds, though apparently not in production builds.
+    //
+    //RKLogConfigureByName("RestKit", RKLogLevelWarning);
+    //RKLogConfigureByName("RestKit/Network*", RKLogLevelWarning);
+    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelWarning);
+    RKLogConfigureByName("*", RKLogLevelOff);
+
     
     //let AFNetworking manage the activity indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;

@@ -62,8 +62,8 @@
     for (id <NSFetchedResultsSectionInfo> sectionInfo in [self.fetchedResultsController sections]) {
         
         for (ZooniverseSubject *subject in [sectionInfo objects]) {
-            NSLog(@"debugFromCoreData: subjectId=%@, groupId=%@, locationStandardRemote=%@",
-                  subject.subjectId, subject.groupId, subject.locationStandardRemote);
+            //NSLog(@"debugFromCoreData: subjectId=%@, groupId=%@, locationStandardRemote=%@",
+            //      subject.subjectId, subject.groupId, subject.locationStandardRemote);
             
             
             //Show the subject's image:
