@@ -295,6 +295,9 @@
 		F2D6FEAB1AFDF6FE002E3E15 /* ZooniverseClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEAA1AFDF6FE002E3E15 /* ZooniverseClassification.m */; };
 		F2D6FEAE1AFDF6FE002E3E15 /* ZooniverseSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEAD1AFDF6FE002E3E15 /* ZooniverseSubject.m */; };
 		F2D6FEB11AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */; };
+		F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */; };
+		F2D6FEBA1B00B362002E3E15 /* ListCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FEB91B00B362002E3E15 /* ListCellView.xib */; };
+		F2D6FEBD1B00B3F9002E3E15 /* ListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -621,6 +624,11 @@
 		F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswersCollectionViewCell.h; sourceTree = "<group>"; };
 		F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswersCollectionViewCell.m; sourceTree = "<group>"; };
 		F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyViewControllerDelegate.h; sourceTree = "<group>"; };
+		F2D6FEB61B00A3D0002E3E15 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		F2D6FEB91B00B362002E3E15 /* ListCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCellView.xib; sourceTree = "<group>"; };
+		F2D6FEBB1B00B3F9002E3E15 /* ListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCollectionViewCell.h; sourceTree = "<group>"; };
+		F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -689,15 +697,20 @@
 				F21F87CF1AF384BF00C95B52 /* client */,
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
+				F2D6FEB61B00A3D0002E3E15 /* ListViewController.h */,
+				F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */,
 				F21F87A41AF3657400C95B52 /* ClassifyViewController.h */,
 				F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */,
 				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
 				F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */,
+				F2D6FEBB1B00B3F9002E3E15 /* ListCollectionViewCell.h */,
+				F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */,
 				F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */,
 				F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */,
 				F21F87A51AF3657400C95B52 /* ClassifyViewController.m */,
 				F21F87A71AF3657400C95B52 /* Main.storyboard */,
 				F2D6FC961AFCC83D002E3E15 /* AnswerCellView.xib */,
+				F2D6FEB91B00B362002E3E15 /* ListCellView.xib */,
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
 				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
 				F21F879D1AF3657400C95B52 /* Supporting Files */,
@@ -1209,6 +1222,7 @@
 				F2D6FE321AFD44D3002E3E15 /* icon_goods_full-15_a-1_0 in Resources */,
 				F2D6FE071AFD44D3002E3E15 /* icon_goods_full-6_a-0_1 in Resources */,
 				F2D6FE691AFD44D3002E3E15 /* icon_sloan-6_x-3_1 in Resources */,
+				F2D6FEBA1B00B362002E3E15 /* ListCellView.xib in Resources */,
 				F2D6FE6E1AFD44D3002E3E15 /* icon_sloan-6_x-5_1 in Resources */,
 				F2D6FE591AFD44D3002E3E15 /* icon_sloan-2_a-0_2 in Resources */,
 				F2D6FE4F1AFD44D3002E3E15 /* icon_sloan-0_a-1_0 in Resources */,
@@ -1480,6 +1494,7 @@
 			files = (
 				F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */,
 				F2D6FEAE1AFDF6FE002E3E15 /* ZooniverseSubject.m in Sources */,
+				F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */,
 				F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */,
 				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,
 				F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */,
@@ -1489,6 +1504,7 @@
 				F21F87A01AF3657400C95B52 /* main.m in Sources */,
 				F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */,
 				F24829771AF7562F0060D9B0 /* DecisionTreeQuestionCheckbox.m in Sources */,
+				F2D6FEBD1B00B3F9002E3E15 /* ListCollectionViewCell.m in Sources */,
 				F2D6FEA81AFDF6FD002E3E15 /* ZooniverseClassificationAnswer.m in Sources */,
 				F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */,
 				F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */,
