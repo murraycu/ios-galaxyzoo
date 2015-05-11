@@ -9,6 +9,7 @@
 #import "QuestionViewController.h"
 #import "QuestionAnswersCollectionViewCell.h"
 #import "ClassifyViewControllerDelegate.h"
+#import "AppDelegate.h"
 #import "DecisionTree.h"
 #import "DecisionTreeQuestionAnswer.h"
 #import "ZooniverseModel/ZooniverseClassification.h"
@@ -43,7 +44,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     //Note: This will be saved to the model, so we should remove it later if necessary:
     _classificationInProgress =
     (ZooniverseClassification *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassification"
-                                                              inManagedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext];
+                                                              inManagedObjectContext:[self managedObjectContext]];
 }
 
 - (void)viewDidLoad {
@@ -101,7 +102,9 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     NSFetchRequest *req = [model fetchRequestFromTemplateWithName:@"fetchRequestSubjectById"
                                             substitutionVariables:subs];
     NSError *error = nil; //TODO: Check this.
-    NSArray *results = [[self managedObjectContext] executeFetchRequest:req error:&error];
+    NSArray *results = [[self managedObjectContext]
+                        executeFetchRequest:req
+                        error:&error];
     NSLog(@"debug: Found %ld record.", [results count]);
     
     if (results.count < 1) {
@@ -129,7 +132,8 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 }
 
 - (NSManagedObjectModel*)managedObjectModel {
-    return [NSManagedObjectModel mergedModelFromBundles:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return appDelegate.managedObjectModel;
 }
 
 -(void)onAnswerButtonClick:(UIView*)clickedButton

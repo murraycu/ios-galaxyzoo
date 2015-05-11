@@ -8,6 +8,7 @@
 
 #import "ListViewController.h"
 #import "ListCollectionViewCell.h"
+#import "AppDelegate.h"
 #import "ZooniverseModel/ZooniverseSubject.h"
 #import <RestKit/RestKit.h>
 
@@ -50,11 +51,13 @@
 */
 
 - (NSManagedObjectContext*)managedObjectContext {
-    return [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return appDelegate.managedObjectContext;
 }
 
 - (NSManagedObjectModel*)managedObjectModel {
-    return [NSManagedObjectModel mergedModelFromBundles:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return appDelegate.managedObjectModel;
 }
 
 + (void)fetchRequestSortByDateTimeRetrieved:(NSFetchRequest *)fetchRequest {
@@ -76,7 +79,7 @@
     [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                        managedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext
+                                                                        managedObjectContext:[self managedObjectContext]
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
     self.fetchedResultsController.delegate = self;

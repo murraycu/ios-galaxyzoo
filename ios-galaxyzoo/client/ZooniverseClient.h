@@ -10,8 +10,6 @@
 #import <RestKit/RestKit.h>
 
 @interface ZooniverseClient : NSObject
-    //TODO: Make this readonly:
-    @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 
 - (ZooniverseClient *) init;
 - (void)querySubjects;

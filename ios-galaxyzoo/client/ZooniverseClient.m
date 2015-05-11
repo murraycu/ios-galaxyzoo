@@ -10,6 +10,7 @@
 #import "ZooniverseSubject.h"
 #import "Config.h"
 #import "ConfigSubjectGroup.h"
+#import "AppDelegate.h"
 #import <RestKit/RestKit.h>
 
 static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
@@ -17,14 +18,18 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 @interface ZooniverseClient () {
     RKObjectManager * _objectManager;
 }
+
+@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+
 @end
 
 @implementation ZooniverseClient
 
-- (ZooniverseClient *) init {
-    
+- (ZooniverseClient *) init;
+
+{
     self = [super init];
-    
+
     [self setupRestkit];
     
     return self;
@@ -58,8 +63,10 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
     
     
     // Connect the RestKit object manager to our Core Data model:
-    self.managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:self.managedObjectModel];
+
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.managedObjectModel = appDelegate.managedObjectModel;
+    RKManagedObjectStore *managedObjectStore = appDelegate.rkManagedObjectStore;
     _objectManager.managedObjectStore = managedObjectStore;
     
     NSDictionary *parentObjectMapping = @{
@@ -72,7 +79,7 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
                                           };
     
     RKEntityMapping *subjectMapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([ZooniverseSubject class])
-                                                          inManagedObjectStore:_objectManager.managedObjectStore];
+                                                          inManagedObjectStore:managedObjectStore];
     subjectMapping.identificationAttributes = @[ @"subjectId" ];
     
     [subjectMapping addAttributeMappingsFromDictionary:parentObjectMapping];

@@ -9,6 +9,7 @@
 #import "ClassifyViewController.h"
 #import "QuestionViewController.h"
 #import "ListViewController.h"
+#import "AppDelegate.h"
 #import "Singleton.h"
 #import "DecisionTree/DecisionTree.h"
 #import "client/ZooniverseClient.h"
@@ -96,6 +97,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSManagedObjectModel*)managedObjectModel {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return appDelegate.managedObjectModel;
+}
+
 - (NSFetchedResultsController *)fetchedResultsController {
     
     if (_fetchedResultsController) {
@@ -106,12 +112,14 @@
     // and use the same sort order as the ListViewController:
     // We have to copy it so we can set a sort order (sortDescriptors).
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
-    NSFetchRequest *fetchRequest = [[_client.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
+    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
     [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
-    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                        managedObjectContext:[RKManagedObjectStore defaultStore].mainQueueManagedObjectContext sectionNameKeyPath:nil cacheName:@"ZooniverseSubject"];
+                                                                        managedObjectContext:[appDelegate managedObjectContext]
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:@"ZooniverseSubject"];
     self.fetchedResultsController.delegate = self;
     
     NSError *error;

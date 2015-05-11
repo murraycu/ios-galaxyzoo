@@ -45,9 +45,12 @@
 
 #pragma mark - Core Data stack
 
+//TODO: Remove these? They shouldn't be necessary now.
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+//@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize rkManagedObjectStore = _rkManagedObjectStore;
+
 
 - (NSURL *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "com.murrayc.Model" in the application's documents directory.
@@ -59,11 +62,14 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ZooniverseModel" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    //NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ZooniverseModel" withExtension:@"momd"];
+    //_managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
 
+/*
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it.
     if (_persistentStoreCoordinator != nil) {
@@ -91,21 +97,34 @@
     
     return _persistentStoreCoordinator;
 }
-
+*/
 
 - (NSManagedObjectContext *)managedObjectContext {
     // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
-    
+
+    /*
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (!coordinator) {
         return nil;
-    }
+
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    */
+
+    _managedObjectContext = [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
     return _managedObjectContext;
+}
+
+- (RKManagedObjectStore *)rkManagedObjectStore {
+    if (_rkManagedObjectStore != nil) {
+        return _rkManagedObjectStore;
+    }
+
+    _rkManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:self.managedObjectModel];
+    return _rkManagedObjectStore;
 }
 
 #pragma mark - Core Data Saving support
