@@ -9,6 +9,7 @@
 #import "HelpViewController.h"
 
 @interface HelpViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *labelText;
 
 @end
 
@@ -16,7 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view.
+    self.labelText.text = self.question.help;
 }
 
 - (void)didReceiveMemoryWarning {

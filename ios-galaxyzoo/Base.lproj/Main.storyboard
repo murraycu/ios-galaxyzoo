@@ -58,7 +58,7 @@
                     <navigationItem key="navigationItem" title="Classify" id="k2p-mG-A4H">
                         <barButtonItem key="rightBarButtonItem" title="Help" id="9GQ-7z-83C">
                             <connections>
-                                <segue destination="uoU-Fq-DjU" kind="show" id="OIK-hx-6Rl"/>
+                                <segue destination="uoU-Fq-DjU" kind="show" identifier="helpShowEmbed" id="OIK-hx-6Rl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -120,8 +120,25 @@
                     <view key="view" contentMode="scaleToFill" id="BzJ-h7-P5i">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="help text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-aR-Cyh" userLabel="labelText">
+                                <rect key="frame" x="16" y="78" width="568" height="225"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="leading" secondItem="BzJ-h7-P5i" secondAttribute="leadingMargin" id="2GY-ln-DG1"/>
+                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="trailing" secondItem="BzJ-h7-P5i" secondAttribute="trailingMargin" id="FXw-hU-6Ro"/>
+                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="top" secondItem="1vK-QU-Bhl" secondAttribute="bottom" constant="14" id="IOO-4d-zhH"/>
+                            <constraint firstItem="7EN-eK-4W6" firstAttribute="top" secondItem="nMH-aR-Cyh" secondAttribute="bottom" constant="248" id="xRN-mf-74k"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="labelText" destination="nMH-aR-Cyh" id="iaP-JE-jT3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2Q-eK-elW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

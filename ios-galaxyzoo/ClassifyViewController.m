@@ -8,6 +8,7 @@
 
 #import "ClassifyViewController.h"
 #import "QuestionViewController.h"
+#import "HelpViewController.h"
 #import "ListViewController.h"
 #import "AppDelegate.h"
 #import "Singleton.h"
@@ -125,7 +126,11 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     NSString *segueName = segue.identifier;
     if ([segueName isEqualToString:@"questionViewEmbed"]) {
         _questionViewController = [segue destinationViewController];
+    } else if ([segueName isEqualToString:@"helpShowEmbed"]) {
+        HelpViewController *viewController = [segue destinationViewController];
+        viewController.question = _questionViewController.question;
     }
+
 }
 
 - (void)onClassificationFinished {
