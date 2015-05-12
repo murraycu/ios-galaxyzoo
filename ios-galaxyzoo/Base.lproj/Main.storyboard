@@ -158,9 +158,6 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-nN-vq3" userLabel="labelTitle">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="ELm-6n-gv9"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -186,10 +183,19 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="psy-e2-gx5">
+                                <rect key="frame" x="519" y="8" width="51" height="31"/>
+                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-fb-vs7" userLabel="labelText">
                                 <rect key="frame" x="0.0" y="37" width="568" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0g-HT-F6c">
+                                <rect key="frame" x="285" y="13" width="226" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="QXm-xd-XB3"/>
+                                    <constraint firstAttribute="width" constant="226" id="7HB-RF-xSF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -198,16 +204,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="v9c-nN-vq3" firstAttribute="leading" secondItem="BaE-tr-Tgr" secondAttribute="leading" id="4t2-R3-EZQ"/>
-                            <constraint firstItem="v9c-nN-vq3" firstAttribute="top" secondItem="0gw-eF-hGL" secondAttribute="bottom" id="7NN-mh-fPE"/>
-                            <constraint firstAttribute="trailing" secondItem="zhT-fb-vs7" secondAttribute="trailing" id="Ckh-iO-lQW"/>
-                            <constraint firstItem="zhT-fb-vs7" firstAttribute="trailing" secondItem="W1E-nW-ODq" secondAttribute="trailing" id="EM9-Ok-ApA"/>
-                            <constraint firstItem="zhT-fb-vs7" firstAttribute="trailing" secondItem="v9c-nN-vq3" secondAttribute="trailing" id="Gqe-UR-NfE"/>
-                            <constraint firstItem="zhT-fb-vs7" firstAttribute="leading" secondItem="W1E-nW-ODq" secondAttribute="leading" id="LEY-Yp-gcC"/>
-                            <constraint firstItem="zhT-fb-vs7" firstAttribute="top" secondItem="v9c-nN-vq3" secondAttribute="bottom" constant="8" symbolic="YES" id="VIM-In-nix"/>
-                            <constraint firstItem="W1E-nW-ODq" firstAttribute="top" secondItem="zhT-fb-vs7" secondAttribute="bottom" constant="8" symbolic="YES" id="c2I-ur-vjC"/>
-                            <constraint firstItem="zhT-fb-vs7" firstAttribute="leading" secondItem="v9c-nN-vq3" secondAttribute="leading" id="td9-qs-aVL"/>
-                            <constraint firstItem="W1E-nW-ODq" firstAttribute="bottom" secondItem="Noc-ep-P9D" secondAttribute="top" id="zyy-hZ-rr9"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="top" secondItem="zhT-fb-vs7" secondAttribute="bottom" constant="8" symbolic="YES" id="378-py-4ng"/>
+                            <constraint firstItem="zhT-fb-vs7" firstAttribute="leading" secondItem="W1E-nW-ODq" secondAttribute="leading" id="9Pc-3b-stl"/>
+                            <constraint firstItem="zhT-fb-vs7" firstAttribute="top" secondItem="m0g-HT-F6c" secondAttribute="bottom" constant="3" id="Ifs-eT-ijw"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="top" secondItem="psy-e2-gx5" secondAttribute="bottom" constant="59" id="Jtf-yJ-vGX"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="trailing" secondItem="zhT-fb-vs7" secondAttribute="trailing" id="L8K-Zx-FOl"/>
+                            <constraint firstItem="psy-e2-gx5" firstAttribute="leading" secondItem="m0g-HT-F6c" secondAttribute="trailing" constant="8" symbolic="YES" id="P5l-97-V6V"/>
+                            <constraint firstItem="zhT-fb-vs7" firstAttribute="trailing" secondItem="psy-e2-gx5" secondAttribute="trailing" id="SOt-Gw-p31"/>
+                            <constraint firstAttribute="trailing" secondItem="v9c-nN-vq3" secondAttribute="trailing" id="U5f-d4-pC0"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="bottom" secondItem="Noc-ep-P9D" secondAttribute="top" id="VCi-2v-KKz"/>
+                            <constraint firstItem="psy-e2-gx5" firstAttribute="top" secondItem="0gw-eF-hGL" secondAttribute="bottom" constant="8" symbolic="YES" id="d8i-v2-Rfz"/>
+                            <constraint firstItem="zhT-fb-vs7" firstAttribute="leading" secondItem="BaE-tr-Tgr" secondAttribute="leading" id="gej-zr-CDK"/>
+                            <constraint firstItem="zhT-fb-vs7" firstAttribute="top" secondItem="v9c-nN-vq3" secondAttribute="bottom" constant="8" symbolic="YES" id="heZ-Ys-FhW"/>
+                            <constraint firstItem="m0g-HT-F6c" firstAttribute="centerY" secondItem="psy-e2-gx5" secondAttribute="centerY" id="hhW-dU-fUq"/>
+                            <constraint firstItem="v9c-nN-vq3" firstAttribute="top" secondItem="0gw-eF-hGL" secondAttribute="bottom" id="kug-i9-0GC"/>
+                            <constraint firstItem="psy-e2-gx5" firstAttribute="trailing" secondItem="v9c-nN-vq3" secondAttribute="trailing" id="p0w-kE-HPS"/>
+                            <constraint firstItem="zhT-fb-vs7" firstAttribute="leading" secondItem="v9c-nN-vq3" secondAttribute="leading" id="xp4-KY-JnS"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -215,6 +227,7 @@
                         <outlet property="collectionViewAnswers" destination="W1E-nW-ODq" id="JBc-X5-o6O"/>
                         <outlet property="labelText" destination="zhT-fb-vs7" id="wNJ-9o-gXw"/>
                         <outlet property="labelTitle" destination="v9c-nN-vq3" id="lbf-3A-RPE"/>
+                        <outlet property="switchFavorite" destination="psy-e2-gx5" id="hka-Qv-PBt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvg-m2-V6k" userLabel="First Responder" sceneMemberID="firstResponder"/>

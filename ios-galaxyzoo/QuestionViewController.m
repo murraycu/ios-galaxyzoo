@@ -25,6 +25,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 @interface QuestionViewController () {
     ZooniverseClassification *_classificationInProgress;
+    __weak IBOutlet UISwitch *switchFavorite;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
@@ -47,6 +48,12 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
                                                               inManagedObjectContext:[self managedObjectContext]];
 }
 
+- (void)clearFavorite {
+    //Clear the favorite switch:
+    [switchFavorite setOn:NO
+                 animated:NO];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -54,6 +61,8 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     UINib *cellNib = [UINib nibWithNibName:@"AnswerCellView" bundle:nil];
     [self.collectionViewAnswers registerNib:cellNib forCellWithReuseIdentifier:@"answerCell"];
     self.collectionViewAnswers.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    [self clearFavorite];
 
     [self initClassificationInProgress];
 }
@@ -90,6 +99,8 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     if (_question == nil) {
         [self saveClassification];
         _question = [decisionTree getQuestion:decisionTree.firstQuestionId];
+
+        [self clearFavorite];
     }
 
     [self updateUI];
@@ -114,6 +125,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
     ZooniverseSubject *subject = (ZooniverseSubject *)[results objectAtIndex:0];
     subject.classification = _classificationInProgress;
+    subject.favorite = switchFavorite.on;
     subject.done = YES;
 
     //Save the ZooniverseClassification and the Subject to disk:
