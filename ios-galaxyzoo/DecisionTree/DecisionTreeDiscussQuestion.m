@@ -12,11 +12,11 @@
 
 - (DecisionTreeDiscussQuestion *)init:(NSString *)questionId yesAnswerId:(NSString *)yesAnswerId noAnswerId:(NSString *)noAnswerId {
     self = [super init];
-    
+
     self.questionId = questionId;
     self.yesAnswerId = yesAnswerId;
     self.noAnswerId = noAnswerId;
-    
+
     return self;
 }
 @end

@@ -19,23 +19,23 @@ static NSString *TAG_TEXT = @"text";
 
 
 @interface DecisionTreeParser () {
-    
+
     DecisionTree *_decisionTree;
-    
+
     NSMutableArray *_answersInProgress; //Of DecisionTreeQuestionAnswer
     NSMutableArray *_checkboxesInProgress; //Of DecisionTreeQuestionCheckbox
-    
+
     NSString *_questionIdInProgress;
     NSString *_questionTitleInProgress;
     NSString *_questionTextInProgress;
     NSString *_questionHelpInProgress;
-    
+
     NSString *_answerIdInProgress;
     NSString *_answerIconInProgress;
     NSUInteger _answerExamplesCountInProgress;
     NSString *_answerLeadsToQuestionIdInProgress;
     NSString *_answerTextInProgress;
-    
+
     NSMutableString *_titleInProgress;
     NSMutableString *_helpInProgress;
     NSMutableString *_textInProgress;
@@ -51,15 +51,15 @@ static NSString *TAG_TEXT = @"text";
 @implementation DecisionTreeParser
 
 - (DecisionTreeParser *)init:(NSURL *)url intoTree:(DecisionTree *)intoTree {
-    
+
     self = [super initWithContentsOfURL:url];
-    
+
     _decisionTree = intoTree;
     _answersInProgress = [[NSMutableArray alloc] init];
     _checkboxesInProgress = [[NSMutableArray alloc] init];
 
     [self setDelegate:self];
-    
+
     return self;
 }
 
@@ -89,7 +89,7 @@ static NSString *TAG_TEXT = @"text";
 - (void)parseBaseButton:(NSDictionary *)attributeDict {
     _answerIdInProgress = [attributeDict objectForKey:@"id"];
     _answerIconInProgress = [attributeDict objectForKey:@"icon"];
-    
+
     NSString *strCount = [attributeDict objectForKey:@"examplesCount"];
     _answerExamplesCountInProgress = [strCount integerValue];
 }
@@ -153,7 +153,7 @@ static NSString *TAG_TEXT = @"text";
     } else if ( [elementName isEqualToString:TAG_HELP]) {
         //Only the questions have help:
         _questionHelpInProgress = _helpInProgress;
-        
+
         [self clearChildTextInProgress];
     } else if ( [elementName isEqualToString:TAG_TEXT]) {
         // Use _textInProgress for a child answer,

@@ -20,7 +20,7 @@
          examplesCount:examplesCount
                   text:text];
     self.leadsToQuestionId = leadsToQuestionId;
-    
+
     return self;
 }
 

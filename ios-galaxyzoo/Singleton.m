@@ -13,7 +13,7 @@
 @interface Singleton () {
 
     NSMutableDictionary *_decisionTrees; //Group ID to DecisionTree;
-    
+
 }
 
 @end
@@ -25,26 +25,26 @@ static Singleton *sharedSingleton = nil;    // static instance variable
 
 - (Singleton *)init {
     self = [super init];
-    
+
     _decisionTrees = [[NSMutableDictionary alloc] init];
-    
+
     NSDictionary *dict = [Config subjectGroups];
     for (NSString *groupId in dict) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
         ConfigSubjectGroup *subjectGroup = [dict objectForKey:groupId];
-        
+
         NSURL *url = [[NSBundle mainBundle] URLForResource:[subjectGroup filename]
                                              withExtension:nil];
         if (!url) {
             continue;
         }
-        
+
         DecisionTree *tree = [[DecisionTree alloc] init:url];
         [_decisionTrees setObject:tree
                            forKey:groupId];
     }
-    
+
     return self;
 }
 
@@ -53,7 +53,7 @@ static Singleton *sharedSingleton = nil;    // static instance variable
     if (sharedSingleton == nil) {
         sharedSingleton = [[Singleton alloc] init];
     }
-    
+
     return sharedSingleton;
 }
 

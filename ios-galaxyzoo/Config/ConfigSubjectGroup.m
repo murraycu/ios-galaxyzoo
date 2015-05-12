@@ -12,11 +12,11 @@
 
 - (ConfigSubjectGroup *)init:(NSString *)filename useForNewQueries:(BOOL)useForNewQueries discussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion {
     self = [super init];
-    
+
     self.filename = filename;
     self.useForNewQueries = useForNewQueries;
     self.discussQuestion = discussQuestion;
-    
+
     return self;
 }
 

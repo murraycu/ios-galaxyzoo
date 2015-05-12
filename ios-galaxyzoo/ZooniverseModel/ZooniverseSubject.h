@@ -1,6 +1,6 @@
 //
 //  ZooniverseSubject.h
-//  
+//
 //
 //  Created by Murray Cumming on 11/05/2015.
 //

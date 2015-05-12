@@ -12,7 +12,7 @@
 
 @interface DecisionTree () {
     NSMutableDictionary *_questions;
-    
+
     //Make this writable, so we can change it in our implementation:
 }
 
@@ -25,13 +25,13 @@
 - (DecisionTree *)init:(NSURL *)url {
 
     self = [super init];
-    
+
     _questions = [[NSMutableDictionary alloc] init];
-    
+
     //TODO: Use filename.
     //NSString *fullPath = @"Assets/DecisionTrees";
     //fullPath = [fullPath stringByAppendingString:filename];
-    
+
     DecisionTreeParser *parser = [[DecisionTreeParser alloc]init:url
                                                         intoTree:self];
     if(![parser parse]) {
@@ -42,16 +42,16 @@
 }
 
 - (NSArray *)getAllQuestions {
-    
+
     NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:_questions.count];
-    
+
     for (NSString *questionId in _questions) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
         DecisionTreeQuestion *question = [_questions objectForKey:questionId];
         [result addObject:question];
     }
-    
+
     return result;
 }
 
@@ -74,7 +74,7 @@
 - (void)addQuestion:(DecisionTreeQuestion *)question {
     [_questions setObject:question
                    forKey:[question questionId]];
-    
+
     if (!self.firstQuestionId) {
         self.firstQuestionId = question.questionId;
     }

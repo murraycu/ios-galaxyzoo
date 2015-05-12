@@ -27,7 +27,7 @@
     UINib *cellNib = [UINib nibWithNibName:@"ListCellView" bundle:nil];
     [self.collectionViewSubjects registerNib:cellNib forCellWithReuseIdentifier:@"subjectCell"];
     //self.collectionViewSubjects.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
+
     //self.collectionViewSubjects.dataSource = self;
     //[self.collectionViewSubjects reloadData];
 }
@@ -66,31 +66,31 @@
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
-    
+
     if (_fetchedResultsController) {
         return _fetchedResultsController;
     }
-    
+
     // Get the FetchRequest from our data model.
     // We have to copy it so we can set a sort order (sortDescriptors).
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
     NSFetchRequest *fetchRequest = [[[self managedObjectModel] fetchRequestTemplateForName:@"fetchRequestSubjects"] copy];
 
     [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
-    
+
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:[self managedObjectContext]
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
     self.fetchedResultsController.delegate = self;
-    
+
     NSError *error; //TODO: Check this.
     [self.fetchedResultsController performFetch:&error];
-    
+
     NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
-    
+
     NSAssert(!error, @"Error performing fetch request: %@", error);
-    
+
     return _fetchedResultsController;
 }
 
@@ -106,23 +106,23 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSArray *sections = [self.fetchedResultsController sections];
     id<NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
-    
+
     return [sectionInfo numberOfObjects];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"subjectCell";
-    
+
     UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     ListCollectionViewCell *cell = (ListCollectionViewCell *)cellBase;
-    
+
     NSManagedObject *record = [self.fetchedResultsController objectAtIndexPath:indexPath];
     ZooniverseSubject *subject = (ZooniverseSubject *)record; //TODO: Check the cast.
-    
+
     // Update Cell
     NSURL *url = [[NSURL alloc] initWithString:subject.locationStandardRemote];
     [cell.imageView setImageWithURL:url];
-    
+
     NSString *doneStr = subject.done ? @"Done" : @"Not Done";
     [cell.labelDone setText:doneStr];
 

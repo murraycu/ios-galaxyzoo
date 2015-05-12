@@ -31,7 +31,7 @@
     NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"test_decision_tree.xml"
                                          withExtension:nil];
     XCTAssert(url != nil, @"Pass");
-    
+
     DecisionTree *result = [[DecisionTree alloc] init:url];
     XCTAssert(result != nil, @"Pass");
 
@@ -41,23 +41,23 @@
 - (void)testSize {
     DecisionTree *decisionTree = [self createCorrectDecisionTree];
     XCTAssert(decisionTree != nil, @"Pass");
-    
+
     NSArray *questions = [decisionTree getAllQuestions];
     XCTAssert(questions.count == 12, @"Pass");
-    
+
     XCTAssert(YES, @"Pass");
 }
 
 - (void)testQuestionsWithoutTranslations {
     DecisionTree *decisionTree = [self createCorrectDecisionTree];
     XCTAssert(decisionTree != nil, @"Pass");
-    
+
     NSString *QUESTION_ID = @"sloan-3";
     DecisionTreeQuestion *question = [decisionTree getQuestion:QUESTION_ID];
     XCTAssertEqualObjects(QUESTION_ID, question.questionId);
     XCTAssertEqualObjects(@"Spiral", question.title);
     XCTAssertEqualObjects(@"Is there any sign of a spiral arm pattern?", question.text);
-    
+
     DecisionTreeQuestion *nextQuestion = [decisionTree getNextQuestion:QUESTION_ID
                                                                         forAnswer:@"a-1"];
     XCTAssertEqualObjects(@"sloan-4", nextQuestion.questionId);

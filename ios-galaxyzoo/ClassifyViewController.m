@@ -21,7 +21,7 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 @interface ClassifyViewController () {
     ZooniverseClient *_client;
     __weak IBOutlet UIImageView *imageView;
-    
+
     QuestionViewController *_questionViewController;
 }
 
@@ -54,7 +54,7 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 - (void)showNextSubject {
     Singleton *singleton = [Singleton sharedSingleton];
-    
+
     //Get more subjects from the server, putting them in CoreData:
 
     // Get the subjects from CoreData:

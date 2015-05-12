@@ -50,11 +50,11 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     UINib *cellNib = [UINib nibWithNibName:@"AnswerCellView" bundle:nil];
     [self.collectionViewAnswers registerNib:cellNib forCellWithReuseIdentifier:@"answerCell"];
     self.collectionViewAnswers.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
+
     [self initClassificationInProgress];
 }
 
@@ -72,7 +72,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 - (void)setQuestion:(DecisionTreeQuestion *)question {
     _question = question;
-    
+
     [self updateUI];
 }
 
@@ -83,7 +83,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 - (void)showNextQuestion:(NSString *)questionId answerId:(NSString *)answerId {
 
-    
+
     DecisionTree *decisionTree = [self getDecisionTree];
     _question =[decisionTree getNextQuestion:questionId
                                    forAnswer:answerId];
@@ -91,7 +91,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
         [self saveClassification];
         _question = [decisionTree getQuestion:decisionTree.firstQuestionId];
     }
-    
+
     [self updateUI];
 }
 
@@ -106,25 +106,25 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
                         executeFetchRequest:fetchRequest
                         error:&error];
     NSLog(@"debug: Found %ld record.", [results count]);
-    
+
     if (results.count < 1) {
         NSLog(@"Subject not found with ID=%@", self.subjectId);
         return;
     }
-    
+
     ZooniverseSubject *subject = (ZooniverseSubject *)[results objectAtIndex:0];
     subject.done = YES;
-    
+
     //Save the ZooniverseClassification and the Subject to disk:
     //TODO: This doesn't seem to work: We still get the same subject next time, though we have marked this one as done.
     error = nil;
     [[self managedObjectContext] save:&error];  //saves the context to disk
-    
+
 
     //Tell the parent ViewController to start another subject:
     UIViewController <ClassifyViewControllerDelegate> *parent = (UIViewController <ClassifyViewControllerDelegate> *)self.parentViewController;
     [parent onClassificationFinished];
-    
+
     [self initClassificationInProgress];
 }
 
@@ -140,17 +140,17 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 -(void)onAnswerButtonClick:(UIView*)clickedButton
 {
     NSInteger i = clickedButton.tag;
-    
+
     DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
     NSLog(@"Answer clicked:%@", answer.text);
-    
+
     ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
                  inManagedObjectContext:[self managedObjectContext]];
     classificationAnswer.questionId = _question.questionId;
     classificationAnswer.answerId = answer.answerId;
-    
+
     //TODO: Checkboxes.
-    
+
     // This results in an exception:
     // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
     // apparently because NSOrderedSet is not derived from NSSet.
@@ -160,7 +160,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     //[_classificationInProgress addAnswersObject:classificationAnswer];
     //This is the simple workaround:
     classificationAnswer.classification = _classificationInProgress;
-    
+
     [self showNextQuestion:_question.questionId
                   answerId:answer.answerId];
 }
@@ -187,13 +187,13 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"answerCell";
-    
+
     UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
     QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
-    
+
     UIButton *button = cell.button;
-    
+
     NSInteger i = [indexPath indexAtPosition:0] * MAX_BUTTONS_PER_ROW + [indexPath indexAtPosition:1];
     DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
     [button setTitle:answer.text
@@ -206,7 +206,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     //        forState:UIControlStateNormal];
     [button setBackgroundImage:image
             forState:UIControlStateNormal];
-    
+
     //Respond to button touches:
     button.tag = i; //So we know which button was clicked.
     [button addTarget:self

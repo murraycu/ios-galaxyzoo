@@ -18,7 +18,7 @@ static NSDictionary *_subjectGroups; //Of Group ID to ConfigSubjectGroup.
     if (self != [Config self]) {
         return;
     }
-    
+
     _subjectGroups = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [[ConfigSubjectGroup alloc] init:@"candels_tree.xml"
                                       useForNewQueries:YES
@@ -35,7 +35,7 @@ static NSDictionary *_subjectGroups; //Of Group ID to ConfigSubjectGroup.
 
 - (Config *)init {
     self = [super init];
-    
+
     return self;
 }
 
