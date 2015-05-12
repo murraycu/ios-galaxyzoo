@@ -172,9 +172,7 @@ NSString * currentTimeAsIso8601(void)
                           parameters:queryParams
                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
-                                 NSString *iso8601String;
-                                 iso8601String = currentTimeAsIso8601();
-
+                                 NSString *iso8601String = currentTimeAsIso8601();
 
                                  NSArray* subjects = [mappingResult array];
                                  //NSLog(@"Loaded subjects: %@", subjects);
