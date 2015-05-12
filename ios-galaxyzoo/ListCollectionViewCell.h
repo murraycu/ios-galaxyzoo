@@ -10,6 +10,6 @@
 
 @interface ListCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *labelDone;
+@property (weak, nonatomic) IBOutlet UIImageView *imageStatusDone;
 
 @end

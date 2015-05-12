@@ -123,8 +123,7 @@
     NSURL *url = [[NSURL alloc] initWithString:subject.locationThumbnailRemote];
     [cell.imageView setImageWithURL:url];
 
-    NSString *doneStr = subject.done ? @"Done" : @"Not Done";
-    [cell.labelDone setText:doneStr];
+    cell.imageStatusDone.hidden = !subject.done;
 
     return cell;
 }
