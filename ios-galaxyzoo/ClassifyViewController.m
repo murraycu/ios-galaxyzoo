@@ -99,8 +99,32 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     _questionViewController.question = question;
 }
 
+
+-(void)onHelpAction:(id)sender
+{
+    NSLog(@"help button clicked");
+}
+
+-(void)onListAction:(id)sender
+{
+    [self performSegueWithIdentifier:@"listViewShow" sender:sender];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    //To add more than one button to the navigation bar, we have to do it in code,
+    //instead of in the storyboard editor UI.
+    UIBarButtonItem *helpBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"?"
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(onHelpAction:)];
+    UIBarButtonItem *listBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"List"
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(onListAction:)];
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:listBarButtonItem,
+                                               helpBarButtonItem, nil];
 
     [self showNextSubject];
 
