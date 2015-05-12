@@ -28,7 +28,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UILabel *labelText;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewAnswers;
 
 @end
@@ -65,7 +65,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 - (void)updateUI {
     self.labelTitle.text = _question.title;
-    self.textView.text = _question.text;
+    self.labelText.text = _question.text;
     self.collectionViewAnswers.dataSource = self;
     [self.collectionViewAnswers reloadData];
 }
