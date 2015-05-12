@@ -10,6 +10,7 @@
 #import "ListCollectionViewCell.h"
 #import "AppDelegate.h"
 #import "ZooniverseModel/ZooniverseSubject.h"
+#import "Utils.h"
 #import <RestKit/RestKit.h>
 
 @interface ListViewController () {
@@ -60,11 +61,6 @@
     return appDelegate.managedObjectModel;
 }
 
-+ (void)fetchRequestSortByDateTimeRetrieved:(NSFetchRequest *)fetchRequest {
-    //TODO: Move this to somewhere reusable for ClassifyViewController?
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"datetimeRetrieved" ascending:YES]];
-}
-
 - (NSFetchedResultsController *)fetchedResultsController {
 
     if (_fetchedResultsController) {
@@ -76,7 +72,7 @@
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
     NSFetchRequest *fetchRequest = [[[self managedObjectModel] fetchRequestTemplateForName:@"fetchRequestSubjects"] copy];
 
-    [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
+    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:[self managedObjectContext]

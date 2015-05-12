@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		48D55635CD7E987F876BFD55 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A954E3F1E1E0A5D9E3193A97 /* libPods.a */; };
+		F213F7EE1B0274F400CAB635 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F213F7ED1B0274F400CAB635 /* Utils.m */; };
 		F21F87A01AF3657400C95B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F879F1AF3657400C95B52 /* main.m */; };
 		F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A21AF3657400C95B52 /* AppDelegate.m */; };
 		F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ClassifyViewController.m */; };
@@ -315,6 +316,8 @@
 		4893014CE1515354F03EFCF8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		96004F6F685BA528B384638E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A954E3F1E1E0A5D9E3193A97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F213F7EC1B0274F400CAB635 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		F213F7ED1B0274F400CAB635 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-galaxyzoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879E1AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -701,6 +704,8 @@
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
 				F2D6FEB61B00A3D0002E3E15 /* ListViewController.h */,
+				F213F7EC1B0274F400CAB635 /* Utils.h */,
+				F213F7ED1B0274F400CAB635 /* Utils.m */,
 				F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */,
 				F2BC86B41B02119100F84935 /* HelpViewController.h */,
 				F2BC86B51B02119100F84935 /* HelpViewController.m */,
@@ -1500,6 +1505,7 @@
 				F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */,
 				F2D6FEAE1AFDF6FE002E3E15 /* ZooniverseSubject.m in Sources */,
 				F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */,
+				F213F7EE1B0274F400CAB635 /* Utils.m in Sources */,
 				F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */,
 				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,
 				F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */,

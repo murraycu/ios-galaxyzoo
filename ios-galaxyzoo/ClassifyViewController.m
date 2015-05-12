@@ -15,6 +15,7 @@
 #import "DecisionTree/DecisionTree.h"
 #import "client/ZooniverseClient.h"
 #import "ZooniverseModel/ZooniverseSubject.h"
+#import "Utils.h"
 #import <RestKit/RestKit.h>
 
 static const NSUInteger MIN_CACHED_NOT_DONE = 5;
@@ -65,7 +66,7 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     // We have to copy it so we can set a sort order (sortDescriptors).
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
-    [ListViewController fetchRequestSortByDateTimeRetrieved:fetchRequest];
+    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
     //Get more items from the server if necessary:
     NSError *error = nil; //TODO: Check this.
