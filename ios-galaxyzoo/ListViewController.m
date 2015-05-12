@@ -124,6 +124,8 @@
     [cell.imageView setImageWithURL:url];
 
     cell.imageStatusDone.hidden = !subject.done;
+    cell.imagestatusUploaded.hidden = !subject.uploaded;
+    cell.imageStatusFavorite.hidden = !subject.favorite;
 
     return cell;
 }

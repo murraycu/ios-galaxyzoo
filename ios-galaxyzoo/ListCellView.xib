@@ -19,15 +19,29 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageContextualDone" translatesAutoresizingMaskIntoConstraints="NO" id="tw9-hY-eFS" userLabel="imageStatusDone">
                         <rect key="frame" x="0.0" y="84" width="16" height="16"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageContextualUploaded" translatesAutoresizingMaskIntoConstraints="NO" id="kph-nh-Zb2" userLabel="imageStatusUploaded">
+                        <rect key="frame" x="19" y="84" width="16" height="16"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageContextualFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="SWc-bw-gGQ" userLabel="imageStatusFavorite">
+                        <rect key="frame" x="39" y="84" width="16" height="16"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="SWc-bw-gGQ" firstAttribute="height" secondItem="kph-nh-Zb2" secondAttribute="height" id="4wS-zF-KgN"/>
+                <constraint firstItem="SWc-bw-gGQ" firstAttribute="bottom" secondItem="tw9-hY-eFS" secondAttribute="bottom" id="8vh-lT-8qW"/>
                 <constraint firstAttribute="bottom" secondItem="7Sk-IX-EA4" secondAttribute="bottom" id="9KN-55-x33"/>
+                <constraint firstItem="SWc-bw-gGQ" firstAttribute="height" secondItem="tw9-hY-eFS" secondAttribute="height" id="Gu2-py-doU"/>
+                <constraint firstItem="SWc-bw-gGQ" firstAttribute="leading" secondItem="kph-nh-Zb2" secondAttribute="trailing" constant="4" id="J0a-Rt-Ji6"/>
                 <constraint firstItem="7Sk-IX-EA4" firstAttribute="top" secondItem="eNr-EJ-Tzv" secondAttribute="top" id="Lgb-xv-skO"/>
+                <constraint firstItem="SWc-bw-gGQ" firstAttribute="width" secondItem="kph-nh-Zb2" secondAttribute="width" id="Ntk-Wp-rfA"/>
+                <constraint firstItem="SWc-bw-gGQ" firstAttribute="width" secondItem="tw9-hY-eFS" secondAttribute="width" id="QN3-Ag-Ofq"/>
                 <constraint firstAttribute="trailing" secondItem="tw9-hY-eFS" secondAttribute="trailing" constant="84" id="Qad-OF-GAg"/>
                 <constraint firstAttribute="trailing" secondItem="7Sk-IX-EA4" secondAttribute="trailing" id="QyC-Sx-nfL"/>
                 <constraint firstItem="tw9-hY-eFS" firstAttribute="top" secondItem="eNr-EJ-Tzv" secondAttribute="top" constant="84" id="Rm2-DR-KlO"/>
+                <constraint firstAttribute="trailing" secondItem="SWc-bw-gGQ" secondAttribute="trailing" constant="45" id="SEn-o8-2d3"/>
+                <constraint firstItem="SWc-bw-gGQ" firstAttribute="bottom" secondItem="kph-nh-Zb2" secondAttribute="bottom" id="hd9-CZ-Ybr"/>
                 <constraint firstAttribute="bottom" secondItem="tw9-hY-eFS" secondAttribute="bottom" id="nBN-rT-mDC"/>
                 <constraint firstItem="7Sk-IX-EA4" firstAttribute="leading" secondItem="tw9-hY-eFS" secondAttribute="leading" id="nyf-8q-hz6"/>
                 <constraint firstItem="7Sk-IX-EA4" firstAttribute="leading" secondItem="eNr-EJ-Tzv" secondAttribute="leading" id="sBh-wn-Esk"/>
@@ -35,12 +49,16 @@
             <size key="customSize" width="154" height="165"/>
             <connections>
                 <outlet property="imageStatusDone" destination="tw9-hY-eFS" id="Hlc-yL-61d"/>
+                <outlet property="imageStatusFavorite" destination="SWc-bw-gGQ" id="d3J-Ai-Hfq"/>
                 <outlet property="imageView" destination="7Sk-IX-EA4" id="kLt-c9-ZRK"/>
+                <outlet property="imagestatusUploaded" destination="kph-nh-Zb2" id="Cgc-Qt-De9"/>
             </connections>
             <point key="canvasLocation" x="247" y="254.5"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="imageContextualDone" width="64" height="64"/>
+        <image name="imageContextualFavorite" width="64" height="64"/>
+        <image name="imageContextualUploaded" width="64" height="64"/>
     </resources>
 </document>
