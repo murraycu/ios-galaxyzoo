@@ -10,6 +10,7 @@
 #import "ConfigSubjectGroup.h"
 
 static NSDictionary *_subjectGroups; //Of Group ID to ConfigSubjectGroup.
+static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
 
 @implementation Config
 
@@ -41,6 +42,10 @@ static NSDictionary *_subjectGroups; //Of Group ID to ConfigSubjectGroup.
 
 + (NSDictionary *)subjectGroups {
     return _subjectGroups;
+}
+
++ (NSString *)userAgent {
+    return USER_AGENT;
 }
 
 @end

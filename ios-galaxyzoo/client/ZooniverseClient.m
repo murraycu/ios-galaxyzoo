@@ -53,7 +53,10 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
     NSURL *baseURL = [NSURL URLWithString:BASE_URL];
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
 
-    // TODO: Set User-Agent
+    // Set User-Agent:
+    [client setDefaultHeader:@"User-Agent"
+                       value:[Config userAgent]];
+
 
     //we want to work with JSON-Data
     [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
