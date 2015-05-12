@@ -113,6 +113,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     }
 
     ZooniverseSubject *subject = (ZooniverseSubject *)[results objectAtIndex:0];
+    subject.classification = _classificationInProgress;
     subject.done = YES;
 
     //Save the ZooniverseClassification and the Subject to disk:
