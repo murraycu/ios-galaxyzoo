@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Classify View Controller-->
+        <!--Classify-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ClassifyViewController" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="k2p-mG-A4H">
+                    <navigationItem key="navigationItem" title="Classify" id="k2p-mG-A4H">
                         <barButtonItem key="rightBarButtonItem" title="List" id="ss4-No-59c" userLabel="barButtonList">
                             <connections>
                                 <segue destination="9yB-3A-bjR" kind="show" identifier="listViewShow" id="CxZ-kf-4UV"/>
@@ -99,6 +99,7 @@
                             <outlet property="delegate" destination="9yB-3A-bjR" id="WAm-3x-DOU"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="List" id="MDb-LC-lWS"/>
                     <connections>
                         <outlet property="collectionView" destination="wrl-8F-Q0R" id="zTO-It-jDq"/>
                         <outlet property="collectionViewSubjects" destination="wrl-8F-Q0R" id="bcl-Ah-nyY"/>
