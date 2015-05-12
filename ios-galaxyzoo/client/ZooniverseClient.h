@@ -13,6 +13,7 @@
 
 - (ZooniverseClient *) init;
 - (void)querySubjects:(NSUInteger)count;
+- (void)uploadClassifications;
 
 @end
 

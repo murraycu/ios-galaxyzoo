@@ -24,12 +24,13 @@
         <attribute name="zooniverseId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="classification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseClassification" inverseName="subject" inverseEntity="ZooniverseClassification" syncable="YES"/>
     </entity>
+    <fetchRequest name="fetchRequestDoneNotUploaded" entity="ZooniverseSubject" predicateString="done == 1 AND uploaded == 0"/>
     <fetchRequest name="fetchRequestNotDone" entity="ZooniverseSubject" predicateString="done != 1"/>
     <fetchRequest name="fetchRequestSubjectById" entity="ZooniverseSubject" predicateString="subjectId == $SUBJECT_ID" fetchLimit="1"/>
     <fetchRequest name="fetchRequestSubjects" entity="ZooniverseSubject"/>
     <elements>
-        <element name="ZooniverseSubject" positionX="-434" positionY="-120" width="128" height="223"/>
         <element name="ZooniverseClassification" positionX="-63" positionY="54" width="128" height="88"/>
         <element name="ZooniverseClassificationAnswer" positionX="-243" positionY="0" width="128" height="88"/>
+        <element name="ZooniverseSubject" positionX="-434" positionY="-120" width="128" height="223"/>
     </elements>
 </model>

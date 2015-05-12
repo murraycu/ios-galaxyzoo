@@ -8,9 +8,12 @@
 
 #import "ZooniverseClient.h"
 #import "ZooniverseSubject.h"
+#import "ZooniverseClassification.h"
+#import "ZooniverseClassificationAnswer.h"
 #import "Config.h"
 #import "ConfigSubjectGroup.h"
 #import "AppDelegate.h"
+#import "Utils.h"
 #import <RestKit/RestKit.h>
 
 static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
@@ -198,6 +201,35 @@ NSString * currentTimeAsIso8601(void)
                                  [alert show];
                                  NSLog(@"Hit error: %@", error);
                              }];
+}
+
+- (void)uploadClassifications {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    // Get the FetchRequest from our data model,
+    // and use the same sort order as the ListViewController:
+    // We have to copy it so we can set a sort order (sortDescriptors).
+    // There doesn't seem to be a way to set the sort order in the data model GUI editor.
+    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestDoneNotUploaded"] copy];
+    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
+
+    //Get more items from the server if necessary:
+    NSError *error = nil; //TODO: Check this.
+    NSArray *results = [[appDelegate managedObjectContext]
+                        executeFetchRequest:fetchRequest
+                        error:&error];
+    for (ZooniverseSubject *subject in results) {
+        ZooniverseClassification *classification = subject.classification;
+
+        for (ZooniverseClassificationAnswer *answer in classification.answers) {
+            //TODO: Actually upload
+            NSLog(@"debug: answer: %@", answer.answerId);
+        }
+
+        subject.uploaded = YES;
+    }
+
+
 }
 
 @end
