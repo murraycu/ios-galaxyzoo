@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
                                 <rect key="frame" x="0.0" y="72" width="600" height="282"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
@@ -55,7 +55,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Classify" id="k2p-mG-A4H"/>
+                    <navigationItem key="navigationItem" title="Classify" id="k2p-mG-A4H">
+                        <barButtonItem key="rightBarButtonItem" title="Help" id="9GQ-7z-83C">
+                            <connections>
+                                <segue destination="uoU-Fq-DjU" kind="show" id="OIK-hx-6Rl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="I6z-DG-hlX" id="vy1-XY-SYd"/>
                     </connections>
@@ -101,7 +107,25 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRs-zS-SLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="939"/>
+            <point key="canvasLocation" x="1700" y="903"/>
+        </scene>
+        <!--Help-->
+        <scene sceneID="kY3-FI-rt0">
+            <objects>
+                <viewController title="Help" id="uoU-Fq-DjU" customClass="HelpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1vK-QU-Bhl"/>
+                        <viewControllerLayoutGuide type="bottom" id="7EN-eK-4W6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BzJ-h7-P5i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J2Q-eK-elW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2970" y="195"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="v9M-16-AGV">
@@ -178,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvg-m2-V6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3228" y="544"/>
+            <point key="canvasLocation" x="2332" y="380"/>
         </scene>
         <!--Classify-->
         <scene sceneID="bs1-fl-HbV">
@@ -216,7 +240,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjT-Fj-yUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="939"/>
+            <point key="canvasLocation" x="888" y="909"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="sh8-Da-gta">
