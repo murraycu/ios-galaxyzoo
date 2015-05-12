@@ -120,7 +120,7 @@
     ZooniverseSubject *subject = (ZooniverseSubject *)record; //TODO: Check the cast.
 
     // Update Cell
-    NSURL *url = [[NSURL alloc] initWithString:subject.locationStandardRemote];
+    NSURL *url = [[NSURL alloc] initWithString:subject.locationThumbnailRemote];
     [cell.imageView setImageWithURL:url];
 
     NSString *doneStr = subject.done ? @"Done" : @"Not Done";
