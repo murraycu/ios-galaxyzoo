@@ -14,6 +14,9 @@
 		F21739F41B0356E700C1F947 /* ZooniverseClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = F21739F31B0356E700C1F947 /* ZooniverseClassification.m */; };
 		F21739F71B0356E700C1F947 /* ZooniverseClassificationCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = F21739F61B0356E700C1F947 /* ZooniverseClassificationCheckbox.m */; };
 		F21739FA1B0356E700C1F947 /* ZooniverseClassificationAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F21739F91B0356E700C1F947 /* ZooniverseClassificationAnswer.m */; };
+		F21739FC1B03993700C1F947 /* ListCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21739FB1B03993700C1F947 /* ListCollectionViewCellView.xib */; };
+		F21739FE1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */; };
+		F2173A011B0399D600C1F947 /* QuestionAnswerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2173A001B0399D600C1F947 /* QuestionAnswerButton.m */; };
 		F21F87A01AF3657400C95B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F879F1AF3657400C95B52 /* main.m */; };
 		F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A21AF3657400C95B52 /* AppDelegate.m */; };
 		F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ClassifyViewController.m */; };
@@ -39,7 +42,6 @@
 		F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */; };
 		F2D6FC8C1AFCA166002E3E15 /* TestDecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */; };
 		F2D6FC8F1AFCA40C002E3E15 /* test_decision_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FC8E1AFCA40C002E3E15 /* test_decision_tree.xml */; };
-		F2D6FC971AFCC83D002E3E15 /* AnswerCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FC961AFCC83D002E3E15 /* AnswerCellView.xib */; };
 		F2D6FD9B1AFD44D3002E3E15 /* icon_bulge_dominant in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FC991AFD44D2002E3E15 /* icon_bulge_dominant */; };
 		F2D6FD9C1AFD44D3002E3E15 /* icon_bulge_none in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FC9A1AFD44D2002E3E15 /* icon_bulge_none */; };
 		F2D6FD9D1AFD44D3002E3E15 /* icon_bulge_noticeable in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FC9B1AFD44D2002E3E15 /* icon_bulge_noticeable */; };
@@ -300,7 +302,6 @@
 		F2D6FE9C1AFD44D3002E3E15 /* icon_yes in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FD9A1AFD44D3002E3E15 /* icon_yes */; };
 		F2D6FEB11AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */; };
 		F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */; };
-		F2D6FEBA1B00B362002E3E15 /* ListCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FEB91B00B362002E3E15 /* ListCellView.xib */; };
 		F2D6FEBD1B00B3F9002E3E15 /* ListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -330,6 +331,10 @@
 		F21739F61B0356E700C1F947 /* ZooniverseClassificationCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClassificationCheckbox.m; path = ZooniverseModel/ZooniverseClassificationCheckbox.m; sourceTree = "<group>"; };
 		F21739F81B0356E700C1F947 /* ZooniverseClassificationAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClassificationAnswer.h; path = ZooniverseModel/ZooniverseClassificationAnswer.h; sourceTree = "<group>"; };
 		F21739F91B0356E700C1F947 /* ZooniverseClassificationAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClassificationAnswer.m; path = ZooniverseModel/ZooniverseClassificationAnswer.m; sourceTree = "<group>"; };
+		F21739FB1B03993700C1F947 /* ListCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCollectionViewCellView.xib; sourceTree = "<group>"; };
+		F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionAnswersCollectionViewCellView.xib; sourceTree = "<group>"; };
+		F21739FF1B0399D600C1F947 /* QuestionAnswerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswerButton.h; sourceTree = "<group>"; };
+		F2173A001B0399D600C1F947 /* QuestionAnswerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswerButton.m; sourceTree = "<group>"; };
 		F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-galaxyzoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879E1AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -374,7 +379,6 @@
 		F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDecisionTree.m; sourceTree = "<group>"; };
 		F2D6FC8E1AFCA40C002E3E15 /* test_decision_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test_decision_tree.xml; path = Assets/test_decision_tree.xml; sourceTree = "<group>"; };
-		F2D6FC961AFCC83D002E3E15 /* AnswerCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerCellView.xib; sourceTree = "<group>"; };
 		F2D6FC991AFD44D2002E3E15 /* icon_bulge_dominant */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_bulge_dominant; path = Icons/icon_bulge_dominant; sourceTree = "<group>"; };
 		F2D6FC9A1AFD44D2002E3E15 /* icon_bulge_none */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_bulge_none; path = Icons/icon_bulge_none; sourceTree = "<group>"; };
 		F2D6FC9B1AFD44D2002E3E15 /* icon_bulge_noticeable */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_bulge_noticeable; path = Icons/icon_bulge_noticeable; sourceTree = "<group>"; };
@@ -638,7 +642,6 @@
 		F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyViewControllerDelegate.h; sourceTree = "<group>"; };
 		F2D6FEB61B00A3D0002E3E15 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		F2D6FEB91B00B362002E3E15 /* ListCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCellView.xib; sourceTree = "<group>"; };
 		F2D6FEBB1B00B3F9002E3E15 /* ListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCollectionViewCell.h; sourceTree = "<group>"; };
 		F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -702,13 +705,10 @@
 		F21F879C1AF3657400C95B52 /* ios-galaxyzoo */ = {
 			isa = PBXGroup;
 			children = (
-				F2D6FC961AFCC83D002E3E15 /* AnswerCellView.xib */,
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
 				F24829781AF759110060D9B0 /* Assets */,
 				F21F87A41AF3657400C95B52 /* ClassifyViewController.h */,
-				F213F7EF1B033DAB00CAB635 /* SubjectViewController.h */,
-				F213F7F01B033DAB00CAB635 /* SubjectViewController.m */,
 				F21F87A51AF3657400C95B52 /* ClassifyViewController.m */,
 				F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */,
 				F21F87CF1AF384BF00C95B52 /* client */,
@@ -718,18 +718,23 @@
 				F2BC86B51B02119100F84935 /* HelpViewController.m */,
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
 				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
-				F2D6FEB91B00B362002E3E15 /* ListCellView.xib */,
 				F2D6FEBB1B00B3F9002E3E15 /* ListCollectionViewCell.h */,
 				F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */,
+				F21739FB1B03993700C1F947 /* ListCollectionViewCellView.xib */,
 				F2D6FEB61B00A3D0002E3E15 /* ListViewController.h */,
 				F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */,
 				F21F87A71AF3657400C95B52 /* Main.storyboard */,
+				F21739FF1B0399D600C1F947 /* QuestionAnswerButton.h */,
+				F2173A001B0399D600C1F947 /* QuestionAnswerButton.m */,
 				F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */,
 				F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */,
+				F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */,
 				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
 				F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */,
 				F24829801AF759FD0060D9B0 /* Singleton.h */,
 				F24829811AF759FD0060D9B0 /* Singleton.m */,
+				F213F7EF1B033DAB00CAB635 /* SubjectViewController.h */,
+				F213F7F01B033DAB00CAB635 /* SubjectViewController.m */,
 				F21F879D1AF3657400C95B52 /* Supporting Files */,
 				F213F7EC1B0274F400CAB635 /* Utils.h */,
 				F213F7ED1B0274F400CAB635 /* Utils.m */,
@@ -1242,7 +1247,6 @@
 				F2D6FE321AFD44D3002E3E15 /* icon_goods_full-15_a-1_0 in Resources */,
 				F2D6FE071AFD44D3002E3E15 /* icon_goods_full-6_a-0_1 in Resources */,
 				F2D6FE691AFD44D3002E3E15 /* icon_sloan-6_x-3_1 in Resources */,
-				F2D6FEBA1B00B362002E3E15 /* ListCellView.xib in Resources */,
 				F2D6FE6E1AFD44D3002E3E15 /* icon_sloan-6_x-5_1 in Resources */,
 				F2D6FE591AFD44D3002E3E15 /* icon_sloan-2_a-0_2 in Resources */,
 				F2D6FE4F1AFD44D3002E3E15 /* icon_sloan-0_a-1_0 in Resources */,
@@ -1282,6 +1286,7 @@
 				F2D6FE7B1AFD44D3002E3E15 /* icon_sloan-9_a-0_0 in Resources */,
 				F248297D1AF759110060D9B0 /* candels_tree.xml in Resources */,
 				F2D6FE5A1AFD44D3002E3E15 /* icon_sloan-2_a-0_3 in Resources */,
+				F21739FC1B03993700C1F947 /* ListCollectionViewCellView.xib in Resources */,
 				F2D6FE671AFD44D3002E3E15 /* icon_sloan-6_x-2_2 in Resources */,
 				F2D6FE3F1AFD44D3002E3E15 /* icon_goods_full-18_x-3_0 in Resources */,
 				F2D6FDE21AFD44D3002E3E15 /* icon_goods_full-0_a-2_0 in Resources */,
@@ -1317,7 +1322,6 @@
 				F2D6FE3C1AFD44D3002E3E15 /* icon_goods_full-18_x-1_1 in Resources */,
 				F2D6FDBF1AFD44D3002E3E15 /* icon_candels-13_a-0_0 in Resources */,
 				F2D6FE741AFD44D3002E3E15 /* icon_sloan-6_x-6_1 in Resources */,
-				F2D6FC971AFCC83D002E3E15 /* AnswerCellView.xib in Resources */,
 				F2D6FE401AFD44D3002E3E15 /* icon_goods_full-18_x-3_1 in Resources */,
 				F2D6FE2D1AFD44D3002E3E15 /* icon_goods_full-14_a-2_1 in Resources */,
 				F2D6FE2B1AFD44D3002E3E15 /* icon_goods_full-14_a-1_1 in Resources */,
@@ -1332,6 +1336,7 @@
 				F2D6FE081AFD44D3002E3E15 /* icon_goods_full-6_a-1_0 in Resources */,
 				F2D6FE4E1AFD44D3002E3E15 /* icon_sloan-0_a-0_0 in Resources */,
 				F2D6FDF71AFD44D3002E3E15 /* icon_goods_full-3_a-3_1 in Resources */,
+				F21739FE1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib in Resources */,
 				F2D6FE7D1AFD44D3002E3E15 /* icon_sloan-9_a-2_0 in Resources */,
 				F2D6FDA71AFD44D3002E3E15 /* icon_candels-1_a-2_0 in Resources */,
 				F2D6FE1C1AFD44D3002E3E15 /* icon_goods_full-11_a-1_0 in Resources */,
@@ -1516,6 +1521,7 @@
 				F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */,
 				F213F7EE1B0274F400CAB635 /* Utils.m in Sources */,
 				F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */,
+				F2173A011B0399D600C1F947 /* QuestionAnswerButton.m in Sources */,
 				F21739FA1B0356E700C1F947 /* ZooniverseClassificationAnswer.m in Sources */,
 				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,
 				F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */,

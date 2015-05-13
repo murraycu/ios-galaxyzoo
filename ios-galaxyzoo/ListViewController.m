@@ -27,7 +27,7 @@
 @implementation ListViewController
 
 - (void) setup {
-    UINib *cellNib = [UINib nibWithNibName:@"ListCellView" bundle:nil];
+    UINib *cellNib = [UINib nibWithNibName:@"ListCollectionViewCellView" bundle:nil];
     [self.collectionViewSubjects registerNib:cellNib forCellWithReuseIdentifier:@"subjectCell"];
     //self.collectionViewSubjects.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 

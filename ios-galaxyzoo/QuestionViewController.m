@@ -65,7 +65,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    UINib *cellNib = [UINib nibWithNibName:@"AnswerCellView" bundle:nil];
+    UINib *cellNib = [UINib nibWithNibName:@"QuestionAnswersCollectionViewCellView" bundle:nil];
     [self.collectionViewAnswers registerNib:cellNib forCellWithReuseIdentifier:@"answerCell"];
     self.collectionViewAnswers.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
@@ -244,10 +244,10 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     //TODO: Move the adding of the icon_ prefix into a reusable method.
     NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", answer.icon, nil];
     UIImage *image = [UIImage imageNamed:filenameIcon];
-    //[button setImage:image
-    //        forState:UIControlStateNormal];
-    [button setBackgroundImage:image
+    [button setImage:image
             forState:UIControlStateNormal];
+    //[button setBackgroundImage:image
+    //        forState:UIControlStateNormal];
 
     //Respond to button touches:
     button.tag = i; //So we know which button was clicked.
