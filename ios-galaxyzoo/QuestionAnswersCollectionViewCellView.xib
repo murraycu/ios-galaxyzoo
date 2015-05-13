@@ -15,6 +15,7 @@
                 <subviews>
                     <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="L1v-86-xMQ" customClass="QuestionAnswerButton">
                         <rect key="frame" x="-6" y="0.0" width="254" height="202"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                         <inset key="titleEdgeInsets" minX="1" minY="1" maxX="1" maxY="1"/>
                         <state key="normal" title="Button">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
