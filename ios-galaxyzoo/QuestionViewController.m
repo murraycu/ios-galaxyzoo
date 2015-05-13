@@ -163,22 +163,12 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 #pragma mark - UICollectionView
 
-/*
-- (NSInteger)numberOfSectionsForItems:(NSInteger)itemsCount
-                   forItemsPerSection:(NSInteger)itemsPerSection {
-    return (itemsCount + itemsPerSection + 1) / itemsPerSection;
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfSectionsInCollectionView:(NSInteger)section {
+    return 1;
 }
-*/
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    //return MAX_BUTTONS_PER_ROW;
-    NSInteger index = section * MAX_BUTTONS_PER_ROW;
-    NSInteger remaining = _question.answers.count - index;
-    if (remaining > MAX_BUTTONS_PER_ROW) {
-        return MAX_BUTTONS_PER_ROW;
-    } else {
-        return remaining;
-    }
+    return _question.answers.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
