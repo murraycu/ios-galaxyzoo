@@ -15,6 +15,7 @@
 #import "ZooniverseModel/ZooniverseClassification.h"
 #import "ZooniverseModel/ZooniverseClassificationAnswer.h"
 #import "ZooniverseModel/ZooniverseSubject.h"
+#import <UIKit/UIKit.h>
 
 #import "Singleton.h"
 
@@ -75,6 +76,9 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 - (void)updateUI {
     self.labelTitle.text = _question.title;
     self.labelText.text = _question.text;
+
+    self.collectionViewAnswers.delegate = self;
+    
     self.collectionViewAnswers.dataSource = self;
     [self.collectionViewAnswers reloadData];
 }
@@ -161,7 +165,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
                   answerId:answer.answerId];
 }
 
-#pragma mark - UICollectionView
+#pragma mark - UICollectionViewDelegate
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfSectionsInCollectionView:(NSInteger)section {
     return 1;
@@ -180,7 +184,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
     UIButton *button = cell.button;
 
-    NSInteger i = [indexPath indexAtPosition:0] * MAX_BUTTONS_PER_ROW + [indexPath indexAtPosition:1];
+    NSInteger i = [indexPath indexAtPosition:1];
     DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
     [button setTitle:answer.text
      forState:UIControlStateNormal];
@@ -200,6 +204,21 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
      forControlEvents:UIControlEventTouchUpInside];
 
     return cell;
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+layout:(UICollectionViewLayout *)collectionViewLayout
+sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    //Calculate the width available for each item
+    //by getting the full width, subtracting the space between items,
+    //and dividing.
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)collectionViewLayout;
+    CGFloat spacing = flowLayout.minimumInteritemSpacing;
+    CGFloat totalSpacing = spacing * (MAX_BUTTONS_PER_ROW - 1);
+    return CGSizeMake((collectionView.frame.size.width - totalSpacing) / MAX_BUTTONS_PER_ROW,
+                      100);
 }
 
 /*
