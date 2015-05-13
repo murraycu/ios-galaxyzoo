@@ -115,8 +115,7 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     DecisionTree *decisionTree = [singleton getDecisionTree:groupId];
     NSString *questionId = decisionTree.firstQuestionId;
     DecisionTreeQuestion *question = [decisionTree getQuestion:questionId];
-    _questionViewController.subjectId = subject.subjectId; //So it can get the Subject itself.
-    _questionViewController.groupId = groupId; //So it can get the DecisionTree itself.
+    _questionViewController.subject = subject;
     _questionViewController.question = question;
 }
 

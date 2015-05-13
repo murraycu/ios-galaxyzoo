@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZooniverseModel/ZooniverseSubject.h"
 #import "DecisionTree/DecisionTreeQuestion.h"
 
 @interface QuestionViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, copy) NSString *subjectId;
-@property (nonatomic, copy) NSString *groupId;
+@property (nonatomic, retain) ZooniverseSubject *subject;
 
 
 //TODO: Use copy instead of retain?
