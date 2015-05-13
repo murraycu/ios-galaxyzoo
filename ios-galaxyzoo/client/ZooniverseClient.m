@@ -167,6 +167,7 @@ NSString * currentTimeAsIso8601(void)
 }
 
 - (void)querySubjects:(NSUInteger)count
+         withCallback:(QueryDoneBlock)callbackBlock;
 {
     NSString *countAsStr = [NSString stringWithFormat:@"%i", (unsigned int)count]; //TODO: Is this locale-independent?
     NSString *path = [self getQueryMoreItemsPath];
@@ -187,10 +188,7 @@ NSString * currentTimeAsIso8601(void)
                                      subject.datetimeRetrieved = iso8601String;
                                  }
 
-                                 /*
-                                  if(self.isViewLoaded)
-                                  [_tableView reloadData];
-                                  */
+                                 [callbackBlock invoke];
                              }
                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -199,7 +197,9 @@ NSString * currentTimeAsIso8601(void)
                                                                        cancelButtonTitle:@"OK"
                                                                        otherButtonTitles:nil];
                                  [alert show];
-                                 NSLog(@"Hit error: %@", error);
+                                 NSLog(@"ZooniverseClient.query_subjects: error: %@", error);
+
+                                 [callbackBlock invoke];
                              }];
 }
 

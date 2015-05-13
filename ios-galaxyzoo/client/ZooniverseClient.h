@@ -12,7 +12,14 @@
 @interface ZooniverseClient : NSObject
 
 - (ZooniverseClient *) init;
-- (void)querySubjects:(NSUInteger)count;
+
+typedef void (^ QueryDoneBlock)();
+
+//This gets new subjects from the server asynchronously,
+//calling callbackBlock when it has finished.
+- (void)querySubjects:(NSUInteger)count
+         withCallback:(QueryDoneBlock)callbackBlock;
+
 - (void)uploadClassifications;
 
 @end

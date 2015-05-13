@@ -27,6 +27,8 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     QuestionViewController *_questionViewController;
 }
 
+@property(nonatomic, strong)UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation ClassifyViewController
@@ -75,8 +77,23 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
                         error:&error];
 
     NSUInteger count = [results count];
+
+    //We need at least one not-done subject to show anything:
+    if (count == 0) {
+        //Show the spinner until we have at least one subject,
+        //then try again:
+        [self setSpinnerVisible:YES];
+        [_client querySubjects:1
+                 withCallback:^ {
+                     [self setSpinnerVisible:NO];
+                     [self showNextSubject];
+                 }];
+        return;
+    }
+
     if (count < MIN_CACHED_NOT_DONE) {
-        [_client querySubjects:(MIN_CACHED_NOT_DONE - count)];
+        [_client querySubjects:(MIN_CACHED_NOT_DONE - count)
+                 withCallback:nil];
     }
 
     if (count == 0) {
@@ -138,6 +155,23 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 - (void)onClassificationFinished {
     [self showNextSubject];
+}
+
+- (void)setSpinnerVisible:(BOOL)visible {
+    if (visible) {
+        if (!self.activityIndicator) {
+            self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            self.activityIndicator.center = self.view.center;
+            self.activityIndicator.hidesWhenStopped = YES; //Just in case.
+            [self.view addSubview:self.activityIndicator];
+        }
+
+        [self.activityIndicator startAnimating];
+    } else if (self.activityIndicator) {
+        [self.activityIndicator stopAnimating];
+
+        self.activityIndicator = nil;
+    }
 }
 
 @end
