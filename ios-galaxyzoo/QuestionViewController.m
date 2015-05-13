@@ -263,13 +263,22 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 - (CGSize)collectionView:(UICollectionView *)collectionView
 layout:(UICollectionViewLayout *)collectionViewLayout
 sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    //If there is only one row, let the buttons take up all the available width.
+    //Otherwise, always divide the width by 4 so that buttons in the next row line up too.
+    NSInteger itemsPerRow = MAX_BUTTONS_PER_ROW;
+    NSInteger count = _question.checkboxes.count + _question.answers.count;
+    if (count < MAX_BUTTONS_PER_ROW) {
+        itemsPerRow = count;
+    }
+
     //Calculate the width available for each item
     //by getting the full width, subtracting the space between items,
     //and dividing.
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)collectionViewLayout;
     CGFloat spacing = flowLayout.minimumInteritemSpacing;
-    CGFloat totalSpacing = spacing * (MAX_BUTTONS_PER_ROW - 1);
-    return CGSizeMake((collectionView.frame.size.width - totalSpacing) / MAX_BUTTONS_PER_ROW,
+    CGFloat totalSpacing = spacing * (itemsPerRow - 1);
+    return CGSizeMake((collectionView.frame.size.width - totalSpacing) / itemsPerRow,
                       100);
 }
 
