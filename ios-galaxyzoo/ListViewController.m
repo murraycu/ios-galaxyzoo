@@ -92,12 +92,9 @@
 
 #pragma mark - UICollectionView
 
-/*
- - (NSInteger)numberOfSectionsForItems:(NSInteger)itemsCount
- forItemsPerSection:(NSInteger)itemsPerSection {
- return (itemsCount + itemsPerSection + 1) / itemsPerSection;
- }
- */
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfSectionsInCollectionView:(NSInteger)section {
+    return 1;
+}
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSArray *sections = [self.fetchedResultsController sections];
