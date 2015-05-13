@@ -165,6 +165,9 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
             self.activityIndicator.center = self.view.center;
             self.activityIndicator.hidesWhenStopped = YES; //Just in case.
             [self.view addSubview:self.activityIndicator];
+
+            _subjectViewController.view.hidden = YES;
+            _questionViewController.view.hidden = YES;
         }
 
         [self.activityIndicator startAnimating];
@@ -172,6 +175,9 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
         [self.activityIndicator stopAnimating];
 
         self.activityIndicator = nil;
+
+        _subjectViewController.view.hidden = NO;
+        _questionViewController.view.hidden = NO;
     }
 }
 
