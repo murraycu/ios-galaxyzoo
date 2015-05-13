@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		48D55635CD7E987F876BFD55 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A954E3F1E1E0A5D9E3193A97 /* libPods.a */; };
 		F213F7EE1B0274F400CAB635 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F213F7ED1B0274F400CAB635 /* Utils.m */; };
+		F213F7F11B033DAB00CAB635 /* SubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F213F7F01B033DAB00CAB635 /* SubjectViewController.m */; };
 		F21F87A01AF3657400C95B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F879F1AF3657400C95B52 /* main.m */; };
 		F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A21AF3657400C95B52 /* AppDelegate.m */; };
 		F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ClassifyViewController.m */; };
@@ -318,6 +319,8 @@
 		A954E3F1E1E0A5D9E3193A97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F213F7EC1B0274F400CAB635 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		F213F7ED1B0274F400CAB635 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		F213F7EF1B033DAB00CAB635 /* SubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectViewController.h; sourceTree = "<group>"; };
+		F213F7F01B033DAB00CAB635 /* SubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectViewController.m; sourceTree = "<group>"; };
 		F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-galaxyzoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879E1AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -676,11 +679,11 @@
 		F21F87911AF3657400C95B52 = {
 			isa = PBXGroup;
 			children = (
+				E3A6F259A91A31B9D91FC016 /* Frameworks */,
 				F21F879C1AF3657400C95B52 /* ios-galaxyzoo */,
 				F21F87B61AF3657400C95B52 /* ios-galaxyzooTests */,
-				F21F879B1AF3657400C95B52 /* Products */,
 				D17636F3096CD1E9762DF410 /* Pods */,
-				E3A6F259A91A31B9D91FC016 /* Frameworks */,
+				F21F879B1AF3657400C95B52 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -701,6 +704,8 @@
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
 				F24829781AF759110060D9B0 /* Assets */,
 				F21F87A41AF3657400C95B52 /* ClassifyViewController.h */,
+				F213F7EF1B033DAB00CAB635 /* SubjectViewController.h */,
+				F213F7F01B033DAB00CAB635 /* SubjectViewController.m */,
 				F21F87A51AF3657400C95B52 /* ClassifyViewController.m */,
 				F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */,
 				F21F87CF1AF384BF00C95B52 /* client */,
@@ -1521,6 +1526,7 @@
 				F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */,
 				F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */,
 				F24829821AF759FD0060D9B0 /* Singleton.m in Sources */,
+				F213F7F11B033DAB00CAB635 /* SubjectViewController.m in Sources */,
 				F2D6FEB11AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m in Sources */,
 				F24829921AF8B54B0060D9B0 /* DecisionTreeParser.m in Sources */,
 				F248298C1AF75DB10060D9B0 /* ConfigSubjectGroup.m in Sources */,

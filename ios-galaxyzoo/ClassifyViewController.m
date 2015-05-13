@@ -7,6 +7,7 @@
 //
 
 #import "ClassifyViewController.h"
+#import "SubjectViewController.h"
 #import "QuestionViewController.h"
 #import "HelpViewController.h"
 #import "ListViewController.h"
@@ -22,9 +23,9 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 @interface ClassifyViewController () {
     ZooniverseClient *_client;
-    __weak IBOutlet UIImageView *imageView;
 
     QuestionViewController *_questionViewController;
+    SubjectViewController *_subjectViewController;
 }
 
 @property(nonatomic, strong)UIActivityIndicatorView *activityIndicator;
@@ -107,9 +108,8 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     ZooniverseSubject *subject = (ZooniverseSubject *)[results objectAtIndex:0];
 
     //Show the subject's image:
-    NSURL *urlStandard = [NSURL URLWithString:subject.locationStandardRemote];
-    [imageView setImageWithURL:urlStandard];
-
+    _subjectViewController.subject = subject;
+    
     //Show the current question for the subject:
     NSString *groupId = subject.groupId;
     DecisionTree *decisionTree = [singleton getDecisionTree:groupId];
@@ -144,13 +144,14 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *segueName = segue.identifier;
-    if ([segueName isEqualToString:@"questionViewEmbed"]) {
-        _questionViewController = [segue destinationViewController];
+    if ([segueName isEqualToString:@"subjectViewEmbed"]) {
+        _subjectViewController = [segue destinationViewController];
+    } else if ([segueName isEqualToString:@"questionViewEmbed"]) {
+            _questionViewController = [segue destinationViewController];
     } else if ([segueName isEqualToString:@"helpShowEmbed"]) {
         HelpViewController *viewController = [segue destinationViewController];
         viewController.question = _questionViewController.question;
     }
-
 }
 
 - (void)onClassificationFinished {

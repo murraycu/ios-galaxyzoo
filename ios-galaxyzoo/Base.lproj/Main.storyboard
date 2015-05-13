@@ -17,35 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="72" width="600" height="282"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
-                                    <constraint firstAttribute="height" constant="282" id="f33-Qn-Ulu"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="KuH-vC-oXt"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-2T-OaH" userLabel="containerViewQuestion">
                                 <rect key="frame" x="16" y="362" width="568" height="230"/>
                                 <connections>
                                     <segue destination="XN1-Ge-G0W" kind="embed" identifier="questionViewEmbed" id="WlM-lJ-dLY"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qV-Rr-NAo" userLabel="containerViewSubject">
+                                <rect key="frame" x="0.0" y="72" width="613" height="282"/>
+                                <connections>
+                                    <segue destination="tdd-TB-MLp" kind="embed" identifier="subjectViewEmbed" id="McU-Of-BYW"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="-41" id="9mF-gc-Slz"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="GjK-iw-gyc"/>
-                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="I6z-DG-hlX" secondAttribute="bottom" constant="8" symbolic="YES" id="TXI-CC-pqa"/>
-                            <constraint firstAttribute="trailing" secondItem="I6z-DG-hlX" secondAttribute="trailing" id="UbH-tT-6Rc"/>
-                            <constraint firstItem="I6z-DG-hlX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UhQ-Fc-o1h"/>
-                            <constraint firstItem="I6z-DG-hlX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="ZEl-7C-s8g"/>
-                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ba4-uH-h28"/>
-                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="centerX" secondItem="I6z-DG-hlX" secondAttribute="centerX" id="ny1-8Z-Rxm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1qV-Rr-NAo" secondAttribute="trailing" constant="-29" id="Pdp-xw-iIZ"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ufe-Wu-g83"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="UsI-k4-Bob"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="362" id="Yqd-f6-sJm"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ct3-sZ-ufe"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" id="nkj-fM-09D"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="1qV-Rr-NAo" secondAttribute="bottom" constant="8" symbolic="YES" id="piP-bh-5Hd"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="scQ-BN-BlC"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="xdz-Zb-H3w"/>
                         </constraints>
                         <variation key="default">
@@ -142,7 +137,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2Q-eK-elW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2970" y="195"/>
+            <point key="canvasLocation" x="3062" y="209"/>
+        </scene>
+        <!--Subject View Controller-->
+        <scene sceneID="Odq-C5-rFl">
+            <objects>
+                <viewController id="tdd-TB-MLp" customClass="SubjectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Met-8i-Exz"/>
+                        <viewControllerLayoutGuide type="bottom" id="TWR-nz-wA1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bH4-F3-DJ9">
+                        <rect key="frame" x="0.0" y="0.0" width="613" height="282"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
+                                <rect key="frame" x="0.0" y="8" width="621" height="274"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KuH-vC-oXt"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="I6z-DG-hlX" secondAttribute="trailing" constant="-24" id="BC1-r5-bjQ"/>
+                            <constraint firstItem="I6z-DG-hlX" firstAttribute="bottom" secondItem="TWR-nz-wA1" secondAttribute="top" id="ahI-XQ-llj"/>
+                            <constraint firstItem="I6z-DG-hlX" firstAttribute="leading" secondItem="bH4-F3-DJ9" secondAttribute="leading" id="lzQ-UN-cYd"/>
+                            <constraint firstItem="I6z-DG-hlX" firstAttribute="top" secondItem="Met-8i-Exz" secondAttribute="bottom" constant="8" symbolic="YES" id="nNS-Bq-iFf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="I6z-DG-hlX" id="bIB-j7-yxR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g9E-0y-QaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2378.5" y="36"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="v9M-16-AGV">
@@ -232,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvg-m2-V6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2332" y="380"/>
+            <point key="canvasLocation" x="2356" y="402"/>
         </scene>
         <!--Classify-->
         <scene sceneID="bs1-fl-HbV">
