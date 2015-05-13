@@ -14,6 +14,7 @@
 #import "DecisionTreeQuestionAnswer.h"
 #import "ZooniverseModel/ZooniverseClassification.h"
 #import "ZooniverseModel/ZooniverseClassificationAnswer.h"
+#import "ZooniverseModel/ZooniverseClassificationCheckbox.h"
 #import "ZooniverseModel/ZooniverseSubject.h"
 #import <UIKit/UIKit.h>
 
@@ -29,9 +30,12 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     __weak IBOutlet UISwitch *switchFavorite;
 }
 
+@property (nonatomic, copy) NSMutableSet *checkboxesSelected;
+
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewAnswers;
+
 
 @end
 
@@ -47,6 +51,8 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     _classificationInProgress =
     (ZooniverseClassification *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassification"
                                                               inManagedObjectContext:[self managedObjectContext]];
+
+    [self.checkboxesSelected removeAllObjects];
 }
 
 - (void)clearFavorite {
@@ -110,7 +116,28 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     [self updateUI];
 }
 
+-(void)saveAllCheckboxes {
+    for (NSString *checkboxId in self.checkboxesSelected) {
+        ZooniverseClassificationCheckbox *classificationCheckbox = (ZooniverseClassificationCheckbox *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationCheckbox"
+                                                                                                                                     inManagedObjectContext:[self managedObjectContext]];
+        classificationCheckbox.questionId = _question.questionId;
+        classificationCheckbox.checkboxId = checkboxId;
+
+        // This results in an exception:
+        // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
+        // apparently because NSOrderedSet is not derived from NSSet.
+        // This seems to be a well-known problem with ordered to-many relationships in Core Data.
+        // See http://stackoverflow.com/questions/15993619/coredata-to-many-add-error
+        // and http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
+        //[_classificationInProgress addAnswersObject:classificationAnswer];
+        //This is the simple workaround:
+        classificationCheckbox.classification = _classificationInProgress;
+    }
+}
+
 - (void)saveClassification {
+    [self saveAllCheckboxes];
+
     self.subject.classification = _classificationInProgress;
     self.subject.favorite = switchFavorite.on;
     self.subject.done = YES;
@@ -141,28 +168,42 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 {
     NSInteger i = clickedButton.tag;
 
-    DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
-    NSLog(@"Answer clicked:%@", answer.text);
+    if (i < _question.checkboxes.count) {
+        UIButton *button = (UIButton *)clickedButton;
+        button.selected = !(button.selected);
 
-    ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
-                 inManagedObjectContext:[self managedObjectContext]];
-    classificationAnswer.questionId = _question.questionId;
-    classificationAnswer.answerId = answer.answerId;
+        //TODO: Check if it is active:
+        DecisionTreeQuestionCheckbox *checkbox = [_question.checkboxes objectAtIndex:i];
+        NSLog(@"Checkbox clicked:%@", checkbox.text);
 
-    //TODO: Checkboxes.
+        if (button.selected) {
+            [self.checkboxesSelected addObject:checkbox.answerId];
+        } else {
+            [self.checkboxesSelected removeObject:checkbox.answerId];
+        }
+    } else {
+        NSInteger answerIndex = i - _question.checkboxes.count;
+        DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:answerIndex];
+        NSLog(@"Answer clicked:%@", answer.text);
 
-    // This results in an exception:
-    // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
-    // apparently because NSOrderedSet is not derived from NSSet.
-    // This seems to be a well-known problem with ordered to-many relationships in Core Data.
-    // See http://stackoverflow.com/questions/15993619/coredata-to-many-add-error
-    // and http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
-    //[_classificationInProgress addAnswersObject:classificationAnswer];
-    //This is the simple workaround:
-    classificationAnswer.classification = _classificationInProgress;
+        ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
+                                                                                                                               inManagedObjectContext:[self managedObjectContext]];
+        classificationAnswer.questionId = _question.questionId;
+        classificationAnswer.answerId = answer.answerId;
 
-    [self showNextQuestion:_question.questionId
-                  answerId:answer.answerId];
+        // This results in an exception:
+        // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
+        // apparently because NSOrderedSet is not derived from NSSet.
+        // This seems to be a well-known problem with ordered to-many relationships in Core Data.
+        // See http://stackoverflow.com/questions/15993619/coredata-to-many-add-error
+        // and http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
+        //[_classificationInProgress addAnswersObject:classificationAnswer];
+        //This is the simple workaround:
+        classificationAnswer.classification = _classificationInProgress;
+
+        [self showNextQuestion:_question.questionId
+                      answerId:answer.answerId];
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -172,7 +213,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _question.answers.count;
+    return _question.answers.count + _question.checkboxes.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -184,8 +225,19 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
     UIButton *button = cell.button;
 
+    //Reset selected, which we use for checkboxes:
+    //TODO: We see the selection briefly before it is unselected.
+    button.selected = NO;
+
+    DecisionTreeQuestionBaseButton *answer = nil;
     NSInteger i = [indexPath indexAtPosition:1];
-    DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:i];
+    if (i < _question.checkboxes.count) {
+        answer = [_question.checkboxes objectAtIndex:i];
+    } else {
+        NSInteger answerIndex = i - _question.checkboxes.count;
+        answer = [_question.answers objectAtIndex:answerIndex];
+    }
+
     [button setTitle:answer.text
      forState:UIControlStateNormal];
 

@@ -1,5 +1,5 @@
 //
-//  ZooniverseClassificationAnswer.h
+//  ZooniverseClassificationCheckbox.h
 //  ios-galaxyzoo
 //
 //  Created by Murray Cumming on 13/05/2015.
@@ -11,9 +11,9 @@
 
 @class ZooniverseClassification;
 
-@interface ZooniverseClassificationAnswer : NSManagedObject
+@interface ZooniverseClassificationCheckbox : NSManagedObject
 
-@property (nonatomic, retain) NSString * answerId;
+@property (nonatomic, retain) NSString * checkboxId;
 @property (nonatomic, retain) NSString * questionId;
 @property (nonatomic, retain) ZooniverseClassification *classification;
 

@@ -1,9 +1,9 @@
 //
 //  ZooniverseSubject.h
+//  ios-galaxyzoo
 //
-//
-//  Created by Murray Cumming on 11/05/2015.
-//
+//  Created by Murray Cumming on 13/05/2015.
+//  Copyright (c) 2015 Murray Cumming. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,6 +14,7 @@
 @interface ZooniverseSubject : NSManagedObject
 
 @property (nonatomic, retain) NSString * datetimeDone;
+@property (nonatomic, retain) NSString * datetimeRetrieved;
 @property (nonatomic) BOOL done;
 @property (nonatomic) BOOL favorite;
 @property (nonatomic, retain) NSString * groupId;
@@ -23,7 +24,6 @@
 @property (nonatomic, retain) NSString * subjectId;
 @property (nonatomic) BOOL uploaded;
 @property (nonatomic, retain) NSString * zooniverseId;
-@property (nonatomic, retain) NSString * datetimeRetrieved;
 @property (nonatomic, retain) ZooniverseClassification *classification;
 
 @end
