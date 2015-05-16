@@ -25,16 +25,14 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 
     //Mapping task id (NSString) to ZooniverseClientImageDownloadSet.
     NSMutableDictionary *_dictDownloadTasks;
-
-    //We use this configuration to create sessions:
-    NSURLSessionConfiguration *_configuration;
-
-    NSMutableArray *_array;
 }
 
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+
+//Only used to generate an ID:
+@property (nonatomic) NSUInteger sessionCount;
 
 
 @end
@@ -48,7 +46,6 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 
     _dictDownloadTasks = [[NSMutableDictionary alloc] init];
 
-    _configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadImages"];
 
     [self setupRestkit];
 
@@ -290,8 +287,17 @@ NSString * currentTimeAsIso8601(void)
                                  NSOperationQueue *queue = [[NSOperationQueue alloc] init];
                                  queue.maxConcurrentOperationCount = 3;
 
-
-                                 NSURLSession *session = [NSURLSession sessionWithConfiguration:_configuration
+                                 // Apparently we need one NSURLSessionConfiguration per NSURLSession,
+                                 // instead of creating multiple sessions from one configuration.
+                                 // Otherwise we see a runtime warning such as this:
+                                 // "
+                                 //   A background URLSession with identifier downloadImages already exists!
+                                 // "
+                                 NSString *strId = [NSString stringWithFormat:@"downloadImages-%lu", (unsigned long)self.sessionCount];
+                                 self.sessionCount++;
+                                 NSURLSessionConfiguration *configuration =
+                                     [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:strId];
+                                 NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration
                                                                           delegate:self
                                                                      delegateQueue:queue];
 
@@ -351,7 +357,7 @@ NSString * currentTimeAsIso8601(void)
 
         //Save the ZooniverseClassification and the Subject to disk:
         NSError *error = nil;
-        [self.managedObjectContext save:&error];  //saves the context to disk
+        [self.managedObjectContext save:&error];
         //TODO: Check error.
     }
 
@@ -411,11 +417,13 @@ NSString * currentTimeAsIso8601(void)
     }
 
     [set.dictTasks removeObjectForKey:strTaskId];
+    [_dictDownloadTasks removeObjectForKey:strTaskId];
+
     //TODO: Release download object?
 
     //Call the callbackBlock if this was the last task in the set:
     if (set.dictTasks.count == 0) {
-        [_dictDownloadTasks removeObjectForKey:strTaskId];
+        self.sessionCount++;
         [set.callbackBlock invoke];
     }
 }
