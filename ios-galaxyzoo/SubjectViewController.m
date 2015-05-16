@@ -22,8 +22,9 @@
 @implementation SubjectViewController
 
 - (void) setSubject:(ZooniverseSubject *)subject {
-    NSURL *urlStandard = [NSURL URLWithString:subject.locationStandardRemote];
-    [self.imageView setImageWithURL:urlStandard];
+    NSString *path = subject.locationStandard;
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    [self.imageView setImage:image];
 }
 
 @end

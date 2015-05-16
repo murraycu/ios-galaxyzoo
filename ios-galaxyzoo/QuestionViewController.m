@@ -143,9 +143,9 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     self.subject.done = YES;
 
     //Save the ZooniverseClassification and the Subject to disk:
-    //TODO: This doesn't seem to work: We still get the same subject next time, though we have marked this one as done.
     NSError *error = nil;
     [[self managedObjectContext] save:&error];  //saves the context to disk
+    //TODO: Check error.
 
 
     //Tell the parent ViewController to start another subject:
@@ -156,7 +156,8 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 }
 
 - (NSManagedObjectContext*)managedObjectContext {
-    return [RKManagedObjectStore defaultStore].mainQueueManagedObjectContext;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return appDelegate.managedObjectContext;
 }
 
 - (NSManagedObjectModel*)managedObjectModel {

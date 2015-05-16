@@ -19,5 +19,7 @@
 
 - (void)onClassificationFinished;
 
+- (void)showNextSubject;
+
 @end
 

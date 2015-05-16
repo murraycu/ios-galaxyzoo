@@ -32,6 +32,7 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 @end
 
+
 @implementation ClassifyViewController
 
 - (void)setup {
@@ -57,7 +58,23 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     return self;
 }
 
+- (void)getOneSubjectAndShow {
+    //Show the spinner until we have at least one subject,
+    //then try again:
+    [self setSpinnerVisible:YES];
+    [_client querySubjects:1
+              withCallback:^ {
+                  [self performSelectorOnMainThread:@selector(showNextSubject)
+                                         withObject:nil
+                                      waitUntilDone:NO];
+              }];
+}
+
 - (void)showNextSubject {
+    //Start with the spinner off,
+    //and only show it when we know we are doing an async query and waiting or it.
+    [self setSpinnerVisible:NO];
+
     Singleton *singleton = [Singleton sharedSingleton];
 
     //Get more subjects from the server, putting them in CoreData:
@@ -81,14 +98,7 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
     //We need at least one not-done subject to show anything:
     if (count == 0) {
-        //Show the spinner until we have at least one subject,
-        //then try again:
-        [self setSpinnerVisible:YES];
-        [_client querySubjects:1
-                 withCallback:^ {
-                     [self setSpinnerVisible:NO];
-                     [self showNextSubject];
-                 }];
+        [self getOneSubjectAndShow];
         return;
     }
 

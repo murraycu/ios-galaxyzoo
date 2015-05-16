@@ -7,6 +7,8 @@
 //
 
 #import "ZooniverseClient.h"
+#import "ZooniverseClientImageDownload.h"
+#import "ZooniverseClientImageDownloadSet.h"
 #import "ZooniverseSubject.h"
 #import "ZooniverseClassification.h"
 #import "ZooniverseClassificationAnswer.h"
@@ -18,11 +20,22 @@
 
 static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 
-@interface ZooniverseClient () {
+@interface ZooniverseClient () <NSURLSessionDownloadDelegate> {
     RKObjectManager * _objectManager;
+
+    //Mapping task id (NSString) to ZooniverseClientImageDownloadSet.
+    NSMutableDictionary *_dictDownloadTasks;
+
+    //We use this configuration to create sessions:
+    NSURLSessionConfiguration *_configuration;
+
+    NSMutableArray *_array;
 }
 
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+
 
 @end
 
@@ -33,10 +46,16 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 {
     self = [super init];
 
+    _dictDownloadTasks = [[NSMutableDictionary alloc] init];
+
+    _configuration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadImages"];
+
     [self setupRestkit];
 
     return self;
 }
+
+
 
 - (void)setupRestkit {
     //Some RestKit logging is on (RKLogLevelTrace, I think) by default,
@@ -72,6 +91,7 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.managedObjectModel = appDelegate.managedObjectModel;
+    self.managedObjectContext = appDelegate.managedObjectContext;
     RKManagedObjectStore *managedObjectStore = appDelegate.rkManagedObjectStore;
     _objectManager.managedObjectStore = managedObjectStore;
 
@@ -166,8 +186,94 @@ NSString * currentTimeAsIso8601(void)
     return iso8601String;
 }
 
+- (void)onImageDownloaded:(ZooniverseSubject*)subject
+        imageLocation:(ImageLocation)imageLocation
+                localFile:(NSString*)localFile
+{
+    switch (imageLocation) {
+        case ImageLocationStandard:
+            subject.locationStandard = localFile;
+            subject.locationStandardDownloaded = YES;
+            break;
+        case ImageLocationInverted:
+            subject.locationInverted = localFile;
+            subject.locationInvertedDownloaded = YES;
+
+            break;
+        case ImageLocationThumbnail:
+            subject.locationThumbnail = localFile;
+            subject.locationThumbnailDownloaded = YES;
+
+            break;
+        default:
+            break;
+    }
+}
+
+- (NSString *)getTaskIdAsString:(NSURLSessionDownloadTask *)task
+{
+    NSString *strTaskId = [NSString stringWithFormat:@"%lu", (unsigned long)[task taskIdentifier], nil];
+    return strTaskId;
+}
+
+- (void)downloadImage:(ZooniverseSubject*)subject
+             imageLocation:(ImageLocation)imageLocation
+              session:(NSURLSession *)session
+                  set:(ZooniverseClientImageDownloadSet *)set
+{
+    NSString *strUrlRemote = nil;
+    switch (imageLocation) {
+        case ImageLocationStandard:
+            strUrlRemote = subject.locationStandardRemote;
+            break;
+        case ImageLocationInverted:
+            strUrlRemote = subject.locationInvertedRemote;
+            break;
+        case ImageLocationThumbnail:
+            strUrlRemote = subject.locationThumbnailRemote;
+            break;
+        default:
+            break;
+    }
+
+    NSURL *urlRemote = [[NSURL alloc] initWithString:strUrlRemote];
+    NSURLRequest *request = [NSURLRequest requestWithURL:urlRemote];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request];
+
+    //Store details about the task, so we can get them when it's finished:
+    NSString *strTaskId = [self getTaskIdAsString:task];
+    [_dictDownloadTasks setObject:set
+                           forKey:strTaskId];
+
+    ZooniverseClientImageDownload *download = [[ZooniverseClientImageDownload alloc] init];
+    download.subject = subject;
+    download.imageLocation = imageLocation;
+    [set.dictTasks setObject:download
+                      forKey:strTaskId];
+
+    [task resume];
+}
+
+- (void)downloadImages:(ZooniverseSubject*)subject
+               session:(NSURLSession *)session
+                   set:(ZooniverseClientImageDownloadSet *)set
+{
+    [self downloadImage:subject
+          imageLocation:ImageLocationStandard
+                session:session
+                    set:set];
+    [self downloadImage:subject
+          imageLocation:ImageLocationInverted
+                session:session
+                    set:set];
+    [self downloadImage:subject
+          imageLocation:ImageLocationThumbnail
+                session:session
+                    set:set];
+}
+
 - (void)querySubjects:(NSUInteger)count
-         withCallback:(QueryDoneBlock)callbackBlock;
+         withCallback:(ZooniverseClientQueryDoneBlock)callbackBlock
 {
     NSString *countAsStr = [NSString stringWithFormat:@"%i", (unsigned int)count]; //TODO: Is this locale-independent?
     NSString *path = [self getQueryMoreItemsPath];
@@ -181,14 +287,29 @@ NSString * currentTimeAsIso8601(void)
                                  NSArray* subjects = [mappingResult array];
                                  //NSLog(@"Loaded subjects: %@", subjects);
 
+                                 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+                                 queue.maxConcurrentOperationCount = 3;
+
+
+                                 NSURLSession *session = [NSURLSession sessionWithConfiguration:_configuration
+                                                                          delegate:self
+                                                                     delegateQueue:queue];
+
+                                 //Store the group of tasks, so we can know when they have all completed:
+                                 ZooniverseClientImageDownloadSet *set = [[ZooniverseClientImageDownloadSet alloc] init];
+                                 set.callbackBlock = callbackBlock;
+
                                  for (ZooniverseSubject *subject in subjects) {
                                      NSLog(@"  debug: subject zooniverseId: %@", [subject zooniverseId]);
 
                                      //Remember when we downloaded it, so we can always look at the earliest ones first:
                                      subject.datetimeRetrieved = iso8601String;
+
+                                     [self downloadImages:subject
+                                                  session:session
+                                                      set:set];
                                  }
 
-                                 [callbackBlock invoke];
                              }
                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -215,7 +336,7 @@ NSString * currentTimeAsIso8601(void)
 
     //Get more items from the server if necessary:
     NSError *error = nil; //TODO: Check this.
-    NSArray *results = [[appDelegate managedObjectContext]
+    NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
                         error:&error];
     for (ZooniverseSubject *subject in results) {
@@ -227,9 +348,77 @@ NSString * currentTimeAsIso8601(void)
         }
 
         subject.uploaded = YES;
+
+        //Save the ZooniverseClassification and the Subject to disk:
+        NSError *error = nil;
+        [self.managedObjectContext save:&error];  //saves the context to disk
+        //TODO: Check error.
     }
 
 
 }
+
+#pragma mark - NSURLSessionDownloadDelegate
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+{
+    NSURLResponse *response = [downloadTask response];
+    //TODO: Check response.
+
+    NSString *strTaskId = [self getTaskIdAsString:downloadTask];
+    ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:strTaskId];
+    ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:strTaskId];
+    [set.dictTasks setObject:download
+                      forKey:strTaskId];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    // Create the directory if necessary:
+    NSArray * tempArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [tempArray objectAtIndex:0];
+    NSString *appDir = [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"]; //TODO
+    NSError *error;
+    if(![fileManager fileExistsAtPath:appDir])
+    {
+        [fileManager createDirectoryAtPath:appDir
+               withIntermediateDirectories:NO
+                                attributes:nil
+                                     error:&error];
+        //TODO: Check error.
+    }
+
+    // Build a local filepath based on the suggestion in the response:
+    NSString *suggestedFilename = [response suggestedFilename];
+    NSString *permanentPath = [appDir stringByAppendingFormat:@"/%@", suggestedFilename];
+
+    // Delete the file if it already exists:
+    if([fileManager fileExistsAtPath:permanentPath])
+    {
+        NSLog([fileManager removeItemAtPath:appDir error:&error]?@"deleted":@"not deleted");
+    }
+
+    // Move the temporary file to the permanent location:
+    BOOL fileCopied = [fileManager moveItemAtPath:location.path
+                                           toPath:permanentPath
+                                            error:&error];
+    if (!fileCopied) {
+        NSLog(@"Couldn't copy file: %@", location.path, nil);
+    } else {
+        //TODO: Check response and error.
+        [self onImageDownloaded:download.subject
+                  imageLocation:download.imageLocation
+                      localFile:permanentPath];
+    }
+
+    [set.dictTasks removeObjectForKey:strTaskId];
+    //TODO: Release download object?
+
+    //Call the callbackBlock if this was the last task in the set:
+    if (set.dictTasks.count == 0) {
+        [_dictDownloadTasks removeObjectForKey:strTaskId];
+        [set.callbackBlock invoke];
+    }
+}
+
 
 @end
