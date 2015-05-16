@@ -10,4 +10,12 @@
 
 @interface ZooniverseClientQueueObserver : NSObject
 
+typedef void (^ ZooniverseClientQueueObserverQueryDoneBlock)();
+
+- (ZooniverseClientQueueObserver *) init;
+
+@property (nonatomic, strong) ZooniverseClientQueueObserverQueryDoneBlock callbackBlock;
+
+
+
 @end
