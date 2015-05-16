@@ -204,6 +204,10 @@ NSString * currentTimeAsIso8601(void)
         default:
             break;
     }
+
+    NSError *error = nil;
+    [self.managedObjectContext save:&error];
+    //TODO: Check error
 }
 
 - (NSString *)getTaskIdAsString:(NSURLSessionDownloadTask *)task
