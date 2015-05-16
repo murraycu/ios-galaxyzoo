@@ -2,7 +2,7 @@
 //  ZooniverseClassificationAnswer.h
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 13/05/2015.
+//  Created by Murray Cumming on 16/05/2015.
 //  Copyright (c) 2015 Murray Cumming. All rights reserved.
 //
 

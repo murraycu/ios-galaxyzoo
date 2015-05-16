@@ -2,7 +2,7 @@
 //  ZooniverseSubject.h
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 13/05/2015.
+//  Created by Murray Cumming on 16/05/2015.
 //  Copyright (c) 2015 Murray Cumming. All rights reserved.
 //
 
@@ -24,6 +24,12 @@
 @property (nonatomic, retain) NSString * subjectId;
 @property (nonatomic) BOOL uploaded;
 @property (nonatomic, retain) NSString * zooniverseId;
+@property (nonatomic, retain) NSString * locationStandard;
+@property (nonatomic, retain) NSString * locationInverted;
+@property (nonatomic, retain) NSString * locationThumbnail;
+@property (nonatomic) BOOL locationInvertedDownloaded;
+@property (nonatomic) BOOL locationStandardDownloaded;
+@property (nonatomic) BOOL locationThumbnailDownloaded;
 @property (nonatomic, retain) ZooniverseClassification *classification;
 
 @end
