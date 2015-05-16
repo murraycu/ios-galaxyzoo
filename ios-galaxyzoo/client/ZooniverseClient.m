@@ -403,8 +403,10 @@ NSString * currentTimeAsIso8601(void)
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // Create the directory if necessary:
-    NSArray * tempArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docsDir = [tempArray objectAtIndex:0];
+    NSURL *urlDocsDir = [[fileManager URLsForDirectory:NSCachesDirectory
+                                            inDomains:NSUserDomainMask] lastObject];
+
+    NSString *docsDir = urlDocsDir.path;
     NSString *appDir = [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"]; //TODO
     NSError *error;
     if(![fileManager fileExistsAtPath:appDir])
