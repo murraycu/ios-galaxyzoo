@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 
+@class ZooniverseClientImageDownload;
+@class ZooniverseClientImageDownloadSet;
+
+
 @interface ZooniverseClient : NSObject
 
 - (ZooniverseClient *) init;
@@ -21,6 +25,12 @@ typedef void (^ ZooniverseClientQueryDoneBlock)();
          withCallback:(ZooniverseClientQueryDoneBlock)callbackBlock;
 
 - (void)uploadClassifications;
+
+
+//The array should contain:
+//(NSString *)strTaskId
+//permanentPath:(NSString *)permanentPath
+- (void)onImageDownloadedAndMoved:(NSArray*)array;
 
 @end
 

@@ -34,7 +34,6 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 //Only used to generate an ID:
 @property (nonatomic) NSUInteger sessionCount;
 
-
 @end
 
 @implementation ZooniverseClient
@@ -362,19 +361,38 @@ NSString * currentTimeAsIso8601(void)
 
 }
 
+- (void)onImageDownloadedAndMoved:(NSArray*)array
+{
+    NSString *strTaskId = [array objectAtIndex:0];
+    NSString *permanentPath = [array objectAtIndex:1];
+
+    ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:strTaskId];
+    ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:strTaskId];
+
+    //TODO: Check response and error.
+    [self onImageDownloaded:download.subject
+              imageLocation:download.imageLocation
+                  localFile:permanentPath];
+
+    [set.dictTasks removeObjectForKey:strTaskId];
+    [_dictDownloadTasks removeObjectForKey:strTaskId];
+
+    //TODO: Release download object?
+
+    //Call the callbackBlock if this was the last task in the set:
+    if (set.dictTasks.count == 0) {
+        self.sessionCount++;
+        [set.callbackBlock invoke];
+    }
+
+}
+
 #pragma mark - NSURLSessionDownloadDelegate
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
     NSURLResponse *response = [downloadTask response];
     //TODO: Check response.
-
-    NSString *strTaskId = [self getTaskIdAsString:downloadTask];
-    ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:strTaskId];
-    ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:strTaskId];
-    [set.dictTasks setObject:download
-                      forKey:strTaskId];
-
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // Create the directory if necessary:
@@ -407,24 +425,15 @@ NSString * currentTimeAsIso8601(void)
                                             error:&error];
     if (!fileCopied) {
         NSLog(@"Couldn't copy file: %@", location.path, nil);
-    } else {
-        //TODO: Check response and error.
-        [self onImageDownloaded:download.subject
-                  imageLocation:download.imageLocation
-                      localFile:permanentPath];
+        return;
     }
 
-    [set.dictTasks removeObjectForKey:strTaskId];
-    [_dictDownloadTasks removeObjectForKey:strTaskId];
-
-    //TODO: Release download object?
-
-    //Call the callbackBlock if this was the last task in the set:
-    if (set.dictTasks.count == 0) {
-        self.sessionCount++;
-        [set.callbackBlock invoke];
-    }
+    //The didFinishDownloadingToURL documentation tells us to move the file before the end of this function.
+    //But let's not risk doing anything else outside of the main thread:
+    NSString *strTaskId = [self getTaskIdAsString:downloadTask];
+    [self performSelectorOnMainThread:@selector(onImageDownloadedAndMoved:)
+                           withObject:@[strTaskId, permanentPath]
+                        waitUntilDone:NO];
 }
-
 
 @end
