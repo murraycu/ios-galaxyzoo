@@ -331,8 +331,6 @@ NSString * currentTimeAsIso8601(void)
 }
 
 - (void)uploadClassifications {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
     // We have to copy it so we can set a sort order (sortDescriptors).
