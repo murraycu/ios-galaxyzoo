@@ -369,10 +369,12 @@ NSString * currentTimeAsIso8601(void)
 {
     NSString *strTaskId = [array objectAtIndex:0];
     NSString *permanentPath = [array objectAtIndex:1];
-    NSLog(@"onImageDownloadedAndMoved: %@", permanentPath, nil);
 
     ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:strTaskId];
     ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:strTaskId];
+
+    NSLog(@"onImageDownloadedAndMoved: imageLocation: %ld: %@", (long)download.imageLocation, permanentPath, nil);
+
 
     //TODO: Check response and error.
     [self onImageDownloaded:download.subject
