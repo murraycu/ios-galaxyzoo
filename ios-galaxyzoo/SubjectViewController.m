@@ -24,25 +24,18 @@
 
 - (void) setSubject:(ZooniverseSubject *)subject {
     NSString *path = subject.locationStandard;
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
 
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:path]) {
-        NSLog(@"Local file no longer exists: %@", path, nil);
+    if (path && !image) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if (![fileManager fileExistsAtPath:path]) {
+            NSLog(@"Local file no longer exists: %@", path, nil);
 
-        subject.locationStandard = nil;
-        subject.locationStandardDownloaded = NO;
-
-        //Save the subject's changes to disk:
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *managedObjectContext = appDelegate.managedObjectContext;
-        NSError *error = nil;
-        [managedObjectContext save:&error];
-        //TODO: Check error
-
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [[appDelegate zooniverseClient] abandonSubject:subject];
+        }
     }
 
-
-    UIImage *image = [UIImage imageWithContentsOfFile:path];
     [self.imageView setImage:image];
 }
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
+#import "ZooniverseSubject.h"
 
 @class ZooniverseClientImageDownload;
 @class ZooniverseClientImageDownloadSet;
@@ -25,6 +26,8 @@ typedef void (^ ZooniverseClientQueryDoneBlock)();
          withCallback:(ZooniverseClientQueryDoneBlock)callbackBlock;
 
 - (void)uploadClassifications;
+
+- (void)abandonSubject:(ZooniverseSubject *)subject;
 
 
 //The array should contain:

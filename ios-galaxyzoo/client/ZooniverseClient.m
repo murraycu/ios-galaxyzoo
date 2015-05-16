@@ -365,6 +365,7 @@ NSString * currentTimeAsIso8601(void)
 {
     NSString *strTaskId = [array objectAtIndex:0];
     NSString *permanentPath = [array objectAtIndex:1];
+    NSLog(@"onImageDownloadedAndMoved: %@", permanentPath, nil);
 
     ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:strTaskId];
     ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:strTaskId];
@@ -434,6 +435,18 @@ NSString * currentTimeAsIso8601(void)
     [self performSelectorOnMainThread:@selector(onImageDownloadedAndMoved:)
                            withObject:@[strTaskId, permanentPath]
                         waitUntilDone:NO];
+}
+
+- (void)abandonSubject:(ZooniverseSubject *)subject
+{
+    NSLog(@"Abandoning subject with subjectId: %@", subject.subjectId, nil);
+
+    //Save the subject's changes to disk:
+    [self.managedObjectContext deleteObject:subject];
+
+    NSError *error = nil;
+    [self.managedObjectContext save:&error];
+    //TODO: Check error
 }
 
 @end

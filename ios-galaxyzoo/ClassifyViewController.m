@@ -28,6 +28,8 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     SubjectViewController *_subjectViewController;
 }
 
+@property(nonatomic, strong)ZooniverseSubject *subject;
+
 @property(nonatomic, strong)UIActivityIndicatorView *activityIndicator;
 
 @end
@@ -35,9 +37,41 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 @implementation ClassifyViewController
 
+- (void) objectChangedNotificationReceived: (NSNotification *) notification
+{
+    //NSArray* insertedObjects = [[notification userInfo]
+    //                            objectForKey:NSInsertedObjectsKey] ;
+    NSArray* deletedObjects = [[notification userInfo]
+                               objectForKey:NSDeletedObjectsKey] ;
+    //NSArray* updatedObjects = [[notification userInfo]
+    //                           objectForKey:NSUpdatedObjectsKey] ;
+    //NSLog(@"insertObjects: %@", [insertedObjects description]);
+    //NSLog(@"deletedObjects: %@", [deletedObjects description]);
+    //NSLog(@"updatedObjects: %@", [updatedObjects description]);
+
+    for (NSManagedObject *obj in deletedObjects) {
+        if ([obj isKindOfClass:[ZooniverseSubject class]]) {
+            ZooniverseSubject *subject = (ZooniverseSubject *)obj;
+            if (subject == self.subject) {
+                //Show another subject instead:
+                //This can happen if we abandon a subject, for instance because a cached image
+                //no longer exists.
+                [self showNextSubject];
+                return;
+            }
+        }
+    }
+}
+
 - (void)setup {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    _client = appDelegate.zooniverseClient;}
+    _client = appDelegate.zooniverseClient;
+
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(objectChangedNotificationReceived:)
+                                                 name: NSManagedObjectContextObjectsDidChangeNotification
+                                               object: [self managedObjectContext]];
+}
 
 - (ClassifyViewController *)init {
     self = [super init];
@@ -115,25 +149,17 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
     [_client uploadClassifications];
 
-    ZooniverseSubject *subject = (ZooniverseSubject *)[results objectAtIndex:0];
+    self.subject = (ZooniverseSubject *)[results objectAtIndex:0];
 
     //Show the subject's image:
-    _subjectViewController.subject = subject;
-
-    //Check for an error while loading the image,
-    //in which case this is reset:
-    if (!subject.locationStandardDownloaded) {
-        //Try the next one:
-        [self showNextSubject];
-        return;
-    }
+    _subjectViewController.subject = self.subject;
     
     //Show the current question for the subject:
-    NSString *groupId = subject.groupId;
+    NSString *groupId = self.subject.groupId;
     DecisionTree *decisionTree = [singleton getDecisionTree:groupId];
     NSString *questionId = decisionTree.firstQuestionId;
     DecisionTreeQuestion *question = [decisionTree getQuestion:questionId];
-    _questionViewController.subject = subject;
+    _questionViewController.subject = self.subject;
     _questionViewController.question = question;
 }
 
