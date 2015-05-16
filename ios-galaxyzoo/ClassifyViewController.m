@@ -36,8 +36,8 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 @implementation ClassifyViewController
 
 - (void)setup {
-    _client = [[ZooniverseClient alloc] init];
-}
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    _client = appDelegate.zooniverseClient;}
 
 - (ClassifyViewController *)init {
     self = [super init];

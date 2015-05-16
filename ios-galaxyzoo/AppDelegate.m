@@ -51,6 +51,17 @@
 //@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize rkManagedObjectStore = _rkManagedObjectStore;
 
+@synthesize zooniverseClient = _zooniverseClient;
+
+- (ZooniverseClient*)zooniverseClient {
+    if (_zooniverseClient != nil) {
+        return _zooniverseClient;
+    }
+
+    _zooniverseClient = [[ZooniverseClient alloc] init];
+    return _zooniverseClient;
+}
+
 
 - (NSURL *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "com.murrayc.Model" in the application's documents directory.
