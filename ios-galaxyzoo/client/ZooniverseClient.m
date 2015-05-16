@@ -84,10 +84,7 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 
 
     // Connect the RestKit object manager to our Core Data model:
-
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.managedObjectModel = appDelegate.managedObjectModel;
-    self.managedObjectContext = appDelegate.managedObjectContext;
     RKManagedObjectStore *managedObjectStore = appDelegate.rkManagedObjectStore;
     _objectManager.managedObjectStore = managedObjectStore;
 
@@ -144,6 +141,9 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 
     // Configure a managed object cache to ensure we do not create duplicate objects
     managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc] initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
+
+    self.managedObjectModel = appDelegate.managedObjectModel;
+    self.managedObjectContext = appDelegate.managedObjectContext;
 }
 
 - (NSString *)getQueryMoreItemsPath {
