@@ -119,6 +119,14 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
     //Show the subject's image:
     _subjectViewController.subject = subject;
+
+    //Check for an error while loading the image,
+    //in which case this is reset:
+    if (!subject.locationStandardDownloaded) {
+        //Try the next one:
+        [self showNextSubject];
+        return;
+    }
     
     //Show the current question for the subject:
     NSString *groupId = subject.groupId;
