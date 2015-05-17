@@ -428,7 +428,7 @@ NSString * currentTimeAsIso8601(void)
 
 }
 
-- (void)downloadEnoughSubjects
+- (void)downloadEnoughSubjects:(ZooniverseClientDoneBlock)callbackBlock
 {
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
     [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
@@ -442,12 +442,13 @@ NSString * currentTimeAsIso8601(void)
     NSInteger count = results.count;
     if (count < MIN_CACHED_NOT_DONE) {
         [self querySubjects:(MIN_CACHED_NOT_DONE - count)
-                  withCallback:nil];
+                  withCallback:callbackBlock];
+    } else {
+        [callbackBlock invoke];
     }
-
 }
 
-- (void)downloadMissingImages
+- (void)downloadMissingImages:(ZooniverseClientDoneBlock)callbackBlock
 {
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
@@ -461,19 +462,31 @@ NSString * currentTimeAsIso8601(void)
                         executeFetchRequest:fetchRequest
                         error:&error];
     if (results.count == 0) {
+        [callbackBlock invoke];
         return;
     }
 
+    ZooniverseClientImageDownloadSet *set = [[ZooniverseClientImageDownloadSet alloc] init];
+    set.callbackBlock = callbackBlock;
+    NSMutableArray *tasks = [[NSMutableArray alloc] init];
     for (ZooniverseSubject *subject in results) {
         NSLog(@"  debug: download missing images for subject zooniverseId: %@", [subject zooniverseId]);
 
-        ZooniverseClientImageDownloadSet *set = [[ZooniverseClientImageDownloadSet alloc] init];
-        NSArray *tasks = [self downloadImages:subject
+        NSArray *subjectTasks = [self downloadImages:subject
                      session:_session
                          set:set];
-        for (NSURLSessionDownloadTask *task in tasks) {
-            [task resume];
+        if (subjectTasks) {
+            [tasks addObjectsFromArray:subjectTasks];
         }
+    }
+
+    if (tasks.count == 0) {
+        [callbackBlock invoke];
+        return;
+    }
+
+    for (NSURLSessionDownloadTask *task in tasks) {
+        [task resume];
     }
 }
 

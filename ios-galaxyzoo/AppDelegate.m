@@ -10,6 +10,8 @@
 
 @interface AppDelegate ()
 
+@property(nonatomic)BOOL regularWorkInProgress;
+
 @end
 
 @implementation AppDelegate
@@ -161,11 +163,34 @@
     }
 }
 
-- (void)doRegularWork {
+- (void)onDownloadEnoughSubjectsDone {
+    self.regularWorkInProgress = NO;
+}
+
+- (void)onDownloadMissingImagesDone {
     ZooniverseClient *client = self.zooniverseClient;
-    [client downloadEnoughSubjects];
+    [client downloadEnoughSubjects:^ {
+        [self onDownloadEnoughSubjectsDone];
+    }];
+
+}
+
+- (void)doRegularWork {
+    //Don't start more tasks if they are already in progress:
+    if (self.regularWorkInProgress) {
+        return;
+    }
+
+    self.regularWorkInProgress = YES;
+
+    ZooniverseClient *client = self.zooniverseClient;
     [client uploadClassifications];
-    [client downloadMissingImages];
+
+    //Download any subjects' missing image,
+    //and only then download extra subjects:
+    [client downloadMissingImages:^ {
+        [self onDownloadMissingImagesDone];
+    }];
 }
 
 @end
