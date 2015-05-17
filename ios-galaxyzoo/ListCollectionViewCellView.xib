@@ -25,6 +25,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageContextualFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="SWc-bw-gGQ" userLabel="imageStatusFavorite">
                         <rect key="frame" x="39" y="84" width="16" height="16"/>
                     </imageView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-x2-N0a" userLabel="spinner">
+                        <rect key="frame" x="40" y="40" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -52,6 +55,7 @@
                 <outlet property="imageStatusFavorite" destination="SWc-bw-gGQ" id="d3J-Ai-Hfq"/>
                 <outlet property="imageView" destination="7Sk-IX-EA4" id="kLt-c9-ZRK"/>
                 <outlet property="imagestatusUploaded" destination="kph-nh-Zb2" id="Cgc-Qt-De9"/>
+                <outlet property="spinner" destination="3bt-x2-N0a" id="QYH-KC-stH"/>
             </connections>
             <point key="canvasLocation" x="247" y="254.5"/>
         </collectionViewCell>

@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageStatusDone;
 @property (weak, nonatomic) IBOutlet UIImageView *imagestatusUploaded;
 @property (weak, nonatomic) IBOutlet UIImageView *imageStatusFavorite;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @end

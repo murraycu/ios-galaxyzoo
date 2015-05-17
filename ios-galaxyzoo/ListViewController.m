@@ -204,6 +204,9 @@
     cell.imagestatusUploaded.hidden = !subject.uploaded;
     cell.imageStatusFavorite.hidden = !subject.favorite;
 
+    BOOL complete = subject.locationStandardDownloaded && subject.locationInvertedDownloaded && subject.locationThumbnailDownloaded;
+    cell.spinner.hidden = complete;
+
     return cell;
 }
 
