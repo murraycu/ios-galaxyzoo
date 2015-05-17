@@ -13,6 +13,7 @@
 #import "DecisionTree.h"
 #import "DecisionTreeQuestionAnswer.h"
 #import "ZooniverseModel/ZooniverseClassification.h"
+#import "ZooniverseModel/ZooniverseClassificationQuestion.h"
 #import "ZooniverseModel/ZooniverseClassificationAnswer.h"
 #import "ZooniverseModel/ZooniverseClassificationCheckbox.h"
 #import "ZooniverseModel/ZooniverseSubject.h"
@@ -116,28 +117,20 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     [self updateUI];
 }
 
--(void)saveAllCheckboxes {
+-(void)saveAllCheckboxes:(ZooniverseClassificationQuestion *)classificationQuestion {
     for (NSString *checkboxId in self.checkboxesSelected) {
         ZooniverseClassificationCheckbox *classificationCheckbox = (ZooniverseClassificationCheckbox *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationCheckbox"
                                                                                                                                      inManagedObjectContext:[self managedObjectContext]];
         classificationCheckbox.questionId = _question.questionId;
         classificationCheckbox.checkboxId = checkboxId;
 
-        // This results in an exception:
-        // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
-        // apparently because NSOrderedSet is not derived from NSSet.
-        // This seems to be a well-known problem with ordered to-many relationships in Core Data.
-        // See http://stackoverflow.com/questions/15993619/coredata-to-many-add-error
-        // and http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
-        //[_classificationInProgress addAnswersObject:classificationAnswer];
-        //This is the simple workaround:
-        classificationCheckbox.classification = _classificationInProgress;
+        classificationCheckbox.classificationQuestion = classificationQuestion;
     }
+
+    [self.checkboxesSelected removeAllObjects];
 }
 
 - (void)saveClassification {
-    [self saveAllCheckboxes];
-
     self.subject.classification = _classificationInProgress;
     self.subject.favorite = switchFavorite.on;
     self.subject.done = YES;
@@ -187,10 +180,12 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
         DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:answerIndex];
         NSLog(@"Answer clicked:%@", answer.text);
 
+        ZooniverseClassificationQuestion *classificationQuestion = (ZooniverseClassificationQuestion *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationQuestion"
+                                                                                                                                     inManagedObjectContext:[self managedObjectContext]];
+        classificationQuestion.questionId = _question.questionId;
+
         ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
-                                                                                                                               inManagedObjectContext:[self managedObjectContext]];
-        classificationAnswer.questionId = _question.questionId;
-        classificationAnswer.answerId = answer.answerId;
+                                                                                                    inManagedObjectContext:[self managedObjectContext]];
 
         // This results in an exception:
         // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
@@ -198,9 +193,16 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
         // This seems to be a well-known problem with ordered to-many relationships in Core Data.
         // See http://stackoverflow.com/questions/15993619/coredata-to-many-add-error
         // and http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
-        //[_classificationInProgress addAnswersObject:classificationAnswer];
+        //[classificationQuestion addAnswersObject:classificationAnswer];
         //This is the simple workaround:
-        classificationAnswer.classification = _classificationInProgress;
+        classificationQuestion.answer = classificationAnswer;
+
+        classificationAnswer.questionId = _question.questionId; //TODO: Remove this. It's unnecessary.
+        classificationAnswer.answerId = answer.answerId;
+
+        [self saveAllCheckboxes:classificationQuestion];
+
+        classificationQuestion.classification = _classificationInProgress;
 
         [self showNextQuestion:_question.questionId
                       answerId:answer.answerId];

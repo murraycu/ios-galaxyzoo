@@ -2,7 +2,7 @@
 //  ZooniverseSubject.m
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 16/05/2015.
+//  Created by Murray Cumming on 17/05/2015.
 //  Copyright (c) 2015 Murray Cumming. All rights reserved.
 //
 
@@ -17,18 +17,18 @@
 @dynamic done;
 @dynamic favorite;
 @dynamic groupId;
+@dynamic locationInverted;
+@dynamic locationInvertedDownloaded;
 @dynamic locationInvertedRemote;
+@dynamic locationStandard;
+@dynamic locationStandardDownloaded;
 @dynamic locationStandardRemote;
+@dynamic locationThumbnail;
+@dynamic locationThumbnailDownloaded;
 @dynamic locationThumbnailRemote;
 @dynamic subjectId;
 @dynamic uploaded;
 @dynamic zooniverseId;
-@dynamic locationStandard;
-@dynamic locationInverted;
-@dynamic locationThumbnail;
-@dynamic locationInvertedDownloaded;
-@dynamic locationStandardDownloaded;
-@dynamic locationThumbnailDownloaded;
 @dynamic classification;
 
 @end
