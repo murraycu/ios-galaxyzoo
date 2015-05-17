@@ -147,9 +147,6 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
         return;
     }
 
-    [_client uploadClassifications];
-    [_client downloadMissingImages];
-
 
     self.subject = (ZooniverseSubject *)[results objectAtIndex:0];
 

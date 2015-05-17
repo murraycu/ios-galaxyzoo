@@ -17,6 +17,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    //Regularly sync with with server:
+    [NSTimer scheduledTimerWithTimeInterval:10.0
+                                     target:self
+                                   selector:@selector(doRegularWork)
+                                   userInfo:nil
+                                    repeats:YES];
+
     return YES;
 }
 
@@ -151,6 +159,12 @@
             abort();
         }
     }
+}
+
+- (void)doRegularWork {
+    ZooniverseClient *client = self.zooniverseClient;
+    [client uploadClassifications];
+    [client downloadMissingImages];
 }
 
 @end
