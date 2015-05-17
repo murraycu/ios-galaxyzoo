@@ -23,16 +23,17 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 @interface ZooniverseClient () <NSURLSessionDownloadDelegate> {
     RKObjectManager * _objectManager;
 
+    NSURLSession *_session;
+
     //Mapping task id (NSString) to ZooniverseClientImageDownloadSet.
     NSMutableDictionary *_dictDownloadTasks;
+
+    NSMutableSet *_imageDownloadsInProgress;
 }
 
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-
-//Only used to generate an ID:
-@property (nonatomic) NSUInteger sessionCount;
 
 @end
 
@@ -42,6 +43,15 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 
 {
     self = [super init];
+
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    queue.maxConcurrentOperationCount = 3;
+
+    NSURLSessionConfiguration *configuration =
+    [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadImages"];
+    _session = [NSURLSession sessionWithConfiguration:configuration
+                                                          delegate:self
+                                                     delegateQueue:queue];
 
     _dictDownloadTasks = [[NSMutableDictionary alloc] init];
 
@@ -212,6 +222,9 @@ NSString * currentTimeAsIso8601(void)
 
 - (NSString *)getTaskIdAsString:(NSURLSessionDownloadTask *)task
 {
+    //Note: The ID is unique only within the session,
+    //so never use this with multiple sessions:
+    //https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSURLSessionTask_class/index.html#//apple_ref/occ/instp/NSURLSessionTask/taskIdentifier
     NSString *strTaskId = [NSString stringWithFormat:@"%lu", (unsigned long)[task taskIdentifier], nil];
     return strTaskId;
 }
@@ -287,22 +300,6 @@ NSString * currentTimeAsIso8601(void)
                                  NSArray* subjects = [mappingResult array];
                                  //NSLog(@"Loaded subjects: %@", subjects);
 
-                                 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-                                 queue.maxConcurrentOperationCount = 3;
-
-                                 // Apparently we need one NSURLSessionConfiguration per NSURLSession,
-                                 // instead of creating multiple sessions from one configuration.
-                                 // Otherwise we see a runtime warning such as this:
-                                 // "
-                                 //   A background URLSession with identifier downloadImages already exists!
-                                 // "
-                                 NSString *strId = [NSString stringWithFormat:@"downloadImages-%lu", (unsigned long)self.sessionCount];
-                                 self.sessionCount++;
-                                 NSURLSessionConfiguration *configuration =
-                                     [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:strId];
-                                 NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration
-                                                                          delegate:self
-                                                                     delegateQueue:queue];
 
                                  //Store the group of tasks, so we can know when they have all completed:
                                  ZooniverseClientImageDownloadSet *set = [[ZooniverseClientImageDownloadSet alloc] init];
@@ -315,7 +312,7 @@ NSString * currentTimeAsIso8601(void)
                                      subject.datetimeRetrieved = iso8601String;
 
                                      [self downloadImages:subject
-                                                  session:session
+                                                  session:_session
                                                       set:set];
                                  }
 
@@ -376,7 +373,6 @@ NSString * currentTimeAsIso8601(void)
 
     //Call the callbackBlock if this was the last task in the set:
     if (set.dictTasks.count == 0) {
-        self.sessionCount--;
         [set.callbackBlock invoke];
     }
 }
