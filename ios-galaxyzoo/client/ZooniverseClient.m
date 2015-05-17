@@ -408,14 +408,17 @@ NSString * currentTimeAsIso8601(void)
 
     NSString *docsDir = urlDocsDir.path;
     NSString *appDir = [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"]; //TODO
-    NSError *error;
+    NSError *error = nil;
     if(![fileManager fileExistsAtPath:appDir])
     {
         [fileManager createDirectoryAtPath:appDir
                withIntermediateDirectories:NO
                                 attributes:nil
                                      error:&error];
-        //TODO: Check error.
+        if (error) {
+            NSLog(@"  Error from createDirectoryAtPath(): %@", [error description]);
+            return;
+        }
     }
 
     // Build a local filepath based on the suggestion in the response:
@@ -425,7 +428,14 @@ NSString * currentTimeAsIso8601(void)
     // Delete the file if it already exists:
     if([fileManager fileExistsAtPath:permanentPath])
     {
-        NSLog([fileManager removeItemAtPath:appDir error:&error]?@"deleted":@"not deleted");
+        error = nil;
+        if(![fileManager removeItemAtPath:appDir
+                                    error:&error]) {
+            NSLog(@"Could not delete existing cache file: %@: error: %@", permanentPath,
+                  [error description]);
+            return;
+
+        }
     }
 
     // Move the temporary file to the permanent location:
@@ -434,8 +444,14 @@ NSString * currentTimeAsIso8601(void)
                                             error:&error];
     if (!fileCopied) {
         NSLog(@"Couldn't copy file: %@", location.path, nil);
+        NSLog(@"  Error: %@", [error description]);
+
         return;
     }
+
+    NSLog(@"debug: file stored: %@", permanentPath);
+
+
 
     //The didFinishDownloadingToURL documentation tells us to move the file before the end of this function.
     //But let's not risk doing anything else outside of the main thread:
