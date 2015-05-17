@@ -365,13 +365,53 @@ NSString * currentTimeAsIso8601(void)
 
 }
 
+- (void)onImageDownloadFinished:(NSString*)taskId
+                            set:(ZooniverseClientImageDownloadSet*)set
+{
+    [set.dictTasks removeObjectForKey:taskId];
+    [_dictDownloadTasks removeObjectForKey:taskId];
+
+
+    //TODO: Release download object?
+
+    //Call the callbackBlock if this was the last task in the set:
+    if (set.dictTasks.count == 0) {
+        self.sessionCount--;
+        [set.callbackBlock invoke];
+    }
+}
+
+- (void)onImageDownloadedAndAbandoned:(NSString*)taskId
+{
+    ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks objectForKey:taskId];
+    if (!set) {
+        //Maybe this is a background task that has been resumed after the app has restarted,
+        //but which we no longer have any information about, but we don't care because
+        //nothing is still waiting for a callback
+        NSLog(@"onImageDownloadedAndAbandoned: set is nil.");
+        return;
+    }
+
+    [self onImageDownloadFinished:taskId
+                         set:set];
+}
+
 - (void)onImageDownloadedAndMoved:(NSArray*)array
 {
-    NSString *strTaskId = [array objectAtIndex:0];
+    NSString *taskId = [array objectAtIndex:0];
     NSString *permanentPath = [array objectAtIndex:1];
 
-    ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:strTaskId];
-    ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:strTaskId];
+    ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:taskId];
+    ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:taskId];
+
+    if (!set) {
+        //Maybe this is a background task that has been resumed after the app has restarted,
+        //but which we no longer have any information about, so we cannot mark the
+        //relevant ZooniverseSubject as downloaded.
+        //TODO: Find a way to use these downloaded files.
+        NSLog(@"onImageDownloadedAndMoved: set is nil.");
+        return;
+    }
 
     NSLog(@"onImageDownloadedAndMoved: imageLocation: %ld: %@", (long)download.imageLocation, permanentPath, nil);
 
@@ -381,17 +421,8 @@ NSString * currentTimeAsIso8601(void)
               imageLocation:download.imageLocation
                   localFile:permanentPath];
 
-    [set.dictTasks removeObjectForKey:strTaskId];
-    [_dictDownloadTasks removeObjectForKey:strTaskId];
-
-    //TODO: Release download object?
-
-    //Call the callbackBlock if this was the last task in the set:
-    if (set.dictTasks.count == 0) {
-        self.sessionCount++;
-        [set.callbackBlock invoke];
-    }
-
+    [self onImageDownloadFinished:taskId
+                         set:set];
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
@@ -411,54 +442,56 @@ NSString * currentTimeAsIso8601(void)
     NSError *error = nil;
     if(![fileManager fileExistsAtPath:appDir])
     {
-        [fileManager createDirectoryAtPath:appDir
+        if(![fileManager createDirectoryAtPath:appDir
                withIntermediateDirectories:NO
                                 attributes:nil
-                                     error:&error];
-        if (error) {
+                                     error:&error]) {
             NSLog(@"  Error from createDirectoryAtPath(): %@", [error description]);
-            return;
         }
     }
 
-    // Build a local filepath based on the suggestion in the response:
-    NSString *suggestedFilename = [response suggestedFilename];
-    NSString *permanentPath = [appDir stringByAppendingFormat:@"/%@", suggestedFilename];
+    NSString *permanentPath;
+    if(!error) {
+        // Build a local filepath based on the suggestion in the response:
+        NSString *suggestedFilename = [response suggestedFilename];
+        permanentPath = [appDir stringByAppendingFormat:@"/%@", suggestedFilename];
 
-    // Delete the file if it already exists:
-    if([fileManager fileExistsAtPath:permanentPath])
-    {
-        error = nil;
-        if(![fileManager removeItemAtPath:appDir
-                                    error:&error]) {
-            NSLog(@"Could not delete existing cache file: %@: error: %@", permanentPath,
-                  [error description]);
-            return;
-
+        // Delete the file if it already exists:
+        if([fileManager fileExistsAtPath:permanentPath])
+        {
+            if(![fileManager removeItemAtPath:appDir
+                                        error:&error]) {
+                NSLog(@"Could not delete existing cache file: %@: error: %@", permanentPath,
+                      [error description]);
+            }
         }
     }
 
-    // Move the temporary file to the permanent location:
-    BOOL fileCopied = [fileManager moveItemAtPath:location.path
-                                           toPath:permanentPath
-                                            error:&error];
-    if (!fileCopied) {
-        NSLog(@"Couldn't copy file: %@", location.path, nil);
-        NSLog(@"  Error: %@", [error description]);
-
-        return;
+    if(!error) {
+        // Move the temporary file to the permanent location:
+        BOOL fileCopied = [fileManager moveItemAtPath:location.path
+                                               toPath:permanentPath
+                                                error:&error];
+        if (!fileCopied) {
+            NSLog(@"Couldn't copy file: %@", location.path, nil);
+            NSLog(@"  Error: %@", [error description]);
+        } else {
+            NSLog(@"debug: file stored: %@", permanentPath);
+        }
     }
-
-    NSLog(@"debug: file stored: %@", permanentPath);
-
-
 
     //The didFinishDownloadingToURL documentation tells us to move the file before the end of this function.
     //But let's not risk doing anything else outside of the main thread:
     NSString *strTaskId = [self getTaskIdAsString:downloadTask];
-    [self performSelectorOnMainThread:@selector(onImageDownloadedAndMoved:)
-                           withObject:@[strTaskId, permanentPath]
-                        waitUntilDone:NO];
+    if(!error) {
+        [self performSelectorOnMainThread:@selector(onImageDownloadedAndMoved:)
+                       withObject:@[strTaskId, permanentPath]
+                    waitUntilDone:NO];
+    } else {
+        [self performSelectorOnMainThread:@selector(onImageDownloadedAndAbandoned:)
+                               withObject:strTaskId
+                            waitUntilDone:NO];
+    }
 }
 
 - (void)abandonSubject:(ZooniverseSubject *)subject
