@@ -9,9 +9,12 @@
 #import "ZooniverseClient.h"
 #import "ZooniverseClientImageDownload.h"
 #import "ZooniverseClientImageDownloadSet.h"
+#import "ZooniverseNameValuePair.h"
 #import "ZooniverseSubject.h"
 #import "ZooniverseClassification.h"
+#import "ZooniverseClassificationQuestion.h"
 #import "ZooniverseClassificationAnswer.h"
+#import "ZooniverseClassificationCheckbox.h"
 #import "Config.h"
 #import "ConfigSubjectGroup.h"
 #import "AppDelegate.h"
@@ -26,11 +29,15 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     //Mapping task id (NSString) to ZooniverseClientImageDownloadSet.
     NSMutableDictionary *_dictDownloadTasks;
 
-    NSMutableSet *_imageDownloadsInProgress;
+    NSMutableSet *_imageDownloadsInProgress; //Of NSString URLs.
+    NSMutableSet *_classificationUploadsInProgress; //Of NSString Subject IDs.
+
 }
 
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSOperationQueue *uploadsQueue;
+
 
 
 @end
@@ -53,6 +60,9 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
     _dictDownloadTasks = [[NSMutableDictionary alloc] init];
     _imageDownloadsInProgress = [[NSMutableSet alloc] init];
+
+    self.uploadsQueue = [[NSOperationQueue alloc] init];
+    _classificationUploadsInProgress = [[NSMutableSet alloc] init];
 
 
     [self setupRestkit];
@@ -380,6 +390,23 @@ NSString * currentTimeAsIso8601(void)
                              }];
 }
 
++ (NSString *)urlEncodeValue:(NSString *)str
+{
+    return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (void)addNameValuePair:(NSMutableArray *)array
+                     name:(NSString *)name
+                    value:(NSString *)value {
+    ZooniverseNameValuePair *pair = [[ZooniverseNameValuePair alloc] init:name
+                                                                    value:value];
+    [array addObject:pair];
+}
+
++ (NSString *)getAnnotationPart:(NSInteger)sequence {
+    return [NSString stringWithFormat:@"classification[annotations][%ld]", (long)sequence];
+}
+
 - (void)uploadClassifications {
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
@@ -392,20 +419,125 @@ NSString * currentTimeAsIso8601(void)
     NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
                         error:&error];
-    for (ZooniverseSubject *subject in results) {
-        ZooniverseClassification *classification = subject.classification;
 
-        for (ZooniverseClassificationAnswer *answer in classification.answers) {
-            //TODO: Actually upload
-            NSLog(@"debug: answer: %@", answer.answerId);
+    //Note: We don't use RestKit to post, because the server doesn't use JSON to receive
+    //the classifications - instead it's just a normal POST with form data.
+    for (ZooniverseSubject *subject in results) {
+
+        NSString *subjectId = subject.subjectId;
+
+        //If the upload for this subject is in progress then ignore it.
+        if ([_imageDownloadsInProgress containsObject:subjectId]) {
+            NSLog(@"uploadClassifications: classification upload already in progress: %@", subjectId);
+            continue;
+        } else {
+            [_imageDownloadsInProgress addObject:subjectId];
         }
 
-        subject.uploaded = YES;
+        ZooniverseClassification *classification = subject.classification;
 
-        //Save the ZooniverseClassification and the Subject to disk:
-        NSError *error = nil;
-        [self.managedObjectContext save:&error];
-        //TODO: Check error.
+        //An array of ZooniverseNameValuePair:
+        NSMutableArray *nameValuePairs = [[NSMutableArray alloc] init];
+
+        [ZooniverseClient addNameValuePair:nameValuePairs
+                                      name:@"[subject_ids][]"
+                                     value:subjectId];
+
+        if (subject.favorite) {
+            [ZooniverseClient addNameValuePair:nameValuePairs
+                              name:@"[favorite][]"
+                             value:@"true"];
+        }
+
+        //Add each answer and its checkboxes:
+        NSInteger sequence = 0;
+        for (ZooniverseClassificationQuestion *classificationQuestion in classification.classificationQuestions) {
+            //TODO: sequence:
+            //The answer:
+            ZooniverseClassificationAnswer *answer = classificationQuestion.answer;
+            NSLog(@"debug: answer: %@", answer.answerId);
+            NSString *questionKey = [NSString stringWithFormat:@"%@[%@]",
+                              [ZooniverseClient getAnnotationPart:sequence],
+                              classificationQuestion.questionId];
+            [ZooniverseClient addNameValuePair:nameValuePairs
+                                          name:questionKey
+                                         value:answer.answerId];
+
+            //Add any checkboxes that were selected with the answer:
+            for (ZooniverseClassificationCheckbox *checkbox in classificationQuestion.checkboxes) {
+                [ZooniverseClient addNameValuePair:nameValuePairs
+                                              name:questionKey
+                                             value:checkbox.checkboxId];
+            }
+
+            sequence++;
+        }
+
+        NSString *userAgentKey = [NSString stringWithFormat:@"%@[%@]",
+                                 [ZooniverseClient getAnnotationPart:sequence],
+                                 @"user_agent"];
+        [ZooniverseClient addNameValuePair:nameValuePairs
+                                      name:userAgentKey
+                                     value:[Config userAgent]];
+
+        NSMutableString *content;
+        for (ZooniverseNameValuePair *pair in nameValuePairs) {
+            NSString *str = [NSString stringWithFormat:@"%@=%@",
+                             pair.name, pair.value];
+            if (!content) {
+                content = [str mutableCopy];
+            } else {
+                [content appendString:@"&"];
+                [content appendString:str];
+            }
+        }
+
+        NSString *postUploadUriStr =
+        [NSString stringWithFormat:@"%@workflows/%@/classifications",
+         [Config baseUrl],
+         subject.groupId, nil];
+        NSURL *postUploadUri = [NSURL URLWithString:postUploadUriStr];
+
+
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUploadUri];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:[Config userAgent]
+                   forHTTPHeaderField:@"User-Agent"];
+        [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)content.length]
+            forHTTPHeaderField:@"Content-Length"];
+        [request setValue:@"application/x-www-form-urlencoded charset=utf-8"
+       forHTTPHeaderField:@"Content-Type"];
+        NSData* postData= [content dataUsingEncoding:NSUTF8StringEncoding];
+        [request setHTTPBody:postData];
+
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:self.uploadsQueue
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                                   //This is called on the main thread, though that is not clearly documented:
+                                   //https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURLConnection_Class/index.html#//apple_ref/occ/clm/NSURLConnection/sendAsynchronousRequest:queue:completionHandler:
+
+                                   //TODO: Should we somehow use a weak reference to Subject?
+                                   NSHTTPURLResponse *httpResponse;
+                                   if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                                       httpResponse = (NSHTTPURLResponse *)response;
+                                   }
+
+                                   if (httpResponse.statusCode == 201 /* Created */) {
+                                       //TODO: Do this when we know the upload has succeeded:
+                                       subject.uploaded = YES;
+
+                                       //Save the ZooniverseClassification and the Subject to disk:
+                                       NSError *error = nil;
+                                       [self.managedObjectContext save:&error];
+                                       //TODO: Check error.
+                                   } else {
+                                       NSLog(@"debug: unexpected upload response for subject=%@: %ld", subject.subjectId,
+                                             (long)httpResponse.statusCode);
+                                   }
+
+                                   [_classificationUploadsInProgress removeObject:subject.subjectId];
+                               }];
+
     }
 
 
