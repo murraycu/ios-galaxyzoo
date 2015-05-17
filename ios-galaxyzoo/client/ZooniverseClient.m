@@ -19,6 +19,7 @@
 #import <RestKit/RestKit.h>
 
 static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
+static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 @interface ZooniverseClient () <NSURLSessionDownloadDelegate> {
     RKObjectManager * _objectManager;
@@ -424,6 +425,25 @@ NSString * currentTimeAsIso8601(void)
         //TODO: Check error.
     }
 
+
+}
+
+- (void)downloadEnoughSubjects
+{
+    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
+    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
+    fetchRequest.fetchLimit = MIN_CACHED_NOT_DONE;
+
+    //Get more items from the server if necessary:
+    NSError *error = nil; //TODO: Check this.
+    NSArray *results = [[self managedObjectContext]
+                        executeFetchRequest:fetchRequest
+                        error:&error];
+    NSInteger count = results.count;
+    if (count < MIN_CACHED_NOT_DONE) {
+        [self querySubjects:(MIN_CACHED_NOT_DONE - count)
+                  withCallback:nil];
+    }
 
 }
 

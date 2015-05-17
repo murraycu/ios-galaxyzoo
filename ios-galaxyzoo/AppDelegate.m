@@ -163,6 +163,7 @@
 
 - (void)doRegularWork {
     ZooniverseClient *client = self.zooniverseClient;
+    [client downloadEnoughSubjects];
     [client uploadClassifications];
     [client downloadMissingImages];
 }

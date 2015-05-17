@@ -19,8 +19,6 @@
 #import "Utils.h"
 #import <RestKit/RestKit.h>
 
-static const NSUInteger MIN_CACHED_NOT_DONE = 5;
-
 @interface ClassifyViewController () {
     ZooniverseClient *_client;
 
@@ -121,6 +119,7 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
     [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
+    fetchRequest.fetchLimit = 1;
 
     //Get more items from the server if necessary:
     NSError *error = nil; //TODO: Check this.
@@ -132,21 +131,10 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
     //We need at least one not-done subject to show anything:
     if (count == 0) {
+        //TODO: Handle failure:
         [self getOneSubjectAndShow];
         return;
     }
-
-    if (count < MIN_CACHED_NOT_DONE) {
-        [_client querySubjects:(MIN_CACHED_NOT_DONE - count)
-                 withCallback:nil];
-    }
-
-    if (count == 0) {
-        //TODO: Wait/Retry/Tell the user.
-        NSLog(@"No Subjects Found.");
-        return;
-    }
-
 
     self.subject = (ZooniverseSubject *)[results objectAtIndex:0];
 

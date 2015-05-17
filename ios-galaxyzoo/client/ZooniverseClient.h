@@ -25,9 +25,10 @@ typedef void (^ ZooniverseClientQueryDoneBlock)();
 - (void)querySubjects:(NSUInteger)count
          withCallback:(ZooniverseClientQueryDoneBlock)callbackBlock;
 
+- (void)downloadEnoughSubjects;
+- (void)downloadMissingImages;
 - (void)uploadClassifications;
 
-- (void)downloadMissingImages;
 
 - (void)abandonSubject:(ZooniverseSubject *)subject;
 
