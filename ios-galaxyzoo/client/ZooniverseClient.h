@@ -27,6 +27,8 @@ typedef void (^ ZooniverseClientQueryDoneBlock)();
 
 - (void)uploadClassifications;
 
+- (void)downloadMissingImages;
+
 - (void)abandonSubject:(ZooniverseSubject *)subject;
 
 

@@ -427,6 +427,36 @@ NSString * currentTimeAsIso8601(void)
 
 }
 
+- (void)downloadMissingImages
+{
+    // Get the FetchRequest from our data model,
+    // and use the same sort order as the ListViewController:
+    // We have to copy it so we can set a sort order (sortDescriptors).
+    // There doesn't seem to be a way to set the sort order in the data model GUI editor.
+    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestMissingImages"] copy];
+    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
+
+    NSError *error = nil; //TODO: Check this.
+    NSArray *results = [self.managedObjectContext
+                        executeFetchRequest:fetchRequest
+                        error:&error];
+    if (results.count == 0) {
+        return;
+    }
+
+    for (ZooniverseSubject *subject in results) {
+        NSLog(@"  debug: download missing images for subject zooniverseId: %@", [subject zooniverseId]);
+
+        ZooniverseClientImageDownloadSet *set = [[ZooniverseClientImageDownloadSet alloc] init];
+        NSArray *tasks = [self downloadImages:subject
+                     session:_session
+                         set:set];
+        for (NSURLSessionDownloadTask *task in tasks) {
+            [task resume];
+        }
+    }
+}
+
 - (void)onImageDownloadFinished:(NSString*)taskId
                             set:(ZooniverseClientImageDownloadSet*)set
 {
