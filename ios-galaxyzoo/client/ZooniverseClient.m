@@ -331,7 +331,7 @@ NSString * currentTimeAsIso8601(void)
 }
 
 - (void)querySubjects:(NSUInteger)count
-         withCallback:(ZooniverseClientQueryDoneBlock)callbackBlock
+         withCallback:(ZooniverseClientDoneBlock)callbackBlock
 {
     NSString *countAsStr = [NSString stringWithFormat:@"%i", (unsigned int)count]; //TODO: Is this locale-independent?
     NSString *path = [self getQueryMoreItemsPath];

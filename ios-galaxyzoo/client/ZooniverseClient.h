@@ -18,12 +18,12 @@
 
 - (ZooniverseClient *) init;
 
-typedef void (^ ZooniverseClientQueryDoneBlock)();
+typedef void (^ ZooniverseClientDoneBlock)();
 
 //This gets new subjects from the server asynchronously,
 //calling callbackBlock when it has finished.
 - (void)querySubjects:(NSUInteger)count
-         withCallback:(ZooniverseClientQueryDoneBlock)callbackBlock;
+         withCallback:(ZooniverseClientDoneBlock)callbackBlock;
 
 - (void)downloadEnoughSubjects;
 - (void)downloadMissingImages;
