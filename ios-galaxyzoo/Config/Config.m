@@ -55,4 +55,8 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
     return USER_AGENT;
 }
 
++ (NSString *)baseUrl {
+    return @"https://api.zooniverse.org/projects/galaxy_zoo/";
+}
+
 @end

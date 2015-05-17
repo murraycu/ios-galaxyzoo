@@ -16,6 +16,8 @@
 
 + (NSDictionary *)subjectGroups; //Of Group ID to ConfigSubjectGroup.
 
++ (NSString *)baseUrl;
 + (NSString *)userAgent;
+
 
 @end

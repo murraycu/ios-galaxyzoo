@@ -18,12 +18,9 @@
 #import "Utils.h"
 #import <RestKit/RestKit.h>
 
-static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
 static const NSUInteger MIN_CACHED_NOT_DONE = 5;
 
 @interface ZooniverseClient () <NSURLSessionDownloadDelegate> {
-    RKObjectManager * _objectManager;
-
     NSURLSession *_session;
 
     //Mapping task id (NSString) to ZooniverseClientImageDownloadSet.
@@ -79,26 +76,9 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
     //let AFNetworking manage the activity indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
 
-    // Initialize HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:BASE_URL];
-    AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-
-    // Set User-Agent:
-    [client setDefaultHeader:@"User-Agent"
-                       value:[Config userAgent]];
-
-
-    //we want to work with JSON-Data
-    [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
-
-    // Initialize RestKit
-    _objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
-
-
-    // Connect the RestKit object manager to our Core Data model:
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    RKObjectManager *objectManager = appDelegate.rkObjectManager;
     RKManagedObjectStore *managedObjectStore = appDelegate.rkManagedObjectStore;
-    _objectManager.managedObjectStore = managedObjectStore;
 
     NSDictionary *parentObjectMapping = @{
                                           @"id":   @"subjectId",
@@ -132,7 +112,7 @@ static const NSUInteger MIN_CACHED_NOT_DONE = 5;
                                                                                            keyPath:nil
                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
         //TODO: statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)] ?
-        [_objectManager addResponseDescriptor:responseDescriptor];
+        [objectManager addResponseDescriptor:responseDescriptor];
     }
 
 
@@ -336,7 +316,10 @@ NSString * currentTimeAsIso8601(void)
     NSString *countAsStr = [NSString stringWithFormat:@"%i", (unsigned int)count]; //TODO: Is this locale-independent?
     NSString *path = [self getQueryMoreItemsPath];
     NSDictionary *queryParams = @{@"limit" : countAsStr};
-    [_objectManager getObjectsAtPath:path
+
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    RKObjectManager *objectManager = appDelegate.rkObjectManager;
+    [objectManager getObjectsAtPath:path
                           parameters:queryParams
                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 

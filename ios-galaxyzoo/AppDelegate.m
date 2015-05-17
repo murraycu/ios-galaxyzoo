@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Config.h"
 
 @interface AppDelegate ()
 
@@ -59,6 +60,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 //@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize rkObjectManager = _rkObjectManager;
 @synthesize rkManagedObjectStore = _rkManagedObjectStore;
 
 @synthesize zooniverseClient = _zooniverseClient;
@@ -146,6 +148,32 @@
 
     _rkManagedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:self.managedObjectModel];
     return _rkManagedObjectStore;
+}
+
+- (RKObjectManager *)rkObjectManager {
+    if (_rkObjectManager != nil) {
+        return _rkObjectManager;
+    }
+
+    // Initialize HTTPClient
+    NSURL *baseURL = [NSURL URLWithString:[Config baseUrl]];
+    AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+
+    // Set User-Agent:
+    [client setDefaultHeader:@"User-Agent"
+                       value:[Config userAgent]];
+
+
+    //we want to work with JSON-Data
+    [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
+
+    // Initialize RestKit
+    _rkObjectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+
+    // Connect the RestKit object manager to our Core Data model:
+    _rkObjectManager.managedObjectStore = [self rkManagedObjectStore];
+
+    return _rkObjectManager;
 }
 
 #pragma mark - Core Data Saving support
