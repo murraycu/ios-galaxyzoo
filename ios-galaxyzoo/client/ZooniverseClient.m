@@ -338,7 +338,6 @@ NSString * currentTimeAsIso8601(void)
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestDoneNotUploaded"] copy];
     [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
-    //Get more items from the server if necessary:
     NSError *error = nil; //TODO: Check this.
     NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
