@@ -14,6 +14,7 @@
 
 @implementation ZooniverseClassificationQuestion
 
+@dynamic questionId;
 @dynamic answer;
 @dynamic checkboxes;
 @dynamic classification;

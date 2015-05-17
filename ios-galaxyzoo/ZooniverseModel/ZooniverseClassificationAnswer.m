@@ -13,7 +13,6 @@
 @implementation ZooniverseClassificationAnswer
 
 @dynamic answerId;
-@dynamic questionId;
 @dynamic classificationQuestion;
 
 @end

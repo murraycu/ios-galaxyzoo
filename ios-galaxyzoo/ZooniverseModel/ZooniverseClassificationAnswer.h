@@ -14,7 +14,6 @@
 @interface ZooniverseClassificationAnswer : NSManagedObject
 
 @property (nonatomic, retain) NSString * answerId;
-@property (nonatomic, retain) NSString * questionId;
 @property (nonatomic, retain) ZooniverseClassificationQuestion *classificationQuestion;
 
 @end

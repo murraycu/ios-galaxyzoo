@@ -14,7 +14,6 @@
 @interface ZooniverseClassificationCheckbox : NSManagedObject
 
 @property (nonatomic, retain) NSString * checkboxId;
-@property (nonatomic, retain) NSString * questionId;
 @property (nonatomic, retain) ZooniverseClassificationQuestion *classificationQuestion;
 
 @end

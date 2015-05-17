@@ -121,7 +121,6 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     for (NSString *checkboxId in self.checkboxesSelected) {
         ZooniverseClassificationCheckbox *classificationCheckbox = (ZooniverseClassificationCheckbox *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationCheckbox"
                                                                                                                                      inManagedObjectContext:[self managedObjectContext]];
-        classificationCheckbox.questionId = _question.questionId;
         classificationCheckbox.checkboxId = checkboxId;
 
         classificationCheckbox.classificationQuestion = classificationQuestion;
@@ -197,7 +196,6 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
         //This is the simple workaround:
         classificationQuestion.answer = classificationAnswer;
 
-        classificationAnswer.questionId = _question.questionId; //TODO: Remove this. It's unnecessary.
         classificationAnswer.answerId = answer.answerId;
 
         [self saveAllCheckboxes:classificationQuestion];

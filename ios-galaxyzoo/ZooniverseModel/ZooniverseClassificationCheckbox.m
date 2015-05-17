@@ -13,7 +13,6 @@
 @implementation ZooniverseClassificationCheckbox
 
 @dynamic checkboxId;
-@dynamic questionId;
 @dynamic classificationQuestion;
 
 @end
