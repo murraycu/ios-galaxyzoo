@@ -238,18 +238,26 @@ NSString * currentTimeAsIso8601(void)
                   set:(ZooniverseClientImageDownloadSet *)set
 {
     NSString *strUrlRemote = nil;
+    BOOL alreadyDownloaded = NO;
     switch (imageLocation) {
         case ImageLocationStandard:
             strUrlRemote = subject.locationStandardRemote;
+            alreadyDownloaded = subject.locationStandardDownloaded;
             break;
         case ImageLocationInverted:
             strUrlRemote = subject.locationInvertedRemote;
+            alreadyDownloaded = subject.locationInvertedDownloaded;
             break;
         case ImageLocationThumbnail:
             strUrlRemote = subject.locationThumbnailRemote;
+            alreadyDownloaded = subject.locationThumbnailDownloaded;
             break;
         default:
             break;
+    }
+
+    if (alreadyDownloaded) {
+        return NO;
     }
 
     if ([_imageDownloadsInProgress containsObject:strUrlRemote]) {
