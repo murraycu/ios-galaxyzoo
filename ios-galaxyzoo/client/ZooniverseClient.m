@@ -54,6 +54,7 @@ static NSString * BASE_URL = @"https://api.zooniverse.org/projects/galaxy_zoo/";
                                                      delegateQueue:queue];
 
     _dictDownloadTasks = [[NSMutableDictionary alloc] init];
+    _imageDownloadsInProgress = [[NSMutableSet alloc] init];
 
 
     [self setupRestkit];
@@ -229,7 +230,9 @@ NSString * currentTimeAsIso8601(void)
     return strTaskId;
 }
 
-- (void)downloadImage:(ZooniverseSubject*)subject
+/* Returns NO if no download was started, for instance if it's already in progress.
+ */
+- (BOOL)downloadImage:(ZooniverseSubject*)subject
              imageLocation:(ImageLocation)imageLocation
               session:(NSURLSession *)session
                   set:(ZooniverseClientImageDownloadSet *)set
@@ -249,6 +252,11 @@ NSString * currentTimeAsIso8601(void)
             break;
     }
 
+    if ([_imageDownloadsInProgress containsObject:strUrlRemote]) {
+        NSLog(@"downloadImage: image download already in progress: %@", strUrlRemote);
+        return NO;
+    }
+
     NSURL *urlRemote = [[NSURL alloc] initWithString:strUrlRemote];
     NSURLRequest *request = [NSURLRequest requestWithURL:urlRemote];
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request];
@@ -258,31 +266,44 @@ NSString * currentTimeAsIso8601(void)
     [_dictDownloadTasks setObject:set
                            forKey:strTaskId];
 
+    //Remember the task details, so we can mark the files as downloaded in the task,
+    //and call our callback block when all tasks are finished:
     ZooniverseClientImageDownload *download = [[ZooniverseClientImageDownload alloc] init];
     download.subject = subject;
     download.imageLocation = imageLocation;
+    download.remoteUrl = strUrlRemote;
     [set.dictTasks setObject:download
                       forKey:strTaskId];
 
+    //Remember that we are downloading this image, to avoid trying to download it again
+    //at the same time:
+    [_imageDownloadsInProgress addObject:strUrlRemote];
+
     [task resume];
+
+    return YES;
 }
 
-- (void)downloadImages:(ZooniverseSubject*)subject
+/* Returns NO if no downloads were started, for instance if, for some strange reason,
+ * all downloads are already in progress.
+ */
+- (BOOL)downloadImages:(ZooniverseSubject*)subject
                session:(NSURLSession *)session
                    set:(ZooniverseClientImageDownloadSet *)set
 {
-    [self downloadImage:subject
-          imageLocation:ImageLocationStandard
-                session:session
-                    set:set];
-    [self downloadImage:subject
-          imageLocation:ImageLocationInverted
-                session:session
-                    set:set];
-    [self downloadImage:subject
-          imageLocation:ImageLocationThumbnail
-                session:session
-                    set:set];
+    BOOL result = [self downloadImage:subject
+                        imageLocation:ImageLocationStandard
+                              session:session
+                                  set:set];
+    result = result || [self downloadImage:subject
+                             imageLocation:ImageLocationInverted
+                                   session:session
+                                       set:set];
+    result = result || [self downloadImage:subject
+                             imageLocation:ImageLocationThumbnail
+                                   session:session
+                                       set:set];
+    return result;
 }
 
 - (void)querySubjects:(NSUInteger)count
@@ -305,15 +326,27 @@ NSString * currentTimeAsIso8601(void)
                                  ZooniverseClientImageDownloadSet *set = [[ZooniverseClientImageDownloadSet alloc] init];
                                  set.callbackBlock = callbackBlock;
 
+                                 BOOL someDownloadsStarted = NO;
+
                                  for (ZooniverseSubject *subject in subjects) {
                                      NSLog(@"  debug: subject zooniverseId: %@", [subject zooniverseId]);
 
                                      //Remember when we downloaded it, so we can always look at the earliest ones first:
                                      subject.datetimeRetrieved = iso8601String;
 
-                                     [self downloadImages:subject
-                                                  session:_session
-                                                      set:set];
+                                     someDownloadsStarted = someDownloadsStarted ||
+                                         [self downloadImages:subject
+                                                      session:_session
+                                                          set:set];
+                                 }
+
+                                 if (!someDownloadsStarted) {
+                                     //Call the callback, just to stop it waiting for ever.
+                                     //However, the subjects won't really be ready until the other
+                                     //downloads have finished.
+                                     NSLog(@"ZooniverseClient.query_subjects: all image downloads are already in progress.");
+
+                                     [callbackBlock invoke];
                                  }
 
                              }
@@ -361,12 +394,46 @@ NSString * currentTimeAsIso8601(void)
 
 }
 
+- (void)downloadMissingImages
+{
+    // Get the FetchRequest from our data model,
+    // and use the same sort order as the ListViewController:
+    // We have to copy it so we can set a sort order (sortDescriptors).
+    // There doesn't seem to be a way to set the sort order in the data model GUI editor.
+    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestMissingImages"] copy];
+    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
+
+    NSError *error = nil; //TODO: Check this.
+    NSArray *results = [self.managedObjectContext
+                        executeFetchRequest:fetchRequest
+                        error:&error];
+    for (ZooniverseSubject *subject in results) {
+        ZooniverseClassification *classification = subject.classification;
+
+        for (ZooniverseClassificationAnswer *answer in classification.answers) {
+            //TODO: Actually upload
+            NSLog(@"debug: answer: %@", answer.answerId);
+        }
+
+        subject.uploaded = YES;
+
+        //Save the ZooniverseClassification and the Subject to disk:
+        NSError *error = nil;
+        [self.managedObjectContext save:&error];
+        //TODO: Check error.
+    }
+
+}
+
 - (void)onImageDownloadFinished:(NSString*)taskId
                             set:(ZooniverseClientImageDownloadSet*)set
 {
+    ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:taskId];
+
     [set.dictTasks removeObjectForKey:taskId];
     [_dictDownloadTasks removeObjectForKey:taskId];
 
+    [_imageDownloadsInProgress removeObject:download.remoteUrl];
 
     //TODO: Release download object?
 
