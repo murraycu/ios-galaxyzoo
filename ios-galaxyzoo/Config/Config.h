@@ -19,5 +19,10 @@
 + (NSString *)baseUrl;
 + (NSString *)userAgent;
 
++ (NSString *)forgotPasswordUri;
++ (NSString *)registerUri;
+
+
+
 
 @end

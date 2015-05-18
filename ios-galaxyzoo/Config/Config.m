@@ -59,4 +59,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
     return @"https://api.zooniverse.org/projects/galaxy_zoo/";
 }
 
++ (NSString *)forgotPasswordUri {
+    return @"https://zooniverse.org/password/reset";
+}
+
++ (NSString *)registerUri {
+    return @"https://zooniverse.org/signup";
+
+}
+
+
 @end
