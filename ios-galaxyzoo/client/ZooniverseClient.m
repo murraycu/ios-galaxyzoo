@@ -410,10 +410,10 @@ NSString * currentTimeAsIso8601(void)
 + (NSString *)generateAuthorizationHeader:(NSString *)authName
                                authApiKey:(NSString *)authApiKey {
     NSString *str = [NSString stringWithFormat:@"%@:%@", authName, authApiKey];
-    NSData *data = [str dataUsingEncoding:NSUnicodeStringEncoding];
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
 
-    NSString *result = [data base64EncodedStringWithOptions:0];
-    return result;
+    NSString *encoded = [data base64EncodedStringWithOptions:0];
+    return [NSString stringWithFormat:@"Basic %@", encoded];
 }
 
 - (void)uploadClassifications {
