@@ -10,4 +10,6 @@
 
 @interface LoginViewController : UIViewController
 
+- (void)parseLoginResponseData:(NSData*)data;
+
 @end

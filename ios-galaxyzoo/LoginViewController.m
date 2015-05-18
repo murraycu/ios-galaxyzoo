@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "AppDelegate.h"
+#import "client/ZooniverseNameValuePair.h"
 #import "Config.h"
 
 @interface LoginViewController ()
@@ -56,7 +58,105 @@
     }
 }
 
++ (NSString *)urlEncodeValue:(NSString *)str
+{
+    return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (void)addNameValuePair:(NSMutableArray *)array
+                    name:(NSString *)name
+                   value:(NSString *)value {
+    ZooniverseNameValuePair *pair = [[ZooniverseNameValuePair alloc] init:name
+                                                                    value:value];
+    [array addObject:pair];
+}
+
+- (void)parseLoginResponseData:(NSData*)data
+{
+    NSError *error;
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:kNilOptions
+                                                           error:&error];
+    if (error) {
+        NSLog(@"Error parsing JSON.");
+        return;
+    }
+
+    BOOL success = [[jsonDict objectForKey:@"success"] boolValue];
+    NSString *message = [jsonDict objectForKey:@"message"];
+    NSString *name = [jsonDict objectForKey:@"name"];
+    NSString *apiKey = [jsonDict objectForKey:@"api_key"];
+
+    if (!success) {
+        NSLog(@"Login failed with message:%@", message);
+        return;
+    }
+
+    //Store it for later use:
+    [AppDelegate setLogin:name
+                   apiKey:apiKey];
+}
+
 - (IBAction)onLoginButton:(id)sender {
+    NSString *postLoginUriStr =
+    [NSString stringWithFormat:@"%@login",
+     [Config baseUrl], nil];
+    NSURL *postLoginUri = [NSURL URLWithString:postLoginUriStr];
+
+    //An array of ZooniverseNameValuePair:
+    NSMutableArray *nameValuePairs = [[NSMutableArray alloc] init];
+
+    [LoginViewController addNameValuePair:nameValuePairs
+                                  name:@"username"
+                                 value:self.textfieldUsername.text];
+    [LoginViewController addNameValuePair:nameValuePairs
+                                  name:@"password"
+                                 value:self.textfieldPassword.text];
+
+    NSMutableString *content;
+    for (ZooniverseNameValuePair *pair in nameValuePairs) {
+        NSString *str = [NSString stringWithFormat:@"%@=%@",
+                         pair.name, pair.value];
+        if (!content) {
+            content = [str mutableCopy];
+        } else {
+            [content appendString:@"&"];
+            [content appendString:str];
+        }
+    }
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postLoginUri];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:[Config userAgent]
+   forHTTPHeaderField:@"User-Agent"];
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)content.length]
+   forHTTPHeaderField:@"Content-Length"];
+    //This breaks things, so the server doesn't accept our username and password:
+    //[request setValue:@"application/x-www-form-urlencoded charset=utf-8"
+    //forHTTPHeaderField:@"Content-Type"];
+    NSData* postData= [content dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:postData];
+
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               //TODO: Should we somehow use a weak reference to Subject?
+                               NSHTTPURLResponse *httpResponse;
+                               if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                                   httpResponse = (NSHTTPURLResponse *)response;
+                               }
+
+                               if (httpResponse.statusCode == 200 /* HTTP_OK */) {
+                                   [self performSelectorOnMainThread:@selector(parseLoginResponseData:)
+                                                          withObject:data
+                                                       waitUntilDone:NO];
+                               } else {
+                                   NSLog(@"debug: unexpected login response: %ld",
+                                         (long)httpResponse.statusCode);
+                               }
+                           }];
+
 }
 
 @end
