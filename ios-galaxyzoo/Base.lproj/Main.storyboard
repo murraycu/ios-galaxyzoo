@@ -18,13 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-2T-OaH" userLabel="containerViewQuestion">
-                                <rect key="frame" x="16" y="362" width="568" height="230"/>
+                                <rect key="frame" x="16" y="317" width="568" height="226"/>
                                 <connections>
                                     <segue destination="XN1-Ge-G0W" kind="embed" identifier="questionViewEmbed" id="WlM-lJ-dLY"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qV-Rr-NAo" userLabel="containerViewSubject">
-                                <rect key="frame" x="0.0" y="72" width="613" height="282"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="237"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="nOK-hD-3nz"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nOK-hD-3nz"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="tdd-TB-MLp" kind="embed" identifier="subjectViewEmbed" id="McU-Of-BYW"/>
                                 </connections>
@@ -32,15 +40,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="3Jk-Sq-vwa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" symbolic="YES" id="Fmv-tY-zbi"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="GjK-iw-gyc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1qV-Rr-NAo" secondAttribute="trailing" constant="-29" id="Pdp-xw-iIZ"/>
-                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ufe-Wu-g83"/>
-                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="UsI-k4-Bob"/>
-                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="362" id="Yqd-f6-sJm"/>
-                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ct3-sZ-ufe"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" id="nkj-fM-09D"/>
-                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="1qV-Rr-NAo" secondAttribute="bottom" constant="8" symbolic="YES" id="piP-bh-5Hd"/>
-                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="scQ-BN-BlC"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LsQ-2X-hln"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="317" id="OdA-kn-OhX"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="centerX" secondItem="1qV-Rr-NAo" secondAttribute="centerX" id="RTF-mM-Fip"/>
+                            <constraint firstAttribute="trailing" secondItem="1qV-Rr-NAo" secondAttribute="trailing" id="YwH-NH-wZS"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZC8-qQ-OXd"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="1qV-Rr-NAo" secondAttribute="bottom" constant="8" symbolic="YES" id="pqv-74-Z1W"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="xdz-Zb-H3w"/>
                         </constraints>
                         <variation key="default">
@@ -148,11 +156,11 @@
                         <viewControllerLayoutGuide type="bottom" id="TWR-nz-wA1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bH4-F3-DJ9">
-                        <rect key="frame" x="0.0" y="0.0" width="613" height="282"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="8" width="621" height="274"/>
+                                <rect key="frame" x="0.0" y="8" width="608" height="229"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
                                 </constraints>
@@ -188,7 +196,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Noc-ep-P9D"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BaE-tr-Tgr">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="230"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="226"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-nN-vq3" userLabel="labelTitle">
@@ -198,7 +206,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-nW-ODq" userLabel="collectionViewAnswers">
-                                <rect key="frame" x="0.0" y="98" width="568" height="132"/>
+                                <rect key="frame" x="0.0" y="98" width="568" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="5Kv-eI-OML">
                                     <size key="itemSize" width="50" height="50"/>
