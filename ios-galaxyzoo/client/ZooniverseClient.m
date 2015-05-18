@@ -407,6 +407,15 @@ NSString * currentTimeAsIso8601(void)
     return [NSString stringWithFormat:@"classification[annotations][%ld]", (long)sequence];
 }
 
++ (NSString *)generateAuthorizationHeader:(NSString *)authName
+                               authApiKey:(NSString *)authApiKey {
+    NSString *str = [NSString stringWithFormat:@"%@:%@", authName, authApiKey];
+    NSData *data = [str dataUsingEncoding:NSUnicodeStringEncoding];
+
+    NSString *result = [data base64EncodedStringWithOptions:0];
+    return result;
+}
+
 - (void)uploadClassifications {
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
@@ -480,6 +489,7 @@ NSString * currentTimeAsIso8601(void)
                                       name:userAgentKey
                                      value:[Config userAgent]];
 
+        //TODO: Put this somewhere reusable so LoginViewController can use it too.
         NSMutableString *content;
         for (ZooniverseNameValuePair *pair in nameValuePairs) {
             NSString *str = [NSString stringWithFormat:@"%@=%@",
@@ -507,6 +517,16 @@ NSString * currentTimeAsIso8601(void)
             forHTTPHeaderField:@"Content-Length"];
         [request setValue:@"application/x-www-form-urlencoded charset=utf-8"
        forHTTPHeaderField:@"Content-Type"];
+
+        NSString *authName = [AppDelegate loginUsername];
+        NSString *authApiKey = [AppDelegate loginApiKey];
+        if (authName && authApiKey) {
+            NSString *authHeader = [ZooniverseClient generateAuthorizationHeader:authName
+                                                                      authApiKey:authApiKey];
+            [request setValue:authHeader
+           forHTTPHeaderField:@"Authorization"];
+        }
+
         NSData* postData= [content dataUsingEncoding:NSUTF8StringEncoding];
         [request setHTTPBody:postData];
 
@@ -531,8 +551,9 @@ NSString * currentTimeAsIso8601(void)
                                        [self.managedObjectContext save:&error];
                                        //TODO: Check error.
                                    } else {
+                                       NSInteger statusCode = httpResponse.statusCode;
                                        NSLog(@"debug: unexpected upload response for subject=%@: %ld", subject.subjectId,
-                                             (long)httpResponse.statusCode);
+                                             (long)statusCode);
                                    }
 
                                    [_classificationUploadsInProgress removeObject:subject.subjectId];
