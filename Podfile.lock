@@ -19,17 +19,20 @@ PODS:
     - TransitionKit (= 1.1.1)
   - RestKit/Testing (0.20.3)
   - SOCKit (1.1)
+  - SSKeychain (1.2.3)
   - TransitionKit (1.1.1)
 
 DEPENDENCIES:
   - RestKit (~> 0.20.0)
   - RestKit/Search (~> 0.20.0)
   - RestKit/Testing (~> 0.20.0)
+  - SSKeychain
 
 SPEC CHECKSUMS:
   AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   RestKit: ddc3c3a2b6cbe4578c4193d8e0dfe93d79333c3b
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
+  SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   TransitionKit: aec4d65b2be460fec0db04f905e8bedca601d669
 
 COCOAPODS: 0.36.4
