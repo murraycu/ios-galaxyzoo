@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Config.h"
+#import <SSKeychain.h>
 
 @interface AppDelegate ()
 
@@ -219,6 +220,56 @@
     [client downloadMissingImages:^ {
         [self onDownloadMissingImagesDone];
     }];
+}
+
+static NSString *const kKeyChainServiceName = @"zooniverse";
+static NSString *const kKeyChainKeyName = @"name";
+static NSString *const kKeyChainKeyApiKey = @"api_key";
+
+
++ (void)removAllSSKeychainAccounts {
+    NSArray *accounts = [SSKeychain accountsForService:kKeyChainServiceName];
+
+    for (NSDictionary *dict in accounts) {
+        NSString *accountName = [dict objectForKey:kSSKeychainAccountKey];
+
+        //This actually deletes the account, which we can check by
+        //calling accountsForService again.
+        [SSKeychain deletePasswordForService:kKeyChainServiceName
+                                     account:accountName];
+    }
+
+    //accounts = [SSKeychain accountsForService:kKeyChainServiceName];
+    //NSLog(@"debug: accounts count:%lu", (unsigned long)accounts.count);
+}
+
++ (void)setLogin:(NSString *)username
+          apiKey:(NSString *)apiKey {
+    [AppDelegate removAllSSKeychainAccounts];
+
+    [SSKeychain setPassword:apiKey
+                 forService:kKeyChainServiceName
+                    account:username];
+}
+
++ (NSString *)loginUsername {
+    NSArray *accounts = [SSKeychain accountsForService:kKeyChainServiceName];
+    if (!accounts || accounts.count == 0) {
+        return nil;
+    }
+
+    NSDictionary *dict = accounts[0];
+    return [dict objectForKey:kSSKeychainAccountKey];
+}
+
++ (NSString *)loginApiKey {
+    NSString *username = [AppDelegate loginUsername];
+    if (!username) {
+        return nil;
+    }
+
+    return [SSKeychain passwordForService:kKeyChainServiceName
+                                  account:username];
 }
 
 @end

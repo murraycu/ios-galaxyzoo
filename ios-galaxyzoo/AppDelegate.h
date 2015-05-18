@@ -23,10 +23,13 @@
 
 @property (readonly, strong, nonatomic) ZooniverseClient *zooniverseClient;
 
-
-
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
++ (void)setLogin:(NSString *)username
+          apiKey:(NSString *)apiKey;
++ (NSString *)loginUsername;
++ (NSString *)loginApiKey;
 
 @end
 
