@@ -11,6 +11,7 @@
 #import "QuestionViewController.h"
 #import "HelpViewController.h"
 #import "ListViewController.h"
+#import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "Singleton.h"
 #import "DecisionTree/DecisionTree.h"
@@ -29,6 +30,8 @@
 @property(nonatomic, strong)ZooniverseSubject *subject;
 
 @property(nonatomic, strong)UIActivityIndicatorView *activityIndicator;
+
+@property(nonatomic)NSUInteger classificationsDoneInSession;
 
 @end
 
@@ -102,6 +105,12 @@
               }];
 }
 
+- (void)checkForLogin {
+    [self performSegueWithIdentifier:@"loginShowEmbed"
+                              sender:self];
+
+}
+
 - (void)showNextSubject {
     //Start with the spinner off,
     //and only show it when we know we are doing an async query and waiting or it.
@@ -135,6 +144,12 @@
         [self getOneSubjectAndShow];
         return;
     }
+
+    if(self.classificationsDoneInSession == 1) {
+        [self checkForLogin];
+    }
+
+    self.classificationsDoneInSession++;
 
     self.subject = (ZooniverseSubject *)[results objectAtIndex:0];
 
