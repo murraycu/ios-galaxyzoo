@@ -495,10 +495,10 @@ NSString * currentTimeAsIso8601(void)
             NSString *str = [NSString stringWithFormat:@"%@=%@",
                              pair.name, pair.value];
             if (!content) {
-                content = [str mutableCopy];
+                content = [[ZooniverseClient urlEncodeValue:str] mutableCopy];
             } else {
                 [content appendString:@"&"];
-                [content appendString:str];
+                [content appendString:[ZooniverseClient urlEncodeValue:str]];
             }
         }
 
