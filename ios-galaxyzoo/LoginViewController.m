@@ -83,6 +83,8 @@
     //Store it for later use:
     [AppDelegate setLogin:name
                    apiKey:apiKey];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onLoginButton:(id)sender {
