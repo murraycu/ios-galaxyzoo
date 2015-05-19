@@ -416,6 +416,28 @@ NSString * currentTimeAsIso8601(void)
     return [NSString stringWithFormat:@"Basic %@", encoded];
 }
 
+- (void)parseUploadResponse:(NSArray *)array {
+    NSHTTPURLResponse *response = array[0];
+    ZooniverseSubject *subject = array[1];
+
+    if (response.statusCode == 201 /* Created */) {
+        //TODO: Do this when we know the upload has succeeded:
+        subject.uploaded = YES;
+
+        //Save the ZooniverseClassification and the Subject to disk:
+        NSError *error = nil;
+        [self.managedObjectContext save:&error];
+        //TODO: Check error.
+    } else {
+        NSInteger statusCode = response.statusCode;
+        NSLog(@"debug: unexpected upload response for subject=%@: %ld", subject.subjectId,
+              (long)statusCode);
+    }
+
+    [_classificationUploadsInProgress removeObject:subject.subjectId];
+
+}
+
 - (void)uploadClassifications {
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
@@ -533,30 +555,15 @@ NSString * currentTimeAsIso8601(void)
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:self.uploadsQueue
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                                   //This is called on the main thread, though that is not clearly documented:
-                                   //https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURLConnection_Class/index.html#//apple_ref/occ/clm/NSURLConnection/sendAsynchronousRequest:queue:completionHandler:
-
                                    //TODO: Should we somehow use a weak reference to Subject?
                                    NSHTTPURLResponse *httpResponse;
                                    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                                        httpResponse = (NSHTTPURLResponse *)response;
                                    }
 
-                                   if (httpResponse.statusCode == 201 /* Created */) {
-                                       //TODO: Do this when we know the upload has succeeded:
-                                       subject.uploaded = YES;
-
-                                       //Save the ZooniverseClassification and the Subject to disk:
-                                       NSError *error = nil;
-                                       [self.managedObjectContext save:&error];
-                                       //TODO: Check error.
-                                   } else {
-                                       NSInteger statusCode = httpResponse.statusCode;
-                                       NSLog(@"debug: unexpected upload response for subject=%@: %ld", subject.subjectId,
-                                             (long)statusCode);
-                                   }
-
-                                   [_classificationUploadsInProgress removeObject:subject.subjectId];
+                                   [self performSelectorOnMainThread:@selector(parseUploadResponse:)
+                                                          withObject:@[httpResponse, subject]
+                                                       waitUntilDone:NO];
                                }];
 
     }
