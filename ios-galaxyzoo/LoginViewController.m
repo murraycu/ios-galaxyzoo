@@ -107,13 +107,13 @@
     [request setHTTPMethod:@"POST"];
     [request setValue:[Config userAgent]
    forHTTPHeaderField:@"User-Agent"];
-    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)content.length]
-   forHTTPHeaderField:@"Content-Length"];
+
     //This breaks things, so the server doesn't accept our username and password:
     //[request setValue:@"application/x-www-form-urlencoded charset=utf-8"
     //forHTTPHeaderField:@"Content-Type"];
-    NSData* postData= [content dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:postData];
+
+    [ZooniverseHttpUtils setRequestContent:content
+                                forRequest:request];
 
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:request

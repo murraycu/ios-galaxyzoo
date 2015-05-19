@@ -22,4 +22,8 @@
 + (NSString *)generateAuthorizationHeader:(NSString *)authName
                                authApiKey:(NSString *)authApiKey;
 
+
++ (void)setRequestContent:(NSString *)content
+               forRequest:(NSMutableURLRequest *)request;
+
 @end

@@ -507,8 +507,6 @@ NSString * currentTimeAsIso8601(void)
         [request setHTTPMethod:@"POST"];
         [request setValue:[Config userAgent]
                    forHTTPHeaderField:@"User-Agent"];
-        [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)content.length]
-            forHTTPHeaderField:@"Content-Length"];
         [request setValue:@"application/x-www-form-urlencoded charset=utf-8"
        forHTTPHeaderField:@"Content-Type"];
 
@@ -521,8 +519,8 @@ NSString * currentTimeAsIso8601(void)
            forHTTPHeaderField:@"Authorization"];
         }
 
-        NSData* postData= [content dataUsingEncoding:NSUTF8StringEncoding];
-        [request setHTTPBody:postData];
+        [ZooniverseHttpUtils setRequestContent:content
+                                    forRequest:request];
 
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:self.uploadsQueue
