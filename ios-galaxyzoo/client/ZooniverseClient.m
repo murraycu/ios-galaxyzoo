@@ -507,8 +507,10 @@ NSString * currentTimeAsIso8601(void)
         [request setHTTPMethod:@"POST"];
         [request setValue:[Config userAgent]
                    forHTTPHeaderField:@"User-Agent"];
-        [request setValue:@"application/x-www-form-urlencoded charset=utf-8"
-       forHTTPHeaderField:@"Content-Type"];
+
+        //Note: I've also tried "application/x-www-form-urlencoded; charset=utf-8"
+        //and ""application/x-www-form-urlencoded"
+        [request setValue:@"application/x-www-form-urlencoded charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 
         NSString *authName = [AppDelegate loginUsername];
         NSString *authApiKey = [AppDelegate loginApiKey];
