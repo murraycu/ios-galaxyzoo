@@ -28,6 +28,8 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 @interface QuestionViewController () {
     ZooniverseClassification *_classificationInProgress;
+    NSUInteger _questionSequence;
+
     __weak IBOutlet UISwitch *switchFavorite;
 }
 
@@ -52,6 +54,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     _classificationInProgress =
     (ZooniverseClassification *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassification"
                                                               inManagedObjectContext:[self managedObjectContext]];
+    _questionSequence = 0;
 
     [self.checkboxesSelected removeAllObjects];
 }
@@ -112,6 +115,8 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
         _question = [decisionTree getQuestion:decisionTree.firstQuestionId];
 
         [self clearFavorite];
+    } else {
+        _questionSequence++;
     }
 
     [self updateUI];
@@ -182,6 +187,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
         ZooniverseClassificationQuestion *classificationQuestion = (ZooniverseClassificationQuestion *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationQuestion"
                                                                                                                                      inManagedObjectContext:[self managedObjectContext]];
         classificationQuestion.questionId = _question.questionId;
+        classificationQuestion.sequence = _questionSequence;
 
         ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
                                                                                                     inManagedObjectContext:[self managedObjectContext]];

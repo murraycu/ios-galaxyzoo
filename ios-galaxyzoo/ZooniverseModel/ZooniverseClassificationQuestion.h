@@ -2,7 +2,7 @@
 //  ZooniverseClassificationQuestion.h
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 17/05/2015.
+//  Created by Murray Cumming on 19/05/2015.
 //  Copyright (c) 2015 Murray Cumming. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 @interface ZooniverseClassificationQuestion : NSManagedObject
 
 @property (nonatomic, retain) NSString * questionId;
+@property (nonatomic) int16_t sequence;
 @property (nonatomic, retain) ZooniverseClassificationAnswer *answer;
 @property (nonatomic, retain) NSSet *checkboxes;
 @property (nonatomic, retain) ZooniverseClassification *classification;

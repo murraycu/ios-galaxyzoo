@@ -464,9 +464,20 @@ NSString * currentTimeAsIso8601(void)
         }
 
         //Add each answer and its checkboxes:
-        NSInteger sequence = 0;
-        for (ZooniverseClassificationQuestion *classificationQuestion in classification.classificationQuestions) {
-            //TODO: sequence:
+        NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence"
+                                                                            ascending:YES];
+        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortNameDescriptor, nil];
+        NSArray *sortedClassificationQuestions = [classification.classificationQuestions sortedArrayUsingDescriptors:sortDescriptors];
+
+
+
+        NSInteger maxSequence = 0;
+        for (ZooniverseClassificationQuestion *classificationQuestion in sortedClassificationQuestions) {
+            NSInteger sequence = classificationQuestion.sequence;
+            if (sequence > maxSequence) {
+                maxSequence = sequence;
+            }
+
             //The answer:
             ZooniverseClassificationAnswer *answer = classificationQuestion.answer;
             NSLog(@"debug: answer: %@", answer.answerId);
@@ -488,7 +499,7 @@ NSString * currentTimeAsIso8601(void)
         }
 
         NSString *userAgentKey = [NSString stringWithFormat:@"%@[%@]",
-                                 [ZooniverseClient getAnnotationPart:sequence],
+                                 [ZooniverseClient getAnnotationPart:(maxSequence + 1)],
                                  @"user_agent"];
         [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                       name:userAgentKey
@@ -510,6 +521,11 @@ NSString * currentTimeAsIso8601(void)
         //and ""application/x-www-form-urlencoded"
         [request setValue:@"application/x-www-form-urlencoded charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 
+        [request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+        [request setValue:@"Keep-Alive" forHTTPHeaderField:@"Connection"];
+
+
+
         NSString *authName = [AppDelegate loginUsername];
         NSString *authApiKey = [AppDelegate loginApiKey];
         if (authName && authApiKey) {
@@ -521,6 +537,8 @@ NSString * currentTimeAsIso8601(void)
 
         [ZooniverseHttpUtils setRequestContent:content
                                     forRequest:request];
+
+        //NSDictionary *debugHeaderFields = request.allHTTPHeaderFields;
 
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:self.uploadsQueue

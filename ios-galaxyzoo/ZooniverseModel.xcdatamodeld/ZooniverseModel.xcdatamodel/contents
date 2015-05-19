@@ -2,7 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ZooniverseClassification" representedClassName="ZooniverseClassification" syncable="YES">
         <attribute name="favorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <relationship name="classificationQuestions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ZooniverseClassificationQuestion" inverseName="classification" inverseEntity="ZooniverseClassificationQuestion" syncable="YES"/>
+        <relationship name="classificationQuestions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ZooniverseClassificationQuestion" inverseName="classification" inverseEntity="ZooniverseClassificationQuestion" syncable="YES"/>
         <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseSubject" inverseName="classification" inverseEntity="ZooniverseSubject" syncable="YES"/>
     </entity>
     <entity name="ZooniverseClassificationAnswer" representedClassName="ZooniverseClassificationAnswer" syncable="YES">
@@ -15,6 +15,7 @@
     </entity>
     <entity name="ZooniverseClassificationQuestion" representedClassName="ZooniverseClassificationQuestion" syncable="YES">
         <attribute name="questionId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="answer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseClassificationAnswer" inverseName="classificationQuestion" inverseEntity="ZooniverseClassificationAnswer" syncable="YES"/>
         <relationship name="checkboxes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ZooniverseClassificationCheckbox" inverseName="classificationQuestion" inverseEntity="ZooniverseClassificationCheckbox" syncable="YES"/>
         <relationship name="classification" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZooniverseClassification" inverseName="classificationQuestions" inverseEntity="ZooniverseClassification" syncable="YES"/>
@@ -48,7 +49,7 @@
         <element name="ZooniverseClassification" positionX="-63" positionY="54" width="128" height="90"/>
         <element name="ZooniverseClassificationAnswer" positionX="-243" positionY="0" width="128" height="75"/>
         <element name="ZooniverseClassificationCheckbox" positionX="-252" positionY="0" width="128" height="75"/>
+        <element name="ZooniverseClassificationQuestion" positionX="-252" positionY="27" width="128" height="120"/>
         <element name="ZooniverseSubject" positionX="-434" positionY="-120" width="128" height="315"/>
-        <element name="ZooniverseClassificationQuestion" positionX="-252" positionY="27" width="128" height="105"/>
     </elements>
 </model>
