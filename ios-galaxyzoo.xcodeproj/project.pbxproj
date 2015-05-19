@@ -88,6 +88,7 @@
 		F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */; };
 		F27ADB0B1B09DE7E00ADE133 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */; };
 		F29AC1401B0B21C300DD0D58 /* ZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */; };
+		F29AC1421B0B269C00DD0D58 /* TestZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */; };
 		F2BC86B61B02119100F84935 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BC86B51B02119100F84935 /* HelpViewController.m */; };
 		F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */; };
 		F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */; };
@@ -480,6 +481,7 @@
 		F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F29AC13E1B0B21C300DD0D58 /* ZooniverseHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseHttpUtils.h; path = client/ZooniverseHttpUtils.h; sourceTree = "<group>"; };
 		F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseHttpUtils.m; path = client/ZooniverseHttpUtils.m; sourceTree = "<group>"; };
+		F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZooniverseHttpUtils.m; sourceTree = "<group>"; };
 		F2BC86B41B02119100F84935 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		F2BC86B51B02119100F84935 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTree.m; path = DecisionTree/DecisionTree.m; sourceTree = "<group>"; };
@@ -868,6 +870,7 @@
 			children = (
 				F2D6FC8D1AFCA3F8002E3E15 /* Assets */,
 				F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */,
+				F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */,
 				F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */,
 				F21F87B71AF3657400C95B52 /* Supporting Files */,
 			);
@@ -1767,6 +1770,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29AC1421B0B269C00DD0D58 /* TestZooniverseHttpUtils.m in Sources */,
 				F21F87BA1AF3657400C95B52 /* ios_galaxyzooTests.m in Sources */,
 				F2D6FC8C1AFCA166002E3E15 /* TestDecisionTree.m in Sources */,
 			);
