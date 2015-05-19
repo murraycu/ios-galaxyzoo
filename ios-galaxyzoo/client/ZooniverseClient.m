@@ -23,6 +23,7 @@
 #import <RestKit/RestKit.h>
 
 static const NSUInteger MIN_CACHED_NOT_DONE = 5;
+static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
 
 @interface ZooniverseClient () <NSURLSessionDownloadDelegate> {
     NSURLSession *_session;
@@ -394,7 +395,7 @@ NSString * currentTimeAsIso8601(void)
 
 
 + (NSString *)getAnnotationPart:(NSInteger)sequence {
-    return [NSString stringWithFormat:@"classification[annotations][%ld]", (long)sequence];
+    return [NSString stringWithFormat:@"%@[annotations][%ld]", PARAM_PART_CLASSIFICATION, (long)sequence];
 }
 
 
@@ -453,8 +454,10 @@ NSString * currentTimeAsIso8601(void)
         //An array of ZooniverseNameValuePair:
         NSMutableArray *nameValuePairs = [[NSMutableArray alloc] init];
 
+        NSString *subjectKey = [NSString stringWithFormat:@"%@[subject_ids][]",
+                                PARAM_PART_CLASSIFICATION];;
         [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
-                                      name:@"[subject_ids][]"
+                                      name:subjectKey
                                      value:subjectId];
 
         if (subject.favorite) {
