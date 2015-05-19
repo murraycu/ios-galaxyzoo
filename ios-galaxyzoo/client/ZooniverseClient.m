@@ -519,10 +519,10 @@ NSString * currentTimeAsIso8601(void)
 
         //Note: I've also tried "application/x-www-form-urlencoded; charset=utf-8"
         //and ""application/x-www-form-urlencoded"
-        [request setValue:@"application/x-www-form-urlencoded charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 
-        [request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
-        [request setValue:@"Keep-Alive" forHTTPHeaderField:@"Connection"];
+        //[request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+        //[request setValue:@"Keep-Alive" forHTTPHeaderField:@"Connection"];
 
 
 
