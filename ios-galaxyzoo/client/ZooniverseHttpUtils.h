@@ -23,6 +23,8 @@
                                authApiKey:(NSString *)authApiKey;
 
 
++ (NSMutableURLRequest *)createURLRequest:(NSURL *)uri;
+
 + (void)setRequestContent:(NSString *)content
                forRequest:(NSMutableURLRequest *)request;
 

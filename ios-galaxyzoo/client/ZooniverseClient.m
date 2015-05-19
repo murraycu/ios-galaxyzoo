@@ -503,10 +503,8 @@ NSString * currentTimeAsIso8601(void)
         NSURL *postUploadUri = [NSURL URLWithString:postUploadUriStr];
 
 
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postUploadUri];
+        NSMutableURLRequest *request = [ZooniverseHttpUtils createURLRequest:postUploadUri];
         [request setHTTPMethod:@"POST"];
-        [request setValue:[Config userAgent]
-                   forHTTPHeaderField:@"User-Agent"];
 
         //Note: I've also tried "application/x-www-form-urlencoded; charset=utf-8"
         //and ""application/x-www-form-urlencoded"

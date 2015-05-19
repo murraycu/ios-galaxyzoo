@@ -105,10 +105,8 @@
 
     NSString *content = [ZooniverseHttpUtils generateContentForNameValuePairs:nameValuePairs];
 
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postLoginUri];
+    NSMutableURLRequest *request = [ZooniverseHttpUtils createURLRequest:postLoginUri];
     [request setHTTPMethod:@"POST"];
-    [request setValue:[Config userAgent]
-   forHTTPHeaderField:@"User-Agent"];
 
     //This breaks things, so the server doesn't accept our username and password:
     //[request setValue:@"application/x-www-form-urlencoded charset=utf-8"

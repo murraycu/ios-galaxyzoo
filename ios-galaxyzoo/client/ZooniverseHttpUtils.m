@@ -7,6 +7,7 @@
 //
 
 #import "ZooniverseHttpUtils.h"
+#import "Config.h"
 
 @implementation ZooniverseHttpUtils
 
@@ -50,6 +51,11 @@
     return [NSString stringWithFormat:@"Basic %@", encoded];
 }
 
++ (NSMutableURLRequest *)createURLRequest:(NSURL *)uri {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:uri];
+    [request setValue:[Config userAgent] forHTTPHeaderField:@"User-Agent"];
+    return request;
+}
 
 + (void)setRequestContent:(NSString *)content forRequest:(NSMutableURLRequest *)request {
     NSData* postData= [content dataUsingEncoding:NSUTF8StringEncoding];
