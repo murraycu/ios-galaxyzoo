@@ -494,18 +494,7 @@ NSString * currentTimeAsIso8601(void)
                                       name:userAgentKey
                                      value:[Config userAgent]];
 
-        //TODO: Put this somewhere reusable so LoginViewController can use it too.
-        NSMutableString *content;
-        for (ZooniverseNameValuePair *pair in nameValuePairs) {
-            NSString *str = [NSString stringWithFormat:@"%@=%@",
-                             pair.name, pair.value];
-            if (!content) {
-                content = [[ZooniverseHttpUtils urlEncodeValue:str] mutableCopy];
-            } else {
-                [content appendString:@"&"];
-                [content appendString:[ZooniverseHttpUtils urlEncodeValue:str]];
-            }
-        }
+        NSString *content = [ZooniverseHttpUtils generateContentForNameValuePairs:nameValuePairs];
 
         NSString *postUploadUriStr =
         [NSString stringWithFormat:@"%@workflows/%@/classifications",

@@ -17,6 +17,8 @@
                            name:(NSString *)name
                           value:(NSString *)value;
 
++ (NSString *) generateContentForNameValuePairs:(NSArray *)nameValuePairs;
+
 + (NSString *)generateAuthorizationHeader:(NSString *)authName
                                authApiKey:(NSString *)authApiKey;
 

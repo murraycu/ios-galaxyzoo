@@ -101,17 +101,7 @@
                                   name:@"password"
                                  value:self.textfieldPassword.text];
 
-    NSMutableString *content;
-    for (ZooniverseNameValuePair *pair in nameValuePairs) {
-        NSString *str = [NSString stringWithFormat:@"%@=%@",
-                         pair.name, pair.value];
-        if (!content) {
-            content = [str mutableCopy];
-        } else {
-            [content appendString:@"&"];
-            [content appendString:str];
-        }
-    }
+    NSString *content = [ZooniverseHttpUtils generateContentForNameValuePairs:nameValuePairs];
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:postLoginUri];
     [request setHTTPMethod:@"POST"];

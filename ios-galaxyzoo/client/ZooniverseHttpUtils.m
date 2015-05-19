@@ -23,6 +23,24 @@
     [array addObject:pair];
 }
 
++ (NSString *) generateContentForNameValuePairs:(NSArray *)nameValuePairs {
+
+    //TODO: Put this somewhere reusable so LoginViewController can use it too.
+    NSMutableString *content;
+    for (ZooniverseNameValuePair *pair in nameValuePairs) {
+        NSString *str = [NSString stringWithFormat:@"%@=%@",
+                         pair.name, pair.value];
+        if (!content) {
+            content = [[ZooniverseHttpUtils urlEncodeValue:str] mutableCopy];
+        } else {
+            [content appendString:@"&"];
+            [content appendString:[ZooniverseHttpUtils urlEncodeValue:str]];
+        }
+    }
+
+    return content;
+}
+
 + (NSString *)generateAuthorizationHeader:(NSString *)authName
                                authApiKey:(NSString *)authApiKey {
     NSString *str = [NSString stringWithFormat:@"%@:%@", authName, authApiKey];
