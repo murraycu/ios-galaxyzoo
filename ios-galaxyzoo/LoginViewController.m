@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "client/ZooniverseNameValuePair.h"
+#import "client/ZooniverseHttpUtils.h"
 #import "Config.h"
 
 @interface LoginViewController ()
@@ -58,19 +59,6 @@
     }
 }
 
-+ (NSString *)urlEncodeValue:(NSString *)str
-{
-    return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-}
-
-+ (void)addNameValuePair:(NSMutableArray *)array
-                    name:(NSString *)name
-                   value:(NSString *)value {
-    ZooniverseNameValuePair *pair = [[ZooniverseNameValuePair alloc] init:name
-                                                                    value:value];
-    [array addObject:pair];
-}
-
 - (void)parseLoginResponseData:(NSData*)data
 {
     NSError *error;
@@ -106,10 +94,10 @@
     //An array of ZooniverseNameValuePair:
     NSMutableArray *nameValuePairs = [[NSMutableArray alloc] init];
 
-    [LoginViewController addNameValuePair:nameValuePairs
+    [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                   name:@"username"
                                  value:self.textfieldUsername.text];
-    [LoginViewController addNameValuePair:nameValuePairs
+    [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                   name:@"password"
                                  value:self.textfieldPassword.text];
 

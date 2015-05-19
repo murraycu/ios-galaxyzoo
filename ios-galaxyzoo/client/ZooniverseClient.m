@@ -15,6 +15,7 @@
 #import "ZooniverseClassificationQuestion.h"
 #import "ZooniverseClassificationAnswer.h"
 #import "ZooniverseClassificationCheckbox.h"
+#import "ZooniverseHttpUtils.h"
 #import "Config.h"
 #import "ConfigSubjectGroup.h"
 #import "AppDelegate.h"
@@ -390,31 +391,13 @@ NSString * currentTimeAsIso8601(void)
                              }];
 }
 
-+ (NSString *)urlEncodeValue:(NSString *)str
-{
-    return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-}
 
-+ (void)addNameValuePair:(NSMutableArray *)array
-                     name:(NSString *)name
-                    value:(NSString *)value {
-    ZooniverseNameValuePair *pair = [[ZooniverseNameValuePair alloc] init:name
-                                                                    value:value];
-    [array addObject:pair];
-}
 
 + (NSString *)getAnnotationPart:(NSInteger)sequence {
     return [NSString stringWithFormat:@"classification[annotations][%ld]", (long)sequence];
 }
 
-+ (NSString *)generateAuthorizationHeader:(NSString *)authName
-                               authApiKey:(NSString *)authApiKey {
-    NSString *str = [NSString stringWithFormat:@"%@:%@", authName, authApiKey];
-    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
 
-    NSString *encoded = [data base64EncodedStringWithOptions:0];
-    return [NSString stringWithFormat:@"Basic %@", encoded];
-}
 
 - (void)parseUploadResponse:(NSArray *)array {
     NSHTTPURLResponse *response = array[0];
@@ -470,12 +453,12 @@ NSString * currentTimeAsIso8601(void)
         //An array of ZooniverseNameValuePair:
         NSMutableArray *nameValuePairs = [[NSMutableArray alloc] init];
 
-        [ZooniverseClient addNameValuePair:nameValuePairs
+        [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                       name:@"[subject_ids][]"
                                      value:subjectId];
 
         if (subject.favorite) {
-            [ZooniverseClient addNameValuePair:nameValuePairs
+            [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                               name:@"[favorite][]"
                              value:@"true"];
         }
@@ -490,13 +473,13 @@ NSString * currentTimeAsIso8601(void)
             NSString *questionKey = [NSString stringWithFormat:@"%@[%@]",
                               [ZooniverseClient getAnnotationPart:sequence],
                               classificationQuestion.questionId];
-            [ZooniverseClient addNameValuePair:nameValuePairs
+            [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                           name:questionKey
                                          value:answer.answerId];
 
             //Add any checkboxes that were selected with the answer:
             for (ZooniverseClassificationCheckbox *checkbox in classificationQuestion.checkboxes) {
-                [ZooniverseClient addNameValuePair:nameValuePairs
+                [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                               name:questionKey
                                              value:checkbox.checkboxId];
             }
@@ -507,7 +490,7 @@ NSString * currentTimeAsIso8601(void)
         NSString *userAgentKey = [NSString stringWithFormat:@"%@[%@]",
                                  [ZooniverseClient getAnnotationPart:sequence],
                                  @"user_agent"];
-        [ZooniverseClient addNameValuePair:nameValuePairs
+        [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                       name:userAgentKey
                                      value:[Config userAgent]];
 
@@ -517,10 +500,10 @@ NSString * currentTimeAsIso8601(void)
             NSString *str = [NSString stringWithFormat:@"%@=%@",
                              pair.name, pair.value];
             if (!content) {
-                content = [[ZooniverseClient urlEncodeValue:str] mutableCopy];
+                content = [[ZooniverseHttpUtils urlEncodeValue:str] mutableCopy];
             } else {
                 [content appendString:@"&"];
-                [content appendString:[ZooniverseClient urlEncodeValue:str]];
+                [content appendString:[ZooniverseHttpUtils urlEncodeValue:str]];
             }
         }
 
@@ -543,7 +526,7 @@ NSString * currentTimeAsIso8601(void)
         NSString *authName = [AppDelegate loginUsername];
         NSString *authApiKey = [AppDelegate loginApiKey];
         if (authName && authApiKey) {
-            NSString *authHeader = [ZooniverseClient generateAuthorizationHeader:authName
+            NSString *authHeader = [ZooniverseHttpUtils generateAuthorizationHeader:authName
                                                                       authApiKey:authApiKey];
             [request setValue:authHeader
            forHTTPHeaderField:@"Authorization"];
