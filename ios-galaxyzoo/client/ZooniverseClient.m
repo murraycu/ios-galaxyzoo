@@ -259,6 +259,37 @@ NSString * currentTimeAsIso8601(void)
         return nil;
     }
 
+    if ([ZooniverseClient downloadedImageExistsAlready:strUrlRemote]) {
+        //Don't bother downloading it again
+        //We can assume that it has fully downloaded because it has been moved to its
+        //permanent location.
+        //For some reason the subject has not been marked, so do that now.
+        //This can happen when the image's background download tasks completes while the
+        //application is closed - when the app restarts then didFinishDownloadingToURL will
+        //be called but the task will no longer be in our list of downloads in progress,
+        //so we wouldn't be able to know what subject (and imageLocatino) it's for.
+        NSLog(@"Found existing image download for uri: %@", strUrlRemote);
+        switch (imageLocation) {
+            case ImageLocationStandard:
+                subject.locationStandardDownloaded = true;
+                break;
+            case ImageLocationInverted:
+                subject.locationInvertedDownloaded = true;
+                break;
+            case ImageLocationThumbnail:
+                subject.locationThumbnailDownloaded = true;
+                break;
+            default:
+                break;
+        }
+
+        NSError *error = nil;
+        [self.managedObjectContext save:&error];
+
+        //TODO: Instead check its validity whenever we try to use it in a UIImageView.
+        return nil;
+    }
+
     NSURL *urlRemote = [[NSURL alloc] initWithString:strUrlRemote];
     NSURLRequest *request = [NSURLRequest requestWithURL:urlRemote];
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request];
@@ -662,7 +693,7 @@ NSString * currentTimeAsIso8601(void)
         //Maybe this is a background task that has been resumed after the app has restarted,
         //but which we no longer have any information about, so we cannot mark the
         //relevant ZooniverseSubject as downloaded.
-        //TODO: Find a way to use these downloaded files.
+        //This will be used later when we detect it in the downloadImage method.
         NSLog(@"onImageDownloadedAndMoved: set is nil.");
         return;
     }
@@ -679,6 +710,27 @@ NSString * currentTimeAsIso8601(void)
                          set:set];
 }
 
++ (BOOL) downloadedImageExistsAlready:(NSString*)remoteUrlStr {
+    NSURL *remoteUri = [NSURL URLWithString:remoteUrlStr];
+    NSString *basename = remoteUri.lastPathComponent;
+    NSString *imagesDir = [ZooniverseClient imagesDir];
+    NSString *permanentPath = [imagesDir stringByAppendingFormat:@"/%@", basename];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    return [fileManager fileExistsAtPath:permanentPath];
+}
+
++ (NSString *)imagesDir {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    // Create the directory if necessary:
+    NSURL *urlDocsDir = [[fileManager URLsForDirectory:NSCachesDirectory
+                                             inDomains:NSUserDomainMask] lastObject];
+
+    NSString *docsDir = urlDocsDir.path;
+    return [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"];
+}
+
 #pragma mark - NSURLSessionDownloadDelegate
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
@@ -692,12 +744,9 @@ NSString * currentTimeAsIso8601(void)
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // Create the directory if necessary:
-    NSURL *urlDocsDir = [[fileManager URLsForDirectory:NSCachesDirectory
-                                            inDomains:NSUserDomainMask] lastObject];
-
-    NSString *docsDir = urlDocsDir.path;
-    NSString *appDir = [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"]; //TODO
+    NSString *appDir = [ZooniverseClient imagesDir];
     NSError *error = nil;
+    //TODO: Checking ,instead of responding, allows a race condition.
     if(![fileManager fileExistsAtPath:appDir])
     {
         if(![fileManager createDirectoryAtPath:appDir
