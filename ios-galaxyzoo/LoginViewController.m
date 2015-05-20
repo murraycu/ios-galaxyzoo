@@ -47,7 +47,7 @@
     NSURL *url = [NSURL URLWithString:[Config forgotPasswordUri]];
 
     if (![[UIApplication sharedApplication] openURL:url]) {
-        NSLog(@"%@%@",@"Failed to open url:",[url description]);
+        NSLog(@"Failed to open url: %@", [url description]);
     }
 }
 
@@ -55,7 +55,7 @@
     NSURL *url = [NSURL URLWithString:[Config registerUri]];
 
     if (![[UIApplication sharedApplication] openURL:url]) {
-        NSLog(@"%@%@",@"Failed to open url:",[url description]);
+        NSLog(@"Failed to open url: %@", [url description]);
     }
 }
 
@@ -66,7 +66,7 @@
                                                          options:kNilOptions
                                                            error:&error];
     if (error) {
-        NSLog(@"Error parsing JSON.");
+        NSLog(@"Error parsing JSON: %@", [error description]);
         return;
     }
 
