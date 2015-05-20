@@ -186,6 +186,14 @@ NSString * currentTimeAsIso8601(void)
     return iso8601String;
 }
 
+- (void)saveCoreData
+{
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Could not save core data: error: %@", [error description]);
+    }
+}
+
 - (void)onImageDownloaded:(ZooniverseSubject*)subject
         imageLocation:(ImageLocation)imageLocation
                 localFile:(NSString*)localFile
@@ -209,9 +217,7 @@ NSString * currentTimeAsIso8601(void)
             break;
     }
 
-    NSError *error = nil;
-    [self.managedObjectContext save:&error];
-    //TODO: Check error
+    [self saveCoreData];
 }
 
 - (NSString *)getTaskIdAsString:(NSURLSessionDownloadTask *)task
@@ -283,8 +289,7 @@ NSString * currentTimeAsIso8601(void)
                 break;
         }
 
-        NSError *error = nil;
-        [self.managedObjectContext save:&error];
+        [self saveCoreData];
 
         //TODO: Instead check its validity whenever we try to use it in a UIImageView.
         return nil;
@@ -440,9 +445,7 @@ NSString * currentTimeAsIso8601(void)
         subject.uploaded = YES;
 
         //Save the ZooniverseClassification and the Subject to disk:
-        NSError *error = nil;
-        [self.managedObjectContext save:&error];
-        //TODO: Check error.
+        [self saveCoreData];
     } else {
         NSInteger statusCode = response.statusCode;
         NSLog(@"debug: unexpected upload response for subject=%@: %ld", subject.subjectId,
@@ -816,9 +819,7 @@ NSString * currentTimeAsIso8601(void)
     //Save the subject's changes to disk:
     [self.managedObjectContext deleteObject:subject];
 
-    NSError *error = nil;
-    [self.managedObjectContext save:&error];
-    //TODO: Check error
+    [self saveCoreData];
 }
 
 @end
