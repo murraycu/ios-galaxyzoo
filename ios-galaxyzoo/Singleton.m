@@ -40,7 +40,8 @@ static Singleton *sharedSingleton = nil;    // static instance variable
             continue;
         }
 
-        DecisionTree *tree = [[DecisionTree alloc] init:url];
+        DecisionTree *tree = [[DecisionTree alloc] init:url
+                              withDiscussQuestion:subjectGroup.discussQuestion];
         [_decisionTrees setObject:tree
                            forKey:groupId];
     }

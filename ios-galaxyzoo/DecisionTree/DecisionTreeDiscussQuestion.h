@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DecisionTreeDiscussQuestion : NSObject
+@interface DecisionTreeDiscussQuestion : NSObject <NSCopying>
 
 @property (nonatomic, copy) NSString *questionId;
 @property (nonatomic, copy) NSString *yesAnswerId;

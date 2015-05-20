@@ -16,13 +16,18 @@
     //Make this writable, so we can change it in our implementation:
 }
 
+//We redeclare these properties here, without readonly,
+//so we can set them at least once;
 @property (nonatomic, copy) NSString *firstQuestionId;
+@property (nonatomic, copy) DecisionTreeDiscussQuestion *discussQuestion;
 
 @end
 
 @implementation DecisionTree
 
-- (DecisionTree *)init:(NSURL *)url {
+- (DecisionTree *)init:(NSURL *)url
+   withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
+{
 
     self = [super init];
 
@@ -37,6 +42,8 @@
     if(![parser parse]) {
         return nil;
     }
+
+    self.discussQuestion = discussQuestion;
 
     return self;
 }

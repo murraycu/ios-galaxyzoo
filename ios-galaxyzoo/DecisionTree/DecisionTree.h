@@ -8,13 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "DecisionTreeQuestion.h"
+#import "DecisionTreeDiscussQuestion.h"
 
 //TODO: Separate the parser?
 @interface DecisionTree : NSObject
 
-- (DecisionTree *)init:(NSURL *)url;
+- (DecisionTree *)init:(NSURL *)url
+   withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
 
 @property (nonatomic, copy, readonly) NSString *firstQuestionId;
+@property (nonatomic, copy, readonly) DecisionTreeDiscussQuestion *discussQuestion;
+
+
 
 //TODO: Create a read-only property instead?
 - (NSArray *)getAllQuestions;

@@ -32,7 +32,8 @@
                                          withExtension:nil];
     XCTAssert(url != nil, @"Pass");
 
-    DecisionTree *result = [[DecisionTree alloc] init:url];
+    DecisionTree *result = [[DecisionTree alloc] init:url
+                            withDiscussQuestion:nil];
     XCTAssert(result != nil, @"Pass");
 
     return result;

@@ -19,4 +19,15 @@
 
     return self;
 }
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    DecisionTreeDiscussQuestion *copy = [[[self class] allocWithZone: zone] init];
+    copy.questionId = self.questionId;
+    copy.yesAnswerId = self.yesAnswerId;
+    copy.noAnswerId = self.noAnswerId;
+
+    return copy;
+}
+
 @end
