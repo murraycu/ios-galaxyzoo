@@ -683,8 +683,12 @@ NSString * currentTimeAsIso8601(void)
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
-    NSURLResponse *response = [downloadTask response];
+    //Normally we would do any work in the main thread via performSelectorOnMainThread(),
+    //but, according to the documentation, we must first move the file to its permanent location.
+
     //TODO: Check response.
+    NSURLResponse *response = downloadTask.response;
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // Create the directory if necessary:
@@ -706,9 +710,17 @@ NSString * currentTimeAsIso8601(void)
 
     NSString *permanentPath;
     if(!error) {
-        // Build a local filepath based on the suggestion in the response:
-        NSString *suggestedFilename = [response suggestedFilename];
-        permanentPath = [appDir stringByAppendingFormat:@"/%@", suggestedFilename];
+        // Build a local filepath.
+        // We ignore the suggested filename in [response suggestedFilename]
+        // because we want to identify the files later by their name only.
+        NSString *basename = response.URL.lastPathComponent;
+        if (basename.length == 0) {
+            //Fall back to the suggested name in this very unlikely case:
+            NSLog(@"didFinishDownloadingToURL: Falling back to suggested local filename.");
+            basename = [response suggestedFilename];
+
+        }
+        permanentPath = [appDir stringByAppendingFormat:@"/%@", basename];
 
         // Delete the file if it already exists:
         if([fileManager fileExistsAtPath:permanentPath])
