@@ -87,4 +87,15 @@
     }
 }
 
+
+- (BOOL)isDiscussQuestion:(NSString *)questionId {
+    return [self.discussQuestion.questionId isEqualToString:questionId];
+}
+
+- (BOOL)isDiscussQuestionYesAnswer:(NSString *)answerId {
+    return [self.discussQuestion.yesAnswerId isEqualToString:answerId];
+}
+
+
+
 @end

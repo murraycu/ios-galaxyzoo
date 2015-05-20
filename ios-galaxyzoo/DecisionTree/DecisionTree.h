@@ -29,4 +29,8 @@
 - (DecisionTreeQuestion *) getNextQuestion:(NSString *)questionId forAnswer:(NSString *)answerId;
 
 - (void)addQuestion:(DecisionTreeQuestion *)question;
+
+- (BOOL)isDiscussQuestion:(NSString *)questionId;
+- (BOOL)isDiscussQuestionYesAnswer:(NSString *)answerId;
+
 @end

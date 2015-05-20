@@ -17,6 +17,7 @@
 #import "ZooniverseModel/ZooniverseClassificationAnswer.h"
 #import "ZooniverseModel/ZooniverseClassificationCheckbox.h"
 #import "ZooniverseModel/ZooniverseSubject.h"
+#import "Utils.h"
 #import <UIKit/UIKit.h>
 
 #import "Singleton.h"
@@ -207,6 +208,13 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
         [self saveAllCheckboxes:classificationQuestion];
 
         classificationQuestion.classification = _classificationInProgress;
+
+        //Handle the special Do You Want To Discuss this question:
+        DecisionTree *decisionTree = [self getDecisionTree];
+        if ([decisionTree isDiscussQuestion:_question.questionId] &&
+            [decisionTree isDiscussQuestionYesAnswer:answer.answerId]) {
+            [Utils openDiscussionPage:self.subject.zooniverseId];
+        }
 
         [self showNextQuestion:_question.questionId
                       answerId:answer.answerId];

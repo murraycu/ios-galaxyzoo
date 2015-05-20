@@ -13,4 +13,6 @@
 
 + (void)fetchRequestSortByDateTimeRetrieved:(NSFetchRequest *)fetchRequest;
 
++ (void)openDiscussionPage:(NSString *)zooniverseId;
+
 @end

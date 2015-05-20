@@ -17,10 +17,12 @@
 + (NSDictionary *)subjectGroups; //Of Group ID to ConfigSubjectGroup.
 
 + (NSString *)baseUrl;
+
 + (NSString *)userAgent;
 
 + (NSString *)forgotPasswordUri;
 + (NSString *)registerUri;
++ (NSString *)talkUri;
 
 
 
