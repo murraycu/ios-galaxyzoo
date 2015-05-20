@@ -96,6 +96,8 @@
     return [self.discussQuestion.yesAnswerId isEqualToString:answerId];
 }
 
-
+- (NSString *)discussQuestionNoAnswerId {
+    return self.discussQuestion.noAnswerId;
+}
 
 @end

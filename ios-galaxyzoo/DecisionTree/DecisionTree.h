@@ -32,5 +32,6 @@
 
 - (BOOL)isDiscussQuestion:(NSString *)questionId;
 - (BOOL)isDiscussQuestionYesAnswer:(NSString *)answerId;
+- (NSString *)discussQuestionNoAnswerId;
 
 @end

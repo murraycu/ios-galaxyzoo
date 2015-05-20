@@ -117,6 +117,20 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
         [self clearFavorite];
     } else {
+        //If the user doesn't want to see the "Do you want to discuss this?" question,
+        //just skip it:
+        if ([decisionTree isDiscussQuestion:_question.questionId] &&
+            ![AppDelegate preferenceOfferDiscussion]) {
+
+            //Add a No for the discussion questin without even showing the question:
+            NSString *noAnswerId = [decisionTree discussQuestionNoAnswerId];
+            [self storeAnswer:noAnswerId];
+
+            [self showNextQuestion:_question.questionId
+                          answerId:noAnswerId];
+            return;
+        }
+
         _questionSequence++;
     }
 
@@ -163,6 +177,33 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     return appDelegate.managedObjectModel;
 }
 
+- (void)storeAnswer:(NSString *)answerId
+{
+    ZooniverseClassificationQuestion *classificationQuestion = (ZooniverseClassificationQuestion *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationQuestion"
+                                                                                                                                 inManagedObjectContext:[self managedObjectContext]];
+    classificationQuestion.questionId = _question.questionId;
+    classificationQuestion.sequence = _questionSequence;
+
+    ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
+                                                                                                                           inManagedObjectContext:[self managedObjectContext]];
+
+    // This results in an exception:
+    // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
+    // apparently because NSOrderedSet is not derived from NSSet.
+    // This seems to be a well-known problem with ordered to-many relationships in Core Data.
+    // See http://stackoverflow.com/questions/15993619/coredata-to-many-add-error
+    // and http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
+    //[classificationQuestion addAnswersObject:classificationAnswer];
+    //This is the simple workaround:
+    classificationQuestion.answer = classificationAnswer;
+
+    classificationAnswer.answerId = answerId;
+
+    [self saveAllCheckboxes:classificationQuestion];
+
+    classificationQuestion.classification = _classificationInProgress;
+}
+
 -(void)onAnswerButtonClick:(UIView*)clickedButton
 {
     NSInteger i = clickedButton.tag;
@@ -185,29 +226,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
         DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:answerIndex];
         NSLog(@"Answer clicked:%@", answer.text);
 
-        ZooniverseClassificationQuestion *classificationQuestion = (ZooniverseClassificationQuestion *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationQuestion"
-                                                                                                                                     inManagedObjectContext:[self managedObjectContext]];
-        classificationQuestion.questionId = _question.questionId;
-        classificationQuestion.sequence = _questionSequence;
-
-        ZooniverseClassificationAnswer *classificationAnswer = (ZooniverseClassificationAnswer *)[NSEntityDescription insertNewObjectForEntityForName:@"ZooniverseClassificationAnswer"
-                                                                                                    inManagedObjectContext:[self managedObjectContext]];
-
-        // This results in an exception:
-        // "'NSInvalidArgumentException', reason: '*** -[NSSet intersectsSet:]: set argument is not an NSSet'"
-        // apparently because NSOrderedSet is not derived from NSSet.
-        // This seems to be a well-known problem with ordered to-many relationships in Core Data.
-        // See http://stackoverflow.com/questions/15993619/coredata-to-many-add-error
-        // and http://stackoverflow.com/questions/7385439/exception-thrown-in-nsorderedset-generated-accessors
-        //[classificationQuestion addAnswersObject:classificationAnswer];
-        //This is the simple workaround:
-        classificationQuestion.answer = classificationAnswer;
-
-        classificationAnswer.answerId = answer.answerId;
-
-        [self saveAllCheckboxes:classificationQuestion];
-
-        classificationQuestion.classification = _classificationInProgress;
+        [self storeAnswer:answer.answerId];
 
         //Handle the special Do You Want To Discuss this question:
         DecisionTree *decisionTree = [self getDecisionTree];
