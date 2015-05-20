@@ -73,6 +73,7 @@
 		F24742C41B0B5927000FD3C7 /* ZooniverseClassificationQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742C31B0B5927000FD3C7 /* ZooniverseClassificationQuestion.m */; };
 		F24742C71B0B5927000FD3C7 /* ZooniverseClassificationCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742C61B0B5927000FD3C7 /* ZooniverseClassificationCheckbox.m */; };
 		F24742CA1B0B5927000FD3C7 /* ZooniverseClassificationAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742C91B0B5927000FD3C7 /* ZooniverseClassificationAnswer.m */; };
+		F24742CC1B0C6F0D000FD3C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */; };
 		F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */; };
 		F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296E1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m */; };
 		F24829741AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829731AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m */; };
@@ -453,6 +454,7 @@
 		F24742C61B0B5927000FD3C7 /* ZooniverseClassificationCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClassificationCheckbox.m; path = ZooniverseModel/ZooniverseClassificationCheckbox.m; sourceTree = "<group>"; };
 		F24742C81B0B5927000FD3C7 /* ZooniverseClassificationAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClassificationAnswer.h; path = ZooniverseModel/ZooniverseClassificationAnswer.h; sourceTree = "<group>"; };
 		F24742C91B0B5927000FD3C7 /* ZooniverseClassificationAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClassificationAnswer.m; path = ZooniverseModel/ZooniverseClassificationAnswer.m; sourceTree = "<group>"; };
+		F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F24829691AF754D60060D9B0 /* DecisionTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTree.h; path = DecisionTree/DecisionTree.h; sourceTree = "<group>"; };
 		F248296B1AF754D60060D9B0 /* DecisionTreeQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeQuestion.h; path = DecisionTree/DecisionTreeQuestion.h; sourceTree = "<group>"; };
 		F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeQuestion.m; path = DecisionTree/DecisionTreeQuestion.m; sourceTree = "<group>"; };
@@ -829,12 +831,12 @@
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
 				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
 				F2D6FEBB1B00B3F9002E3E15 /* ListCollectionViewCell.h */,
-				F27ADB091B09DE7E00ADE133 /* LoginViewController.h */,
-				F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */,
 				F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */,
 				F21739FB1B03993700C1F947 /* ListCollectionViewCellView.xib */,
 				F2D6FEB61B00A3D0002E3E15 /* ListViewController.h */,
 				F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */,
+				F27ADB091B09DE7E00ADE133 /* LoginViewController.h */,
+				F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */,
 				F21F87A71AF3657400C95B52 /* Main.storyboard */,
 				F21739FF1B0399D600C1F947 /* QuestionAnswerButton.h */,
 				F2173A001B0399D600C1F947 /* QuestionAnswerButton.m */,
@@ -843,6 +845,7 @@
 				F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */,
 				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
 				F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */,
+				F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */,
 				F24829801AF759FD0060D9B0 /* Singleton.h */,
 				F24829811AF759FD0060D9B0 /* Singleton.m */,
 				F213F7EF1B033DAB00CAB635 /* SubjectViewController.h */,
@@ -1500,6 +1503,7 @@
 				F2D6FE391AFD44D3002E3E15 /* icon_goods_full-18_x-0_0 in Resources */,
 				F2D6FDF01AFD44D3002E3E15 /* icon_goods_full-3_a-0_0 in Resources */,
 				F2D6FE491AFD44D3002E3E15 /* icon_merger in Resources */,
+				F24742CC1B0C6F0D000FD3C7 /* Settings.bundle in Resources */,
 				F2D6FDB31AFD44D3002E3E15 /* icon_candels-9_a-1_0 in Resources */,
 				F2D6FE271AFD44D3002E3E15 /* icon_goods_full-13_a-2_1 in Resources */,
 				F2D6FE301AFD44D3002E3E15 /* icon_goods_full-14_a-4_1 in Resources */,

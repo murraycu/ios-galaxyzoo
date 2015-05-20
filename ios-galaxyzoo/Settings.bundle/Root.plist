@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Download in advance</string>
+			<key>Key</key>
+			<string>preferenceDownloadInAdvance</string>
+			<key>DefaultValue</key>
+			<integer>10</integer>
+			<key>Titles</key>
+			<array>
+				<string>5 subjects</string>
+				<string>10 subjects</string>
+				<string>20 subjects</string>
+				<string>50 subjects</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>5</integer>
+				<integer>10</integer>
+				<integer>20</integer>
+				<integer>50</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Keep</string>
+			<key>Key</key>
+			<string>preferenceKeep</string>
+			<key>DefaultValue</key>
+			<integer>50</integer>
+			<key>Titles</key>
+			<array>
+				<string>5 classified subjects</string>
+				<string>10 classified subjects</string>
+				<string>20 classified subjects</string>
+				<string>50 classified subjects</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>5</integer>
+				<integer>10</integer>
+				<integer>20</integer>
+				<integer>50</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Offer Discussion</string>
+			<key>Key</key>
+			<string>preferenceOfferDiscussion</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Download via Wi-Fi only</string>
+			<key>Key</key>
+			<string>preferenceWiFiOnly</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>
