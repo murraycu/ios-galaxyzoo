@@ -22,6 +22,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+    // Register the preference defaults early:
+    [self registerDefaultsFromSettingsBundle];
+
     //Regularly sync with with server:
     [NSTimer scheduledTimerWithTimeInterval:10.0
                                      target:self
@@ -30,6 +33,34 @@
                                     repeats:YES];
 
     return YES;
+}
+
+- (void)registerDefaultsFromSettingsBundle {
+    //Get the default values from the .plist file and tell the app to use them.
+    //See http://stackoverflow.com/a/510329/1123654
+    //TODO: Surely there's a simpler way?
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle) {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if (key) {
+            NSObject *object = [prefSpecification objectForKey:@"DefaultValue"];
+            if (object) {
+                [defaultsToRegister setObject:object
+                                       forKey:key];
+            }
+        }
+    }
+
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -270,6 +301,22 @@ static NSString *const kKeyChainKeyApiKey = @"api_key";
 
     return [SSKeychain passwordForService:kKeyChainServiceName
                                   account:username];
+}
+
++ (NSInteger) preferenceDownloadInAdvance {
+    return[[NSUserDefaults standardUserDefaults] integerForKey:@"preferenceDownloadInAdvance"];
+}
+
++ (NSInteger) preferenceKeep {
+    return[[NSUserDefaults standardUserDefaults] integerForKey:@"preferenceKeep"];
+}
+
++ (BOOL) preferenceOfferDiscussion {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"preferenceOfferDiscussion"];
+}
+
++ (BOOL) preferenceWiFiOnly {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"preferenceWiFiOnly"];
 }
 
 @end

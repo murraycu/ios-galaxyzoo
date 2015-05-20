@@ -31,5 +31,10 @@
 + (NSString *)loginUsername;
 + (NSString *)loginApiKey;
 
++ (NSInteger) preferenceDownloadInAdvance;
++ (NSInteger) preferenceKeep;
++ (BOOL) preferenceOfferDiscussion;
++ (BOOL) preferenceWiFiOnly;
+
 @end
 
