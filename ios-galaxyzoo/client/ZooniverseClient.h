@@ -27,9 +27,7 @@ typedef void (^ ZooniverseClientDoneBlock)();
 
 - (void)downloadMinimumSubects:(ZooniverseClientDoneBlock)callbackBlock;
 - (void)downloadMissingImages:(ZooniverseClientDoneBlock)callbackBlock;
-- (void)uploadOutstandingClassifications;
-- (void)
-
+- (void)uploadOutstandingClassifications:(ZooniverseClientDoneBlock)callbackBlock;
 
 - (void)abandonSubject:(ZooniverseSubject *)subject;
 

@@ -232,7 +232,15 @@
     [client downloadMinimumSubects:^ {
         [self onDownloadMinimumSubjectsDone];
     }];
+}
 
+- (void)onUploadOutstandingClassificationsDone {
+    //Download any subjects' missing image,
+    //and only then download extra subjects:
+    ZooniverseClient *client = self.zooniverseClient;
+    [client downloadMissingImages:^ {
+        [self onDownloadMissingImagesDone];
+    }];
 }
 
 - (void)doRegularTasks {
@@ -244,12 +252,8 @@
     self.regularWorkInProgress = YES;
 
     ZooniverseClient *client = self.zooniverseClient;
-    [client uploadOutstandingClassifications];
-
-    //Download any subjects' missing image,
-    //and only then download extra subjects:
-    [client downloadMissingImages:^ {
-        [self onDownloadMissingImagesDone];
+    [client uploadOutstandingClassifications:^ {
+        [self onUploadOutstandingClassificationsDone];
     }];
 }
 

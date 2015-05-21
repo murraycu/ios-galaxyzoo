@@ -31,8 +31,9 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
     NSMutableDictionary *_dictDownloadTasks;
 
     NSMutableSet *_imageDownloadsInProgress; //Of NSString URLs.
-    NSMutableSet *_classificationUploadsInProgress; //Of NSString Subject IDs.
 
+    NSMutableSet *_classificationUploadsInProgress; //Of NSString Subject IDs.
+    ZooniverseClientDoneBlock _callbackBlockUploads; //TODO: Have one per set of uploads.
 }
 
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
@@ -453,9 +454,136 @@ NSString * currentTimeAsIso8601(void)
 
     [_classificationUploadsInProgress removeObject:subject.subjectId];
 
+    if (_classificationUploadsInProgress.count == 0) {
+        [_callbackBlockUploads invoke];
+    }
+
 }
 
-- (void)uploadOutstandingClassifications {
+- (void)uploadClassificationForSubject:(ZooniverseSubject *)subject {
+    NSString *subjectId = subject.subjectId;
+    
+    //If the upload for this subject is in progress then ignore it.
+    if ([_classificationUploadsInProgress containsObject:subjectId]) {
+        NSLog(@"uploadClassifications: classification upload already in progress: %@", subjectId);
+        return;
+    } else {
+        [_classificationUploadsInProgress addObject:subjectId];
+    }
+    
+    ZooniverseClassification *classification = subject.classification;
+    
+    //An array of ZooniverseNameValuePair:
+    NSMutableArray *nameValuePairs = [[NSMutableArray alloc] init];
+    
+    NSString *subjectKey = [NSString stringWithFormat:@"%@[subject_ids][]",
+                            PARAM_PART_CLASSIFICATION];;
+    [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
+                                            name:subjectKey
+                                           value:subjectId];
+    
+    if (subject.favorite) {
+        [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
+                                                name:@"[favorite][]"
+                                               value:@"true"];
+    }
+    
+    //Add each answer and its checkboxes:
+    NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence"
+                                                                       ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortNameDescriptor, nil];
+    NSArray *sortedClassificationQuestions = [classification.classificationQuestions sortedArrayUsingDescriptors:sortDescriptors];
+    
+    
+    
+    NSInteger maxSequence = 0;
+    for (ZooniverseClassificationQuestion *classificationQuestion in sortedClassificationQuestions) {
+        NSInteger sequence = classificationQuestion.sequence;
+        if (sequence > maxSequence) {
+            maxSequence = sequence;
+        }
+        
+        //The answer:
+        ZooniverseClassificationAnswer *answer = classificationQuestion.answer;
+        NSLog(@"debug: answer: %@", answer.answerId);
+        NSString *questionKey = [NSString stringWithFormat:@"%@[%@]",
+                                 [ZooniverseClient getAnnotationPart:sequence],
+                                 classificationQuestion.questionId];
+        [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
+                                                name:questionKey
+                                               value:answer.answerId];
+        
+        //Add any checkboxes that were selected with the answer:
+        for (ZooniverseClassificationCheckbox *checkbox in classificationQuestion.checkboxes) {
+            [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
+                                                    name:questionKey
+                                                   value:checkbox.checkboxId];
+        }
+        
+        sequence++;
+    }
+    
+    NSString *userAgentKey = [NSString stringWithFormat:@"%@[%@]",
+                              [ZooniverseClient getAnnotationPart:(maxSequence + 1)],
+                              @"user_agent"];
+    [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
+                                            name:userAgentKey
+                                           value:[Config userAgent]];
+    
+    NSString *content = [ZooniverseHttpUtils generateContentForNameValuePairs:nameValuePairs];
+    
+    NSString *postUploadUriStr =
+    [NSString stringWithFormat:@"%@workflows/%@/classifications",
+     [Config baseUrl],
+     subject.groupId, nil];
+    NSURL *postUploadUri = [NSURL URLWithString:postUploadUriStr];
+    
+    
+    NSMutableURLRequest *request = [ZooniverseHttpUtils createURLRequest:postUploadUri];
+    [request setHTTPMethod:@"POST"];
+    
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    NSString *authName = [AppDelegate loginUsername];
+    NSString *authApiKey = [AppDelegate loginApiKey];
+    if (authName && authApiKey) {
+        NSString *authHeader = [ZooniverseHttpUtils generateAuthorizationHeader:authName
+                                                                     authApiKey:authApiKey];
+        [request setValue:authHeader
+       forHTTPHeaderField:@"Authorization"];
+    }
+    
+    [ZooniverseHttpUtils setRequestContent:content
+                                forRequest:request];
+    
+    //NSDictionary *debugHeaderFields = request.allHTTPHeaderFields;
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:self.uploadsQueue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               //TODO: Should we somehow use a weak reference to Subject?
+                               NSHTTPURLResponse *httpResponse;
+                               if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                                   httpResponse = (NSHTTPURLResponse *)response;
+                               }
+                               
+                               [self performSelectorOnMainThread:@selector(parseUploadResponse:)
+                                                      withObject:@[httpResponse, subject]
+                                                   waitUntilDone:NO];
+                           }];
+}
+
+- (void)uploadOutstandingClassifications:(ZooniverseClientDoneBlock)callbackBlock; {
+    //If a set of uploads is already in prgoress then just return,
+    //because we don't track each set of uploads separately,
+    //so we can't know when to invoke the callbackBlock for just this set of uploads.
+    //TODO: Find a way to track a set of uploads, as we do with image downloads - but we can do that
+    //for image uploads because we get the task (and its ID) when it completes.
+    if (_classificationUploadsInProgress.count > 0) {
+        [callbackBlock invoke];
+        return;
+    }
+
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
     // We have to copy it so we can set a sort order (sortDescriptors).
@@ -468,124 +596,19 @@ NSString * currentTimeAsIso8601(void)
                         executeFetchRequest:fetchRequest
                         error:&error];
 
+    //If there are no classifications to upload then just return:
+    if (results.count == 0) {
+        [callbackBlock invoke];
+        return;
+    }
+
+    _callbackBlockUploads = callbackBlock;
+
     //Note: We don't use RestKit to post, because the server doesn't use JSON to receive
     //the classifications - instead it's just a normal POST with form data.
     for (ZooniverseSubject *subject in results) {
-
-        NSString *subjectId = subject.subjectId;
-
-        //If the upload for this subject is in progress then ignore it.
-        if ([_classificationUploadsInProgress containsObject:subjectId]) {
-            NSLog(@"uploadClassifications: classification upload already in progress: %@", subjectId);
-            continue;
-        } else {
-            [_classificationUploadsInProgress addObject:subjectId];
-        }
-
-        ZooniverseClassification *classification = subject.classification;
-
-        //An array of ZooniverseNameValuePair:
-        NSMutableArray *nameValuePairs = [[NSMutableArray alloc] init];
-
-        NSString *subjectKey = [NSString stringWithFormat:@"%@[subject_ids][]",
-                                PARAM_PART_CLASSIFICATION];;
-        [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
-                                      name:subjectKey
-                                     value:subjectId];
-
-        if (subject.favorite) {
-            [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
-                              name:@"[favorite][]"
-                             value:@"true"];
-        }
-
-        //Add each answer and its checkboxes:
-        NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence"
-                                                                            ascending:YES];
-        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortNameDescriptor, nil];
-        NSArray *sortedClassificationQuestions = [classification.classificationQuestions sortedArrayUsingDescriptors:sortDescriptors];
-
-
-
-        NSInteger maxSequence = 0;
-        for (ZooniverseClassificationQuestion *classificationQuestion in sortedClassificationQuestions) {
-            NSInteger sequence = classificationQuestion.sequence;
-            if (sequence > maxSequence) {
-                maxSequence = sequence;
-            }
-
-            //The answer:
-            ZooniverseClassificationAnswer *answer = classificationQuestion.answer;
-            NSLog(@"debug: answer: %@", answer.answerId);
-            NSString *questionKey = [NSString stringWithFormat:@"%@[%@]",
-                              [ZooniverseClient getAnnotationPart:sequence],
-                              classificationQuestion.questionId];
-            [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
-                                          name:questionKey
-                                         value:answer.answerId];
-
-            //Add any checkboxes that were selected with the answer:
-            for (ZooniverseClassificationCheckbox *checkbox in classificationQuestion.checkboxes) {
-                [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
-                                              name:questionKey
-                                             value:checkbox.checkboxId];
-            }
-
-            sequence++;
-        }
-
-        NSString *userAgentKey = [NSString stringWithFormat:@"%@[%@]",
-                                 [ZooniverseClient getAnnotationPart:(maxSequence + 1)],
-                                 @"user_agent"];
-        [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
-                                      name:userAgentKey
-                                     value:[Config userAgent]];
-
-        NSString *content = [ZooniverseHttpUtils generateContentForNameValuePairs:nameValuePairs];
-
-        NSString *postUploadUriStr =
-        [NSString stringWithFormat:@"%@workflows/%@/classifications",
-         [Config baseUrl],
-         subject.groupId, nil];
-        NSURL *postUploadUri = [NSURL URLWithString:postUploadUriStr];
-
-
-        NSMutableURLRequest *request = [ZooniverseHttpUtils createURLRequest:postUploadUri];
-        [request setHTTPMethod:@"POST"];
-
-        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-
-        NSString *authName = [AppDelegate loginUsername];
-        NSString *authApiKey = [AppDelegate loginApiKey];
-        if (authName && authApiKey) {
-            NSString *authHeader = [ZooniverseHttpUtils generateAuthorizationHeader:authName
-                                                                      authApiKey:authApiKey];
-            [request setValue:authHeader
-           forHTTPHeaderField:@"Authorization"];
-        }
-
-        [ZooniverseHttpUtils setRequestContent:content
-                                    forRequest:request];
-
-        //NSDictionary *debugHeaderFields = request.allHTTPHeaderFields;
-
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:self.uploadsQueue
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                                   //TODO: Should we somehow use a weak reference to Subject?
-                                   NSHTTPURLResponse *httpResponse;
-                                   if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                                       httpResponse = (NSHTTPURLResponse *)response;
-                                   }
-
-                                   [self performSelectorOnMainThread:@selector(parseUploadResponse:)
-                                                          withObject:@[httpResponse, subject]
-                                                       waitUntilDone:NO];
-                               }];
-
+        [self uploadClassificationForSubject:subject];
     }
-
-
 }
 
 - (void)downloadMinimumSubects:(ZooniverseClientDoneBlock)callbackBlock
