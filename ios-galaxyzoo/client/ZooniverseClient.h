@@ -25,7 +25,7 @@ typedef void (^ ZooniverseClientDoneBlock)();
 - (void)querySubjects:(NSUInteger)count
          withCallback:(ZooniverseClientDoneBlock)callbackBlock;
 
-- (void)downloadMinimumSubects:(ZooniverseClientDoneBlock)callbackBlock;
+- (void)downloadMinimumSubjects:(ZooniverseClientDoneBlock)callbackBlock;
 
 /* Download any images that have previously failed to download. */
 - (void)downloadMissingImages:(ZooniverseClientDoneBlock)callbackBlock;

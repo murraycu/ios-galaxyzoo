@@ -611,7 +611,7 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
-- (void)downloadMinimumSubects:(ZooniverseClientDoneBlock)callbackBlock
+- (void)downloadMinimumSubjects:(ZooniverseClientDoneBlock)callbackBlock
 {
     NSInteger minCachedNotDone = [AppDelegate preferenceDownloadInAdvance];
 

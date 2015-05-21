@@ -242,7 +242,7 @@
 
 - (void)onDownloadMissingImagesDone {
     ZooniverseClient *client = self.zooniverseClient;
-    [client downloadMinimumSubects:^ {
+    [client downloadMinimumSubjects:^ {
         [self onDownloadMinimumSubjectsDone];
     }];
 }
