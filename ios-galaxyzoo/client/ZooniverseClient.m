@@ -455,7 +455,7 @@ NSString * currentTimeAsIso8601(void)
 
 }
 
-- (void)uploadClassifications {
+- (void)uploadOutstandingClassifications {
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
     // We have to copy it so we can set a sort order (sortDescriptors).
@@ -588,7 +588,7 @@ NSString * currentTimeAsIso8601(void)
 
 }
 
-- (void)downloadEnoughSubjects:(ZooniverseClientDoneBlock)callbackBlock
+- (void)downloadMinimumSubects:(ZooniverseClientDoneBlock)callbackBlock
 {
     NSInteger minCachedNotDone = [AppDelegate preferenceDownloadInAdvance];
 

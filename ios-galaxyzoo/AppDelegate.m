@@ -28,7 +28,7 @@
     //Regularly sync with with server:
     [NSTimer scheduledTimerWithTimeInterval:10.0
                                      target:self
-                                   selector:@selector(doRegularWork)
+                                   selector:@selector(doRegularTasks)
                                    userInfo:nil
                                     repeats:YES];
 
@@ -223,19 +223,19 @@
     }
 }
 
-- (void)onDownloadEnoughSubjectsDone {
+- (void)onDownloadMinimumSubjectsDone {
     self.regularWorkInProgress = NO;
 }
 
 - (void)onDownloadMissingImagesDone {
     ZooniverseClient *client = self.zooniverseClient;
-    [client downloadEnoughSubjects:^ {
-        [self onDownloadEnoughSubjectsDone];
+    [client downloadMinimumSubects:^ {
+        [self onDownloadMinimumSubjectsDone];
     }];
 
 }
 
-- (void)doRegularWork {
+- (void)doRegularTasks {
     //Don't start more tasks if they are already in progress:
     if (self.regularWorkInProgress) {
         return;
@@ -244,7 +244,7 @@
     self.regularWorkInProgress = YES;
 
     ZooniverseClient *client = self.zooniverseClient;
-    [client uploadClassifications];
+    [client uploadOutstandingClassifications];
 
     //Download any subjects' missing image,
     //and only then download extra subjects:
