@@ -918,12 +918,46 @@ NSString * currentTimeAsIso8601(void)
     [callbackBlock invoke];
 }
 
+- (void)deleteImageFile:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    //We don't care whether this succeeds - we just want
+    //to do our best to delete it.
+    //Also, the behaviour if the file doesn't exist is not documented,
+    [fileManager removeItemAtPath:path
+                               error:nil];
+}
+
+- (void)deleteImagesForSubject:(ZooniverseSubject *)subject
+{
+    //We don't care whether these succeed - we just want
+    //to do our best to delete them.
+    //Also, the behaviour if the file doesn't exist is not documented,
+    [self performSelectorInBackground:@selector(deleteImageFile:)
+                           withObject:subject.locationStandard];
+    subject.locationStandard = nil;
+    subject.locationStandardDownloaded = nil;
+
+    [self performSelectorInBackground:@selector(deleteImageFile:)
+                           withObject:subject.locationInverted];
+    subject.locationInverted = nil;
+    subject.locationInvertedDownloaded = nil;
+
+    [self performSelectorInBackground:@selector(deleteImageFile:)
+                           withObject:subject.locationThumbnail];
+    subject.locationThumbnail = nil;
+    subject.locationThumbnailDownloaded = nil;
+}
+
 - (void)abandonSubject:(ZooniverseSubject *)subject
       withCoreDataSave:(BOOL)coreDataSave
 {
     NSLog(@"Abandoning subject with subjectId: %@", subject.subjectId, nil);
 
-    //Save the subject's changes to disk:
+    //Start asynchronous deletion of the image files.
+    //We don't care when it finishes.
+    [self deleteImagesForSubject:subject];
+
     [self.managedObjectContext deleteObject:subject];
 
     if (coreDataSave) {
