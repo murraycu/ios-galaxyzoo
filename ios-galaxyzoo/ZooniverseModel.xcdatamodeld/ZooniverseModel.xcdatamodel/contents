@@ -46,6 +46,7 @@
     <fetchRequest name="fetchRequestNotDone" entity="ZooniverseSubject" predicateString="done != 1 AND locationStandardDownloaded == 1 AND locationInvertedDownloaded == 1 AND locationThumbnailDownloaded == 1"/>
     <fetchRequest name="fetchRequestSubjectById" entity="ZooniverseSubject" predicateString="subjectId == $SUBJECT_ID" fetchLimit="1"/>
     <fetchRequest name="fetchRequestSubjects" entity="ZooniverseSubject"/>
+    <fetchRequest name="fetchRequestUploaded" entity="ZooniverseSubject" predicateString="uploaded == 1"/>
     <elements>
         <element name="ZooniverseClassification" positionX="-63" positionY="54" width="128" height="90"/>
         <element name="ZooniverseClassificationAnswer" positionX="-243" positionY="0" width="128" height="75"/>
