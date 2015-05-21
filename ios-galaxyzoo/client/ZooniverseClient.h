@@ -26,12 +26,18 @@ typedef void (^ ZooniverseClientDoneBlock)();
          withCallback:(ZooniverseClientDoneBlock)callbackBlock;
 
 - (void)downloadMinimumSubects:(ZooniverseClientDoneBlock)callbackBlock;
+
+/* Download any images that have previously failed to download. */
 - (void)downloadMissingImages:(ZooniverseClientDoneBlock)callbackBlock;
 - (void)uploadOutstandingClassifications:(ZooniverseClientDoneBlock)callbackBlock;
 - (void)removeOldSubjects:(ZooniverseClientDoneBlock)callbackBlock;
 
+/* Abandon any subjects whose images have been deleted from the cache by the system. */
+- (void)checkImagesStillExist:(ZooniverseClientDoneBlock)callbackBlock;
 
-- (void)abandonSubject:(ZooniverseSubject *)subject;
+
+- (void)abandonSubject:(ZooniverseSubject *)subject
+      withCoreDataSave:(BOOL)coreDataSave;
 
 
 //The array should contain:

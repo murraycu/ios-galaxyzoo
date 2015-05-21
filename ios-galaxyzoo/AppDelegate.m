@@ -223,8 +223,15 @@
     }
 }
 
-- (void)onRemoveOldSubjectsDone {
+- (void)onCheckImagesStillExistDone {
     self.regularWorkInProgress = NO;
+}
+
+- (void)onRemoveOldSubjectsDone {
+    ZooniverseClient *client = self.zooniverseClient;
+    [client checkImagesStillExist:^ {
+        [self onCheckImagesStillExistDone];
+    }];
 }
 
 - (void)onDownloadMinimumSubjectsDone {

@@ -863,8 +863,8 @@ NSString * currentTimeAsIso8601(void)
 
     NSInteger i = 0;
     for (ZooniverseSubject *subject in results) {
-        [self.managedObjectContext deleteObject:subject];
-        i++;
+        [self abandonSubject:subject
+            withCoreDataSave:NO]; //We save after deleting them all.        i++;
 
         if (i == countToRemove) {
             break;
@@ -875,14 +875,60 @@ NSString * currentTimeAsIso8601(void)
     [callbackBlock invoke];
 }
 
+- (BOOL)checkSubjectImagesStillExists:(ZooniverseSubject *)subject {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:subject.locationStandard]) {
+        return NO;
+    }
+
+    if (![fileManager fileExistsAtPath:subject.locationInverted]) {
+        return NO;
+    }
+
+    if (![fileManager fileExistsAtPath:subject.locationThumbnail]) {
+        return NO;
+    }
+
+    return YES;
+}
+
+- (void)checkImagesStillExist:(ZooniverseClientDoneBlock)callbackBlock
+{
+    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestDownloadsDone"] copy];
+    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
+
+    NSError *error = nil; //TODO: Check this.
+    NSArray *results = [[self managedObjectContext]
+                        executeFetchRequest:fetchRequest
+                        error:&error];
+
+    BOOL somethingChanged = false;
+    for (ZooniverseSubject *subject in results) {
+        if (![self checkSubjectImagesStillExists:subject]) {
+            [self abandonSubject:subject
+                withCoreDataSave:NO]; //We save after deleting them all.
+            somethingChanged = true;
+        }
+    }
+
+    if (somethingChanged) {
+        [self saveCoreData];
+    }
+
+    [callbackBlock invoke];
+}
+
 - (void)abandonSubject:(ZooniverseSubject *)subject
+      withCoreDataSave:(BOOL)coreDataSave
 {
     NSLog(@"Abandoning subject with subjectId: %@", subject.subjectId, nil);
 
     //Save the subject's changes to disk:
     [self.managedObjectContext deleteObject:subject];
 
-    [self saveCoreData];
+    if (coreDataSave) {
+        [self saveCoreData];
+    }
 }
 
 @end

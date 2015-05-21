@@ -31,8 +31,11 @@
         if (![fileManager fileExistsAtPath:path]) {
             NSLog(@"Local file no longer exists: %@", path, nil);
 
+            //The parent ClassifyViewController will respond to the Core Data deletion,
+            //and show a different subject:
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [[appDelegate zooniverseClient] abandonSubject:subject];
+            [[appDelegate zooniverseClient] abandonSubject:subject
+                                          withCoreDataSave:YES];
         }
     }
 
