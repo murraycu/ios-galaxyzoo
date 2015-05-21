@@ -475,11 +475,11 @@ NSString * currentTimeAsIso8601(void)
         NSString *subjectId = subject.subjectId;
 
         //If the upload for this subject is in progress then ignore it.
-        if ([_imageDownloadsInProgress containsObject:subjectId]) {
+        if ([_classificationUploadsInProgress containsObject:subjectId]) {
             NSLog(@"uploadClassifications: classification upload already in progress: %@", subjectId);
             continue;
         } else {
-            [_imageDownloadsInProgress addObject:subjectId];
+            [_classificationUploadsInProgress addObject:subjectId];
         }
 
         ZooniverseClassification *classification = subject.classification;
