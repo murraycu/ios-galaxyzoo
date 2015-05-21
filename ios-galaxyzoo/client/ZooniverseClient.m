@@ -20,6 +20,7 @@
 #import "ConfigSubjectGroup.h"
 #import "AppDelegate.h"
 #import "Utils.h"
+#import "Reachability.h"
 #import <RestKit/RestKit.h>
 
 static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
@@ -584,6 +585,11 @@ NSString * currentTimeAsIso8601(void)
         return;
     }
 
+    if(![ZooniverseClient allowNetworkUse]) {
+        [callbackBlock invoke];
+        return;
+    }
+
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
     // We have to copy it so we can set a sort order (sortDescriptors).
@@ -613,6 +619,11 @@ NSString * currentTimeAsIso8601(void)
 
 - (void)downloadMinimumSubjects:(ZooniverseClientDoneBlock)callbackBlock
 {
+    if(![ZooniverseClient allowNetworkUse]) {
+        [callbackBlock invoke];
+        return;
+    }
+
     NSInteger minCachedNotDone = [AppDelegate preferenceDownloadInAdvance];
 
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];
@@ -635,6 +646,11 @@ NSString * currentTimeAsIso8601(void)
 
 - (void)downloadMissingImages:(ZooniverseClientDoneBlock)callbackBlock
 {
+    if(![ZooniverseClient allowNetworkUse]) {
+        [callbackBlock invoke];
+        return;
+    }
+
     // Get the FetchRequest from our data model,
     // and use the same sort order as the ListViewController:
     // We have to copy it so we can set a sort order (sortDescriptors).
@@ -963,6 +979,27 @@ NSString * currentTimeAsIso8601(void)
     if (coreDataSave) {
         [self saveCoreData];
     }
+}
+
+/* Check that we have a suitable connection.
+ * For instance, don't allow network use if we are on mobile but our setting says wifi-only.
+ */
++ (BOOL)allowNetworkUse {
+    //We use the Reachability class from Apple's example documentation.
+    //It is astonishing that there is no real API for this:
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        return FALSE;
+    }
+
+    BOOL wifiOnly = [AppDelegate preferenceWiFiOnly];
+    if (wifiOnly && networkStatus != ReachableViaWiFi) {
+        return NO;
+    }
+
+    return YES;
 }
 
 @end

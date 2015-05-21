@@ -74,6 +74,7 @@
 		F24742C71B0B5927000FD3C7 /* ZooniverseClassificationCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742C61B0B5927000FD3C7 /* ZooniverseClassificationCheckbox.m */; };
 		F24742CA1B0B5927000FD3C7 /* ZooniverseClassificationAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742C91B0B5927000FD3C7 /* ZooniverseClassificationAnswer.m */; };
 		F24742CC1B0C6F0D000FD3C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */; };
+		F24742D51B0E6EF7000FD3C7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742D41B0E6EF7000FD3C7 /* Reachability.m */; };
 		F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */; };
 		F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296E1AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m */; };
 		F24829741AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829731AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m */; };
@@ -455,6 +456,8 @@
 		F24742C81B0B5927000FD3C7 /* ZooniverseClassificationAnswer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClassificationAnswer.h; path = ZooniverseModel/ZooniverseClassificationAnswer.h; sourceTree = "<group>"; };
 		F24742C91B0B5927000FD3C7 /* ZooniverseClassificationAnswer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClassificationAnswer.m; path = ZooniverseModel/ZooniverseClassificationAnswer.m; sourceTree = "<group>"; };
 		F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F24742D31B0E6EF7000FD3C7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = client/Reachability.h; sourceTree = "<group>"; };
+		F24742D41B0E6EF7000FD3C7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = client/Reachability.m; sourceTree = "<group>"; };
 		F24829691AF754D60060D9B0 /* DecisionTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTree.h; path = DecisionTree/DecisionTree.h; sourceTree = "<group>"; };
 		F248296B1AF754D60060D9B0 /* DecisionTreeQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeQuestion.h; path = DecisionTree/DecisionTreeQuestion.h; sourceTree = "<group>"; };
 		F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeQuestion.m; path = DecisionTree/DecisionTreeQuestion.m; sourceTree = "<group>"; };
@@ -893,6 +896,8 @@
 			children = (
 				F29AC13E1B0B21C300DD0D58 /* ZooniverseHttpUtils.h */,
 				F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */,
+				F24742D31B0E6EF7000FD3C7 /* Reachability.h */,
+				F24742D41B0E6EF7000FD3C7 /* Reachability.m */,
 				F21F87D01AF3850300C95B52 /* ZooniverseClient.h */,
 				F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */,
 				F2173A7A1B077AF100C1F947 /* ZooniverseClientImageDownload.h */,
@@ -1750,6 +1755,7 @@
 				F24742C71B0B5927000FD3C7 /* ZooniverseClassificationCheckbox.m in Sources */,
 				F24829771AF7562F0060D9B0 /* DecisionTreeQuestionCheckbox.m in Sources */,
 				F2D6FEBD1B00B3F9002E3E15 /* ListCollectionViewCell.m in Sources */,
+				F24742D51B0E6EF7000FD3C7 /* Reachability.m in Sources */,
 				F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */,
 				F2173A7E1B077AF100C1F947 /* ZooniverseClientImageDownload.m in Sources */,
 				F24742C41B0B5927000FD3C7 /* ZooniverseClassificationQuestion.m in Sources */,
