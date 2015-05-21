@@ -297,7 +297,8 @@ NSString * currentTimeAsIso8601(void)
     }
 
     NSURL *urlRemote = [[NSURL alloc] initWithString:strUrlRemote];
-    NSURLRequest *request = [NSURLRequest requestWithURL:urlRemote];
+    NSURLRequest *request = [ZooniverseHttpUtils createURLRequest:urlRemote];
+
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request];
 
     //Store details about the task, so we can get them when it's finished:
@@ -362,6 +363,11 @@ NSString * currentTimeAsIso8601(void)
 - (void)querySubjects:(NSUInteger)count
          withCallback:(ZooniverseClientDoneBlock)callbackBlock
 {
+    if(![ZooniverseClient allowNetworkUse]) {
+        [callbackBlock invoke];
+        return;
+    }
+
     NSString *countAsStr = [NSString stringWithFormat:@"%i", (unsigned int)count]; //TODO: Is this locale-independent?
     NSString *path = [self getQueryMoreItemsPath];
     NSDictionary *queryParams = @{@"limit" : countAsStr};
@@ -619,11 +625,6 @@ NSString * currentTimeAsIso8601(void)
 
 - (void)downloadMinimumSubjects:(ZooniverseClientDoneBlock)callbackBlock
 {
-    if(![ZooniverseClient allowNetworkUse]) {
-        [callbackBlock invoke];
-        return;
-    }
-
     NSInteger minCachedNotDone = [AppDelegate preferenceDownloadInAdvance];
 
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestNotDone"] copy];

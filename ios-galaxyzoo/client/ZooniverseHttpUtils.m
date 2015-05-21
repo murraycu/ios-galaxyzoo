@@ -7,6 +7,7 @@
 //
 
 #import "ZooniverseHttpUtils.h"
+#import "AppDelegate.h"
 #import "Config.h"
 
 @implementation ZooniverseHttpUtils
@@ -54,6 +55,10 @@
 + (NSMutableURLRequest *)createURLRequest:(NSURL *)uri {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:uri];
     [request setValue:[Config userAgent] forHTTPHeaderField:@"User-Agent"];
+
+    BOOL wifiOnly = [AppDelegate preferenceWiFiOnly];
+    request.allowsCellularAccess = !wifiOnly;
+
     return request;
 }
 
