@@ -223,9 +223,15 @@
     }
 }
 
-- (void)onDownloadMinimumSubjectsDone {
+- (void)onRemoveOldSubjectsDone {
     self.regularWorkInProgress = NO;
 }
+
+- (void)onDownloadMinimumSubjectsDone {
+    ZooniverseClient *client = self.zooniverseClient;
+    [client removeOldSubjects:^ {
+        [self onRemoveOldSubjectsDone];
+    }];}
 
 - (void)onDownloadMissingImagesDone {
     ZooniverseClient *client = self.zooniverseClient;

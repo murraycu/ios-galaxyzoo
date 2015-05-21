@@ -836,6 +836,45 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
+- (void)removeOldSubjects:(ZooniverseClientDoneBlock)callbackBlock
+{
+    NSInteger maxKept = [AppDelegate preferenceKeep];
+
+    // Get the FetchRequest from our data model,
+    // and use the same sort order as the ListViewController:
+    // We have to copy it so we can set a sort order (sortDescriptors).
+    // There doesn't seem to be a way to set the sort order in the data model GUI editor.
+    NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestUploaded"] copy];
+    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
+
+    NSError *error = nil; //TODO: Check this.
+    NSArray *results = [self.managedObjectContext
+                        executeFetchRequest:fetchRequest
+                        error:&error];
+
+
+
+    NSInteger countToRemove = results.count - maxKept;
+    //If there are no classifications to remove then just return:
+    if (countToRemove <= 0) {
+        [callbackBlock invoke];
+        return;
+    }
+
+    NSInteger i = 0;
+    for (ZooniverseSubject *subject in results) {
+        [self.managedObjectContext deleteObject:subject];
+        i++;
+
+        if (i == countToRemove) {
+            break;
+        }
+    }
+
+    [self saveCoreData];
+    [callbackBlock invoke];
+}
+
 - (void)abandonSubject:(ZooniverseSubject *)subject
 {
     NSLog(@"Abandoning subject with subjectId: %@", subject.subjectId, nil);
