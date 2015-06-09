@@ -39,6 +39,8 @@ typedef void (^ ZooniverseClientDoneBlock)();
 - (void)abandonSubject:(ZooniverseSubject *)subject
       withCoreDataSave:(BOOL)coreDataSave;
 
++ (BOOL)networkIsConnected;
++ (BOOL)networkIsConnected:(BOOL*)noWiFi;
 
 //The array should contain:
 //(NSString *)strTaskId

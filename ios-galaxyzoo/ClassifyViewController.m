@@ -140,9 +140,26 @@
 
     //We need at least one not-done subject to show anything:
     if (count == 0) {
-        //TODO: Handle failure:
-        [self getOneSubjectAndShow];
-        return;
+        BOOL noNetworkBecauseNoWiFi = NO;
+        if ([ZooniverseClient networkIsConnected:&noNetworkBecauseNoWiFi]) {
+            //TODO: Handle failure:
+            [self getOneSubjectAndShow];
+            return;
+        } else {
+            NSString *errorTitle;
+            if (noNetworkBecauseNoWiFi) {
+                errorTitle = @"No Wi-Fi network connection.";
+            } else {
+                errorTitle = @"No network connection.";
+            }
+
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorTitle
+                                                            message:@"Cannot download new subjects to classify without a network connection."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
     }
 
     if(self.classificationsDoneInSession == 1) {

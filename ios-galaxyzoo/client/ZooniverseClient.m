@@ -363,7 +363,7 @@ NSString * currentTimeAsIso8601(void)
 - (void)querySubjects:(NSUInteger)count
          withCallback:(ZooniverseClientDoneBlock)callbackBlock
 {
-    if(![ZooniverseClient allowNetworkUse]) {
+    if(![ZooniverseClient networkIsConnected]) {
         [callbackBlock invoke];
         return;
     }
@@ -591,7 +591,7 @@ NSString * currentTimeAsIso8601(void)
         return;
     }
 
-    if(![ZooniverseClient allowNetworkUse]) {
+    if(![ZooniverseClient networkIsConnected]) {
         [callbackBlock invoke];
         return;
     }
@@ -647,7 +647,7 @@ NSString * currentTimeAsIso8601(void)
 
 - (void)downloadMissingImages:(ZooniverseClientDoneBlock)callbackBlock
 {
-    if(![ZooniverseClient allowNetworkUse]) {
+    if(![ZooniverseClient networkIsConnected]) {
         [callbackBlock invoke];
         return;
     }
@@ -982,10 +982,21 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
+
 /* Check that we have a suitable connection.
  * For instance, don't allow network use if we are on mobile but our setting says wifi-only.
  */
-+ (BOOL)allowNetworkUse {
++ (BOOL)networkIsConnected {
+    BOOL ignoredParameter;
+    return [ZooniverseClient networkIsConnected:&ignoredParameter];
+}
+
+/* Check that we have a suitable connection.
+ * For instance, don't allow network use if we are on mobile but our setting says wifi-only.
+ */
++ (BOOL)networkIsConnected:(BOOL*)noWiFi {
+    *noWiFi = NO;
+
     //We use the Reachability class from Apple's example documentation.
     //It is astonishing that there is no real API for this:
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
@@ -997,6 +1008,7 @@ NSString * currentTimeAsIso8601(void)
 
     BOOL wifiOnly = [AppDelegate preferenceWiFiOnly];
     if (wifiOnly && networkStatus != ReachableViaWiFi) {
+        *noWiFi = YES; //Let the caller know that this is why the network shouldn't be used.
         return NO;
     }
 
