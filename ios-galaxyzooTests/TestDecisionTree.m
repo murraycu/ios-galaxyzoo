@@ -49,6 +49,17 @@
     XCTAssert(YES, @"Pass");
 }
 
+- (void)checkAnswersForQuestionSloan4:(DecisionTreeQuestion *)question {
+    XCTAssertEqual(question.answers.count, 2);
+
+    DecisionTreeQuestionAnswer *answer = [question.answers objectAtIndex:0];
+    XCTAssertEqualObjects(@"a-0", answer.answerId);
+
+    XCTAssertEqualObjects(@"a-0", answer.answerId);
+    XCTAssertEqualObjects(@"yes", answer.icon);
+    XCTAssertEqual(2, answer.examplesCount);
+}
+
 - (void)testQuestionsWithoutTranslations {
     DecisionTree *decisionTree = [self createCorrectDecisionTree];
     XCTAssert(decisionTree != nil, @"Pass");
@@ -62,6 +73,13 @@
     DecisionTreeQuestion *nextQuestion = [decisionTree getNextQuestion:QUESTION_ID
                                                                         forAnswer:@"a-1"];
     XCTAssertEqualObjects(@"sloan-4", nextQuestion.questionId);
+
+    DecisionTreeQuestionAnswer *answer = [question.answers objectAtIndex:0];
+    XCTAssertEqualObjects(@"Spiral", answer.text);
+    answer = [question.answers objectAtIndex:1];
+    XCTAssertEqualObjects(@"No spiral", answer.text);
+
+    [self checkAnswersForQuestionSloan4:question];
 }
 
 - (void)testPerformanceExample {
