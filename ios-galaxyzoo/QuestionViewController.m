@@ -22,9 +22,6 @@
 
 #import "Singleton.h"
 
-
-#import <RestKit/RestKit.h>
-
 @interface QuestionViewController () {
     ZooniverseClassification *_classificationInProgress;
     NSUInteger _questionSequence;
