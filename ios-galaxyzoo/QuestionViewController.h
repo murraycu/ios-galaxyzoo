@@ -10,8 +10,7 @@
 #import "ZooniverseModel/ZooniverseSubject.h"
 #import "DecisionTree/DecisionTreeQuestion.h"
 
-@interface QuestionViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
-
+@interface QuestionViewController : UIViewController
 @property (nonatomic, retain) ZooniverseSubject *subject;
 
 

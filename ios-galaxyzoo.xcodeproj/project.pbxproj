@@ -60,6 +60,7 @@
 		F2173A5A1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_0 in Resources */ = {isa = PBXBuildFile; fileRef = F2173A2E1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_0 */; };
 		F2173A5B1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 in Resources */ = {isa = PBXBuildFile; fileRef = F2173A2F1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 */; };
 		F2173A7E1B077AF100C1F947 /* ZooniverseClientImageDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = F2173A7B1B077AF100C1F947 /* ZooniverseClientImageDownload.m */; };
+		F2176F541B2970C0000F946A /* QuestionAnswersCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */; };
 		F21F87A01AF3657400C95B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F879F1AF3657400C95B52 /* main.m */; };
 		F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A21AF3657400C95B52 /* AppDelegate.m */; };
 		F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ClassifyViewController.m */; };
@@ -430,6 +431,8 @@
 		F2173A2F1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_sloan_singleband-10_a-4_1"; path = "Icons/icon_sloan_singleband-10_a-4_1"; sourceTree = "<group>"; };
 		F2173A7A1B077AF100C1F947 /* ZooniverseClientImageDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClientImageDownload.h; path = client/ZooniverseClientImageDownload.h; sourceTree = "<group>"; };
 		F2173A7B1B077AF100C1F947 /* ZooniverseClientImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClientImageDownload.m; path = client/ZooniverseClientImageDownload.m; sourceTree = "<group>"; };
+		F2176F521B2970C0000F946A /* QuestionAnswersCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswersCollectionView.h; sourceTree = "<group>"; };
+		F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswersCollectionView.m; sourceTree = "<group>"; };
 		F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-galaxyzoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879E1AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -848,6 +851,8 @@
 				F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */,
 				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
 				F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */,
+				F2176F521B2970C0000F946A /* QuestionAnswersCollectionView.h */,
+				F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */,
 				F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */,
 				F24829801AF759FD0060D9B0 /* Singleton.h */,
 				F24829811AF759FD0060D9B0 /* Singleton.m */,
@@ -1743,6 +1748,7 @@
 				F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */,
 				F213F7EE1B0274F400CAB635 /* Utils.m in Sources */,
 				F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */,
+				F2176F541B2970C0000F946A /* QuestionAnswersCollectionView.m in Sources */,
 				F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */,
 				F2173A011B0399D600C1F947 /* QuestionAnswerButton.m in Sources */,
 				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,

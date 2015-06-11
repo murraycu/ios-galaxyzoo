@@ -10,6 +10,7 @@
 
 @interface HelpViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewExamples;
 
 @end
 

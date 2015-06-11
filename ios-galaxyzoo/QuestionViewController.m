@@ -7,7 +7,7 @@
 //
 
 #import "QuestionViewController.h"
-#import "QuestionAnswersCollectionViewCell.h"
+#import "QuestionAnswersCollectionView.h"
 #import "ClassifyViewControllerDelegate.h"
 #import "AppDelegate.h"
 #import "DecisionTree.h"
@@ -25,8 +25,6 @@
 
 #import <RestKit/RestKit.h>
 
-const NSInteger MAX_BUTTONS_PER_ROW = 4;
-
 @interface QuestionViewController () {
     ZooniverseClassification *_classificationInProgress;
     NSUInteger _questionSequence;
@@ -38,7 +36,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewAnswers;
+@property (weak, nonatomic) IBOutlet QuestionAnswersCollectionView *collectionViewAnswers;
 
 
 @end
@@ -70,9 +68,12 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    UINib *cellNib = [UINib nibWithNibName:@"QuestionAnswersCollectionViewCellView" bundle:nil];
-    [self.collectionViewAnswers registerNib:cellNib forCellWithReuseIdentifier:@"answerCell"];
-    self.collectionViewAnswers.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.collectionViewAnswers setAnswerClickedCallback:^(DecisionTreeQuestionAnswer *answer) {
+        [self onAnswerClicked:answer];
+    } withCheckBoxClickedCallback:^(DecisionTreeQuestionCheckbox *checkbox, BOOL selected) {
+        [self onCheckboxClicked:checkbox
+                       selected:selected];
+    }];
 
     [self clearFavorite];
 
@@ -88,9 +89,7 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     self.labelTitle.text = _question.title;
     self.labelText.text = _question.text;
 
-    self.collectionViewAnswers.delegate = self;
-    
-    self.collectionViewAnswers.dataSource = self;
+    self.collectionViewAnswers.question = self.question;
     [self.collectionViewAnswers reloadData];
 }
 
@@ -103,6 +102,30 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 - (DecisionTree *)getDecisionTree {
     Singleton *singleton = [Singleton sharedSingleton];
     return [singleton getDecisionTree:self.subject.groupId];
+}
+
+
+-(void)onAnswerClicked:(DecisionTreeQuestionAnswer *)answer {
+    [self storeAnswer:answer.answerId];
+
+    //Handle the special Do You Want To Discuss this question:
+    DecisionTree *decisionTree = [self getDecisionTree];
+    if ([decisionTree isDiscussQuestion:_question.questionId] &&
+        [decisionTree isDiscussQuestionYesAnswer:answer.answerId]) {
+        [Utils openDiscussionPage:self.subject.zooniverseId];
+    }
+    
+    [self showNextQuestion:_question.questionId
+                  answerId:answer.answerId];
+}
+
+-(void)onCheckboxClicked:(DecisionTreeQuestionCheckbox *)checkbox
+                                                selected:(BOOL)selected {
+    if (selected) {
+        [self.checkboxesSelected addObject:checkbox.answerId];
+    } else {
+        [self.checkboxesSelected removeObject:checkbox.answerId];
+    }
 }
 
 - (void)showNextQuestion:(NSString *)questionId answerId:(NSString *)answerId {
@@ -202,118 +225,6 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
     [self saveAllCheckboxes:classificationQuestion];
 
     classificationQuestion.classification = _classificationInProgress;
-}
-
--(void)onAnswerButtonClick:(UIView*)clickedButton
-{
-    NSInteger i = clickedButton.tag;
-
-    if (i < _question.checkboxes.count) {
-        UIButton *button = (UIButton *)clickedButton;
-        button.selected = !(button.selected);
-
-        //TODO: Check if it is active:
-        DecisionTreeQuestionCheckbox *checkbox = [_question.checkboxes objectAtIndex:i];
-        NSLog(@"Checkbox clicked:%@", checkbox.text);
-
-        if (button.selected) {
-            [self.checkboxesSelected addObject:checkbox.answerId];
-        } else {
-            [self.checkboxesSelected removeObject:checkbox.answerId];
-        }
-    } else {
-        NSInteger answerIndex = i - _question.checkboxes.count;
-        DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:answerIndex];
-        NSLog(@"Answer clicked:%@", answer.text);
-
-        [self storeAnswer:answer.answerId];
-
-        //Handle the special Do You Want To Discuss this question:
-        DecisionTree *decisionTree = [self getDecisionTree];
-        if ([decisionTree isDiscussQuestion:_question.questionId] &&
-            [decisionTree isDiscussQuestionYesAnswer:answer.answerId]) {
-            [Utils openDiscussionPage:self.subject.zooniverseId];
-        }
-
-        [self showNextQuestion:_question.questionId
-                      answerId:answer.answerId];
-    }
-}
-
-#pragma mark - UICollectionViewDelegate
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfSectionsInCollectionView:(NSInteger)section {
-    return 1;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _question.answers.count + _question.checkboxes.count;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"answerCell";
-
-    UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
-    QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
-
-    UIButton *button = cell.button;
-
-    //Reset selected, which we use for checkboxes:
-    //TODO: We see the selection briefly before it is unselected.
-    button.selected = NO;
-
-    DecisionTreeQuestionBaseButton *answer = nil;
-    NSInteger i = [indexPath indexAtPosition:1];
-    if (i < _question.checkboxes.count) {
-        answer = [_question.checkboxes objectAtIndex:i];
-    } else {
-        NSInteger answerIndex = i - _question.checkboxes.count;
-        answer = [_question.answers objectAtIndex:answerIndex];
-    }
-
-    [button setTitle:answer.text
-     forState:UIControlStateNormal];
-
-    //TODO: Move the adding of the icon_ prefix into a reusable method.
-    NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", answer.icon, nil];
-    UIImage *image = [UIImage imageNamed:filenameIcon];
-    [button setImage:image
-            forState:UIControlStateNormal];
-    //[button setBackgroundImage:image
-    //        forState:UIControlStateNormal];
-
-    //Respond to button touches:
-    button.tag = i; //So we know which button was clicked.
-    [button addTarget:self
-               action:@selector(onAnswerButtonClick:)
-     forControlEvents:UIControlEventTouchUpInside];
-
-    return cell;
-}
-
-#pragma mark - UICollectionViewDelegateFlowLayout
-
-- (CGSize)collectionView:(UICollectionView *)collectionView
-layout:(UICollectionViewLayout *)collectionViewLayout
-sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    //If there is only one row, let the buttons take up all the available width.
-    //Otherwise, always divide the width by 4 so that buttons in the next row line up too.
-    NSInteger itemsPerRow = MAX_BUTTONS_PER_ROW;
-    NSInteger count = _question.checkboxes.count + _question.answers.count;
-    if (count < MAX_BUTTONS_PER_ROW) {
-        itemsPerRow = count;
-    }
-
-    //Calculate the width available for each item
-    //by getting the full width, subtracting the space between items,
-    //and dividing.
-    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)collectionViewLayout;
-    CGFloat spacing = flowLayout.minimumInteritemSpacing;
-    CGFloat totalSpacing = spacing * (itemsPerRow - 1);
-    return CGSizeMake((collectionView.frame.size.width - totalSpacing) / itemsPerRow,
-                      100);
 }
 
 /*
