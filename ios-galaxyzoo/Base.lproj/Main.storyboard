@@ -125,13 +125,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="help text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-aR-Cyh" userLabel="labelText">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="help text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-aR-Cyh" userLabel="labelText">
                                 <rect key="frame" x="16" y="72" width="568" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="OsX-Ya-7mm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkI-CD-1VU" customClass="ExamplesCollectionView">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkI-CD-1VU" customClass="ExamplesCollectionView">
                                 <rect key="frame" x="16" y="347" width="568" height="196"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wRH-tJ-LHr">
@@ -155,13 +158,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="568" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dky-Sy-4s3" userLabel="labelHeaderTitle">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dky-Sy-4s3" userLabel="labelHeaderTitle">
                                             <rect key="frame" x="8" y="8" width="552" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dky-Sy-4s3" firstAttribute="leading" secondItem="3gC-9e-TUO" secondAttribute="leadingMargin" id="OVm-VY-oP1"/>
+                                        <constraint firstItem="dky-Sy-4s3" firstAttribute="top" secondItem="3gC-9e-TUO" secondAttribute="topMargin" id="OWv-Qc-BuC"/>
+                                        <constraint firstItem="dky-Sy-4s3" firstAttribute="trailing" secondItem="3gC-9e-TUO" secondAttribute="trailingMargin" id="Y0N-YS-GtD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dky-Sy-4s3" secondAttribute="bottom" constant="5" id="cSu-wK-kQj"/>
+                                    </constraints>
                                     <connections>
                                         <outlet property="labelHeaderTitle" destination="dky-Sy-4s3" id="aa3-m4-7QE"/>
                                     </connections>
@@ -170,8 +179,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7EN-eK-4W6" firstAttribute="top" secondItem="nMH-aR-Cyh" secondAttribute="bottom" constant="299" id="fQz-t2-bia"/>
-                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="top" secondItem="1vK-QU-Bhl" secondAttribute="bottom" constant="8" id="lN7-xJ-UuL"/>
+                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="trailing" secondItem="gkI-CD-1VU" secondAttribute="trailing" id="0NR-Y6-sWG"/>
+                            <constraint firstItem="gkI-CD-1VU" firstAttribute="leading" secondItem="nMH-aR-Cyh" secondAttribute="leading" id="6VT-bl-Ha6"/>
+                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="top" secondItem="1vK-QU-Bhl" secondAttribute="bottom" constant="8" symbolic="YES" id="Ceh-4m-Pl6"/>
+                            <constraint firstItem="gkI-CD-1VU" firstAttribute="trailing" secondItem="BzJ-h7-P5i" secondAttribute="trailingMargin" id="bLV-Sc-xbY"/>
+                            <constraint firstItem="7EN-eK-4W6" firstAttribute="top" secondItem="gkI-CD-1VU" secondAttribute="bottom" constant="8" symbolic="YES" id="nY3-yO-J2P"/>
+                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="leading" secondItem="BzJ-h7-P5i" secondAttribute="leadingMargin" id="vRl-9I-Wfz"/>
+                            <constraint firstItem="gkI-CD-1VU" firstAttribute="top" secondItem="nMH-aR-Cyh" secondAttribute="bottom" constant="95" id="zqh-MT-H6i"/>
                         </constraints>
                     </view>
                     <connections>
