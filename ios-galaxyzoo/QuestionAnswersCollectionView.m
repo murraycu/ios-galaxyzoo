@@ -11,7 +11,6 @@
 
 
 @interface QuestionAnswersCollectionView () {
-
     ZooniverseQuestionAnswersCollectionViewAnswerClickedBlock _callbackBlockAnswerClicked;
     ZooniverseQuestionAnswersCollectionViewCheckboxClickedBlock _callbackBlockCheckboxClicked;
 }
@@ -19,7 +18,7 @@
 
 @implementation QuestionAnswersCollectionView
 
-const NSInteger MAX_BUTTONS_PER_ROW = 4;
+static const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -83,12 +82,13 @@ const NSInteger MAX_BUTTONS_PER_ROW = 4;
 
 #pragma mark - UICollectionViewDelegate
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfSectionsInCollectionView:(NSInteger)section {
-return 1;
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-return _question.answers.count + _question.checkboxes.count;
+    return _question.answers.count + _question.checkboxes.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
