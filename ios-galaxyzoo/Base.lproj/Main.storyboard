@@ -249,14 +249,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="226"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-nN-vq3" userLabel="labelTitle">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="501" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-nN-vq3" userLabel="labelTitle">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="501" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-fb-vs7" userLabel="labelText">
+                                <rect key="frame" x="0.0" y="42" width="568" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-nW-ODq" userLabel="collectionViewAnswers" customClass="QuestionAnswersCollectionView">
-                                <rect key="frame" x="0.0" y="98" width="568" height="128"/>
+                                <rect key="frame" x="0.0" y="70" width="568" height="156"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="5Kv-eI-OML">
                                     <size key="itemSize" width="50" height="50"/>
@@ -279,12 +285,6 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="psy-e2-gx5">
                                 <rect key="frame" x="519" y="8" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-fb-vs7" userLabel="labelText">
-                                <rect key="frame" x="0.0" y="37" width="568" height="53"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0g-HT-F6c">
                                 <rect key="frame" x="285" y="13" width="226" height="21"/>
                                 <constraints>
@@ -297,21 +297,20 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="W1E-nW-ODq" firstAttribute="top" secondItem="zhT-fb-vs7" secondAttribute="bottom" constant="8" symbolic="YES" id="378-py-4ng"/>
-                            <constraint firstItem="zhT-fb-vs7" firstAttribute="leading" secondItem="W1E-nW-ODq" secondAttribute="leading" id="9Pc-3b-stl"/>
-                            <constraint firstItem="zhT-fb-vs7" firstAttribute="top" secondItem="m0g-HT-F6c" secondAttribute="bottom" constant="3" id="Ifs-eT-ijw"/>
-                            <constraint firstItem="W1E-nW-ODq" firstAttribute="top" secondItem="psy-e2-gx5" secondAttribute="bottom" constant="59" id="Jtf-yJ-vGX"/>
-                            <constraint firstItem="W1E-nW-ODq" firstAttribute="trailing" secondItem="zhT-fb-vs7" secondAttribute="trailing" id="L8K-Zx-FOl"/>
+                            <constraint firstAttribute="trailing" secondItem="W1E-nW-ODq" secondAttribute="trailing" id="5nk-5S-8fL"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="bottom" secondItem="Noc-ep-P9D" secondAttribute="top" id="6zG-JE-Mlw"/>
+                            <constraint firstItem="zhT-fb-vs7" firstAttribute="top" secondItem="m0g-HT-F6c" secondAttribute="bottom" constant="8" symbolic="YES" id="Ifs-eT-ijw"/>
                             <constraint firstItem="psy-e2-gx5" firstAttribute="leading" secondItem="m0g-HT-F6c" secondAttribute="trailing" constant="8" symbolic="YES" id="P5l-97-V6V"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="leading" secondItem="zhT-fb-vs7" secondAttribute="leading" id="S4O-Eh-BJj"/>
                             <constraint firstItem="zhT-fb-vs7" firstAttribute="trailing" secondItem="psy-e2-gx5" secondAttribute="trailing" id="SOt-Gw-p31"/>
-                            <constraint firstAttribute="trailing" secondItem="v9c-nN-vq3" secondAttribute="trailing" id="U5f-d4-pC0"/>
-                            <constraint firstItem="W1E-nW-ODq" firstAttribute="bottom" secondItem="Noc-ep-P9D" secondAttribute="top" id="VCi-2v-KKz"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="top" secondItem="zhT-fb-vs7" secondAttribute="bottom" constant="8" symbolic="YES" id="cX0-Vb-AkF"/>
                             <constraint firstItem="psy-e2-gx5" firstAttribute="top" secondItem="0gw-eF-hGL" secondAttribute="bottom" constant="8" symbolic="YES" id="d8i-v2-Rfz"/>
-                            <constraint firstItem="zhT-fb-vs7" firstAttribute="leading" secondItem="BaE-tr-Tgr" secondAttribute="leading" id="gej-zr-CDK"/>
                             <constraint firstItem="zhT-fb-vs7" firstAttribute="top" secondItem="v9c-nN-vq3" secondAttribute="bottom" constant="8" symbolic="YES" id="heZ-Ys-FhW"/>
                             <constraint firstItem="m0g-HT-F6c" firstAttribute="centerY" secondItem="psy-e2-gx5" secondAttribute="centerY" id="hhW-dU-fUq"/>
                             <constraint firstItem="v9c-nN-vq3" firstAttribute="top" secondItem="0gw-eF-hGL" secondAttribute="bottom" id="kug-i9-0GC"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="leading" secondItem="BaE-tr-Tgr" secondAttribute="leading" id="lpX-cI-jjC"/>
                             <constraint firstItem="psy-e2-gx5" firstAttribute="trailing" secondItem="v9c-nN-vq3" secondAttribute="trailing" id="p0w-kE-HPS"/>
+                            <constraint firstItem="W1E-nW-ODq" firstAttribute="trailing" secondItem="zhT-fb-vs7" secondAttribute="trailing" id="wLF-IQ-Oiy"/>
                             <constraint firstItem="zhT-fb-vs7" firstAttribute="leading" secondItem="v9c-nN-vq3" secondAttribute="leading" id="xp4-KY-JnS"/>
                         </constraints>
                     </view>
