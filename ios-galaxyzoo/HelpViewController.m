@@ -7,10 +7,11 @@
 //
 
 #import "HelpViewController.h"
+#import "ExamplesCollectionView.h"
 
 @interface HelpViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionViewExamples;
+@property (weak, nonatomic) IBOutlet ExamplesCollectionView *collectionViewExamples;
 
 @end
 
@@ -21,6 +22,9 @@
 
     // Do any additional setup after loading the view.
     self.labelText.text = self.question.help;
+
+    self.collectionViewExamples.question = self.question;
+    [self.collectionViewExamples reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

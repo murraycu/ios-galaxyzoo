@@ -125,22 +125,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="help text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-aR-Cyh" userLabel="labelText">
-                                <rect key="frame" x="16" y="78" width="568" height="225"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="help text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-aR-Cyh" userLabel="labelText">
+                                <rect key="frame" x="16" y="72" width="568" height="180"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkI-CD-1VU" customClass="ExamplesCollectionView">
+                                <rect key="frame" x="16" y="347" width="568" height="196"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wRH-tJ-LHr">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="exampleCell" id="0h4-RE-Irf" userLabel="exampleCell" customClass="ExamplesCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCell" id="3gC-9e-TUO" userLabel="headerCell" customClass="ExamplesCollectionViewHeaderCell">
+                                    <rect key="frame" x="0.0" y="0.0" width="568" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dky-Sy-4s3" userLabel="labelHeaderTitle">
+                                            <rect key="frame" x="8" y="8" width="552" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <connections>
+                                        <outlet property="labelHeaderTitle" destination="dky-Sy-4s3" id="aa3-m4-7QE"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="leading" secondItem="BzJ-h7-P5i" secondAttribute="leadingMargin" id="2GY-ln-DG1"/>
-                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="trailing" secondItem="BzJ-h7-P5i" secondAttribute="trailingMargin" id="FXw-hU-6Ro"/>
-                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="top" secondItem="1vK-QU-Bhl" secondAttribute="bottom" constant="14" id="IOO-4d-zhH"/>
-                            <constraint firstItem="7EN-eK-4W6" firstAttribute="top" secondItem="nMH-aR-Cyh" secondAttribute="bottom" constant="248" id="xRN-mf-74k"/>
+                            <constraint firstItem="7EN-eK-4W6" firstAttribute="top" secondItem="nMH-aR-Cyh" secondAttribute="bottom" constant="299" id="fQz-t2-bia"/>
+                            <constraint firstItem="nMH-aR-Cyh" firstAttribute="top" secondItem="1vK-QU-Bhl" secondAttribute="bottom" constant="8" id="lN7-xJ-UuL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionViewExamples" destination="gkI-CD-1VU" id="R6C-b0-T9a"/>
                         <outlet property="labelText" destination="nMH-aR-Cyh" id="iaP-JE-jT3"/>
                     </connections>
                 </viewController>
@@ -350,7 +385,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login or create an account to receive credit for your work." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uW3-h1-TCL" userLabel="labelTop">
                                 <rect key="frame" x="16" y="72" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Va-Vo-ZWd" userLabel="textfieldUsername">

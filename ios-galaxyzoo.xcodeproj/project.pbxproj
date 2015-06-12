@@ -61,6 +61,9 @@
 		F2173A5B1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 in Resources */ = {isa = PBXBuildFile; fileRef = F2173A2F1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 */; };
 		F2173A7E1B077AF100C1F947 /* ZooniverseClientImageDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = F2173A7B1B077AF100C1F947 /* ZooniverseClientImageDownload.m */; };
 		F2176F541B2970C0000F946A /* QuestionAnswersCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */; };
+		F2176F571B297BFF000F946A /* ExamplesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2176F561B297BFF000F946A /* ExamplesCollectionView.m */; };
+		F2176F5A1B297CFE000F946A /* ExamplesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2176F591B297CFE000F946A /* ExamplesCollectionViewCell.m */; };
+		F2176F5E1B297EAC000F946A /* ExamplesCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2176F5D1B297EAC000F946A /* ExamplesCollectionViewCellView.xib */; };
 		F21F87A01AF3657400C95B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F879F1AF3657400C95B52 /* main.m */; };
 		F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A21AF3657400C95B52 /* AppDelegate.m */; };
 		F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ClassifyViewController.m */; };
@@ -90,6 +93,7 @@
 		F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F248FAD01AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld */; };
 		F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */; };
 		F27ADB0B1B09DE7E00ADE133 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */; };
+		F28A54D21B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */; };
 		F29AC1401B0B21C300DD0D58 /* ZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */; };
 		F29AC1421B0B269C00DD0D58 /* TestZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */; };
 		F2BC86B61B02119100F84935 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BC86B51B02119100F84935 /* HelpViewController.m */; };
@@ -433,6 +437,11 @@
 		F2173A7B1B077AF100C1F947 /* ZooniverseClientImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClientImageDownload.m; path = client/ZooniverseClientImageDownload.m; sourceTree = "<group>"; };
 		F2176F521B2970C0000F946A /* QuestionAnswersCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswersCollectionView.h; sourceTree = "<group>"; };
 		F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswersCollectionView.m; sourceTree = "<group>"; };
+		F2176F551B297BFF000F946A /* ExamplesCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionView.h; sourceTree = "<group>"; };
+		F2176F561B297BFF000F946A /* ExamplesCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionView.m; sourceTree = "<group>"; };
+		F2176F581B297CFE000F946A /* ExamplesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionViewCell.h; sourceTree = "<group>"; };
+		F2176F591B297CFE000F946A /* ExamplesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionViewCell.m; sourceTree = "<group>"; };
+		F2176F5D1B297EAC000F946A /* ExamplesCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamplesCollectionViewCellView.xib; sourceTree = "<group>"; };
 		F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-galaxyzoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879E1AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -487,6 +496,8 @@
 		F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseNameValuePair.m; path = client/ZooniverseNameValuePair.m; sourceTree = "<group>"; };
 		F27ADB091B09DE7E00ADE133 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F28A54D01B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionViewHeaderCell.h; sourceTree = "<group>"; };
+		F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionViewHeaderCell.m; sourceTree = "<group>"; };
 		F29AC13E1B0B21C300DD0D58 /* ZooniverseHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseHttpUtils.h; path = client/ZooniverseHttpUtils.h; sourceTree = "<group>"; };
 		F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseHttpUtils.m; path = client/ZooniverseHttpUtils.m; sourceTree = "<group>"; };
 		F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZooniverseHttpUtils.m; sourceTree = "<group>"; };
@@ -832,6 +843,13 @@
 				F21F87CF1AF384BF00C95B52 /* client */,
 				F24829861AF75D9C0060D9B0 /* Config */,
 				F24829681AF7547F0060D9B0 /* DecisionTree */,
+				F2176F551B297BFF000F946A /* ExamplesCollectionView.h */,
+				F2176F561B297BFF000F946A /* ExamplesCollectionView.m */,
+				F2176F5D1B297EAC000F946A /* ExamplesCollectionViewCellView.xib */,
+				F2176F581B297CFE000F946A /* ExamplesCollectionViewCell.h */,
+				F28A54D01B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.h */,
+				F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */,
+				F2176F591B297CFE000F946A /* ExamplesCollectionViewCell.m */,
 				F2BC86B41B02119100F84935 /* HelpViewController.h */,
 				F2BC86B51B02119100F84935 /* HelpViewController.m */,
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
@@ -846,13 +864,13 @@
 				F21F87A71AF3657400C95B52 /* Main.storyboard */,
 				F21739FF1B0399D600C1F947 /* QuestionAnswerButton.h */,
 				F2173A001B0399D600C1F947 /* QuestionAnswerButton.m */,
+				F2176F521B2970C0000F946A /* QuestionAnswersCollectionView.h */,
+				F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */,
 				F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */,
 				F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */,
 				F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */,
 				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
 				F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */,
-				F2176F521B2970C0000F946A /* QuestionAnswersCollectionView.h */,
-				F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */,
 				F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */,
 				F24829801AF759FD0060D9B0 /* Singleton.h */,
 				F24829811AF759FD0060D9B0 /* Singleton.m */,
@@ -1578,6 +1596,7 @@
 				F2D6FDFB1AFD44D3002E3E15 /* icon_goods_full-4_a-0_0 in Resources */,
 				F2D6FE471AFD44D3002E3E15 /* icon_irregular in Resources */,
 				F2D6FE6D1AFD44D3002E3E15 /* icon_sloan-6_x-5_0 in Resources */,
+				F2176F5E1B297EAC000F946A /* ExamplesCollectionViewCellView.xib in Resources */,
 				F2D6FDD51AFD44D3002E3E15 /* icon_clump_line in Resources */,
 				F2D6FDCD1AFD44D3002E3E15 /* icon_clump_1 in Resources */,
 				F2D6FDC41AFD44D3002E3E15 /* icon_candels-15_a-2_0 in Resources */,
@@ -1748,6 +1767,7 @@
 				F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */,
 				F213F7EE1B0274F400CAB635 /* Utils.m in Sources */,
 				F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */,
+				F28A54D21B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m in Sources */,
 				F2176F541B2970C0000F946A /* QuestionAnswersCollectionView.m in Sources */,
 				F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */,
 				F2173A011B0399D600C1F947 /* QuestionAnswerButton.m in Sources */,
@@ -1766,6 +1786,7 @@
 				F2173A7E1B077AF100C1F947 /* ZooniverseClientImageDownload.m in Sources */,
 				F24742C41B0B5927000FD3C7 /* ZooniverseClassificationQuestion.m in Sources */,
 				F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */,
+				F2176F5A1B297CFE000F946A /* ExamplesCollectionViewCell.m in Sources */,
 				F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */,
 				F24829821AF759FD0060D9B0 /* Singleton.m in Sources */,
 				F213F7F11B033DAB00CAB635 /* SubjectViewController.m in Sources */,
@@ -1773,6 +1794,7 @@
 				F24742C11B0B5927000FD3C7 /* ZooniverseClassification.m in Sources */,
 				F24829921AF8B54B0060D9B0 /* DecisionTreeParser.m in Sources */,
 				F24742CA1B0B5927000FD3C7 /* ZooniverseClassificationAnswer.m in Sources */,
+				F2176F571B297BFF000F946A /* ExamplesCollectionView.m in Sources */,
 				F203F50A1B079DA700C4821B /* ZooniverseClientImageDownloadSet.m in Sources */,
 				F248298C1AF75DB10060D9B0 /* ConfigSubjectGroup.m in Sources */,
 				F2BC86B61B02119100F84935 /* HelpViewController.m in Sources */,
