@@ -13,15 +13,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zjD-kL-11s" userLabel="imageView">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLp-fG-zRJ" userLabel="button" customClass="ExamplesCollectionViewCellButton">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                        <state key="normal" title="Button">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zjD-kL-11s" userLabel="imageView">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstItem="jLp-fG-zRJ" firstAttribute="leading" secondItem="zjD-kL-11s" secondAttribute="leading" id="GsN-dB-tiV"/>
+                <constraint firstItem="jLp-fG-zRJ" firstAttribute="bottom" secondItem="zjD-kL-11s" secondAttribute="bottom" id="NIS-an-nsB"/>
+                <constraint firstAttribute="trailing" secondItem="zjD-kL-11s" secondAttribute="trailing" id="T01-11-2W2"/>
+                <constraint firstItem="zjD-kL-11s" firstAttribute="leading" secondItem="fiQ-87-sm9" secondAttribute="leading" id="UID-UQ-rp8"/>
+                <constraint firstItem="jLp-fG-zRJ" firstAttribute="top" secondItem="zjD-kL-11s" secondAttribute="top" id="gZp-pp-N42"/>
+                <constraint firstItem="zjD-kL-11s" firstAttribute="trailing" secondItem="jLp-fG-zRJ" secondAttribute="trailing" id="jil-i2-aDM"/>
+                <constraint firstAttribute="bottom" secondItem="jLp-fG-zRJ" secondAttribute="bottom" id="n1T-un-njr"/>
+                <constraint firstItem="zjD-kL-11s" firstAttribute="top" secondItem="fiQ-87-sm9" secondAttribute="top" id="q3W-Sw-R7M"/>
+            </constraints>
             <size key="customSize" width="154" height="165"/>
             <connections>
+                <outlet property="button" destination="jLp-fG-zRJ" id="fnX-7D-mAb"/>
                 <outlet property="imageView" destination="zjD-kL-11s" id="VoL-Bk-LCR"/>
             </connections>
             <point key="canvasLocation" x="57" y="31"/>

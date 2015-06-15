@@ -152,6 +152,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="oeA-bE-tAS" kind="show" identifier="exampleViewEmbed" id="0w2-pj-lyh"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCell" id="3gC-9e-TUO" userLabel="headerCell" customClass="ExamplesCollectionViewHeaderCell">
@@ -196,6 +199,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2Q-eK-elW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3062" y="209"/>
+        </scene>
+        <!--Example Viewer Controller-->
+        <scene sceneID="aEW-gC-aU5">
+            <objects>
+                <viewController title="Example" id="oeA-bE-tAS" userLabel="Example Viewer Controller" customClass="ExampleViewerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gwl-kZ-NLG"/>
+                        <viewControllerLayoutGuide type="bottom" id="ApT-t8-Fmi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Bn-1L-pac">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CK0-Up-drq">
+                                <rect key="frame" x="0.0" y="-96" width="605" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CK0-Up-drq" firstAttribute="top" secondItem="6Bn-1L-pac" secondAttribute="topMargin" constant="-96" id="S9S-q0-ooe"/>
+                            <constraint firstItem="CK0-Up-drq" firstAttribute="leading" secondItem="6Bn-1L-pac" secondAttribute="leading" id="g8Y-ya-Vby"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CK0-Up-drq" secondAttribute="trailing" constant="-21" id="vCs-49-gi0"/>
+                            <constraint firstItem="CK0-Up-drq" firstAttribute="bottom" secondItem="ApT-t8-Fmi" secondAttribute="top" id="wra-66-ynY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="CK0-Up-drq" id="EbB-FC-1FW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0cK-Dh-s4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3791" y="209"/>
         </scene>
         <!--Subject View Controller-->
         <scene sceneID="Odq-C5-rFl">

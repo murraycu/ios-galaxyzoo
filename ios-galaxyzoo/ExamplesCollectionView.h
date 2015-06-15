@@ -15,4 +15,13 @@
 //See http://stackoverflow.com/questions/387959/nsstring-property-copy-or-retain
 @property (nonatomic, retain) DecisionTreeQuestion *question;
 
+typedef void (^ ZooniverseExamplesCollectionViewClickedBlock)(DecisionTreeQuestionAnswer *answer, NSInteger exampleIndex);
+
+- (void)setExampleClickedCallback:(ZooniverseExamplesCollectionViewClickedBlock)callbackBlockExampleClicked;
+
+//TODO: Move this somewhere more general:
++(NSString *) getExampleIconName:(NSString *)questionId
+                     forAnswerId:(NSString *)answerId
+                 forExampleIndex:(NSInteger)exampleIndex;
+
 @end

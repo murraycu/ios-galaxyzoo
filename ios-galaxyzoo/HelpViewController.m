@@ -8,10 +8,14 @@
 
 #import "HelpViewController.h"
 #import "ExamplesCollectionView.h"
+#import "ExampleViewerViewController.h"
+#import "Config.h"
 
 @interface HelpViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
 @property (weak, nonatomic) IBOutlet ExamplesCollectionView *collectionViewExamples;
+
+@property (strong, nonatomic) NSString *exampleUrlToShow;
 
 @end
 
@@ -25,6 +29,16 @@
 
     self.collectionViewExamples.question = self.question;
     [self.collectionViewExamples reloadData];
+
+    [self.collectionViewExamples setExampleClickedCallback:^(DecisionTreeQuestionAnswer *answer, NSInteger exampleIndex) {
+        NSString *iconName = [ExamplesCollectionView getExampleIconName:self.question.questionId
+                                                            forAnswerId:answer.answerId
+                                                        forExampleIndex:exampleIndex];
+        self.exampleUrlToShow = [self getExampleImageUri:iconName];
+
+        [self performSegueWithIdentifier:@"exampleViewEmbed"
+                                  sender:self];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,14 +46,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+- (NSString *)getExampleImageUri:(NSString *)iconName {
+    return [NSString stringWithFormat:@"%@%@.jpg",
+     [Config fullExampleUri], iconName, nil];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     NSString *segueName = segue.identifier;
+     if ([segueName isEqualToString:@"exampleViewEmbed"]) {
+         ExampleViewerViewController *viewController = [segue destinationViewController];
+         viewController.url = self.exampleUrlToShow;
+     }
+ }
 
 @end

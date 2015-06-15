@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExamplesCollectionViewCellButton.h"
 
 @interface ExamplesCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet ExamplesCollectionViewCellButton *button;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

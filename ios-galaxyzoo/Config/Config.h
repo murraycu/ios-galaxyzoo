@@ -20,6 +20,8 @@
 
 + (NSString *)userAgent;
 
++ (NSString *)fullExampleUri;
+
 + (NSString *)forgotPasswordUri;
 + (NSString *)registerUri;
 + (NSString *)talkUri;

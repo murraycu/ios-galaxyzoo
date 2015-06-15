@@ -10,7 +10,13 @@
 #import "DecisionTree/DecisionTreeQuestionAnswer.h"
 #import "DecisionTree/DecisionTreeQuestionCheckbox.h"
 #import "ExamplesCollectionViewCell.h"
+#import "ExamplesCollectionViewCellButton.h"
 #import "ExamplesCollectionViewHeaderCell.h"
+
+@interface ExamplesCollectionView() {
+    ZooniverseExamplesCollectionViewClickedBlock _callbackBlockExampleClicked;
+}
+@end
 
 @implementation ExamplesCollectionView
 
@@ -50,6 +56,10 @@
     self.dataSource = self;
 }
 
+- (void)setExampleClickedCallback:(ZooniverseExamplesCollectionViewClickedBlock)callbackBlockExampleClicked {
+    _callbackBlockExampleClicked = callbackBlockExampleClicked;
+
+}
 
 #pragma mark - UICollectionViewDelegate
 
@@ -105,6 +115,13 @@
     return result;
 }
 
+-(void)onExampleImageButtonClick:(UIView *)clickedButton
+{
+    ExamplesCollectionViewCellButton *button = (ExamplesCollectionViewCellButton *)clickedButton;
+    _callbackBlockExampleClicked(button.answer,
+                                 button.exampleIndex);
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"exampleCell";
 
@@ -113,12 +130,17 @@
     ExamplesCollectionViewCell *cell = (ExamplesCollectionViewCell *)cellBase;
     UIImage *image = nil;
 
+    ExamplesCollectionViewCellButton *button = cell.button;
+    UIImageView *imageView = cell.imageView;
+
     DecisionTreeQuestionBaseButton *answer = [self getAnswerForIndexPath:indexPath];
     NSInteger index = [indexPath indexAtPosition:1];
     if (index == 0) {
         //TODO: Move the adding of the icon_ prefix into a reusable method.
         NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", answer.icon, nil];
         image = [UIImage imageNamed:filenameIcon];
+
+        button.hidden = YES;
     } else {
         NSInteger exampleIndex = index - 1;
         NSString *iconName = [ExamplesCollectionView getExampleIconName:self.question.questionId
@@ -128,9 +150,16 @@
         //TODO: Move the adding of the icon_ prefix into a reusable method.
         NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", iconName, nil];
         image = [UIImage imageNamed:filenameIcon];
+
+        //Respond to clicks, to show the full image:
+        button.hidden = NO;
+        button.answer = (DecisionTreeQuestionAnswer*)answer;
+        button.exampleIndex = exampleIndex;
+        [button addTarget:self
+                   action:@selector(onExampleImageButtonClick:)
+         forControlEvents:UIControlEventTouchUpInside];
     }
 
-    UIImageView *imageView = cell.imageView;
     imageView.image = image;
 
     return cell;

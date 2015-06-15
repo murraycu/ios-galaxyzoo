@@ -94,6 +94,8 @@
 		F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */; };
 		F27ADB0B1B09DE7E00ADE133 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */; };
 		F28A54D21B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */; };
+		F28A54D81B2ED129000E9626 /* ExampleViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */; };
+		F28A54DB1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54DA1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m */; };
 		F29AC1401B0B21C300DD0D58 /* ZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */; };
 		F29AC1421B0B269C00DD0D58 /* TestZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */; };
 		F2BC86B61B02119100F84935 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BC86B51B02119100F84935 /* HelpViewController.m */; };
@@ -498,6 +500,10 @@
 		F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F28A54D01B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionViewHeaderCell.h; sourceTree = "<group>"; };
 		F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionViewHeaderCell.m; sourceTree = "<group>"; };
+		F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleViewerViewController.h; path = ../ExampleViewerViewController.h; sourceTree = "<group>"; };
+		F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleViewerViewController.m; path = ../ExampleViewerViewController.m; sourceTree = "<group>"; };
+		F28A54D91B2EE548000E9626 /* ExamplesCollectionViewCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionViewCellButton.h; sourceTree = "<group>"; };
+		F28A54DA1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionViewCellButton.m; sourceTree = "<group>"; };
 		F29AC13E1B0B21C300DD0D58 /* ZooniverseHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseHttpUtils.h; path = client/ZooniverseHttpUtils.h; sourceTree = "<group>"; };
 		F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseHttpUtils.m; path = client/ZooniverseHttpUtils.m; sourceTree = "<group>"; };
 		F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZooniverseHttpUtils.m; sourceTree = "<group>"; };
@@ -845,11 +851,15 @@
 				F24829681AF7547F0060D9B0 /* DecisionTree */,
 				F2176F551B297BFF000F946A /* ExamplesCollectionView.h */,
 				F2176F561B297BFF000F946A /* ExamplesCollectionView.m */,
-				F2176F5D1B297EAC000F946A /* ExamplesCollectionViewCellView.xib */,
 				F2176F581B297CFE000F946A /* ExamplesCollectionViewCell.h */,
+				F2176F591B297CFE000F946A /* ExamplesCollectionViewCell.m */,
+				F28A54D91B2EE548000E9626 /* ExamplesCollectionViewCellButton.h */,
+				F28A54DA1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m */,
+				F2176F5D1B297EAC000F946A /* ExamplesCollectionViewCellView.xib */,
 				F28A54D01B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.h */,
 				F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */,
-				F2176F591B297CFE000F946A /* ExamplesCollectionViewCell.m */,
+				F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */,
+				F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */,
 				F2BC86B41B02119100F84935 /* HelpViewController.h */,
 				F2BC86B51B02119100F84935 /* HelpViewController.m */,
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
@@ -1785,10 +1795,12 @@
 				F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */,
 				F2173A7E1B077AF100C1F947 /* ZooniverseClientImageDownload.m in Sources */,
 				F24742C41B0B5927000FD3C7 /* ZooniverseClassificationQuestion.m in Sources */,
+				F28A54D81B2ED129000E9626 /* ExampleViewerViewController.m in Sources */,
 				F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */,
 				F2176F5A1B297CFE000F946A /* ExamplesCollectionViewCell.m in Sources */,
 				F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */,
 				F24829821AF759FD0060D9B0 /* Singleton.m in Sources */,
+				F28A54DB1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m in Sources */,
 				F213F7F11B033DAB00CAB635 /* SubjectViewController.m in Sources */,
 				F2D6FEB11AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m in Sources */,
 				F24742C11B0B5927000FD3C7 /* ZooniverseClassification.m in Sources */,
