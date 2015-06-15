@@ -98,7 +98,7 @@
 		F28A54DB1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54DA1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m */; };
 		F29AC1401B0B21C300DD0D58 /* ZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */; };
 		F29AC1421B0B269C00DD0D58 /* TestZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */; };
-		F2BC86B61B02119100F84935 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BC86B51B02119100F84935 /* HelpViewController.m */; };
+		F2BC86B61B02119100F84935 /* QuestionHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BC86B51B02119100F84935 /* QuestionHelpViewController.m */; };
 		F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */; };
 		F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */; };
 		F2D6FC8C1AFCA166002E3E15 /* TestDecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */; };
@@ -507,8 +507,8 @@
 		F29AC13E1B0B21C300DD0D58 /* ZooniverseHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseHttpUtils.h; path = client/ZooniverseHttpUtils.h; sourceTree = "<group>"; };
 		F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseHttpUtils.m; path = client/ZooniverseHttpUtils.m; sourceTree = "<group>"; };
 		F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZooniverseHttpUtils.m; sourceTree = "<group>"; };
-		F2BC86B41B02119100F84935 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
-		F2BC86B51B02119100F84935 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		F2BC86B41B02119100F84935 /* QuestionHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionHelpViewController.h; sourceTree = "<group>"; };
+		F2BC86B51B02119100F84935 /* QuestionHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionHelpViewController.m; sourceTree = "<group>"; };
 		F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTree.m; path = DecisionTree/DecisionTree.m; sourceTree = "<group>"; };
 		F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
@@ -860,8 +860,6 @@
 				F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */,
 				F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */,
 				F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */,
-				F2BC86B41B02119100F84935 /* HelpViewController.h */,
-				F2BC86B51B02119100F84935 /* HelpViewController.m */,
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
 				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
 				F2D6FEBB1B00B3F9002E3E15 /* ListCollectionViewCell.h */,
@@ -879,6 +877,8 @@
 				F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */,
 				F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */,
 				F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */,
+				F2BC86B41B02119100F84935 /* QuestionHelpViewController.h */,
+				F2BC86B51B02119100F84935 /* QuestionHelpViewController.m */,
 				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
 				F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */,
 				F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */,
@@ -1809,7 +1809,7 @@
 				F2176F571B297BFF000F946A /* ExamplesCollectionView.m in Sources */,
 				F203F50A1B079DA700C4821B /* ZooniverseClientImageDownloadSet.m in Sources */,
 				F248298C1AF75DB10060D9B0 /* ConfigSubjectGroup.m in Sources */,
-				F2BC86B61B02119100F84935 /* HelpViewController.m in Sources */,
+				F2BC86B61B02119100F84935 /* QuestionHelpViewController.m in Sources */,
 				F24742BE1B0B5926000FD3C7 /* ZooniverseSubject.m in Sources */,
 				F29AC1401B0B21C300DD0D58 /* ZooniverseHttpUtils.m in Sources */,
 				F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */,

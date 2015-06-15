@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Murray Cumming. All rights reserved.
 //
 
-#import "HelpViewController.h"
+#import "QuestionHelpViewController.h"
 #import "ExamplesCollectionView.h"
 #import "ExampleViewerViewController.h"
 #import "Config.h"
 
-@interface HelpViewController ()
+@interface QuestionHelpViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
 @property (weak, nonatomic) IBOutlet ExamplesCollectionView *collectionViewExamples;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation HelpViewController
+@implementation QuestionHelpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

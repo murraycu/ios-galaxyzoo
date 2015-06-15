@@ -9,7 +9,7 @@
 #import "ClassifyViewController.h"
 #import "SubjectViewController.h"
 #import "QuestionViewController.h"
-#import "HelpViewController.h"
+#import "QuestionHelpViewController.h"
 #import "ListViewController.h"
 #import "LoginViewController.h"
 #import "AppDelegate.h"
@@ -211,7 +211,7 @@
     } else if ([segueName isEqualToString:@"questionViewEmbed"]) {
         _questionViewController = [segue destinationViewController];
     } else if ([segueName isEqualToString:@"helpShowEmbed"]) {
-        HelpViewController *viewController = [segue destinationViewController];
+        QuestionHelpViewController *viewController = [segue destinationViewController];
         viewController.question = _questionViewController.question;
     }
 }

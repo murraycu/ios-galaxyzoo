@@ -116,7 +116,7 @@
         <!--Help-->
         <scene sceneID="kY3-FI-rt0">
             <objects>
-                <viewController title="Help" id="uoU-Fq-DjU" customClass="HelpViewController" sceneMemberID="viewController">
+                <viewController title="Help" id="uoU-Fq-DjU" customClass="QuestionHelpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1vK-QU-Bhl"/>
                         <viewControllerLayoutGuide type="bottom" id="7EN-eK-4W6"/>

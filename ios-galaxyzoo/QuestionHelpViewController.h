@@ -9,7 +9,7 @@
 #import "DecisionTree/DecisionTreeQuestion.h"
 #import <UIKit/UIKit.h>
 
-@interface HelpViewController : UIViewController
+@interface QuestionHelpViewController : UIViewController
 
 //TODO: Use copy instead of retain?
 //See http://stackoverflow.com/questions/387959/nsstring-property-copy-or-retain
