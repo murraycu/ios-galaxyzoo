@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,6 +13,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeS-d1-N9t" userLabel="button" customClass="ListCollectionViewCellButton">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Sk-IX-EA4" userLabel="imageView">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     </imageView>
@@ -25,7 +31,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageContextualFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="SWc-bw-gGQ" userLabel="imageStatusFavorite">
                         <rect key="frame" x="39" y="84" width="16" height="16"/>
                     </imageView>
-                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-x2-N0a" userLabel="spinner">
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-x2-N0a" userLabel="spinner">
                         <rect key="frame" x="40" y="40" width="20" height="20"/>
                     </activityIndicatorView>
                 </subviews>
@@ -36,28 +42,35 @@
                 <constraint firstItem="SWc-bw-gGQ" firstAttribute="bottom" secondItem="tw9-hY-eFS" secondAttribute="bottom" id="8vh-lT-8qW"/>
                 <constraint firstAttribute="bottom" secondItem="7Sk-IX-EA4" secondAttribute="bottom" id="9KN-55-x33"/>
                 <constraint firstItem="SWc-bw-gGQ" firstAttribute="height" secondItem="tw9-hY-eFS" secondAttribute="height" id="Gu2-py-doU"/>
+                <constraint firstItem="aeS-d1-N9t" firstAttribute="centerY" secondItem="3bt-x2-N0a" secondAttribute="centerY" id="ITB-3x-V9d"/>
                 <constraint firstItem="SWc-bw-gGQ" firstAttribute="leading" secondItem="kph-nh-Zb2" secondAttribute="trailing" constant="4" id="J0a-Rt-Ji6"/>
                 <constraint firstItem="7Sk-IX-EA4" firstAttribute="top" secondItem="eNr-EJ-Tzv" secondAttribute="top" id="Lgb-xv-skO"/>
                 <constraint firstItem="SWc-bw-gGQ" firstAttribute="width" secondItem="kph-nh-Zb2" secondAttribute="width" id="Ntk-Wp-rfA"/>
                 <constraint firstItem="SWc-bw-gGQ" firstAttribute="width" secondItem="tw9-hY-eFS" secondAttribute="width" id="QN3-Ag-Ofq"/>
                 <constraint firstAttribute="trailing" secondItem="tw9-hY-eFS" secondAttribute="trailing" constant="84" id="Qad-OF-GAg"/>
                 <constraint firstAttribute="trailing" secondItem="7Sk-IX-EA4" secondAttribute="trailing" id="QyC-Sx-nfL"/>
+                <constraint firstItem="aeS-d1-N9t" firstAttribute="centerX" secondItem="3bt-x2-N0a" secondAttribute="centerX" id="RSh-pf-U8Y"/>
                 <constraint firstItem="tw9-hY-eFS" firstAttribute="top" secondItem="eNr-EJ-Tzv" secondAttribute="top" constant="84" id="Rm2-DR-KlO"/>
                 <constraint firstAttribute="trailing" secondItem="SWc-bw-gGQ" secondAttribute="trailing" constant="45" id="SEn-o8-2d3"/>
+                <constraint firstItem="aeS-d1-N9t" firstAttribute="leading" secondItem="7Sk-IX-EA4" secondAttribute="leading" id="Xc1-6Y-OYd"/>
+                <constraint firstItem="aeS-d1-N9t" firstAttribute="bottom" secondItem="7Sk-IX-EA4" secondAttribute="bottom" id="b1K-Hy-iN6"/>
                 <constraint firstItem="SWc-bw-gGQ" firstAttribute="bottom" secondItem="kph-nh-Zb2" secondAttribute="bottom" id="hd9-CZ-Ybr"/>
+                <constraint firstItem="aeS-d1-N9t" firstAttribute="top" secondItem="7Sk-IX-EA4" secondAttribute="top" id="kLV-JK-v3j"/>
                 <constraint firstAttribute="bottom" secondItem="tw9-hY-eFS" secondAttribute="bottom" id="nBN-rT-mDC"/>
                 <constraint firstItem="7Sk-IX-EA4" firstAttribute="leading" secondItem="tw9-hY-eFS" secondAttribute="leading" id="nyf-8q-hz6"/>
+                <constraint firstItem="aeS-d1-N9t" firstAttribute="trailing" secondItem="7Sk-IX-EA4" secondAttribute="trailing" id="o0G-QP-IWP"/>
                 <constraint firstItem="7Sk-IX-EA4" firstAttribute="leading" secondItem="eNr-EJ-Tzv" secondAttribute="leading" id="sBh-wn-Esk"/>
             </constraints>
             <size key="customSize" width="154" height="165"/>
             <connections>
+                <outlet property="button" destination="aeS-d1-N9t" id="XTz-vA-ilY"/>
                 <outlet property="imageStatusDone" destination="tw9-hY-eFS" id="Hlc-yL-61d"/>
                 <outlet property="imageStatusFavorite" destination="SWc-bw-gGQ" id="d3J-Ai-Hfq"/>
                 <outlet property="imageView" destination="7Sk-IX-EA4" id="kLt-c9-ZRK"/>
                 <outlet property="imagestatusUploaded" destination="kph-nh-Zb2" id="Cgc-Qt-De9"/>
                 <outlet property="spinner" destination="3bt-x2-N0a" id="QYH-KC-stH"/>
             </connections>
-            <point key="canvasLocation" x="247" y="254.5"/>
+            <point key="canvasLocation" x="247" y="254"/>
         </collectionViewCell>
     </objects>
     <resources>

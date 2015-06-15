@@ -8,6 +8,7 @@
 
 #import "ListViewController.h"
 #import "ListCollectionViewCell.h"
+#import "SubjectViewerViewController.h"
 #import "AppDelegate.h"
 #import "../../ZooniverseModel/ZooniverseSubject.h"
 #import "Utils.h"
@@ -21,6 +22,8 @@
 
 @property (nonatomic, strong) NSMutableArray *sectionChanges;
 @property (nonatomic, strong) NSMutableArray *itemChanges;
+
+@property (nonatomic, retain) ZooniverseSubject *subjectToShow;
 
 @end
 
@@ -187,6 +190,15 @@
     return [sectionInfo numberOfObjects];
 }
 
+-(void)onSubjectButtonClick:(UIView*)clickedButton
+{
+    ListCollectionViewCellButton *button = (ListCollectionViewCellButton *)clickedButton;
+
+    self.subjectToShow = button.subject;;
+    [self performSegueWithIdentifier:@"subjectViewerShow"
+                              sender:self];
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"subjectCell";
 
@@ -207,7 +219,31 @@
     BOOL complete = subject.locationStandardDownloaded && subject.locationInvertedDownloaded && subject.locationThumbnailDownloaded;
     cell.spinner.hidden = complete;
 
+    //Let the user click on already-classified subjects to view them:
+    if (subject.done) {
+        cell.button.hidden = NO;
+        cell.button.subject = subject; //So we know which button was clicked.
+        [cell.button addTarget:self
+                   action:@selector(onSubjectButtonClick:)
+         forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        //Don't let the user click on non-yet-done subjects:
+        cell.button.hidden = YES;
+    }
+
+
     return cell;
 }
+
+#pragma mark - Navigation
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSString *segueName = segue.identifier;
+    if ([segueName isEqualToString:@"subjectViewerShow"]) {
+        SubjectViewerViewController *viewController = [segue destinationViewController];
+        viewController.subject = self.subjectToShow;
+    }
+}
+
 
 @end

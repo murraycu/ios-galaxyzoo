@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListCollectionViewCellButton.h"
 
 @interface ListCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet ListCollectionViewCellButton *button;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageStatusDone;
 @property (weak, nonatomic) IBOutlet UIImageView *imagestatusUploaded;

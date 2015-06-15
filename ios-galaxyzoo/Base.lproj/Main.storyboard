@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eyu-NT-sYu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -96,6 +97,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="c3U-5R-8c9" kind="show" identifier="subjectViewerShow" id="ULY-UQ-bwJ"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -111,7 +115,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRs-zS-SLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="903"/>
+            <point key="canvasLocation" x="1706" y="903"/>
         </scene>
         <!--Help-->
         <scene sceneID="kY3-FI-rt0">
@@ -198,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2Q-eK-elW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062" y="209"/>
+            <point key="canvasLocation" x="3402" y="209"/>
         </scene>
         <!--Example Viewer Controller-->
         <scene sceneID="aEW-gC-aU5">
@@ -230,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cK-Dh-s4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3791" y="209"/>
+            <point key="canvasLocation" x="4131" y="209"/>
         </scene>
         <!--Subject View Controller-->
         <scene sceneID="Odq-C5-rFl">
@@ -241,11 +245,11 @@
                         <viewControllerLayoutGuide type="bottom" id="TWR-nz-wA1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bH4-F3-DJ9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="361"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="8" width="608" height="229"/>
+                                <rect key="frame" x="0.0" y="8" width="608" height="353"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
                                 </constraints>
@@ -270,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9E-0y-QaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2378.5" y="36"/>
+            <point key="canvasLocation" x="2718" y="35.5"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="v9M-16-AGV">
@@ -359,7 +363,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvg-m2-V6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2356" y="402"/>
+            <point key="canvasLocation" x="2702" y="396"/>
+        </scene>
+        <!--Subject Viewer View Controller-->
+        <scene sceneID="Ymc-G5-Ti1">
+            <objects>
+                <viewController title="Subject" id="c3U-5R-8c9" userLabel="Subject Viewer View Controller" customClass="SubjectViewerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZG6-Gj-3jc"/>
+                        <viewControllerLayoutGuide type="bottom" id="40V-K6-ked"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5UT-pG-z3b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="b66-RN-97k" userLabel="containerViewSubject">
+                                <rect key="frame" x="0.0" y="72" width="600" height="361"/>
+                                <connections>
+                                    <segue destination="tdd-TB-MLp" kind="embed" identifier="subjectViewerViewEmbed" id="19q-0J-wPZ"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zooniverse ID:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0p-1i-GLX">
+                                <rect key="frame" x="16" y="447" width="129" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="B5V-Gy-fwj"/>
+                                    <constraint firstAttribute="height" constant="35" id="RYK-xy-ZW8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWv-bP-96Q" userLabel="labelZooniverseId">
+                                <rect key="frame" x="159" y="447" width="425" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b66-RN-97k" firstAttribute="leading" secondItem="5UT-pG-z3b" secondAttribute="leading" id="1MR-Rq-0tw"/>
+                            <constraint firstItem="k0p-1i-GLX" firstAttribute="leading" secondItem="5UT-pG-z3b" secondAttribute="leadingMargin" id="3eD-M9-CZ3"/>
+                            <constraint firstAttribute="trailing" secondItem="b66-RN-97k" secondAttribute="trailing" id="5Oq-cu-Tgf"/>
+                            <constraint firstItem="mWv-bP-96Q" firstAttribute="trailing" secondItem="5UT-pG-z3b" secondAttribute="trailingMargin" id="5gi-jO-tJW"/>
+                            <constraint firstItem="k0p-1i-GLX" firstAttribute="firstBaseline" secondItem="mWv-bP-96Q" secondAttribute="firstBaseline" id="8Gk-v1-xZm"/>
+                            <constraint firstItem="mWv-bP-96Q" firstAttribute="leading" secondItem="k0p-1i-GLX" secondAttribute="trailing" constant="14" id="AXb-x6-tsH"/>
+                            <constraint firstItem="b66-RN-97k" firstAttribute="top" secondItem="ZG6-Gj-3jc" secondAttribute="bottom" constant="8" symbolic="YES" id="CPP-4L-RX9"/>
+                            <constraint firstItem="k0p-1i-GLX" firstAttribute="top" secondItem="b66-RN-97k" secondAttribute="bottom" constant="14" id="RDK-6M-QvC"/>
+                            <constraint firstItem="40V-K6-ked" firstAttribute="top" secondItem="k0p-1i-GLX" secondAttribute="bottom" constant="69" id="h8x-fp-J8t"/>
+                            <constraint firstItem="k0p-1i-GLX" firstAttribute="baseline" secondItem="mWv-bP-96Q" secondAttribute="baseline" id="lbk-u7-afQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelZooniverseId" destination="mWv-bP-96Q" id="fxg-sl-JtK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yvh-kr-XpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2712" y="903"/>
         </scene>
         <!--Classify-->
         <scene sceneID="bs1-fl-HbV">
@@ -506,7 +567,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cp4-Mw-Ndu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062" y="-472"/>
+            <point key="canvasLocation" x="2718" y="-480"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="19q-0J-wPZ"/>
+    </inferredMetricsTieBreakers>
 </document>
