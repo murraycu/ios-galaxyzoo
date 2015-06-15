@@ -76,6 +76,10 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
     return @"http://talk.galaxyzoo.org/#/subjects/";
 }
 
++ (NSString *)examineUri {
+    return @"http://www.galaxyzoo.org/#/examine/";
+}
+
 
 
 @end

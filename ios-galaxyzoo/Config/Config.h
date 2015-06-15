@@ -24,9 +24,8 @@
 
 + (NSString *)forgotPasswordUri;
 + (NSString *)registerUri;
+
++ (NSString *)examineUri;
 + (NSString *)talkUri;
-
-
-
 
 @end

@@ -8,14 +8,19 @@
 
 #import "SubjectViewerViewController.h"
 #import "SubjectViewController.h"
+#import "../Config/Config.h"
+#import "Utils.h"
 
 @interface SubjectViewerViewController () {
     SubjectViewController *_subjectViewController;
 }
+
 @property (weak, nonatomic) IBOutlet UILabel *labelZooniverseId;
+
 @end
 
 @implementation SubjectViewerViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +43,18 @@
 - (void)updateUI {
     _subjectViewController.subject = self.subject;
     self.labelZooniverseId.text = self.subject.zooniverseId;
+}
+
+- (IBAction)onButtonExamineClicked:(UIButton *)sender {
+    NSString *strUrl = [NSString stringWithFormat:@"%@%@",
+                        [Config examineUri],
+                        self.subject.zooniverseId,
+                        nil];
+    [Utils openUrlInBrowser:strUrl];
+}
+
+- (IBAction)onButtonDiscussClicked:(UIButton *)sender {
+    [Utils openDiscussionPage:self.subject.zooniverseId];
 }
 
 #pragma mark - Navigation

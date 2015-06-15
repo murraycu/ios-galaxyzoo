@@ -17,13 +17,19 @@
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"datetimeRetrieved" ascending:YES]];
 }
 
-+ (void)openDiscussionPage:(NSString *)zooniverseId {
-    NSString *strUrl = [NSString stringWithFormat:@"%@%@", [Config talkUri], zooniverseId];
++ (void)openUrlInBrowser:(NSString *)strUrl {
     NSURL *url = [NSURL URLWithString:strUrl];
 
     if (![[UIApplication sharedApplication] openURL:url]) {
-        NSLog(@"Failed to open url: %@", [url description]);
+        NSLog(@"openUrlInBrowser: Failed to open url: %@", [url description]);
     }
+}
+
++ (void)openDiscussionPage:(NSString *)zooniverseId {
+    NSString *strUrl = [NSString stringWithFormat:@"%@%@",
+                        [Config talkUri],
+                        zooniverseId];
+    [Utils openUrlInBrowser:strUrl];
 }
 
 @end

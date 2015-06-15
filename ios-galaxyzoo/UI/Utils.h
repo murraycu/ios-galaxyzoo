@@ -15,4 +15,6 @@
 
 + (void)openDiscussionPage:(NSString *)zooniverseId;
 
++ (void)openUrlInBrowser:(NSString *)strUrl;
+
 @end
