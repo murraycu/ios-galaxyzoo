@@ -209,7 +209,7 @@
     if ([segueName isEqualToString:@"subjectViewEmbed"]) {
         _subjectViewController = [segue destinationViewController];
     } else if ([segueName isEqualToString:@"questionViewEmbed"]) {
-            _questionViewController = [segue destinationViewController];
+        _questionViewController = [segue destinationViewController];
     } else if ([segueName isEqualToString:@"helpShowEmbed"]) {
         HelpViewController *viewController = [segue destinationViewController];
         viewController.question = _questionViewController.question;
