@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Murray Cumming. All rights reserved.
 //
 
-#import "../DecisionTree/DecisionTreeQuestion.h"
+#import "../../DecisionTree/DecisionTreeQuestion.h"
 #import <UIKit/UIKit.h>
 
 @interface QuestionHelpViewController : UIViewController

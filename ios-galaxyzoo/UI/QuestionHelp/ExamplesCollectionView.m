@@ -7,8 +7,8 @@
 //
 
 #import "ExamplesCollectionView.h"
-#import "../DecisionTree/DecisionTreeQuestionAnswer.h"
-#import "../DecisionTree/DecisionTreeQuestionCheckbox.h"
+#import "../../DecisionTree/DecisionTreeQuestionAnswer.h"
+#import "../../DecisionTree/DecisionTreeQuestionCheckbox.h"
 #import "ExamplesCollectionViewCell.h"
 #import "ExamplesCollectionViewCellButton.h"
 #import "ExamplesCollectionViewHeaderCell.h"
