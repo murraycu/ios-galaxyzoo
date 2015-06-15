@@ -83,12 +83,9 @@
 		F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F248FAD01AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld */; };
 		F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */; };
 		F28A54D81B2ED129000E9626 /* ExampleViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */; };
-		F28A55011B2EECB1000E9626 /* ListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54E91B2EECB1000E9626 /* ListCollectionViewCell.m */; };
-		F28A55021B2EECB1000E9626 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54EB1B2EECB1000E9626 /* ListViewController.m */; };
 		F28A55031B2EECB1000E9626 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54ED1B2EECB1000E9626 /* LoginViewController.m */; };
 		F28A55091B2EECB1000E9626 /* SubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54F91B2EECB1000E9626 /* SubjectViewController.m */; };
 		F28A550A1B2EECB1000E9626 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54FB1B2EECB1000E9626 /* Utils.m */; };
-		F28A550E1B2EEDB2000E9626 /* ListCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28A550D1B2EEDB2000E9626 /* ListCollectionViewCellView.xib */; };
 		F28A551D1B2EEEBE000E9626 /* ExamplesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A55131B2EEEBE000E9626 /* ExamplesCollectionView.m */; };
 		F28A551E1B2EEEBE000E9626 /* ExamplesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A55151B2EEEBE000E9626 /* ExamplesCollectionViewCell.m */; };
 		F28A551F1B2EEEBE000E9626 /* ExamplesCollectionViewCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A55171B2EEEBE000E9626 /* ExamplesCollectionViewCellButton.m */; };
@@ -101,6 +98,9 @@
 		F28A55331B2EEF7C000E9626 /* QuestionAnswersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A552C1B2EEF7C000E9626 /* QuestionAnswersCollectionViewCell.m */; };
 		F28A55341B2EEF7C000E9626 /* QuestionAnswersCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28A552D1B2EEF7C000E9626 /* QuestionAnswersCollectionViewCellView.xib */; };
 		F28A55351B2EEF7C000E9626 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A552F1B2EEF7C000E9626 /* QuestionViewController.m */; };
+		F28A553C1B2EF006000E9626 /* ListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A55381B2EF006000E9626 /* ListCollectionViewCell.m */; };
+		F28A553D1B2EF006000E9626 /* ListCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28A55391B2EF006000E9626 /* ListCollectionViewCellView.xib */; };
+		F28A553E1B2EF006000E9626 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A553B1B2EF006000E9626 /* ListViewController.m */; };
 		F29AC1401B0B21C300DD0D58 /* ZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */; };
 		F29AC1421B0B269C00DD0D58 /* TestZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */; };
 		F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */; };
@@ -481,17 +481,12 @@
 		F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseNameValuePair.m; path = client/ZooniverseNameValuePair.m; sourceTree = "<group>"; };
 		F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleViewerViewController.h; path = ../ExampleViewerViewController.h; sourceTree = "<group>"; };
 		F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleViewerViewController.m; path = ../ExampleViewerViewController.m; sourceTree = "<group>"; };
-		F28A54E81B2EECB1000E9626 /* ListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCollectionViewCell.h; path = UI/ListCollectionViewCell.h; sourceTree = "<group>"; };
-		F28A54E91B2EECB1000E9626 /* ListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCollectionViewCell.m; path = UI/ListCollectionViewCell.m; sourceTree = "<group>"; };
-		F28A54EA1B2EECB1000E9626 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = UI/ListViewController.h; sourceTree = "<group>"; };
-		F28A54EB1B2EECB1000E9626 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = UI/ListViewController.m; sourceTree = "<group>"; };
 		F28A54EC1B2EECB1000E9626 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UI/LoginViewController.h; sourceTree = "<group>"; };
 		F28A54ED1B2EECB1000E9626 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = UI/LoginViewController.m; sourceTree = "<group>"; };
 		F28A54F81B2EECB1000E9626 /* SubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubjectViewController.h; path = UI/SubjectViewController.h; sourceTree = "<group>"; };
 		F28A54F91B2EECB1000E9626 /* SubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubjectViewController.m; path = UI/SubjectViewController.m; sourceTree = "<group>"; };
 		F28A54FA1B2EECB1000E9626 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = UI/Utils.h; sourceTree = "<group>"; };
 		F28A54FB1B2EECB1000E9626 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = UI/Utils.m; sourceTree = "<group>"; };
-		F28A550D1B2EEDB2000E9626 /* ListCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListCollectionViewCellView.xib; path = UI/ListCollectionViewCellView.xib; sourceTree = "<group>"; };
 		F28A55121B2EEEBE000E9626 /* ExamplesCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamplesCollectionView.h; path = UI/QuestionHelp/ExamplesCollectionView.h; sourceTree = "<group>"; };
 		F28A55131B2EEEBE000E9626 /* ExamplesCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamplesCollectionView.m; path = UI/QuestionHelp/ExamplesCollectionView.m; sourceTree = "<group>"; };
 		F28A55141B2EEEBE000E9626 /* ExamplesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamplesCollectionViewCell.h; path = UI/QuestionHelp/ExamplesCollectionViewCell.h; sourceTree = "<group>"; };
@@ -515,6 +510,11 @@
 		F28A552D1B2EEF7C000E9626 /* QuestionAnswersCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuestionAnswersCollectionViewCellView.xib; path = UI/Classify/QuestionAnswersCollectionViewCellView.xib; sourceTree = "<group>"; };
 		F28A552E1B2EEF7C000E9626 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionViewController.h; path = UI/Classify/QuestionViewController.h; sourceTree = "<group>"; };
 		F28A552F1B2EEF7C000E9626 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionViewController.m; path = UI/Classify/QuestionViewController.m; sourceTree = "<group>"; };
+		F28A55371B2EF006000E9626 /* ListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCollectionViewCell.h; path = UI/List/ListCollectionViewCell.h; sourceTree = "<group>"; };
+		F28A55381B2EF006000E9626 /* ListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCollectionViewCell.m; path = UI/List/ListCollectionViewCell.m; sourceTree = "<group>"; };
+		F28A55391B2EF006000E9626 /* ListCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListCollectionViewCellView.xib; path = UI/List/ListCollectionViewCellView.xib; sourceTree = "<group>"; };
+		F28A553A1B2EF006000E9626 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = UI/List/ListViewController.h; sourceTree = "<group>"; };
+		F28A553B1B2EF006000E9626 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = UI/List/ListViewController.m; sourceTree = "<group>"; };
 		F29AC13E1B0B21C300DD0D58 /* ZooniverseHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseHttpUtils.h; path = client/ZooniverseHttpUtils.h; sourceTree = "<group>"; };
 		F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseHttpUtils.m; path = client/ZooniverseHttpUtils.m; sourceTree = "<group>"; };
 		F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZooniverseHttpUtils.m; sourceTree = "<group>"; };
@@ -982,11 +982,7 @@
 				F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */,
 				F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */,
 				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
-				F28A54E81B2EECB1000E9626 /* ListCollectionViewCell.h */,
-				F28A54E91B2EECB1000E9626 /* ListCollectionViewCell.m */,
-				F28A550D1B2EEDB2000E9626 /* ListCollectionViewCellView.xib */,
-				F28A54EA1B2EECB1000E9626 /* ListViewController.h */,
-				F28A54EB1B2EECB1000E9626 /* ListViewController.m */,
+				F28A55361B2EEFD8000E9626 /* List */,
 				F28A54EC1B2EECB1000E9626 /* LoginViewController.h */,
 				F28A54ED1B2EECB1000E9626 /* LoginViewController.m */,
 				F28A55111B2EEE40000E9626 /* QuestionHelp */,
@@ -1033,6 +1029,18 @@
 				F28A552F1B2EEF7C000E9626 /* QuestionViewController.m */,
 			);
 			name = Classify;
+			sourceTree = "<group>";
+		};
+		F28A55361B2EEFD8000E9626 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				F28A55371B2EF006000E9626 /* ListCollectionViewCell.h */,
+				F28A55381B2EF006000E9626 /* ListCollectionViewCell.m */,
+				F28A55391B2EF006000E9626 /* ListCollectionViewCellView.xib */,
+				F28A553A1B2EF006000E9626 /* ListViewController.h */,
+				F28A553B1B2EF006000E9626 /* ListViewController.m */,
+			);
+			name = List;
 			sourceTree = "<group>";
 		};
 		F2D6FC8D1AFCA3F8002E3E15 /* Assets */ = {
@@ -1455,7 +1463,6 @@
 				F2D6FDF21AFD44D3002E3E15 /* icon_goods_full-3_a-1_0 in Resources */,
 				F2D6FE931AFD44D3002E3E15 /* icon_spiral_3 in Resources */,
 				F2D6FE6B1AFD44D3002E3E15 /* icon_sloan-6_x-4_1 in Resources */,
-				F28A550E1B2EEDB2000E9626 /* ListCollectionViewCellView.xib in Resources */,
 				F2D6FE661AFD44D3002E3E15 /* icon_sloan-6_x-2_1 in Resources */,
 				F2D6FDF31AFD44D3002E3E15 /* icon_goods_full-3_a-1_1 in Resources */,
 				F2173A421B0738FE00C1F947 /* icon_sloan_singleband-5_a-0_0 in Resources */,
@@ -1544,6 +1551,7 @@
 				F2D6FE001AFD44D3002E3E15 /* icon_goods_full-4_a-2_1 in Resources */,
 				F2D6FDEF1AFD44D3002E3E15 /* icon_goods_full-2_a-1_2 in Resources */,
 				F2173A321B0738FE00C1F947 /* icon_sloan_singleband-1_a-1_0 in Resources */,
+				F28A553D1B2EF006000E9626 /* ListCollectionViewCellView.xib in Resources */,
 				F2D6FE731AFD44D3002E3E15 /* icon_sloan-6_x-6_0 in Resources */,
 				F2D6FE841AFD44D3002E3E15 /* icon_sloan-10_a-2_0 in Resources */,
 				F2D6FE891AFD44D3002E3E15 /* icon_sloan-10_a-4_0 in Resources */,
@@ -1805,14 +1813,14 @@
 				F28A551F1B2EEEBE000E9626 /* ExamplesCollectionViewCellButton.m in Sources */,
 				F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */,
 				F24829741AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m in Sources */,
+				F28A553C1B2EF006000E9626 /* ListCollectionViewCell.m in Sources */,
 				F28A55321B2EEF7C000E9626 /* QuestionAnswersCollectionView.m in Sources */,
+				F28A553E1B2EF006000E9626 /* ListViewController.m in Sources */,
 				F21F87A01AF3657400C95B52 /* main.m in Sources */,
 				F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */,
 				F28A55331B2EEF7C000E9626 /* QuestionAnswersCollectionViewCell.m in Sources */,
 				F28A55311B2EEF7C000E9626 /* QuestionAnswerButton.m in Sources */,
-				F28A55011B2EECB1000E9626 /* ListCollectionViewCell.m in Sources */,
 				F24742C71B0B5927000FD3C7 /* ZooniverseClassificationCheckbox.m in Sources */,
-				F28A55021B2EECB1000E9626 /* ListViewController.m in Sources */,
 				F24829771AF7562F0060D9B0 /* DecisionTreeQuestionCheckbox.m in Sources */,
 				F24742D51B0E6EF7000FD3C7 /* Reachability.m in Sources */,
 				F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */,
