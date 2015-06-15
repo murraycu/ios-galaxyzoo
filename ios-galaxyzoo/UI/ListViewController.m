@@ -9,7 +9,7 @@
 #import "ListViewController.h"
 #import "ListCollectionViewCell.h"
 #import "AppDelegate.h"
-#import "ZooniverseModel/ZooniverseSubject.h"
+#import "../ZooniverseModel/ZooniverseSubject.h"
 #import "Utils.h"
 #import <RestKit/RestKit.h>
 

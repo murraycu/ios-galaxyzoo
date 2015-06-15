@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DecisionTree/DecisionTreeQuestion.h"
-#import "DecisionTree/DecisionTreeQuestionAnswer.h"
-#import "DecisionTree/DecisionTreeQuestionCheckbox.h"
+#import "../DecisionTree/DecisionTreeQuestion.h"
+#import "../DecisionTree/DecisionTreeQuestionAnswer.h"
+#import "../DecisionTree/DecisionTreeQuestionCheckbox.h"
 
 
 @interface QuestionAnswersCollectionView : UICollectionView <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>

@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		48D55635CD7E987F876BFD55 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A954E3F1E1E0A5D9E3193A97 /* libPods.a */; };
 		F203F50A1B079DA700C4821B /* ZooniverseClientImageDownloadSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F203F5091B079DA700C4821B /* ZooniverseClientImageDownloadSet.m */; };
-		F213F7EE1B0274F400CAB635 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F213F7ED1B0274F400CAB635 /* Utils.m */; };
-		F213F7F11B033DAB00CAB635 /* SubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F213F7F01B033DAB00CAB635 /* SubjectViewController.m */; };
-		F21739FC1B03993700C1F947 /* ListCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21739FB1B03993700C1F947 /* ListCollectionViewCellView.xib */; };
-		F21739FE1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */; };
-		F2173A011B0399D600C1F947 /* QuestionAnswerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2173A001B0399D600C1F947 /* QuestionAnswerButton.m */; };
 		F2173A031B0738A200C1F947 /* sloan_singleband_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F2173A021B0738A200C1F947 /* sloan_singleband_tree.xml */; };
 		F2173A301B0738FE00C1F947 /* icon_sloan_singleband-0_a-1_0 in Resources */ = {isa = PBXBuildFile; fileRef = F2173A041B0738FD00C1F947 /* icon_sloan_singleband-0_a-1_0 */; };
 		F2173A311B0738FE00C1F947 /* icon_sloan_singleband-0_a-1_1 in Resources */ = {isa = PBXBuildFile; fileRef = F2173A051B0738FD00C1F947 /* icon_sloan_singleband-0_a-1_1 */; };
@@ -60,13 +55,8 @@
 		F2173A5A1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_0 in Resources */ = {isa = PBXBuildFile; fileRef = F2173A2E1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_0 */; };
 		F2173A5B1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 in Resources */ = {isa = PBXBuildFile; fileRef = F2173A2F1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 */; };
 		F2173A7E1B077AF100C1F947 /* ZooniverseClientImageDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = F2173A7B1B077AF100C1F947 /* ZooniverseClientImageDownload.m */; };
-		F2176F541B2970C0000F946A /* QuestionAnswersCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */; };
-		F2176F571B297BFF000F946A /* ExamplesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2176F561B297BFF000F946A /* ExamplesCollectionView.m */; };
-		F2176F5A1B297CFE000F946A /* ExamplesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2176F591B297CFE000F946A /* ExamplesCollectionViewCell.m */; };
-		F2176F5E1B297EAC000F946A /* ExamplesCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2176F5D1B297EAC000F946A /* ExamplesCollectionViewCellView.xib */; };
 		F21F87A01AF3657400C95B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F879F1AF3657400C95B52 /* main.m */; };
 		F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A21AF3657400C95B52 /* AppDelegate.m */; };
-		F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87A51AF3657400C95B52 /* ClassifyViewController.m */; };
 		F21F87A91AF3657400C95B52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21F87A71AF3657400C95B52 /* Main.storyboard */; };
 		F21F87AB1AF3657400C95B52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AA1AF3657400C95B52 /* Images.xcassets */; };
 		F21F87AE1AF3657400C95B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */; };
@@ -92,15 +82,28 @@
 		F24829921AF8B54B0060D9B0 /* DecisionTreeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829911AF8B54B0060D9B0 /* DecisionTreeParser.m */; };
 		F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F248FAD01AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld */; };
 		F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */; };
-		F27ADB0B1B09DE7E00ADE133 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */; };
-		F28A54D21B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */; };
 		F28A54D81B2ED129000E9626 /* ExampleViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */; };
-		F28A54DB1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54DA1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m */; };
+		F28A54FC1B2EECB1000E9626 /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54DE1B2EECB1000E9626 /* ClassifyViewController.m */; };
+		F28A54FD1B2EECB1000E9626 /* ExamplesCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54E11B2EECB1000E9626 /* ExamplesCollectionView.m */; };
+		F28A54FE1B2EECB1000E9626 /* ExamplesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54E31B2EECB1000E9626 /* ExamplesCollectionViewCell.m */; };
+		F28A54FF1B2EECB1000E9626 /* ExamplesCollectionViewCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54E51B2EECB1000E9626 /* ExamplesCollectionViewCellButton.m */; };
+		F28A55001B2EECB1000E9626 /* ExamplesCollectionViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54E71B2EECB1000E9626 /* ExamplesCollectionViewHeaderCell.m */; };
+		F28A55011B2EECB1000E9626 /* ListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54E91B2EECB1000E9626 /* ListCollectionViewCell.m */; };
+		F28A55021B2EECB1000E9626 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54EB1B2EECB1000E9626 /* ListViewController.m */; };
+		F28A55031B2EECB1000E9626 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54ED1B2EECB1000E9626 /* LoginViewController.m */; };
+		F28A55041B2EECB1000E9626 /* QuestionAnswerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54EF1B2EECB1000E9626 /* QuestionAnswerButton.m */; };
+		F28A55051B2EECB1000E9626 /* QuestionAnswersCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54F11B2EECB1000E9626 /* QuestionAnswersCollectionView.m */; };
+		F28A55061B2EECB1000E9626 /* QuestionAnswersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54F31B2EECB1000E9626 /* QuestionAnswersCollectionViewCell.m */; };
+		F28A55071B2EECB1000E9626 /* QuestionHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54F51B2EECB1000E9626 /* QuestionHelpViewController.m */; };
+		F28A55081B2EECB1000E9626 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54F71B2EECB1000E9626 /* QuestionViewController.m */; };
+		F28A55091B2EECB1000E9626 /* SubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54F91B2EECB1000E9626 /* SubjectViewController.m */; };
+		F28A550A1B2EECB1000E9626 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54FB1B2EECB1000E9626 /* Utils.m */; };
+		F28A550C1B2EEDAB000E9626 /* ExamplesCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28A550B1B2EEDAB000E9626 /* ExamplesCollectionViewCellView.xib */; };
+		F28A550E1B2EEDB2000E9626 /* ListCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28A550D1B2EEDB2000E9626 /* ListCollectionViewCellView.xib */; };
+		F28A55101B2EEDB9000E9626 /* QuestionAnswersCollectionViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F28A550F1B2EEDB9000E9626 /* QuestionAnswersCollectionViewCellView.xib */; };
 		F29AC1401B0B21C300DD0D58 /* ZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */; };
 		F29AC1421B0B269C00DD0D58 /* TestZooniverseHttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */; };
-		F2BC86B61B02119100F84935 /* QuestionHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BC86B51B02119100F84935 /* QuestionHelpViewController.m */; };
 		F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */; };
-		F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */; };
 		F2D6FC8C1AFCA166002E3E15 /* TestDecisionTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */; };
 		F2D6FC8F1AFCA40C002E3E15 /* test_decision_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FC8E1AFCA40C002E3E15 /* test_decision_tree.xml */; };
 		F2D6FD9B1AFD44D3002E3E15 /* icon_bulge_dominant in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FC991AFD44D2002E3E15 /* icon_bulge_dominant */; };
@@ -361,9 +364,6 @@
 		F2D6FE9A1AFD44D3002E3E15 /* icon_star in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FD981AFD44D3002E3E15 /* icon_star */; };
 		F2D6FE9B1AFD44D3002E3E15 /* icon_tidal-debris in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FD991AFD44D3002E3E15 /* icon_tidal-debris */; };
 		F2D6FE9C1AFD44D3002E3E15 /* icon_yes in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FD9A1AFD44D3002E3E15 /* icon_yes */; };
-		F2D6FEB11AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */; };
-		F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */; };
-		F2D6FEBD1B00B3F9002E3E15 /* ListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,14 +382,6 @@
 		A954E3F1E1E0A5D9E3193A97 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F203F5081B079DA700C4821B /* ZooniverseClientImageDownloadSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClientImageDownloadSet.h; path = client/ZooniverseClientImageDownloadSet.h; sourceTree = "<group>"; };
 		F203F5091B079DA700C4821B /* ZooniverseClientImageDownloadSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClientImageDownloadSet.m; path = client/ZooniverseClientImageDownloadSet.m; sourceTree = "<group>"; };
-		F213F7EC1B0274F400CAB635 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		F213F7ED1B0274F400CAB635 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
-		F213F7EF1B033DAB00CAB635 /* SubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectViewController.h; sourceTree = "<group>"; };
-		F213F7F01B033DAB00CAB635 /* SubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectViewController.m; sourceTree = "<group>"; };
-		F21739FB1B03993700C1F947 /* ListCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListCollectionViewCellView.xib; sourceTree = "<group>"; };
-		F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionAnswersCollectionViewCellView.xib; sourceTree = "<group>"; };
-		F21739FF1B0399D600C1F947 /* QuestionAnswerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswerButton.h; sourceTree = "<group>"; };
-		F2173A001B0399D600C1F947 /* QuestionAnswerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswerButton.m; sourceTree = "<group>"; };
 		F2173A021B0738A200C1F947 /* sloan_singleband_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sloan_singleband_tree.xml; sourceTree = "<group>"; };
 		F2173A041B0738FD00C1F947 /* icon_sloan_singleband-0_a-1_0 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_sloan_singleband-0_a-1_0"; path = "Icons/icon_sloan_singleband-0_a-1_0"; sourceTree = "<group>"; };
 		F2173A051B0738FD00C1F947 /* icon_sloan_singleband-0_a-1_1 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_sloan_singleband-0_a-1_1"; path = "Icons/icon_sloan_singleband-0_a-1_1"; sourceTree = "<group>"; };
@@ -437,20 +429,11 @@
 		F2173A2F1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_sloan_singleband-10_a-4_1"; path = "Icons/icon_sloan_singleband-10_a-4_1"; sourceTree = "<group>"; };
 		F2173A7A1B077AF100C1F947 /* ZooniverseClientImageDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClientImageDownload.h; path = client/ZooniverseClientImageDownload.h; sourceTree = "<group>"; };
 		F2173A7B1B077AF100C1F947 /* ZooniverseClientImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClientImageDownload.m; path = client/ZooniverseClientImageDownload.m; sourceTree = "<group>"; };
-		F2176F521B2970C0000F946A /* QuestionAnswersCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswersCollectionView.h; sourceTree = "<group>"; };
-		F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswersCollectionView.m; sourceTree = "<group>"; };
-		F2176F551B297BFF000F946A /* ExamplesCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionView.h; sourceTree = "<group>"; };
-		F2176F561B297BFF000F946A /* ExamplesCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionView.m; sourceTree = "<group>"; };
-		F2176F581B297CFE000F946A /* ExamplesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionViewCell.h; sourceTree = "<group>"; };
-		F2176F591B297CFE000F946A /* ExamplesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionViewCell.m; sourceTree = "<group>"; };
-		F2176F5D1B297EAC000F946A /* ExamplesCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamplesCollectionViewCellView.xib; sourceTree = "<group>"; };
 		F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-galaxyzoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879E1AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F21F87A11AF3657400C95B52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F21F87A21AF3657400C95B52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F21F87A41AF3657400C95B52 /* ClassifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassifyViewController.h; sourceTree = "<group>"; };
-		F21F87A51AF3657400C95B52 /* ClassifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassifyViewController.m; sourceTree = "<group>"; };
 		F21F87A81AF3657400C95B52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F21F87AA1AF3657400C95B52 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F21F87AD1AF3657400C95B52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -496,22 +479,46 @@
 		F248FAD11AF9EEB100E8733A /* ZooniverseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZooniverseModel.xcdatamodel; sourceTree = "<group>"; };
 		F27ADB061B09348A00ADE133 /* ZooniverseNameValuePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseNameValuePair.h; path = client/ZooniverseNameValuePair.h; sourceTree = "<group>"; };
 		F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseNameValuePair.m; path = client/ZooniverseNameValuePair.m; sourceTree = "<group>"; };
-		F27ADB091B09DE7E00ADE133 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		F28A54D01B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionViewHeaderCell.h; sourceTree = "<group>"; };
-		F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionViewHeaderCell.m; sourceTree = "<group>"; };
 		F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleViewerViewController.h; path = ../ExampleViewerViewController.h; sourceTree = "<group>"; };
 		F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleViewerViewController.m; path = ../ExampleViewerViewController.m; sourceTree = "<group>"; };
-		F28A54D91B2EE548000E9626 /* ExamplesCollectionViewCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplesCollectionViewCellButton.h; sourceTree = "<group>"; };
-		F28A54DA1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplesCollectionViewCellButton.m; sourceTree = "<group>"; };
+		F28A54DD1B2EECB1000E9626 /* ClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassifyViewController.h; path = UI/ClassifyViewController.h; sourceTree = "<group>"; };
+		F28A54DE1B2EECB1000E9626 /* ClassifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassifyViewController.m; path = UI/ClassifyViewController.m; sourceTree = "<group>"; };
+		F28A54DF1B2EECB1000E9626 /* ClassifyViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassifyViewControllerDelegate.h; path = UI/ClassifyViewControllerDelegate.h; sourceTree = "<group>"; };
+		F28A54E01B2EECB1000E9626 /* ExamplesCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamplesCollectionView.h; path = UI/ExamplesCollectionView.h; sourceTree = "<group>"; };
+		F28A54E11B2EECB1000E9626 /* ExamplesCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamplesCollectionView.m; path = UI/ExamplesCollectionView.m; sourceTree = "<group>"; };
+		F28A54E21B2EECB1000E9626 /* ExamplesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamplesCollectionViewCell.h; path = UI/ExamplesCollectionViewCell.h; sourceTree = "<group>"; };
+		F28A54E31B2EECB1000E9626 /* ExamplesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamplesCollectionViewCell.m; path = UI/ExamplesCollectionViewCell.m; sourceTree = "<group>"; };
+		F28A54E41B2EECB1000E9626 /* ExamplesCollectionViewCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamplesCollectionViewCellButton.h; path = UI/ExamplesCollectionViewCellButton.h; sourceTree = "<group>"; };
+		F28A54E51B2EECB1000E9626 /* ExamplesCollectionViewCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamplesCollectionViewCellButton.m; path = UI/ExamplesCollectionViewCellButton.m; sourceTree = "<group>"; };
+		F28A54E61B2EECB1000E9626 /* ExamplesCollectionViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamplesCollectionViewHeaderCell.h; path = UI/ExamplesCollectionViewHeaderCell.h; sourceTree = "<group>"; };
+		F28A54E71B2EECB1000E9626 /* ExamplesCollectionViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamplesCollectionViewHeaderCell.m; path = UI/ExamplesCollectionViewHeaderCell.m; sourceTree = "<group>"; };
+		F28A54E81B2EECB1000E9626 /* ListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListCollectionViewCell.h; path = UI/ListCollectionViewCell.h; sourceTree = "<group>"; };
+		F28A54E91B2EECB1000E9626 /* ListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListCollectionViewCell.m; path = UI/ListCollectionViewCell.m; sourceTree = "<group>"; };
+		F28A54EA1B2EECB1000E9626 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = UI/ListViewController.h; sourceTree = "<group>"; };
+		F28A54EB1B2EECB1000E9626 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = UI/ListViewController.m; sourceTree = "<group>"; };
+		F28A54EC1B2EECB1000E9626 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UI/LoginViewController.h; sourceTree = "<group>"; };
+		F28A54ED1B2EECB1000E9626 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = UI/LoginViewController.m; sourceTree = "<group>"; };
+		F28A54EE1B2EECB1000E9626 /* QuestionAnswerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionAnswerButton.h; path = UI/QuestionAnswerButton.h; sourceTree = "<group>"; };
+		F28A54EF1B2EECB1000E9626 /* QuestionAnswerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionAnswerButton.m; path = UI/QuestionAnswerButton.m; sourceTree = "<group>"; };
+		F28A54F01B2EECB1000E9626 /* QuestionAnswersCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionAnswersCollectionView.h; path = UI/QuestionAnswersCollectionView.h; sourceTree = "<group>"; };
+		F28A54F11B2EECB1000E9626 /* QuestionAnswersCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionAnswersCollectionView.m; path = UI/QuestionAnswersCollectionView.m; sourceTree = "<group>"; };
+		F28A54F21B2EECB1000E9626 /* QuestionAnswersCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionAnswersCollectionViewCell.h; path = UI/QuestionAnswersCollectionViewCell.h; sourceTree = "<group>"; };
+		F28A54F31B2EECB1000E9626 /* QuestionAnswersCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionAnswersCollectionViewCell.m; path = UI/QuestionAnswersCollectionViewCell.m; sourceTree = "<group>"; };
+		F28A54F41B2EECB1000E9626 /* QuestionHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionHelpViewController.h; path = UI/QuestionHelpViewController.h; sourceTree = "<group>"; };
+		F28A54F51B2EECB1000E9626 /* QuestionHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionHelpViewController.m; path = UI/QuestionHelpViewController.m; sourceTree = "<group>"; };
+		F28A54F61B2EECB1000E9626 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionViewController.h; path = UI/QuestionViewController.h; sourceTree = "<group>"; };
+		F28A54F71B2EECB1000E9626 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionViewController.m; path = UI/QuestionViewController.m; sourceTree = "<group>"; };
+		F28A54F81B2EECB1000E9626 /* SubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubjectViewController.h; path = UI/SubjectViewController.h; sourceTree = "<group>"; };
+		F28A54F91B2EECB1000E9626 /* SubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubjectViewController.m; path = UI/SubjectViewController.m; sourceTree = "<group>"; };
+		F28A54FA1B2EECB1000E9626 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = UI/Utils.h; sourceTree = "<group>"; };
+		F28A54FB1B2EECB1000E9626 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = UI/Utils.m; sourceTree = "<group>"; };
+		F28A550B1B2EEDAB000E9626 /* ExamplesCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExamplesCollectionViewCellView.xib; path = UI/ExamplesCollectionViewCellView.xib; sourceTree = "<group>"; };
+		F28A550D1B2EEDB2000E9626 /* ListCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListCollectionViewCellView.xib; path = UI/ListCollectionViewCellView.xib; sourceTree = "<group>"; };
+		F28A550F1B2EEDB9000E9626 /* QuestionAnswersCollectionViewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuestionAnswersCollectionViewCellView.xib; path = UI/QuestionAnswersCollectionViewCellView.xib; sourceTree = "<group>"; };
 		F29AC13E1B0B21C300DD0D58 /* ZooniverseHttpUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseHttpUtils.h; path = client/ZooniverseHttpUtils.h; sourceTree = "<group>"; };
 		F29AC13F1B0B21C300DD0D58 /* ZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseHttpUtils.m; path = client/ZooniverseHttpUtils.m; sourceTree = "<group>"; };
 		F29AC1411B0B269C00DD0D58 /* TestZooniverseHttpUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestZooniverseHttpUtils.m; sourceTree = "<group>"; };
-		F2BC86B41B02119100F84935 /* QuestionHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionHelpViewController.h; sourceTree = "<group>"; };
-		F2BC86B51B02119100F84935 /* QuestionHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionHelpViewController.m; sourceTree = "<group>"; };
 		F2D6FC801AFA92EC002E3E15 /* DecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTree.m; path = DecisionTree/DecisionTree.m; sourceTree = "<group>"; };
-		F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
-		F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		F2D6FC8B1AFCA166002E3E15 /* TestDecisionTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDecisionTree.m; sourceTree = "<group>"; };
 		F2D6FC8E1AFCA40C002E3E15 /* test_decision_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test_decision_tree.xml; path = Assets/test_decision_tree.xml; sourceTree = "<group>"; };
 		F2D6FC991AFD44D2002E3E15 /* icon_bulge_dominant */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_bulge_dominant; path = Icons/icon_bulge_dominant; sourceTree = "<group>"; };
@@ -772,13 +779,6 @@
 		F2D6FD981AFD44D3002E3E15 /* icon_star */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_star; path = Icons/icon_star; sourceTree = "<group>"; };
 		F2D6FD991AFD44D3002E3E15 /* icon_tidal-debris */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_tidal-debris"; path = "Icons/icon_tidal-debris"; sourceTree = "<group>"; };
 		F2D6FD9A1AFD44D3002E3E15 /* icon_yes */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_yes; path = Icons/icon_yes; sourceTree = "<group>"; };
-		F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionAnswersCollectionViewCell.h; sourceTree = "<group>"; };
-		F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionAnswersCollectionViewCell.m; sourceTree = "<group>"; };
-		F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassifyViewControllerDelegate.h; sourceTree = "<group>"; };
-		F2D6FEB61B00A3D0002E3E15 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		F2D6FEBB1B00B3F9002E3E15 /* ListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListCollectionViewCell.h; sourceTree = "<group>"; };
-		F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -843,52 +843,16 @@
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
 				F24829781AF759110060D9B0 /* Assets */,
-				F21F87A41AF3657400C95B52 /* ClassifyViewController.h */,
-				F21F87A51AF3657400C95B52 /* ClassifyViewController.m */,
-				F2D6FEB51AFE09D1002E3E15 /* ClassifyViewControllerDelegate.h */,
 				F21F87CF1AF384BF00C95B52 /* client */,
 				F24829861AF75D9C0060D9B0 /* Config */,
 				F24829681AF7547F0060D9B0 /* DecisionTree */,
-				F2176F551B297BFF000F946A /* ExamplesCollectionView.h */,
-				F2176F561B297BFF000F946A /* ExamplesCollectionView.m */,
-				F2176F581B297CFE000F946A /* ExamplesCollectionViewCell.h */,
-				F2176F591B297CFE000F946A /* ExamplesCollectionViewCell.m */,
-				F28A54D91B2EE548000E9626 /* ExamplesCollectionViewCellButton.h */,
-				F28A54DA1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m */,
-				F2176F5D1B297EAC000F946A /* ExamplesCollectionViewCellView.xib */,
-				F28A54D01B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.h */,
-				F28A54D11B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m */,
-				F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */,
-				F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */,
 				F21F87AA1AF3657400C95B52 /* Images.xcassets */,
-				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
-				F2D6FEBB1B00B3F9002E3E15 /* ListCollectionViewCell.h */,
-				F2D6FEBC1B00B3F9002E3E15 /* ListCollectionViewCell.m */,
-				F21739FB1B03993700C1F947 /* ListCollectionViewCellView.xib */,
-				F2D6FEB61B00A3D0002E3E15 /* ListViewController.h */,
-				F2D6FEB71B00A3D0002E3E15 /* ListViewController.m */,
-				F27ADB091B09DE7E00ADE133 /* LoginViewController.h */,
-				F27ADB0A1B09DE7E00ADE133 /* LoginViewController.m */,
 				F21F87A71AF3657400C95B52 /* Main.storyboard */,
-				F21739FF1B0399D600C1F947 /* QuestionAnswerButton.h */,
-				F2173A001B0399D600C1F947 /* QuestionAnswerButton.m */,
-				F2176F521B2970C0000F946A /* QuestionAnswersCollectionView.h */,
-				F2176F531B2970C0000F946A /* QuestionAnswersCollectionView.m */,
-				F2D6FEAF1AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.h */,
-				F2D6FEB01AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m */,
-				F21739FD1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib */,
-				F2BC86B41B02119100F84935 /* QuestionHelpViewController.h */,
-				F2BC86B51B02119100F84935 /* QuestionHelpViewController.m */,
-				F2D6FC881AFB86DF002E3E15 /* QuestionViewController.h */,
-				F2D6FC891AFB86DF002E3E15 /* QuestionViewController.m */,
 				F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */,
 				F24829801AF759FD0060D9B0 /* Singleton.h */,
 				F24829811AF759FD0060D9B0 /* Singleton.m */,
-				F213F7EF1B033DAB00CAB635 /* SubjectViewController.h */,
-				F213F7F01B033DAB00CAB635 /* SubjectViewController.m */,
 				F21F879D1AF3657400C95B52 /* Supporting Files */,
-				F213F7EC1B0274F400CAB635 /* Utils.h */,
-				F213F7ED1B0274F400CAB635 /* Utils.m */,
+				F28A54DC1B2EEBCD000E9626 /* UI */,
 				F24618001AF9F01F0001784E /* ZooniverseModel */,
 				F248FAD01AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld */,
 			);
@@ -1009,6 +973,50 @@
 				F248298B1AF75DB10060D9B0 /* ConfigSubjectGroup.m */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		F28A54DC1B2EEBCD000E9626 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F28A54DD1B2EECB1000E9626 /* ClassifyViewController.h */,
+				F28A54DE1B2EECB1000E9626 /* ClassifyViewController.m */,
+				F28A54DF1B2EECB1000E9626 /* ClassifyViewControllerDelegate.h */,
+				F28A54E01B2EECB1000E9626 /* ExamplesCollectionView.h */,
+				F28A54E11B2EECB1000E9626 /* ExamplesCollectionView.m */,
+				F28A54E21B2EECB1000E9626 /* ExamplesCollectionViewCell.h */,
+				F28A54E31B2EECB1000E9626 /* ExamplesCollectionViewCell.m */,
+				F28A54E41B2EECB1000E9626 /* ExamplesCollectionViewCellButton.h */,
+				F28A54E51B2EECB1000E9626 /* ExamplesCollectionViewCellButton.m */,
+				F28A550B1B2EEDAB000E9626 /* ExamplesCollectionViewCellView.xib */,
+				F28A54E61B2EECB1000E9626 /* ExamplesCollectionViewHeaderCell.h */,
+				F28A54E71B2EECB1000E9626 /* ExamplesCollectionViewHeaderCell.m */,
+				F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */,
+				F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */,
+				F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */,
+				F28A54E81B2EECB1000E9626 /* ListCollectionViewCell.h */,
+				F28A54E91B2EECB1000E9626 /* ListCollectionViewCell.m */,
+				F28A550D1B2EEDB2000E9626 /* ListCollectionViewCellView.xib */,
+				F28A54EA1B2EECB1000E9626 /* ListViewController.h */,
+				F28A54EB1B2EECB1000E9626 /* ListViewController.m */,
+				F28A54EC1B2EECB1000E9626 /* LoginViewController.h */,
+				F28A54ED1B2EECB1000E9626 /* LoginViewController.m */,
+				F28A54EE1B2EECB1000E9626 /* QuestionAnswerButton.h */,
+				F28A54EF1B2EECB1000E9626 /* QuestionAnswerButton.m */,
+				F28A54F01B2EECB1000E9626 /* QuestionAnswersCollectionView.h */,
+				F28A54F11B2EECB1000E9626 /* QuestionAnswersCollectionView.m */,
+				F28A54F21B2EECB1000E9626 /* QuestionAnswersCollectionViewCell.h */,
+				F28A54F31B2EECB1000E9626 /* QuestionAnswersCollectionViewCell.m */,
+				F28A550F1B2EEDB9000E9626 /* QuestionAnswersCollectionViewCellView.xib */,
+				F28A54F41B2EECB1000E9626 /* QuestionHelpViewController.h */,
+				F28A54F51B2EECB1000E9626 /* QuestionHelpViewController.m */,
+				F28A54F61B2EECB1000E9626 /* QuestionViewController.h */,
+				F28A54F71B2EECB1000E9626 /* QuestionViewController.m */,
+				F28A54F81B2EECB1000E9626 /* SubjectViewController.h */,
+				F28A54F91B2EECB1000E9626 /* SubjectViewController.m */,
+				F28A54FA1B2EECB1000E9626 /* Utils.h */,
+				F28A54FB1B2EECB1000E9626 /* Utils.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		F2D6FC8D1AFCA3F8002E3E15 /* Assets */ = {
@@ -1417,6 +1425,7 @@
 				F2D6FDF51AFD44D3002E3E15 /* icon_goods_full-3_a-2_1 in Resources */,
 				F2D6FDC11AFD44D3002E3E15 /* icon_candels-13_a-2_0 in Resources */,
 				F2D6FDCF1AFD44D3002E3E15 /* icon_clump_3 in Resources */,
+				F28A55101B2EEDB9000E9626 /* QuestionAnswersCollectionViewCellView.xib in Resources */,
 				F2D6FE9A1AFD44D3002E3E15 /* icon_star in Resources */,
 				F2D6FE251AFD44D3002E3E15 /* icon_goods_full-13_a-1_1 in Resources */,
 				F2D6FE791AFD44D3002E3E15 /* icon_sloan-8_a-1_0 in Resources */,
@@ -1430,6 +1439,7 @@
 				F2D6FDF21AFD44D3002E3E15 /* icon_goods_full-3_a-1_0 in Resources */,
 				F2D6FE931AFD44D3002E3E15 /* icon_spiral_3 in Resources */,
 				F2D6FE6B1AFD44D3002E3E15 /* icon_sloan-6_x-4_1 in Resources */,
+				F28A550E1B2EEDB2000E9626 /* ListCollectionViewCellView.xib in Resources */,
 				F2D6FE661AFD44D3002E3E15 /* icon_sloan-6_x-2_1 in Resources */,
 				F2D6FDF31AFD44D3002E3E15 /* icon_goods_full-3_a-1_1 in Resources */,
 				F2173A421B0738FE00C1F947 /* icon_sloan_singleband-5_a-0_0 in Resources */,
@@ -1509,7 +1519,6 @@
 				F2173A491B0738FE00C1F947 /* icon_sloan_singleband-6_x-3_0 in Resources */,
 				F248297D1AF759110060D9B0 /* candels_tree.xml in Resources */,
 				F2D6FE5A1AFD44D3002E3E15 /* icon_sloan-2_a-0_3 in Resources */,
-				F21739FC1B03993700C1F947 /* ListCollectionViewCellView.xib in Resources */,
 				F2173A481B0738FE00C1F947 /* icon_sloan_singleband-6_x-2_0 in Resources */,
 				F2173A3C1B0738FE00C1F947 /* icon_sloan_singleband-4_a-0_0 in Resources */,
 				F2D6FE671AFD44D3002E3E15 /* icon_sloan-6_x-2_2 in Resources */,
@@ -1571,7 +1580,6 @@
 				F2D6FE4E1AFD44D3002E3E15 /* icon_sloan-0_a-0_0 in Resources */,
 				F2173A3E1B0738FE00C1F947 /* icon_sloan_singleband-4_a-1_0 in Resources */,
 				F2D6FDF71AFD44D3002E3E15 /* icon_goods_full-3_a-3_1 in Resources */,
-				F21739FE1B03993C00C1F947 /* QuestionAnswersCollectionViewCellView.xib in Resources */,
 				F2D6FE7D1AFD44D3002E3E15 /* icon_sloan-9_a-2_0 in Resources */,
 				F2D6FDA71AFD44D3002E3E15 /* icon_candels-1_a-2_0 in Resources */,
 				F2D6FE1C1AFD44D3002E3E15 /* icon_goods_full-11_a-1_0 in Resources */,
@@ -1606,7 +1614,6 @@
 				F2D6FDFB1AFD44D3002E3E15 /* icon_goods_full-4_a-0_0 in Resources */,
 				F2D6FE471AFD44D3002E3E15 /* icon_irregular in Resources */,
 				F2D6FE6D1AFD44D3002E3E15 /* icon_sloan-6_x-5_0 in Resources */,
-				F2176F5E1B297EAC000F946A /* ExamplesCollectionViewCellView.xib in Resources */,
 				F2D6FDD51AFD44D3002E3E15 /* icon_clump_line in Resources */,
 				F2D6FDCD1AFD44D3002E3E15 /* icon_clump_1 in Resources */,
 				F2D6FDC41AFD44D3002E3E15 /* icon_candels-15_a-2_0 in Resources */,
@@ -1715,6 +1722,7 @@
 				F2D6FDBC1AFD44D3002E3E15 /* icon_candels-11_a-1_0 in Resources */,
 				F2D6FDA91AFD44D3002E3E15 /* icon_candels-2_a-1_0 in Resources */,
 				F2D6FDDF1AFD44D3002E3E15 /* icon_goods_full-0_a-0_1 in Resources */,
+				F28A550C1B2EEDAB000E9626 /* ExamplesCollectionViewCellView.xib in Resources */,
 				F2D6FE7C1AFD44D3002E3E15 /* icon_sloan-9_a-1_0 in Resources */,
 				F2D6FD9D1AFD44D3002E3E15 /* icon_bulge_noticeable in Resources */,
 				F2D6FDC01AFD44D3002E3E15 /* icon_candels-13_a-1_0 in Resources */,
@@ -1774,43 +1782,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */,
-				F2D6FEB81B00A3D0002E3E15 /* ListViewController.m in Sources */,
-				F213F7EE1B0274F400CAB635 /* Utils.m in Sources */,
-				F2D6FC8A1AFB86DF002E3E15 /* QuestionViewController.m in Sources */,
-				F28A54D21B29ABB4000E9626 /* ExamplesCollectionViewHeaderCell.m in Sources */,
-				F2176F541B2970C0000F946A /* QuestionAnswersCollectionView.m in Sources */,
+				F28A55041B2EECB1000E9626 /* QuestionAnswerButton.m in Sources */,
 				F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */,
-				F2173A011B0399D600C1F947 /* QuestionAnswerButton.m in Sources */,
+				F28A550A1B2EECB1000E9626 /* Utils.m in Sources */,
 				F24829891AF75D9C0060D9B0 /* Config.m in Sources */,
-				F21F87A61AF3657400C95B52 /* ClassifyViewController.m in Sources */,
-				F27ADB0B1B09DE7E00ADE133 /* LoginViewController.m in Sources */,
 				F21F87A31AF3657400C95B52 /* AppDelegate.m in Sources */,
+				F28A54FC1B2EECB1000E9626 /* ClassifyViewController.m in Sources */,
 				F24829741AF7558A0060D9B0 /* DecisionTreeQuestionBaseButton.m in Sources */,
 				F21F87A01AF3657400C95B52 /* main.m in Sources */,
 				F2D6FC811AFA92EC002E3E15 /* DecisionTree.m in Sources */,
+				F28A55011B2EECB1000E9626 /* ListCollectionViewCell.m in Sources */,
 				F24742C71B0B5927000FD3C7 /* ZooniverseClassificationCheckbox.m in Sources */,
+				F28A55021B2EECB1000E9626 /* ListViewController.m in Sources */,
 				F24829771AF7562F0060D9B0 /* DecisionTreeQuestionCheckbox.m in Sources */,
-				F2D6FEBD1B00B3F9002E3E15 /* ListCollectionViewCell.m in Sources */,
 				F24742D51B0E6EF7000FD3C7 /* Reachability.m in Sources */,
 				F248298F1AF787310060D9B0 /* DecisionTreeDiscussQuestion.m in Sources */,
 				F2173A7E1B077AF100C1F947 /* ZooniverseClientImageDownload.m in Sources */,
 				F24742C41B0B5927000FD3C7 /* ZooniverseClassificationQuestion.m in Sources */,
+				F28A55091B2EECB1000E9626 /* SubjectViewController.m in Sources */,
 				F28A54D81B2ED129000E9626 /* ExampleViewerViewController.m in Sources */,
 				F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */,
-				F2176F5A1B297CFE000F946A /* ExamplesCollectionViewCell.m in Sources */,
 				F24829711AF754D60060D9B0 /* DecisionTreeQuestionAnswer.m in Sources */,
+				F28A55081B2EECB1000E9626 /* QuestionViewController.m in Sources */,
+				F28A54FE1B2EECB1000E9626 /* ExamplesCollectionViewCell.m in Sources */,
+				F28A55031B2EECB1000E9626 /* LoginViewController.m in Sources */,
+				F28A55001B2EECB1000E9626 /* ExamplesCollectionViewHeaderCell.m in Sources */,
+				F28A55071B2EECB1000E9626 /* QuestionHelpViewController.m in Sources */,
 				F24829821AF759FD0060D9B0 /* Singleton.m in Sources */,
-				F28A54DB1B2EE549000E9626 /* ExamplesCollectionViewCellButton.m in Sources */,
-				F213F7F11B033DAB00CAB635 /* SubjectViewController.m in Sources */,
-				F2D6FEB11AFE028C002E3E15 /* QuestionAnswersCollectionViewCell.m in Sources */,
 				F24742C11B0B5927000FD3C7 /* ZooniverseClassification.m in Sources */,
 				F24829921AF8B54B0060D9B0 /* DecisionTreeParser.m in Sources */,
+				F28A54FD1B2EECB1000E9626 /* ExamplesCollectionView.m in Sources */,
+				F28A55051B2EECB1000E9626 /* QuestionAnswersCollectionView.m in Sources */,
 				F24742CA1B0B5927000FD3C7 /* ZooniverseClassificationAnswer.m in Sources */,
-				F2176F571B297BFF000F946A /* ExamplesCollectionView.m in Sources */,
 				F203F50A1B079DA700C4821B /* ZooniverseClientImageDownloadSet.m in Sources */,
 				F248298C1AF75DB10060D9B0 /* ConfigSubjectGroup.m in Sources */,
-				F2BC86B61B02119100F84935 /* QuestionHelpViewController.m in Sources */,
 				F24742BE1B0B5926000FD3C7 /* ZooniverseSubject.m in Sources */,
+				F28A55061B2EECB1000E9626 /* QuestionAnswersCollectionViewCell.m in Sources */,
+				F28A54FF1B2EECB1000E9626 /* ExamplesCollectionViewCellButton.m in Sources */,
 				F29AC1401B0B21C300DD0D58 /* ZooniverseHttpUtils.m in Sources */,
 				F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */,
 			);

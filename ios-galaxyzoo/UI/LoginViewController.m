@@ -8,8 +8,8 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate.h"
-#import "client/ZooniverseNameValuePair.h"
-#import "client/ZooniverseHttpUtils.h"
+#import "../client/ZooniverseNameValuePair.h"
+#import "../client/ZooniverseHttpUtils.h"
 #import "Config.h"
 
 @interface LoginViewController ()

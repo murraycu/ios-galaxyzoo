@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DecisionTree/DecisionTreeQuestion.h"
+#import "../DecisionTree/DecisionTreeQuestion.h"
 
 @interface ExamplesCollectionView : UICollectionView <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 

@@ -14,9 +14,9 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "Singleton.h"
-#import "DecisionTree/DecisionTree.h"
-#import "client/ZooniverseClient.h"
-#import "ZooniverseModel/ZooniverseSubject.h"
+#import "../DecisionTree/DecisionTree.h"
+#import "../client/ZooniverseClient.h"
+#import "../ZooniverseModel/ZooniverseSubject.h"
 #import "Utils.h"
 #import <RestKit/RestKit.h>
 

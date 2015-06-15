@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZooniverseModel/ZooniverseSubject.h"
+#import "../ZooniverseModel/ZooniverseSubject.h"
 
 @interface SubjectViewController : UIViewController
 
