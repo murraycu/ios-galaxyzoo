@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "../ZooniverseModel/ZooniverseSubject.h"
-#import "../DecisionTree/DecisionTreeQuestion.h"
+#import "../../ZooniverseModel/ZooniverseSubject.h"
+#import "../../DecisionTree/DecisionTreeQuestion.h"
 
 @interface QuestionViewController : UIViewController
 @property (nonatomic, retain) ZooniverseSubject *subject;

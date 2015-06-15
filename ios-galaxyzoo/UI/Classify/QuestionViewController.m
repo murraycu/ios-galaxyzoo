@@ -12,11 +12,11 @@
 #import "AppDelegate.h"
 #import "DecisionTree.h"
 #import "DecisionTreeQuestionAnswer.h"
-#import "../ZooniverseModel/ZooniverseClassification.h"
-#import "../ZooniverseModel/ZooniverseClassificationQuestion.h"
-#import "../ZooniverseModel/ZooniverseClassificationAnswer.h"
-#import "../ZooniverseModel/ZooniverseClassificationCheckbox.h"
-#import "../ZooniverseModel/ZooniverseSubject.h"
+#import "../../ZooniverseModel/ZooniverseClassification.h"
+#import "../../ZooniverseModel/ZooniverseClassificationQuestion.h"
+#import "../../ZooniverseModel/ZooniverseClassificationAnswer.h"
+#import "../../ZooniverseModel/ZooniverseClassificationCheckbox.h"
+#import "../../ZooniverseModel/ZooniverseSubject.h"
 #import "Utils.h"
 #import <UIKit/UIKit.h>
 
