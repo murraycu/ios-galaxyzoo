@@ -575,7 +575,7 @@ NSString * currentTimeAsIso8601(void)
                                }
                                
                                [self performSelectorOnMainThread:@selector(parseUploadResponse:)
-                                                      withObject:@[httpResponse, subject]
+                                                      withObject:@[(httpResponse != nil ? httpResponse : [NSNull null]), subject]
                                                    waitUntilDone:NO];
                            }];
 }
