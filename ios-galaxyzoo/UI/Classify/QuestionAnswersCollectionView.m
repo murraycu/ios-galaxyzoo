@@ -91,12 +91,26 @@ static const NSInteger MAX_BUTTONS_PER_ROW = 4;
     return _question.answers.count + _question.checkboxes.count;
 }
 
+-(DecisionTreeQuestionBaseButton *)answerForIndexPath:(NSIndexPath *)indexPath {
+    DecisionTreeQuestionBaseButton *answer;
+
+    NSInteger i = [indexPath indexAtPosition:1];
+    if (i < _question.checkboxes.count) {
+        answer = [_question.checkboxes objectAtIndex:i];
+    } else {
+        NSInteger answerIndex = i - _question.checkboxes.count;
+        answer = [_question.answers objectAtIndex:answerIndex];
+    }
+
+    return answer;
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 static NSString *cellIdentifier = @"answerCell";
 
     UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
 cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
-QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
+    QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
 
     UIButton *button = cell.button;
 
