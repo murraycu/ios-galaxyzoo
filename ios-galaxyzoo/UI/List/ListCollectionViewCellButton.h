@@ -11,6 +11,6 @@
 
 @interface ListCollectionViewCellButton : UIButton
 
-@property (nonatomic, retain) ZooniverseSubject *subject;
+@property (nonatomic, strong) ZooniverseSubject *subject;
 
 @end

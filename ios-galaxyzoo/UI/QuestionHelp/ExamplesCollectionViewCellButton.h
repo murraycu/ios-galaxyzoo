@@ -12,9 +12,7 @@
 @interface ExamplesCollectionViewCellButton : UIButton
 
 
-//TODO: Use copy instead of retain?
-//See http://stackoverflow.com/questions/387959/nsstring-property-copy-or-retain
-@property (nonatomic, retain) DecisionTreeQuestionAnswer *answer;
+@property (nonatomic, strong) DecisionTreeQuestionAnswer *answer;
 @property (nonatomic) NSInteger exampleIndex;
 
 @end

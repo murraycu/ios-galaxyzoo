@@ -11,6 +11,6 @@
 
 @interface SubjectViewerViewController : UIViewController
 
-@property (nonatomic, retain) ZooniverseSubject *subject;
+@property (nonatomic, strong) ZooniverseSubject *subject;
 
 @end

@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSMutableArray *sectionChanges;
 @property (nonatomic, strong) NSMutableArray *itemChanges;
 
-@property (nonatomic, retain) ZooniverseSubject *subjectToShow;
+@property (nonatomic, strong) ZooniverseSubject *subjectToShow;
 
 @end
 

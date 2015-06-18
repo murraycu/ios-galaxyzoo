@@ -11,8 +11,6 @@
 
 @interface QuestionHelpViewController : UIViewController
 
-//TODO: Use copy instead of retain?
-//See http://stackoverflow.com/questions/387959/nsstring-property-copy-or-retain
-@property (nonatomic, retain) DecisionTreeQuestion *question;
+@property (nonatomic, strong) DecisionTreeQuestion *question;
 
 @end

@@ -11,11 +11,8 @@
 #import "../../DecisionTree/DecisionTreeQuestion.h"
 
 @interface QuestionViewController : UIViewController
-@property (nonatomic, retain) ZooniverseSubject *subject;
 
-
-//TODO: Use copy instead of retain?
-//See http://stackoverflow.com/questions/387959/nsstring-property-copy-or-retain
-@property (nonatomic, retain) DecisionTreeQuestion *question;
+@property (nonatomic, strong) ZooniverseSubject *subject;
+@property (nonatomic, strong) DecisionTreeQuestion *question;
 
 @end

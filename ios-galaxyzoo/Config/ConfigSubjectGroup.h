@@ -13,7 +13,7 @@
 
 @property (nonatomic, copy) NSString *filename;
 @property (nonatomic) BOOL useForNewQueries;
-@property (nonatomic, retain) DecisionTreeDiscussQuestion *discussQuestion;
+@property (nonatomic, strong) DecisionTreeDiscussQuestion *discussQuestion;
 
 - (ConfigSubjectGroup *)init:(NSString *)filename useForNewQueries:(BOOL)useForNewQueries discussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
 
