@@ -39,7 +39,10 @@ insets:(UIEdgeInsets)insets {
     UIEdgeInsets imageInsets = [QuestionAnswerButton realImageInset];
 
     CGRect parentFrame = self.frame;
-    CGSize parentSize = parentFrame.size;
+    CGRect parentBounds = self.bounds;
+    NSLog(@"parentFrame.origin.x=%f", parentFrame.origin.x);
+
+    CGSize parentSize = parentBounds.size;
     CGSize imageSize = self.imageView.image.size;
     imageSize.width = imageSize.width / 2; //TODO: Avoid this manual 50% scaling.
     imageSize.height = imageSize.height / 2;
@@ -48,25 +51,23 @@ insets:(UIEdgeInsets)insets {
     CGFloat heightLeftForTitle = parentSize.height - (imageSize.height + imageInsets.top + imageInsets.bottom + titleInsets.top + titleInsets.bottom);
     CGSize titleSize = [self.titleLabel sizeThatFits:CGSizeMake(width, heightLeftForTitle)];
 
-    CGRect imageNewFrame = CGRectMake(/* parentFrame.origin.x + */ [QuestionAnswerButton calcLeft:imageSize.width
-                                                                                      parentWidth:width
-                                                                                          insets:imageInsets],
-                                      /* parentFrame.origin.y + */ imageInsets.top,
+    CGRect imageNewBounds = CGRectMake(imageInsets.left,
+                                      imageInsets.top,
                                       imageSize.width,
                                       imageSize.height);
 
-    CGRect titleNewFrame = CGRectMake(/* parentFrame.origin.x + */ [QuestionAnswerButton calcLeft:titleSize.width
-                                                         parentWidth:width
-                                                             insets:titleInsets],
-                                      parentSize.height - titleSize.height - titleInsets.bottom,
+    CGRect titleNewBounds = CGRectMake(titleInsets.left,
+                                       titleInsets.top,
                                       titleSize.width,
                                       titleSize.height);
 
-
-
     //titleNewFrame.origin.x += 5;
-    self.imageView.frame = imageNewFrame;
-    self.titleLabel.frame = titleNewFrame;
+    self.imageView.bounds = imageNewBounds;
+    self.imageView.center = CGPointMake(imageInsets.left + parentBounds.size.width / 2,
+                                        CGRectGetMidY(imageNewBounds));
+
+    self.titleLabel.bounds = titleNewBounds;
+    self.titleLabel.center = CGPointMake(titleInsets.left + parentBounds.size.width / 2,CGRectGetMaxY(imageNewBounds) + CGRectGetMidY(titleNewBounds));
 }
 
 + (UIEdgeInsets) realImageInset {
