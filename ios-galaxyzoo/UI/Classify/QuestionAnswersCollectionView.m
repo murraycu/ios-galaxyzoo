@@ -13,12 +13,18 @@
 @interface QuestionAnswersCollectionView () {
     ZooniverseQuestionAnswersCollectionViewAnswerClickedBlock _callbackBlockAnswerClicked;
     ZooniverseQuestionAnswersCollectionViewCheckboxClickedBlock _callbackBlockCheckboxClicked;
+
+    CGSize _buttonSize;
 }
 @end
 
 @implementation QuestionAnswersCollectionView
 
 static const NSInteger MAX_BUTTONS_PER_ROW = 4;
+static NSString *CELL_IDENTIFIER = @"answerCell";
+static const NSInteger ICON_HEIGHT = 50;
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -52,6 +58,14 @@ static const NSInteger MAX_BUTTONS_PER_ROW = 4;
     self.delegate = self;
 
     self.dataSource = self;
+}
+
+- (void)setQuestion:(DecisionTreeQuestion *)question {
+    _question = question;
+
+    //Invalidate the button size so we recalculate it based on the new answers and checkboxes:
+    _buttonSize.height = 0;
+    _buttonSize.width = 0;
 }
 
 - (void)setAnswerClickedCallback:(ZooniverseQuestionAnswersCollectionViewAnswerClickedBlock)callbackBlockAnswerClicked
@@ -91,14 +105,13 @@ static const NSInteger MAX_BUTTONS_PER_ROW = 4;
     return _question.answers.count + _question.checkboxes.count;
 }
 
--(DecisionTreeQuestionBaseButton *)answerForIndexPath:(NSIndexPath *)indexPath {
+-(DecisionTreeQuestionBaseButton *)answerForIndex:(NSInteger)index {
     DecisionTreeQuestionBaseButton *answer;
 
-    NSInteger i = [indexPath indexAtPosition:1];
-    if (i < _question.checkboxes.count) {
-        answer = [_question.checkboxes objectAtIndex:i];
+    if (index < _question.checkboxes.count) {
+        answer = [_question.checkboxes objectAtIndex:index];
     } else {
-        NSInteger answerIndex = i - _question.checkboxes.count;
+        NSInteger answerIndex = index - _question.checkboxes.count;
         answer = [_question.answers objectAtIndex:answerIndex];
     }
 
@@ -106,9 +119,7 @@ static const NSInteger MAX_BUTTONS_PER_ROW = 4;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-static NSString *cellIdentifier = @"answerCell";
-
-    UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
 cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
     QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
 
@@ -118,15 +129,8 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
     //TODO: We see the selection briefly before it is unselected.
     button.selected = NO;
 
-    DecisionTreeQuestionBaseButton *answer = nil;
     NSInteger i = [indexPath indexAtPosition:1];
-    if (i < _question.checkboxes.count) {
-        answer = [_question.checkboxes objectAtIndex:i];
-    } else {
-        NSInteger answerIndex = i - _question.checkboxes.count;
-        answer = [_question.answers objectAtIndex:answerIndex];
-    }
-
+    DecisionTreeQuestionBaseButton *answer = [self answerForIndex:i];
     [button setTitle:answer.text
             forState:UIControlStateNormal];
 
@@ -147,16 +151,19 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
     return cell;
 }
 
-#pragma mark - UICollectionViewDelegateFlowLayout
+- (CGSize)cellSize:(UICollectionViewFlowLayout*)flowLayout {
+    //Return the cached size if it has already been calculated:
+    if (_buttonSize.height != 0 && _buttonSize.width != 0) {
+        return _buttonSize;
+    }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat heightMax = 0;
+
+    NSInteger count = self.question.answers.count + self.question.checkboxes.count;
 
     //If there is only one row, let the buttons take up all the available width.
     //Otherwise, always divide the width by 4 so that buttons in the next row line up too.
     NSInteger itemsPerRow = MAX_BUTTONS_PER_ROW;
-    NSInteger count = _question.checkboxes.count + _question.answers.count;
     if (count < MAX_BUTTONS_PER_ROW) {
         itemsPerRow = count;
     }
@@ -164,11 +171,51 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
     //Calculate the width available for each item
     //by getting the full width, subtracting the space between items,
     //and dividing.
-    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)collectionViewLayout;
     CGFloat spacing = flowLayout.minimumInteritemSpacing;
     CGFloat totalSpacing = spacing * (itemsPerRow - 1);
-    return CGSizeMake((collectionView.frame.size.width - totalSpacing) / itemsPerRow,
-                      100);
+    CGFloat buttonWidth = (self.frame.size.width - totalSpacing) / itemsPerRow;
+
+
+    //Calculate the height of the highest item, based on that width:
+
+    //This is just to get the font used by the button:
+    //However, this seems to fail.
+    //UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    //QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
+
+    //It's apparently OK to use a UIFont for the "name", instead of a string.
+    //TODO: I would still prefer to explicitly get an appropriate string for the UIFont.
+    UIFont *buttonFont = [UIFont systemFontOfSize:[UIFont buttonFontSize]];
+    NSDictionary *attributes = @{NSFontAttributeName: buttonFont};
+
+    for (NSInteger i = 0; i < count; ++i) {
+        DecisionTreeQuestionBaseButton *answer = [self answerForIndex:i];
+
+        CGRect textSize = [answer.text boundingRectWithSize:CGSizeMake(buttonWidth, CGFLOAT_MAX)
+                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                 attributes:attributes
+                                                    context:nil];
+        CGFloat buttonHeight = textSize.size.height + ICON_HEIGHT;
+        if (buttonHeight > heightMax) {
+            heightMax = buttonHeight;
+        }
+    }
+
+    _buttonSize = CGSizeMake(buttonWidth, heightMax);
+    return _buttonSize;
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)collectionViewLayout;
+
+
+    return [self cellSize:flowLayout];
 }
 
 @end
