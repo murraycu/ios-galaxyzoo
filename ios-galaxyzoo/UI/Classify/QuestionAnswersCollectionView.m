@@ -8,6 +8,7 @@
 
 #import "QuestionAnswersCollectionView.h"
 #import "QuestionAnswersCollectionViewCell.h"
+#import "QuestionAnswerButton.h"
 
 
 @interface QuestionAnswersCollectionView () {
@@ -124,6 +125,8 @@ static const NSInteger ICON_HEIGHT = 50;
 cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleRightMargin |UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin;
     QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
 
+    //Note that this is really our custom QuestionAnswerButton,
+    //which arranges the title text below the image.
     UIButton *button = cell.button;
 
     //Reset selected, which we use for checkboxes:
@@ -191,6 +194,11 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
 
     //Calculate the height of the highest item, based on that width:
 
+    //TODO: Find a way to instead use the insets specified in the .xib file,
+    //so we can remove realTitleInset and realImageInset.
+    UIEdgeInsets titleInsets = [QuestionAnswerButton realTitleInset];
+    UIEdgeInsets imageInsets = [QuestionAnswerButton realImageInset];
+
     //This is just to get the font used by the button:
     //However, this seems to fail.
     //UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
@@ -200,11 +208,12 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
     for (NSInteger i = 0; i < count; ++i) {
         DecisionTreeQuestionBaseButton *answer = [self answerForIndex:i];
 
-        CGRect textSize = [answer.text boundingRectWithSize:CGSizeMake(buttonWidth, CGFLOAT_MAX)
+        CGRect textSize = [answer.text boundingRectWithSize:CGSizeMake(buttonWidth - titleInsets.left + titleInsets.right, CGFLOAT_MAX)
                                                     options:NSStringDrawingUsesLineFragmentOrigin
                                                  attributes:attributes
                                                     context:nil];
-        CGFloat buttonHeight = textSize.size.height + ICON_HEIGHT;
+        //NSLog(@"text=%@, buttonWidth=%f, textSize.width =%f", answer.text, buttonWidth, textSize.size.width);
+        CGFloat buttonHeight = textSize.size.height + ICON_HEIGHT + imageInsets.top + imageInsets.bottom + titleInsets.top + titleInsets.bottom;
         if (buttonHeight > heightMax) {
             heightMax = buttonHeight;
         }
@@ -222,8 +231,6 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)collectionViewLayout;
-
-
     return [self cellSize:flowLayout];
 }
 

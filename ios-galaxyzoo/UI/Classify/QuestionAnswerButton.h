@@ -10,4 +10,10 @@
 
 @interface QuestionAnswerButton : UIButton
 
+//We can't get the insets from the .xib file,
+//because we don't have access to that in sizeForItemAtIndexPath
+//so we hard-code them in these methods.
++ (UIEdgeInsets) realImageInset;
++ (UIEdgeInsets) realTitleInset;
+
 @end
