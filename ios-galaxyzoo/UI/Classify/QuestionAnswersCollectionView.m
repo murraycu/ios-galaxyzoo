@@ -15,6 +15,7 @@
     ZooniverseQuestionAnswersCollectionViewCheckboxClickedBlock _callbackBlockCheckboxClicked;
 
     CGSize _buttonSize;
+    UIFont *_buttonFont;
 }
 @end
 
@@ -133,6 +134,7 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
     DecisionTreeQuestionBaseButton *answer = [self answerForIndex:i];
     [button setTitle:answer.text
             forState:UIControlStateNormal];
+    button.titleLabel.font = [self buttonFont];
 
     //TODO: Move the adding of the icon_ prefix into a reusable method.
     NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", answer.icon, nil];
@@ -149,6 +151,17 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
      forControlEvents:UIControlEventTouchUpInside];
 
     return cell;
+}
+
+- (UIFont *)buttonFont {
+    if (_buttonFont != nil) {
+        return _buttonFont;
+    }
+
+    //It's apparently OK to use a UIFont for the "name", instead of a string.
+    //TODO: I would still prefer to explicitly get an appropriate string for the UIFont.
+    _buttonFont = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
+    return _buttonFont;
 }
 
 - (CGSize)cellSize:(UICollectionViewFlowLayout*)flowLayout {
@@ -182,11 +195,7 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
     //However, this seems to fail.
     //UICollectionViewCell *cellBase = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
     //QuestionAnswersCollectionViewCell *cell = (QuestionAnswersCollectionViewCell *)cellBase;
-
-    //It's apparently OK to use a UIFont for the "name", instead of a string.
-    //TODO: I would still prefer to explicitly get an appropriate string for the UIFont.
-    UIFont *buttonFont = [UIFont systemFontOfSize:[UIFont buttonFontSize]];
-    NSDictionary *attributes = @{NSFontAttributeName: buttonFont};
+    NSDictionary *attributes = @{NSFontAttributeName: [self buttonFont]};
 
     for (NSInteger i = 0; i < count; ++i) {
         DecisionTreeQuestionBaseButton *answer = [self answerForIndex:i];
