@@ -14,6 +14,7 @@
 @interface QuestionHelpViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
 @property (weak, nonatomic) IBOutlet ExamplesCollectionView *collectionViewExamples;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *examplesCollectionViewHeightConstraint;
 
 @property (strong, nonatomic) NSString *exampleUrlToShow;
 
@@ -29,6 +30,11 @@
 
     self.collectionViewExamples.question = self.question;
     [self.collectionViewExamples reloadData];
+
+    //Make it tall enough to avoid any truncation
+    //(its scrolling is turned off)
+//    self.examplesCollectionViewHeightConstraint.constant = self.collectionViewExamples.contentSize.height;
+    self.examplesCollectionViewHeightConstraint.constant = self.collectionViewExamples.collectionViewLayout.collectionViewContentSize.height;
 
     [self.collectionViewExamples setExampleClickedCallback:^(DecisionTreeQuestionAnswer *answer, NSInteger exampleIndex) {
         NSString *iconName = [ExamplesCollectionView getExampleIconName:self.question.questionId
