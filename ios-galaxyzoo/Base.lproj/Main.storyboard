@@ -273,11 +273,11 @@
                         <viewControllerLayoutGuide type="bottom" id="TWR-nz-wA1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bH4-F3-DJ9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="361"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="8" width="608" height="353"/>
+                                <rect key="frame" x="0.0" y="8" width="608" height="229"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
                                 </constraints>
@@ -331,6 +331,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-nW-ODq" userLabel="collectionViewAnswers" customClass="QuestionAnswersCollectionView">
                                 <rect key="frame" x="0.0" y="70" width="568" height="156"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="0W3-Fw-zzR" userLabel="collectionViewAnswersHeightConstraint"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="5Kv-eI-OML">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -384,6 +387,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="collectionViewAnswers" destination="W1E-nW-ODq" id="JBc-X5-o6O"/>
+                        <outlet property="collectionViewAnswersHeightConstraint" destination="0W3-Fw-zzR" id="mLX-q8-GKm"/>
                         <outlet property="labelText" destination="zhT-fb-vs7" id="wNJ-9o-gXw"/>
                         <outlet property="labelTitle" destination="v9c-nN-vq3" id="lbf-3A-RPE"/>
                         <outlet property="switchFavorite" destination="psy-e2-gx5" id="hka-Qv-PBt"/>
@@ -627,6 +631,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="19q-0J-wPZ"/>
+        <segue reference="McU-Of-BYW"/>
     </inferredMetricsTieBreakers>
 </document>

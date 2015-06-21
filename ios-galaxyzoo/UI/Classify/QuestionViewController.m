@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *labelText;
 @property (weak, nonatomic) IBOutlet QuestionAnswersCollectionView *collectionViewAnswers;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewAnswersHeightConstraint;
 
 
 @end
@@ -77,6 +78,12 @@
     [self initClassificationInProgress];
 }
 
+- (void)updateCollectionViewAnswersHeight {
+    //Make it tall enough to avoid any truncation
+    //(its scrolling is turned off)
+    self.collectionViewAnswersHeightConstraint.constant = self.collectionViewAnswers.collectionViewLayout.collectionViewContentSize.height;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -88,6 +95,8 @@
 
     self.collectionViewAnswers.question = self.question;
     [self.collectionViewAnswers reloadData];
+
+    [self updateCollectionViewAnswersHeight];
 }
 
 - (void)setQuestion:(DecisionTreeQuestion *)question {
