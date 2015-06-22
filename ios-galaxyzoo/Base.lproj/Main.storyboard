@@ -277,7 +277,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="8" width="608" height="229"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
                                 </constraints>
@@ -290,11 +290,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="I6z-DG-hlX" secondAttribute="trailing" constant="-24" id="BC1-r5-bjQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="I6z-DG-hlX" secondAttribute="trailing" id="BC1-r5-bjQ"/>
+                            <constraint firstItem="I6z-DG-hlX" firstAttribute="width" secondItem="bH4-F3-DJ9" secondAttribute="width" id="JdG-KS-3gB"/>
                             <constraint firstItem="I6z-DG-hlX" firstAttribute="bottom" secondItem="TWR-nz-wA1" secondAttribute="top" id="ahI-XQ-llj"/>
                             <constraint firstItem="I6z-DG-hlX" firstAttribute="leading" secondItem="bH4-F3-DJ9" secondAttribute="leading" id="lzQ-UN-cYd"/>
-                            <constraint firstItem="I6z-DG-hlX" firstAttribute="top" secondItem="Met-8i-Exz" secondAttribute="bottom" constant="8" symbolic="YES" id="nNS-Bq-iFf"/>
+                            <constraint firstItem="I6z-DG-hlX" firstAttribute="top" secondItem="Met-8i-Exz" secondAttribute="bottom" id="nNS-Bq-iFf"/>
+                            <constraint firstItem="I6z-DG-hlX" firstAttribute="leading" secondItem="bH4-F3-DJ9" secondAttribute="leading" id="nWP-JK-Ebt"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BC1-r5-bjQ"/>
+                                <exclude reference="lzQ-UN-cYd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="I6z-DG-hlX" id="bIB-j7-yxR"/>
