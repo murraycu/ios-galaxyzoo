@@ -114,9 +114,7 @@
 }
 
 - (void)showNextSubject {
-    //Start with the spinner off,
-    //and only show it when we know we are doing an async query and waiting or it.
-    [self setSpinnerVisible:NO];
+    [self setSpinnerVisible:YES];
 
     Singleton *singleton = [Singleton sharedSingleton];
 
@@ -173,8 +171,13 @@
     self.subject = (ZooniverseSubject *)[results objectAtIndex:0];
 
     //Show the subject's image:
-    _subjectViewController.subject = self.subject;
-    
+    if(![_subjectViewController setSubjectWithCheck:self.subject]) {
+        //If setSubjectWithCheck failed then it would trigger a new showNextSubject call already.
+        return;
+    }
+
+    [self setSpinnerVisible:NO];
+
     //Show the current question for the subject:
     NSString *groupId = self.subject.groupId;
     DecisionTree *decisionTree = [singleton getDecisionTree:groupId];

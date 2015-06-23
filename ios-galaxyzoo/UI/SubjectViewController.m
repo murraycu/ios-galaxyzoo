@@ -22,7 +22,7 @@
 
 @implementation SubjectViewController
 
-- (void) setSubject:(ZooniverseSubject *)subject {
+- (BOOL) setSubjectWithCheck:(ZooniverseSubject *)subject {
     NSString *path = subject.locationStandard;
     UIImage *image = [UIImage imageWithContentsOfFile:path];
 
@@ -40,6 +40,8 @@
     }
 
     [self.imageView setImage:image];
+
+    return (image != nil);
 }
 
 @end

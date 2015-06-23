@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) ZooniverseSubject *subject;
 
+- (BOOL) setSubjectWithCheck:(ZooniverseSubject *)subject;
+
 @end
