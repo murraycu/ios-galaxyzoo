@@ -60,18 +60,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Classify" id="k2p-mG-A4H">
-                        <barButtonItem key="rightBarButtonItem" title="Help" id="9GQ-7z-83C">
-                            <connections>
-                                <segue destination="uoU-Fq-DjU" kind="show" identifier="helpShowEmbed" id="OIK-hx-6Rl"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Classify" id="k2p-mG-A4H"/>
                     <connections>
                         <outlet property="containerViewQuestion" destination="Ycy-2T-OaH" id="aJJ-OW-pvC"/>
                         <outlet property="containerViewSubject" destination="1qV-Rr-NAo" id="FWL-tC-drQ"/>
                         <outlet property="imageView" destination="I6z-DG-hlX" id="vy1-XY-SYd"/>
                         <segue destination="bW1-Sp-uzS" kind="show" identifier="loginShowEmbed" id="amh-c9-Zf9"/>
+                        <segue destination="uoU-Fq-DjU" kind="show" identifier="helpShowEmbed" id="6Dd-NT-eQL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

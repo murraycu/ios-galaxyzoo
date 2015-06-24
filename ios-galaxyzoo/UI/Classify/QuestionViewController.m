@@ -62,6 +62,21 @@
                  animated:NO];
 }
 
+- (void)resetClassification {
+    [self clearFavorite];
+
+    [self initClassificationInProgress];
+}
+
+- (void)revertClassification {
+    [self resetClassification];
+
+    DecisionTree *decisionTree = [self getDecisionTree];
+    _question = [decisionTree getQuestion:decisionTree.firstQuestionId];
+
+    [self updateUI];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -73,9 +88,7 @@
                        selected:selected];
     }];
 
-    [self clearFavorite];
-
-    [self initClassificationInProgress];
+    [self resetClassification];
 }
 
 - (void)updateCollectionViewAnswersHeight {

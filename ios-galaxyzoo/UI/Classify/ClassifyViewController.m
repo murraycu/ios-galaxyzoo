@@ -113,6 +113,15 @@
 
 }
 
+- (void)onBarButtonItemHelp {
+    [self performSegueWithIdentifier:@"helpShowEmbed"
+                              sender:self];
+}
+
+- (void)onBarButtonItemRevert {
+    [_questionViewController revertClassification];
+}
+
 - (void)showNextSubject {
     [self setSpinnerVisible:YES];
 
@@ -191,6 +200,22 @@
     [super viewDidLoad];
 
     [self showNextSubject];
+
+    NSMutableArray *arrayItems = [[NSMutableArray alloc] init];
+
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Help"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(onBarButtonItemHelp)];
+    [arrayItems addObject:item];
+
+    item = [[UIBarButtonItem alloc] initWithTitle:@"Revert"
+                                            style:UIBarButtonItemStylePlain
+                                           target:self
+                                           action:@selector(onBarButtonItemRevert)];
+    [arrayItems addObject:item];
+
+    self.navigationItem.rightBarButtonItems = arrayItems;
 
 }
 

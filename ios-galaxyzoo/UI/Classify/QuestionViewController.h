@@ -15,4 +15,6 @@
 @property (nonatomic, strong) ZooniverseSubject *subject;
 @property (nonatomic, strong) DecisionTreeQuestion *question;
 
+- (void) revertClassification;
+
 @end
