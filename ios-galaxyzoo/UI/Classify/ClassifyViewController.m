@@ -206,13 +206,17 @@
 
     NSMutableArray *arrayItems = [[NSMutableArray alloc] init];
 
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Help"
-                                                             style:UIBarButtonItemStylePlain
-                                                            target:self
-                                                            action:@selector(onBarButtonItemHelp)];
+    UIButton* infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [infoButton addTarget:self
+             action:@selector(onBarButtonItemHelp)
+   forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
     [arrayItems addObject:item];
 
-    item = [[UIBarButtonItem alloc] initWithTitle:@"Revert"
+    //We could use initWithBarButtonSystemItem:UIBarButtonSystemItemUndo instead,
+    //but undo is not the same as revert.
+    UIImage *imageIcon = [UIImage imageNamed:@"imageIconRevert"];
+    item = [[UIBarButtonItem alloc] initWithImage:imageIcon
                                             style:UIBarButtonItemStylePlain
                                            target:self
                                            action:@selector(onBarButtonItemRevert)];
