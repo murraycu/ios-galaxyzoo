@@ -25,8 +25,6 @@
 @interface QuestionViewController () {
     ZooniverseClassification *_classificationInProgress;
     NSUInteger _questionSequence;
-
-    __weak IBOutlet UISwitch *switchFavorite;
 }
 
 @property (nonatomic, copy) NSMutableSet *checkboxesSelected;
@@ -58,8 +56,7 @@
 
 - (void)clearFavorite {
     //Clear the favorite switch:
-    [switchFavorite setOn:NO
-                 animated:NO];
+    self.favorite = NO; //The parent ClassifyViewController responds to this property change.
 }
 
 - (void)resetClassification {
@@ -193,7 +190,7 @@
 
 - (void)saveClassification {
     self.subject.classification = _classificationInProgress;
-    self.subject.favorite = switchFavorite.on;
+    self.subject.favorite = self.favorite;
     self.subject.done = YES;
 
     //Save the ZooniverseClassification and the Subject to disk:

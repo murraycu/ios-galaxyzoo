@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) ZooniverseSubject *subject;
 @property (nonatomic, strong) DecisionTreeQuestion *question;
+@property (nonatomic) BOOL favorite;
 
 - (void) revertClassification;
 

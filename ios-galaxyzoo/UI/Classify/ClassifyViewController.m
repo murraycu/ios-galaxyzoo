@@ -25,6 +25,9 @@
 
     QuestionViewController *_questionViewController;
     SubjectViewController *_subjectViewController;
+
+    UIImage *_imageIconFavoriteSelected;
+    UIImage *_imageIconFavoriteUnselected;
 }
 
 @property(nonatomic, strong)ZooniverseSubject *subject;
@@ -34,6 +37,7 @@
 @property(nonatomic)NSUInteger classificationsDoneInSession;
 @property (weak, nonatomic) IBOutlet UIView *containerViewSubject;
 @property (weak, nonatomic) IBOutlet UIView *containerViewQuestion;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonFavorite;
 
 @end
 
@@ -74,6 +78,9 @@
                                              selector: @selector(objectChangedNotificationReceived:)
                                                  name: NSManagedObjectContextObjectsDidChangeNotification
                                                object: [self managedObjectContext]];
+
+    _imageIconFavoriteSelected = [UIImage imageNamed:@"imageIconFavoriteSelected"];
+    _imageIconFavoriteUnselected = [UIImage imageNamed:@"imageIconFavoriteUnselected"];
 }
 
 - (ClassifyViewController *)init {
@@ -93,6 +100,16 @@
     self = [super initWithCoder:aDecoder];
     [self setup];
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqual:@"favorite"]) {
+        [self updateIsFavoriteUI];
+    }
 }
 
 - (void)getOneSubjectAndShow {
@@ -121,6 +138,19 @@
 - (IBAction)onButtonRevertClicked:(UIBarButtonItem *)sender {
     [_questionViewController revertClassification];
     _subjectViewController.inverted = false;
+}
+
+- (IBAction)onButtonFavoriteClicked:(UIBarButtonItem *)sender {
+    _questionViewController.favorite = !(_questionViewController.favorite);
+    //observeValueForKeyPath() will respond to the property change and update the toolbar icon.
+}
+
+- (void)updateIsFavoriteUI {
+    if (_questionViewController.favorite) {
+        self.buttonFavorite.image = _imageIconFavoriteSelected;
+    } else {
+        self.buttonFavorite.image = _imageIconFavoriteUnselected;
+    }
 }
 
 - (void)showNextSubject {
@@ -242,6 +272,11 @@
         _questionViewController = [segue destinationViewController];
         [self addChildViewControllerConstraints:_questionViewController
                                 toContainerView:self.containerViewQuestion];
+
+        [self updateIsFavoriteUI];
+
+        // Respond to changes to the child view controller's "favorite" property:
+        [_questionViewController addObserver:self forKeyPath:@"favorite" options:0 context:nil];
     } else if ([segueName isEqualToString:@"helpShowEmbed"]) {
         QuestionHelpViewController *viewController = [segue destinationViewController];
         viewController.question = _questionViewController.question;
