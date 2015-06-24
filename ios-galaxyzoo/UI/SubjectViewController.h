@@ -12,7 +12,10 @@
 @interface SubjectViewController : UIViewController
 
 @property (nonatomic, strong) ZooniverseSubject *subject;
+@property (nonatomic) BOOL inverted;
 
-- (BOOL) setSubjectWithCheck:(ZooniverseSubject *)subject;
+
+- (BOOL) setSubjectWithCheck:(ZooniverseSubject *)subject
+                 forInverted:(BOOL)inverted;
 
 @end

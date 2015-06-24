@@ -22,8 +22,34 @@
 
 @implementation SubjectViewController
 
-- (BOOL) setSubjectWithCheck:(ZooniverseSubject *)subject {
-    NSString *path = subject.locationStandard;
+- (IBAction)onButtonClick:(id)sender {
+    self.inverted = !self.inverted;
+}
+
++ (NSString *)getImagePath:(ZooniverseSubject *)subject
+               forInverted:(BOOL)inverted {
+    if (inverted) {
+        return subject.locationInverted;
+    } else {
+        return subject.locationStandard;
+    }
+}
+
+- (BOOL) setSubjectWithCheck:(ZooniverseSubject *)subject
+                 forInverted:(BOOL)inverted {
+    //We take both subject and inverted at the same time,
+    //to avoid multiple image loads triggered by each individual change:
+    _subject = subject;
+    _inverted = inverted;
+
+    return [self showSubjectWithCheck];
+}
+
+- (BOOL) showSubjectWithCheck {
+
+    NSString *path = [SubjectViewController getImagePath:self.subject
+                            forInverted:self.inverted];
+    //TODO: Avoid reloading it if it's already using this path:
     UIImage *image = [UIImage imageWithContentsOfFile:path];
 
     if (path && !image) {
@@ -34,7 +60,7 @@
             //The parent ClassifyViewController will respond to the Core Data deletion,
             //and show a different subject:
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [[appDelegate zooniverseClient] abandonSubject:subject
+            [[appDelegate zooniverseClient] abandonSubject:self.subject
                                           withCoreDataSave:YES];
         }
     }
@@ -42,6 +68,18 @@
     [self.imageView setImage:image];
 
     return (image != nil);
+}
+
+- (void)setSubject:(ZooniverseSubject *)subject {
+    _subject = subject;
+
+    [self showSubjectWithCheck];
+}
+
+- (void)setInverted:(BOOL)inverted {
+    _inverted = inverted;
+
+    [self showSubjectWithCheck];
 }
 
 @end

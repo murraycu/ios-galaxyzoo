@@ -274,6 +274,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpE-GZ-gbu" userLabel="button">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onButtonClick:" destination="tdd-TB-MLp" eventType="touchUpInside" id="k2L-Jg-GDj"/>
+                                </connections>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
                                 <constraints>
@@ -288,7 +297,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="KpE-GZ-gbu" firstAttribute="top" secondItem="I6z-DG-hlX" secondAttribute="top" id="00x-FK-ha8"/>
+                            <constraint firstItem="KpE-GZ-gbu" firstAttribute="width" secondItem="I6z-DG-hlX" secondAttribute="width" id="5nP-JR-Evm"/>
+                            <constraint firstItem="KpE-GZ-gbu" firstAttribute="height" secondItem="I6z-DG-hlX" secondAttribute="height" id="8fG-jc-r83"/>
                             <constraint firstAttribute="trailingMargin" secondItem="I6z-DG-hlX" secondAttribute="trailing" id="BC1-r5-bjQ"/>
+                            <constraint firstItem="KpE-GZ-gbu" firstAttribute="leading" secondItem="I6z-DG-hlX" secondAttribute="leading" id="Bz6-xB-SEv"/>
                             <constraint firstItem="I6z-DG-hlX" firstAttribute="width" secondItem="bH4-F3-DJ9" secondAttribute="width" id="JdG-KS-3gB"/>
                             <constraint firstItem="I6z-DG-hlX" firstAttribute="bottom" secondItem="TWR-nz-wA1" secondAttribute="top" id="ahI-XQ-llj"/>
                             <constraint firstItem="I6z-DG-hlX" firstAttribute="leading" secondItem="bH4-F3-DJ9" secondAttribute="leading" id="lzQ-UN-cYd"/>

@@ -120,6 +120,7 @@
 
 - (void)onBarButtonItemRevert {
     [_questionViewController revertClassification];
+    _subjectViewController.inverted = false;
 }
 
 - (void)showNextSubject {
@@ -180,10 +181,12 @@
     self.subject = (ZooniverseSubject *)[results objectAtIndex:0];
 
     //Show the subject's image:
-    if(![_subjectViewController setSubjectWithCheck:self.subject]) {
+    if(![_subjectViewController setSubjectWithCheck:self.subject
+                                        forInverted:NO]) {
         //If setSubjectWithCheck failed then it would trigger a new showNextSubject call already.
         return;
     }
+
 
     [self setSpinnerVisible:NO];
 
