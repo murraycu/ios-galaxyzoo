@@ -118,7 +118,7 @@
                               sender:self];
 }
 
-- (void)onBarButtonItemRevert {
+- (IBAction)onButtonRevertClicked:(UIBarButtonItem *)sender {
     [_questionViewController revertClassification];
     _subjectViewController.inverted = false;
 }
@@ -211,15 +211,6 @@
              action:@selector(onBarButtonItemHelp)
    forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-    [arrayItems addObject:item];
-
-    //We could use initWithBarButtonSystemItem:UIBarButtonSystemItemUndo instead,
-    //but undo is not the same as revert.
-    UIImage *imageIcon = [UIImage imageNamed:@"imageIconRevert"];
-    item = [[UIBarButtonItem alloc] initWithImage:imageIcon
-                                            style:UIBarButtonItemStylePlain
-                                           target:self
-                                           action:@selector(onBarButtonItemRevert)];
     [arrayItems addObject:item];
 
     self.navigationItem.rightBarButtonItems = arrayItems;

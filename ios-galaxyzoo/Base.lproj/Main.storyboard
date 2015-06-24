@@ -46,6 +46,11 @@
                                             <segue destination="9yB-3A-bjR" kind="show" identifier="listShowSegue" id="z0F-Le-zVL"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem image="imageIconRevert" id="5cV-oc-nvn">
+                                        <connections>
+                                            <action selector="onButtonRevertClicked:" destination="BYZ-38-t0r" id="Bt1-M9-rML"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -626,6 +631,9 @@
             <point key="canvasLocation" x="2718" y="-480"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="imageIconRevert" width="48" height="48"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="McU-Of-BYW"/>
     </inferredMetricsTieBreakers>
