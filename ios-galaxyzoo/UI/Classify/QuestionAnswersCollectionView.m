@@ -84,7 +84,6 @@ static const NSInteger ICON_HEIGHT = 50;
         UIButton *button = (UIButton *)clickedButton;
         button.selected = !(button.selected);
 
-        //TODO: Check if it is active:
         DecisionTreeQuestionCheckbox *checkbox = [_question.checkboxes objectAtIndex:i];
         _callbackBlockCheckboxClicked(checkbox, button.selected);
     } else {
