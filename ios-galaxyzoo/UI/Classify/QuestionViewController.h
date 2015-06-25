@@ -16,6 +16,8 @@
 @property (nonatomic, strong) DecisionTreeQuestion *question;
 @property (nonatomic) BOOL favorite;
 
+- (void) resetQuestionToFirst;
+
 - (void) revertClassification;
 
 @end

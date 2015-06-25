@@ -156,8 +156,6 @@
 - (void)showNextSubject {
     [self setSpinnerVisible:YES];
 
-    Singleton *singleton = [Singleton sharedSingleton];
-
     //Get more subjects from the server, putting them in CoreData:
 
     // Get the subjects from CoreData:
@@ -217,16 +215,11 @@
         return;
     }
 
+    //Show the current question for the subject:
+    _questionViewController.subject = self.subject;
+    [_questionViewController resetQuestionToFirst];
 
     [self setSpinnerVisible:NO];
-
-    //Show the current question for the subject:
-    NSString *groupId = self.subject.groupId;
-    DecisionTree *decisionTree = [singleton getDecisionTree:groupId];
-    NSString *questionId = decisionTree.firstQuestionId;
-    DecisionTreeQuestion *question = [decisionTree getQuestion:questionId];
-    _questionViewController.subject = self.subject;
-    _questionViewController.question = question;
 }
 
 - (void)viewDidLoad {

@@ -65,13 +65,25 @@
     [self initClassificationInProgress];
 }
 
+- (void)resetQuestionToFirst {
+    DecisionTree *decisionTree = [self getDecisionTree];
+    self.question = [decisionTree getQuestion:decisionTree.firstQuestionId];
+    if (self.question == nil) { //Will also happen if decisiontree is nil.
+        //If we have no questions for this subject then maybe the subject is so old (cached)
+        //that the decision trees are no longer in the app.
+        //The parent ClassifyViewController will respond to the Core Data deletion,
+        //and show a different subject:
+        NSLog(@"resetQuestionToFirst(): Abandoning subject because we have no questions for it.");
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [[appDelegate zooniverseClient] abandonSubject:self.subject
+                                      withCoreDataSave:YES];
+    }
+}
+
 - (void)revertClassification {
     [self resetClassification];
 
-    DecisionTree *decisionTree = [self getDecisionTree];
-    _question = [decisionTree getQuestion:decisionTree.firstQuestionId];
-
-    [self updateUI];
+    [self resetQuestionToFirst];
 }
 
 - (void)viewDidLoad {
@@ -99,6 +111,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+//TODO: Avoid unnecessary repeat calls of this when we set the subject and then set the question
+//immediately afterwards?
 - (void)updateUI {
     self.labelTitle.text = _question.title;
     self.labelText.text = _question.text;
@@ -119,7 +133,6 @@
     Singleton *singleton = [Singleton sharedSingleton];
     return [singleton getDecisionTree:self.subject.groupId];
 }
-
 
 -(void)onAnswerClicked:(DecisionTreeQuestionAnswer *)answer {
     [self storeAnswer:answer.answerId];
@@ -152,9 +165,8 @@
                                    forAnswer:answerId];
     if (_question == nil) {
         [self saveClassification];
-        _question = [decisionTree getQuestion:decisionTree.firstQuestionId];
-
         [self clearFavorite];
+        [self resetQuestionToFirst];
     } else {
         //If the user doesn't want to see the "Do you want to discuss this?" question,
         //just skip it:
