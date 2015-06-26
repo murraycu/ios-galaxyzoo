@@ -63,7 +63,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="3Jk-Sq-vwa"/>
-                            <constraint firstItem="4He-Zn-x54" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="13" id="61U-pa-lEQ"/>
+                            <constraint firstItem="4He-Zn-x54" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" id="61U-pa-lEQ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4He-Zn-x54" secondAttribute="bottom" id="DoI-h6-S8R"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" symbolic="YES" id="Fmv-tY-zbi"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="GjK-iw-gyc"/>
