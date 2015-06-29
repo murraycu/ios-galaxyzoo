@@ -145,6 +145,10 @@
     //observeValueForKeyPath() will respond to the property change and update the toolbar icon.
 }
 
+- (IBAction)onButtonLoginClicked:(UIBarButtonItem *)sender {
+    [self checkForLogin];
+}
+
 - (void)updateIsFavoriteUI {
     if (_questionViewController.favorite) {
         self.buttonFavorite.image = _imageIconFavoriteSelected;

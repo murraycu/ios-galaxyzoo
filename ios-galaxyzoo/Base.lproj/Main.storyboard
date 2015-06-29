@@ -56,6 +56,12 @@
                                             <action selector="onButtonFavoriteClicked:" destination="BYZ-38-t0r" id="wTj-qF-23Q"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="cZN-0o-mCs"/>
+                                    <barButtonItem title="Login" id="x7I-DC-9Ja">
+                                        <connections>
+                                            <action selector="onButtonLoginClicked:" destination="BYZ-38-t0r" id="DKp-GN-NEp"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="barTintColor" red="0.80392156859999997" green="0.86274509799999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
