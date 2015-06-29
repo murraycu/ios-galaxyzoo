@@ -1421,6 +1421,7 @@
 				TargetAttributes = {
 					F21F87991AF3657400C95B52 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 4F436Y77Y5;
 					};
 					F21F87B21AF3657400C95B52 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1987,9 +1988,12 @@
 			baseConfigurationReference = 4893014CE1515354F03EFCF8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1998,9 +2002,12 @@
 			baseConfigurationReference = 96004F6F685BA528B384638E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
