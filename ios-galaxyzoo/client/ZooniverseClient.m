@@ -135,12 +135,12 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
     NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Zooniverse.sqlite"];
 
     NSError *error;
-    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:storePath
+    [managedObjectStore addSQLitePersistentStoreAtPath:storePath
                                                                      fromSeedDatabaseAtPath:nil
                                                                           withConfiguration:nil
                                                                                     options:@{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES} error:&error];
 
-    NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
+    //NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
 
     [managedObjectStore createManagedObjectContexts];
 
