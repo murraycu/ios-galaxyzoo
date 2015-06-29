@@ -431,7 +431,7 @@
 		F2173A2F1B0738FE00C1F947 /* icon_sloan_singleband-10_a-4_1 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_sloan_singleband-10_a-4_1"; path = "Icons/icon_sloan_singleband-10_a-4_1"; sourceTree = "<group>"; };
 		F2173A7A1B077AF100C1F947 /* ZooniverseClientImageDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClientImageDownload.h; path = client/ZooniverseClientImageDownload.h; sourceTree = "<group>"; };
 		F2173A7B1B077AF100C1F947 /* ZooniverseClientImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClientImageDownload.m; path = client/ZooniverseClientImageDownload.m; sourceTree = "<group>"; };
-		F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-galaxyzoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F21F879A1AF3657400C95B52 /* Galaxy Zoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Galaxy Zoo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F21F879E1AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F879F1AF3657400C95B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F21F87A11AF3657400C95B52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -837,7 +837,7 @@
 		F21F879B1AF3657400C95B52 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */,
+				F21F879A1AF3657400C95B52 /* Galaxy Zoo.app */,
 				F21F87B31AF3657400C95B52 /* ios-galaxyzooTests.xctest */,
 			);
 			name = Products;
@@ -1389,7 +1389,7 @@
 			);
 			name = "ios-galaxyzoo";
 			productName = "ios-galaxyzoo";
-			productReference = F21F879A1AF3657400C95B52 /* ios-galaxyzoo.app */;
+			productReference = F21F879A1AF3657400C95B52 /* Galaxy Zoo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F21F87B21AF3657400C95B52 /* ios-galaxyzooTests */ = {
@@ -1992,7 +1992,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Galaxy Zoo";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -2006,7 +2006,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Galaxy Zoo";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
