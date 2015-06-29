@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qV-Rr-NAo" userLabel="containerViewSubject">
-                                <rect key="frame" x="0.0" y="72" width="600" height="237"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="245"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="nOK-hD-3nz"/>
                                 </constraints>
@@ -68,7 +68,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="3Jk-Sq-vwa"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="3Jk-Sq-vwa"/>
                             <constraint firstItem="4He-Zn-x54" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" id="61U-pa-lEQ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4He-Zn-x54" secondAttribute="bottom" id="DoI-h6-S8R"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" symbolic="YES" id="Fmv-tY-zbi"/>
@@ -85,6 +85,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="3Jk-Sq-vwa"/>
                                 <exclude reference="GjK-iw-gyc"/>
                                 <exclude reference="OdA-kn-OhX"/>
                                 <exclude reference="xdz-Zb-H3w"/>
@@ -304,11 +305,11 @@
                         <viewControllerLayoutGuide type="bottom" id="TWR-nz-wA1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bH4-F3-DJ9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpE-GZ-gbu" userLabel="button">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -317,7 +318,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="237"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
                                 </constraints>
