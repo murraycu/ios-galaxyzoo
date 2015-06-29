@@ -200,7 +200,7 @@
         }
     }
 
-    if(self.classificationsDoneInSession == 1) {
+    if(self.classificationsDoneInSession == 3) {
         [self checkForLogin];
     }
 
