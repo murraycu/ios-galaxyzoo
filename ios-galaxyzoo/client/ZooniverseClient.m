@@ -953,17 +953,17 @@ NSString * currentTimeAsIso8601(void)
     [self performSelectorInBackground:@selector(deleteImageFile:)
                            withObject:subject.locationStandard];
     subject.locationStandard = nil;
-    subject.locationStandardDownloaded = nil;
+    subject.locationStandardDownloaded = NO;
 
     [self performSelectorInBackground:@selector(deleteImageFile:)
                            withObject:subject.locationInverted];
     subject.locationInverted = nil;
-    subject.locationInvertedDownloaded = nil;
+    subject.locationInvertedDownloaded = NO;
 
     [self performSelectorInBackground:@selector(deleteImageFile:)
                            withObject:subject.locationThumbnail];
     subject.locationThumbnail = nil;
-    subject.locationThumbnailDownloaded = nil;
+    subject.locationThumbnailDownloaded = NO;
 }
 
 - (void)abandonSubject:(ZooniverseSubject *)subject
