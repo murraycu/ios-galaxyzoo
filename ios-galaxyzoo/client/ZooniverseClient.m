@@ -266,7 +266,8 @@ NSString * currentTimeAsIso8601(void)
         return nil;
     }
 
-    if ([ZooniverseClient downloadedImageExistsAlready:strUrlRemote]) {
+    if ([ZooniverseClient downloadedImageExistsAlready:strUrlRemote
+         forImageLocation:imageLocation]) {
         //Don't bother downloading it again
         //We can assume that it has fully downloaded because it has been moved to its
         //permanent location.
@@ -754,11 +755,13 @@ NSString * currentTimeAsIso8601(void)
                          set:set];
 }
 
-+ (BOOL) downloadedImageExistsAlready:(NSString*)remoteUrlStr {
++ (BOOL) downloadedImageExistsAlready:(NSString*)remoteUrlStr
+                     forImageLocation:(ImageLocation)imageLocation {
     NSURL *remoteUri = [NSURL URLWithString:remoteUrlStr];
-    NSString *basename = remoteUri.lastPathComponent;
     NSString *imagesDir = [ZooniverseClient imagesDir];
-    NSString *permanentPath = [imagesDir stringByAppendingFormat:@"/%@", basename];
+    NSString * permanentPath = [ZooniverseClient localPathForRemotePath:remoteUri
+                                                       forImageLocation:imageLocation
+                                                              forAppDir:imagesDir];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     return [fileManager fileExistsAtPath:permanentPath];
@@ -773,6 +776,47 @@ NSString * currentTimeAsIso8601(void)
 
     NSString *docsDir = urlDocsDir.path;
     return [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"];
+}
+
++ (NSString *)prefixForImageLocation:(ImageLocation)imageLocation {
+    NSString *result;
+    switch(imageLocation) {
+        case ImageLocationStandard:
+            result = @"standard";
+            break;
+        case ImageLocationInverted:
+            result = @"inverted";
+            break;
+        case ImageLocationThumbnail:
+            result = @"thumbnail";
+            break;
+    }
+
+    return result;
+}
+
++ (NSString *)localPathForRemotePath:(NSURL *)remoteUrl
+                    forImageLocation:(ImageLocation)imageLocation
+                           forAppDir:(NSString *)appDir {
+    return [ZooniverseClient localPathForRemotePath:remoteUrl
+                                   forImageLocation:imageLocation
+                                          forAppDir:appDir
+                               withFallbackBasename:nil];
+}
+
++ (NSString *)localPathForRemotePath:(NSURL *)remoteUrl
+                    forImageLocation:(ImageLocation)imageLocation
+                           forAppDir:(NSString *)appDir
+                withFallbackBasename:(NSString *)fallbackBaseName {
+    NSString *basename = remoteUrl.lastPathComponent;
+    if (basename.length == 0) {
+        //Fall back to the suggested name in this very unlikely case:
+        NSLog(@"localPathForRemotePath: Falling back to suggested local filename.");
+        basename = fallbackBaseName;
+    }
+
+    NSString *locationPrefix = [ZooniverseClient prefixForImageLocation:imageLocation];
+    return [appDir stringByAppendingFormat:@"/%@_%@", locationPrefix, basename];
 }
 
 #pragma mark - NSURLSessionDownloadDelegate
@@ -801,19 +845,21 @@ NSString * currentTimeAsIso8601(void)
         }
     }
 
+
+
     NSString *permanentPath;
     if(!error) {
         // Build a local filepath.
         // We ignore the suggested filename in [response suggestedFilename]
         // because we want to identify the files later by their name only.
-        NSString *basename = response.URL.lastPathComponent;
-        if (basename.length == 0) {
-            //Fall back to the suggested name in this very unlikely case:
-            NSLog(@"didFinishDownloadingToURL: Falling back to suggested local filename.");
-            basename = [response suggestedFilename];
+        NSString *taskId = [self getTaskIdAsString:downloadTask];
+        ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks objectForKey:taskId];
+        ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:taskId];
 
-        }
-        permanentPath = [appDir stringByAppendingFormat:@"/%@", basename];
+        permanentPath = [ZooniverseClient localPathForRemotePath:response.URL
+                                                forImageLocation:download.imageLocation
+                                                       forAppDir:appDir
+                                            withFallbackBasename:[response suggestedFilename]];
 
         // Delete the file if it already exists:
         if([fileManager fileExistsAtPath:permanentPath])
