@@ -82,6 +82,7 @@
 		F24829921AF8B54B0060D9B0 /* DecisionTreeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F24829911AF8B54B0060D9B0 /* DecisionTreeParser.m */; };
 		F248FAD21AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F248FAD01AF9EEB100E8733A /* ZooniverseModel.xcdatamodeld */; };
 		F27ADB081B09348A00ADE133 /* ZooniverseNameValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */; };
+		F2892E231B4E6F7B00B7C56D /* sloan_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F2892E221B4E6F7B00B7C56D /* sloan_tree.xml */; };
 		F28A54D81B2ED129000E9626 /* ExampleViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */; };
 		F28A55031B2EECB1000E9626 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54ED1B2EECB1000E9626 /* LoginViewController.m */; };
 		F28A55091B2EECB1000E9626 /* SubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28A54F91B2EECB1000E9626 /* SubjectViewController.m */; };
@@ -481,6 +482,7 @@
 		F248FAD11AF9EEB100E8733A /* ZooniverseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZooniverseModel.xcdatamodel; sourceTree = "<group>"; };
 		F27ADB061B09348A00ADE133 /* ZooniverseNameValuePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseNameValuePair.h; path = client/ZooniverseNameValuePair.h; sourceTree = "<group>"; };
 		F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseNameValuePair.m; path = client/ZooniverseNameValuePair.m; sourceTree = "<group>"; };
+		F2892E221B4E6F7B00B7C56D /* sloan_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sloan_tree.xml; sourceTree = "<group>"; };
 		F28A54D61B2ED129000E9626 /* ExampleViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleViewerViewController.h; path = ../ExampleViewerViewController.h; sourceTree = "<group>"; };
 		F28A54D71B2ED129000E9626 /* ExampleViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleViewerViewController.m; path = ../ExampleViewerViewController.m; sourceTree = "<group>"; };
 		F28A54EC1B2EECB1000E9626 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UI/LoginViewController.h; sourceTree = "<group>"; };
@@ -963,6 +965,7 @@
 		F24829791AF759110060D9B0 /* DecisionTrees */ = {
 			isa = PBXGroup;
 			children = (
+				F2892E221B4E6F7B00B7C56D /* sloan_tree.xml */,
 				F248297A1AF759110060D9B0 /* candels_tree.xml */,
 				F248297B1AF759110060D9B0 /* goods_full_tree.xml */,
 				F2173A021B0738A200C1F947 /* sloan_singleband_tree.xml */,
@@ -1558,6 +1561,7 @@
 				F2D6FE671AFD44D3002E3E15 /* icon_sloan-6_x-2_2 in Resources */,
 				F2D6FE3F1AFD44D3002E3E15 /* icon_goods_full-18_x-3_0 in Resources */,
 				F2D6FDE21AFD44D3002E3E15 /* icon_goods_full-0_a-2_0 in Resources */,
+				F2892E231B4E6F7B00B7C56D /* sloan_tree.xml in Resources */,
 				F2D6FE1D1AFD44D3002E3E15 /* icon_goods_full-11_a-1_1 in Resources */,
 				F2D6FE001AFD44D3002E3E15 /* icon_goods_full-4_a-2_1 in Resources */,
 				F2D6FDEF1AFD44D3002E3E15 /* icon_goods_full-2_a-1_2 in Resources */,
