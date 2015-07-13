@@ -375,9 +375,12 @@ NSString * currentTimeAsIso8601(void)
 
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     RKObjectManager *objectManager = appDelegate.rkObjectManager;
+
+    [ZooniverseClient setNetworkActivityIndicatorVisibleOnMainThread:YES];
     [objectManager getObjectsAtPath:path
                           parameters:queryParams
                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                 [ZooniverseClient setNetworkActivityIndicatorVisibleOnMainThread:NO];
 
                                  NSString *iso8601String = currentTimeAsIso8601();
 
