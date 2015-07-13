@@ -161,15 +161,16 @@
         for (NSDictionary *change in _itemChanges) {
             [change enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
                 NSFetchedResultsChangeType type = [key unsignedIntegerValue];
+                NSArray *indexPaths = @[obj];
                 switch(type) {
                     case NSFetchedResultsChangeInsert:
-                        [self.collectionView insertItemsAtIndexPaths:@[obj]];
+                        [self.collectionView insertItemsAtIndexPaths:indexPaths];
                         break;
                     case NSFetchedResultsChangeDelete:
-                        [self.collectionView deleteItemsAtIndexPaths:@[obj]];
+                        [self.collectionView deleteItemsAtIndexPaths:indexPaths];
                         break;
                     case NSFetchedResultsChangeUpdate:
-                        [self.collectionView reloadItemsAtIndexPaths:@[obj]];
+                        [self.collectionView reloadItemsAtIndexPaths:indexPaths];
                         break;
                     case NSFetchedResultsChangeMove:
                         [self.collectionView moveItemAtIndexPath:obj[0] toIndexPath:obj[1]];
