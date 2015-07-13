@@ -468,6 +468,13 @@ NSString * currentTimeAsIso8601(void)
 
 }
 
++ (void)setNetworkActivityIndicatorVisibleOnMainThread:(BOOL)setVisible {
+    //We use dispatch_async instead of performSelectorOnMainThread just because it is simpler:
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [AppDelegate setNetworkActivityIndicatorVisible:setVisible];
+    });
+}
+
 - (void)uploadClassificationForSubject:(ZooniverseSubject *)subject {
     NSString *subjectId = subject.subjectId;
     
@@ -565,10 +572,13 @@ NSString * currentTimeAsIso8601(void)
                                 forRequest:request];
     
     //NSDictionary *debugHeaderFields = request.allHTTPHeaderFields;
-    
+
+    [ZooniverseClient setNetworkActivityIndicatorVisibleOnMainThread:YES];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:self.uploadsQueue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               [ZooniverseClient setNetworkActivityIndicatorVisibleOnMainThread:NO];
+
                                //TODO: Should we somehow use a weak reference to Subject?
                                NSHTTPURLResponse *httpResponse;
                                if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
