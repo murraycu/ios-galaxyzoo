@@ -71,7 +71,7 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
 }
 
 + (NSString *)fullExampleUri {
-    return @"http://static.zooniverse.org/www.galaxyzoo.org/images/examples/";
+    return @"https://static.zooniverse.org/www.galaxyzoo.org/images/examples/";
 }
 
 + (NSString *)forgotPasswordUri {
