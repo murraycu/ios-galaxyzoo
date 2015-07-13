@@ -418,6 +418,7 @@ NSString * currentTimeAsIso8601(void)
                                      //so we don't mistakenly think we have finished all tasks
                                      //before we have finished adding the task details.
                                      for (NSURLSessionDownloadTask *task in tasks) {
+                                         [ZooniverseClient setNetworkActivityIndicatorVisibleOnMainThread:YES];
                                          [task resume];
                                      }
                                  }
@@ -833,6 +834,8 @@ NSString * currentTimeAsIso8601(void)
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
+    [ZooniverseClient setNetworkActivityIndicatorVisibleOnMainThread:NO];
+
     //Normally we would do any work in the main thread via performSelectorOnMainThread(),
     //but, according to the documentation, we must first move the file to its permanent location.
 
