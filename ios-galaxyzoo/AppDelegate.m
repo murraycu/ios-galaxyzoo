@@ -208,6 +208,16 @@
     return _rkObjectManager;
 }
 
++ (void)setNetworkActivityIndicatorVisible:(BOOL)setVisible {
+    static NSInteger count = 0;
+    if (setVisible)
+        count++;
+    else
+        count--;
+
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:(count > 0)];
+}
+
 #pragma mark - Core Data Saving support
 
 - (void)saveContext {

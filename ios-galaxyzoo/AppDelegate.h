@@ -26,6 +26,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
++ (void)setNetworkActivityIndicatorVisible:(BOOL)setVisible;
+
 + (void)setLogin:(NSString *)username
           apiKey:(NSString *)apiKey;
 + (NSString *)loginUsername;
