@@ -139,14 +139,20 @@
         for (NSDictionary *change in self.sectionChanges) {
             [change enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
                 NSFetchedResultsChangeType type = [key unsignedIntegerValue];
+                NSInteger index = [obj unsignedIntegerValue];
+                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:index];
                 switch(type) {
                     case NSFetchedResultsChangeInsert:
-                        [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:[obj unsignedIntegerValue]]];
+                        [self.collectionView insertSections:indexSet];
                         break;
                     case NSFetchedResultsChangeDelete:
-                        [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:[obj unsignedIntegerValue]]];
+                        [self.collectionView deleteSections:indexSet];
                         break;
-                    //TODO?: case NSFetchedResultsChangeUpdate:
+                    case NSFetchedResultsChangeUpdate:
+                        //This might be particularly inefficient, if we get many
+                        //updates one after the other.
+                        [self.collectionView reloadSections:indexSet];
+                        break;
                     //TODO?: case NSFetchedResultsChangeMove:
                 }
             }];
