@@ -87,6 +87,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
++ (void)setNetworkActivityIndicatorVisibleOnMainThread:(BOOL)setVisible {
+    //We use dispatch_async instead of performSelectorOnMainThread just because it is simpler:
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [AppDelegate setNetworkActivityIndicatorVisible:setVisible];
+    });
+}
+
 - (IBAction)onLoginButton:(id)sender {
     NSString *postLoginUriStr =
     [NSString stringWithFormat:@"%@login",
@@ -116,9 +124,12 @@
                                 forRequest:request];
 
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [LoginViewController setNetworkActivityIndicatorVisibleOnMainThread:YES];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:queue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               [LoginViewController setNetworkActivityIndicatorVisibleOnMainThread:NO];
+
                                //TODO: Should we somehow use a weak reference to Subject?
                                NSHTTPURLResponse *httpResponse;
                                if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
