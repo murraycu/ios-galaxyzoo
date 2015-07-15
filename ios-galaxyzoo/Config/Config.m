@@ -63,7 +63,10 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
 }
 
 + (NSString *)userAgent {
-    return USER_AGENT;
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *version = infoDictionary[(NSString*)@"CFBundleShortVersionString"]; //kCFBundleVersionKey is the build version.
+
+    return [NSString stringWithFormat:@"%@/%@", USER_AGENT, version];
 }
 
 + (NSString *)baseUrl {
