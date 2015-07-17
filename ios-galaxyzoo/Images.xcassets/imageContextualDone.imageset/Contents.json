@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ic_small_accept-2.png"
+      "filename" : "ic_done_white_18pt.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ic_small_accept-1.png"
+      "filename" : "ic_done_white_18pt_2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "ic_small_accept.png"
+      "filename" : "ic_done_white_18pt_3x.png"
     }
   ],
   "info" : {
