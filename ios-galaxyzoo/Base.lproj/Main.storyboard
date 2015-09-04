@@ -38,7 +38,7 @@
                                     <segue destination="XN1-Ge-G0W" kind="embed" identifier="questionViewEmbed" id="WlM-lJ-dLY"/>
                                 </connections>
                             </containerView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4He-Zn-x54">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="4He-Zn-x54">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="List" id="frd-78-rxo" userLabel="itemList">
