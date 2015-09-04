@@ -633,8 +633,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="imageIconFavoriteUnselected" width="32" height="32"/>
-        <image name="imageIconRevert" width="48" height="48"/>
+        <image name="imageIconFavoriteUnselected" width="24" height="24"/>
+        <image name="imageIconRevert" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="McU-Of-BYW"/>
