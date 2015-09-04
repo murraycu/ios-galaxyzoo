@@ -255,6 +255,21 @@
     classificationQuestion.classification = _classificationInProgress;
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator
+                                :(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size
+          withTransitionCoordinator:coordinator];
+
+    [coordinator animateAlongsideTransition:nil
+                                 completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+                                     // Code here will execute after the rotation has finished.
+                                     [self updateUI];
+                                 }
+     ];
+}
+
+
 /*
 #pragma mark - Navigation
 
