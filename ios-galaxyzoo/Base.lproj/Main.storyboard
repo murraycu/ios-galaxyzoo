@@ -21,7 +21,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qV-Rr-NAo" userLabel="containerViewSubject">
                                 <rect key="frame" x="0.0" y="64" width="600" height="245"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="nOK-hD-3nz"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="nOK-hD-3nz"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
