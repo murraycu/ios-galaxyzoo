@@ -31,6 +31,11 @@
     self.collectionViewExamples.question = self.question;
     [self.collectionViewExamples reloadData];
 
+    //TODO: Remove this when we can support iOS 8 only.
+    //Then we can just use the "automatic" (not explicit) Preferred Width
+    //on labels in the storyboard.
+    self.labelText.preferredMaxLayoutWidth = self.labelText.frame.size.width;
+
     //Make it tall enough to avoid any truncation
     //(its scrolling is turned off)
 //    self.examplesCollectionViewHeightConstraint.constant = self.collectionViewExamples.contentSize.height;

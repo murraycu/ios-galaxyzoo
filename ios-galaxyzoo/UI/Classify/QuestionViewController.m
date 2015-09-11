@@ -90,6 +90,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+
+    //TODO: Remove this when we can support iOS 8 only.
+    //Then we can just use the "automatic" (not explicit) Preferred Width
+    //on labels in the storyboard.
+    self.labelTitle.preferredMaxLayoutWidth = self.labelTitle.frame.size.width;
+    self.labelText.preferredMaxLayoutWidth = self.labelText.frame.size.width;
+
+
     [self.collectionViewAnswers setAnswerClickedCallback:^(DecisionTreeQuestionAnswer *answer) {
         [self onAnswerClicked:answer];
     } withCheckBoxClickedCallback:^(DecisionTreeQuestionCheckbox *checkbox, BOOL selected) {

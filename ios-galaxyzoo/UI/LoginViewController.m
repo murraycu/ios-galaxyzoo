@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonForgot;
 @property (weak, nonatomic) IBOutlet UIButton *buttonRegister;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLogin;
+@property (weak, nonatomic) IBOutlet UILabel *labelTop;
 
 @end
 
@@ -25,7 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    //TODO: Remove this when we can support iOS 8 only.
+    //Then we can just use the "automatic" (not explicit) Preferred Width
+    //on labels in the storyboard.
+    self.labelTop.preferredMaxLayoutWidth = self.labelTop.frame.size.width;
 }
 
 - (void)didReceiveMemoryWarning {
