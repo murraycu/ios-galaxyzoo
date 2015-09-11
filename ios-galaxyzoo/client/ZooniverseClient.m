@@ -55,8 +55,13 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     queue.maxConcurrentOperationCount = 3;
 
+    //backgroundSessionConfigurationWithIdentifier is since iIOS 8.
+    //but there is no good way to check the version yet.
+    //NSURLSessionConfiguration *configuration =
+    //    [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadImages"];
     NSURLSessionConfiguration *configuration =
-    [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"downloadImages"];
+        [NSURLSessionConfiguration backgroundSessionConfiguration:@"downloadImages"];
+
     _session = [NSURLSession sessionWithConfiguration:configuration
                                                           delegate:self
                                                      delegateQueue:queue];
