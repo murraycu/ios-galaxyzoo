@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qV-Rr-NAo" userLabel="containerViewSubject">
-                                <rect key="frame" x="0.0" y="64" width="600" height="245"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="nOK-hD-3nz"/>
                                 </constraints>
@@ -34,7 +34,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-2T-OaH" userLabel="containerViewQuestion">
-                                <rect key="frame" x="16" y="317" width="568" height="226"/>
+                                <rect key="frame" x="-173" y="167" width="946" height="376"/>
                                 <connections>
                                     <segue destination="XN1-Ge-G0W" kind="embed" identifier="questionViewEmbed" id="WlM-lJ-dLY"/>
                                 </connections>
@@ -307,11 +307,11 @@
                         <viewControllerLayoutGuide type="bottom" id="TWR-nz-wA1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bH4-F3-DJ9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpE-GZ-gbu" userLabel="button">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -320,7 +320,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="282" id="KuH-vC-oXt"/>
                                 </constraints>
@@ -368,11 +368,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Noc-ep-P9D"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BaE-tr-Tgr">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="226"/>
+                        <rect key="frame" x="0.0" y="0.0" width="946" height="376"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="501" text="Question Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-nN-vq3" userLabel="labelTitle">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="946" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="S17-Hb-eKh"/>
                                 </constraints>
@@ -381,7 +381,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-nW-ODq" userLabel="collectionViewAnswers" customClass="QuestionAnswersCollectionView">
-                                <rect key="frame" x="0.0" y="54" width="568" height="172"/>
+                                <rect key="frame" x="0.0" y="204" width="946" height="172"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="172" id="0W3-Fw-zzR" userLabel="collectionViewAnswersHeightConstraint"/>
@@ -405,7 +405,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="501" text="Question Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-fb-vs7" userLabel="labelText">
-                                <rect key="frame" x="0.0" y="26" width="568" height="20"/>
+                                <rect key="frame" x="0.0" y="26" width="946" height="170"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
