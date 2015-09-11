@@ -2032,7 +2032,7 @@
 				INFOPLIST_FILE = "ios-galaxyzooTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ios-galaxyzoo.app/ios-galaxyzoo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Galaxy Zoo.app/Galaxy Zoo";
 			};
 			name = Debug;
 		};
@@ -2047,7 +2047,7 @@
 				INFOPLIST_FILE = "ios-galaxyzooTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ios-galaxyzoo.app/ios-galaxyzoo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Galaxy Zoo.app/Galaxy Zoo";
 			};
 			name = Release;
 		};
