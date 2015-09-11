@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -465,7 +464,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWv-bP-96Q" userLabel="labelZooniverseId">
-                                <rect key="frame" x="159" y="447" width="425" height="35"/>
+                                <rect key="frame" x="159" y="482" width="425" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -508,7 +507,7 @@
                             <constraint firstItem="k0p-1i-GLX" firstAttribute="baseline" secondItem="mWv-bP-96Q" secondAttribute="baseline" id="dkP-0m-Hgh"/>
                             <constraint firstItem="k0p-1i-GLX" firstAttribute="top" secondItem="b66-RN-97k" secondAttribute="bottom" constant="14" id="iUV-2R-clv"/>
                             <constraint firstItem="MhE-UI-lXl" firstAttribute="leading" secondItem="5UT-pG-z3b" secondAttribute="leadingMargin" id="jc1-Ms-UYN"/>
-                            <constraint firstItem="mWv-bP-96Q" firstAttribute="firstBaseline" secondItem="k0p-1i-GLX" secondAttribute="firstBaseline" id="nvq-VJ-LrK"/>
+                            <constraint firstItem="mWv-bP-96Q" firstAttribute="baseline" secondItem="k0p-1i-GLX" secondAttribute="baseline" id="nvq-VJ-LrK"/>
                             <constraint firstItem="40V-K6-ked" firstAttribute="top" secondItem="MhE-UI-lXl" secondAttribute="bottom" constant="57" id="u3M-Yw-NaW"/>
                             <constraint firstItem="mWv-bP-96Q" firstAttribute="leading" secondItem="k0p-1i-GLX" secondAttribute="trailing" constant="14" id="xiV-iQ-cWa"/>
                             <constraint firstAttribute="trailing" secondItem="b66-RN-97k" secondAttribute="trailing" id="y1X-Zo-o3b"/>
