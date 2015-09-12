@@ -125,7 +125,7 @@
               }];
 }
 
-- (void)checkForLogin {
+- (void)showLoginScreen {
     [self performSegueWithIdentifier:@"loginShowEmbed"
                               sender:self];
 
@@ -151,7 +151,7 @@
         [AppDelegate clearLogin];
         [self updateIsLoggedInUI];
     } else {
-        [self checkForLogin];
+        [self showLoginScreen];
     }
 }
 
@@ -219,7 +219,7 @@
     }
 
     if(self.classificationsDoneInSession == 3) {
-        [self checkForLogin];
+        [self showLoginScreen];
     }
 
     self.classificationsDoneInSession++;
