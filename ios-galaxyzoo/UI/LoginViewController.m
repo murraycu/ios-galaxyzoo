@@ -77,6 +77,14 @@
 
     if (!success) {
         NSLog(@"Login failed with message:%@", message);
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed"
+                                                        message:@"The server did not accept that username and password."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+
         return;
     }
 
