@@ -218,8 +218,12 @@
         }
     }
 
+    //Offer the login screen after a certain number of anonymous classifications,
+    //like the web UI does.
     if(self.classificationsDoneInSession == 3) {
-        [self showLoginScreen];
+        if(![AppDelegate isLoggedIn]) {
+            [self showLoginScreen];
+        }
     }
 
     self.classificationsDoneInSession++;
