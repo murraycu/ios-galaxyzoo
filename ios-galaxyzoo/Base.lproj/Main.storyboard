@@ -58,7 +58,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="cZN-0o-mCs"/>
-                                    <barButtonItem title="Login" id="x7I-DC-9Ja">
+                                    <barButtonItem title="Log In" id="x7I-DC-9Ja">
                                         <connections>
                                             <action selector="onButtonLoginClicked:" destination="BYZ-38-t0r" id="DKp-GN-NEp"/>
                                         </connections>
