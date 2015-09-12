@@ -310,6 +310,15 @@ static NSString *const kKeyChainKeyApiKey = @"api_key";
                     account:username];
 }
 
++ (BOOL)isLoggedIn {
+    return [[self loginApiKey] length] != 0;
+}
+
++ (void)clearLogin {
+    [AppDelegate setLogin:nil
+                   apiKey:nil];
+}
+
 + (NSString *)loginUsername {
     NSArray *accounts = [SSKeychain accountsForService:kKeyChainServiceName];
     if (!accounts || accounts.count == 0) {

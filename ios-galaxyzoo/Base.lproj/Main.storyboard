@@ -97,6 +97,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Classify" id="k2p-mG-A4H"/>
                     <connections>
+                        <outlet property="barButtonItemLogin" destination="x7I-DC-9Ja" id="zhE-Bb-WjX"/>
                         <outlet property="buttonFavorite" destination="E6O-1G-mMG" id="obT-IP-e0r"/>
                         <outlet property="containerViewQuestion" destination="Ycy-2T-OaH" id="aJJ-OW-pvC"/>
                         <outlet property="containerViewSubject" destination="1qV-Rr-NAo" id="FWL-tC-drQ"/>

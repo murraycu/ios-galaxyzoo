@@ -28,6 +28,7 @@
 
     UIImage *_imageIconFavoriteSelected;
     UIImage *_imageIconFavoriteUnselected;
+    __weak IBOutlet UIBarButtonItem *barButtonItemLogin;
 }
 
 @property(nonatomic, strong)ZooniverseSubject *subject;
@@ -146,7 +147,12 @@
 }
 
 - (IBAction)onButtonLoginClicked:(UIBarButtonItem *)sender {
-    [self checkForLogin];
+    if([AppDelegate isLoggedIn]) {
+        [AppDelegate clearLogin];
+        [self updateIsLoggedInUI];
+    } else {
+        [self checkForLogin];
+    }
 }
 
 - (void)updateIsFavoriteUI {
@@ -154,6 +160,14 @@
         self.buttonFavorite.image = _imageIconFavoriteSelected;
     } else {
         self.buttonFavorite.image = _imageIconFavoriteUnselected;
+    }
+}
+
+- (void)updateIsLoggedInUI {
+    if ([AppDelegate isLoggedIn]) {
+        barButtonItemLogin.title = @"Log Out";
+    } else {
+        barButtonItemLogin.title = @"Log In";
     }
 }
 
@@ -242,6 +256,12 @@
 
     self.navigationItem.rightBarButtonItems = arrayItems;
 
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    [self updateIsLoggedInUI];
 }
 
 - (void)didReceiveMemoryWarning {

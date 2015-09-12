@@ -30,6 +30,8 @@
 
 + (void)setLogin:(NSString *)username
           apiKey:(NSString *)apiKey;
++ (BOOL)isLoggedIn;
++ (void)clearLogin;
 + (NSString *)loginUsername;
 + (NSString *)loginApiKey;
 
