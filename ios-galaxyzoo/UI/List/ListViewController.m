@@ -223,8 +223,14 @@
     cell.imagestatusUploaded.hidden = !subject.uploaded;
     cell.imageStatusFavorite.hidden = !subject.favorite;
 
+    //Start/Stop the spinner:
     BOOL complete = subject.locationStandardDownloaded && subject.locationInvertedDownloaded && subject.locationThumbnailDownloaded;
-    cell.spinner.hidden = complete;
+    if (complete) {
+        [cell.spinner stopAnimating];
+    } else {
+        [cell.spinner startAnimating];
+    }
+    cell.spinner.hidden = YES;
 
     //Let the user click on already-classified subjects to view them:
     if (subject.done) {
