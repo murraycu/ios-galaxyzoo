@@ -408,6 +408,11 @@ NSString * currentTimeAsIso8601(void)
                                      }
                                  }
 
+                                 //Save the Subjects to disk:
+                                 NSError *error = nil;
+                                 [[self managedObjectContext] save:&error];  //saves the context to disk
+                                 //TODO: Check error.
+
                                  if (tasks.count == 0) {
                                      //Call the callback, just to stop it waiting for ever.
                                      //However, the subjects won't really be ready until the other
