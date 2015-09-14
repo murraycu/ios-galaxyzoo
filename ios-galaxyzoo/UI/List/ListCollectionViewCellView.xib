@@ -74,8 +74,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="imageContextualDone" width="64" height="64"/>
-        <image name="imageContextualFavorite" width="64" height="64"/>
-        <image name="imageContextualUploaded" width="64" height="64"/>
+        <image name="imageContextualDone" width="18" height="18"/>
+        <image name="imageContextualFavorite" width="18" height="18"/>
+        <image name="imageContextualUploaded" width="18" height="18"/>
     </resources>
 </document>
