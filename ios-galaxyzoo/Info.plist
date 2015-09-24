@@ -42,5 +42,37 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+
+
+    <!-- Allow use of http (instead of https) for the Amazon AWS S3-hosted subject images.
+         See https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/
+         and https://github.com/zooniverse/Galaxy-Zoo/issues/228 -->
+	<key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>www.galaxyzoo.org.s3.amazonaws.com</key>
+
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+
+                <!-- In case we start using https for the images, instead of http:
+                See https://github.com/zooniverse/Galaxy-Zoo/issues/228
+                <key>NSThirdPartyExceptionMinimumTLSVersion</key>
+                <string>TLSv1.0</string>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                -->
+            </dict>
+        </dict>
+    </dict>
+
 </dict>
+
+
 </plist>
