@@ -32,6 +32,11 @@
                                    userInfo:nil
                                     repeats:YES];
 
+    //Generate a CFNetwork_bundle_id_*.nwlrb.log file
+    //which should show us what cleartext http:// URLs are being blocked
+    //by the App Transport Security (iOS 9), if any.
+    //setenv("CFNETWORK_DIAGNOSTICS", "3", 1);
+
     return YES;
 }
 

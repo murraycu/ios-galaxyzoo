@@ -1,3 +1,11 @@
+0.5:
+
+* Use the new decals and illustris survey subjects and
+  questions.
+* iOS 9 support.
+  (By default, iOS 9 blocked use of http, rather than https, 
+   for the image downloads.)
+
 0.4:
 
 * Use portrait orientation only, at least on iPhone.
