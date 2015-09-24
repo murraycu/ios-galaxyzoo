@@ -34,11 +34,17 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                       noAnswerId:@"a-1"]], @"551453e12f0eef21f2000001",
                        */
 
-                      [[ConfigSubjectGroup alloc] init:@"sloan_tree.xml"
+                      [[ConfigSubjectGroup alloc] init:@"decals_tree.xml"
                                       useForNewQueries:YES
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"sloan-11"
+                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"decals-11"
                                                                                      yesAnswerId:@"a-0"
-                                                                                      noAnswerId:@"a-1"]], @"50251c3b516bcb6ecb000002",
+                                                                                      noAnswerId:@"a-1"]], @"55db7cf01766276e7b000001",
+                      [[ConfigSubjectGroup alloc] init:@"illustris_tree"
+                                      useForNewQueries:YES
+                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"illustris-11"
+                                                                                     yesAnswerId:@"a-0"
+                                                                                      noAnswerId:@"a-1"]], @"55db71251766276613000001",
+
 
                       //We don't request items for all these groups any more, but we still want to load the
                       //trees so we can ask questions about items that have already been downloaded and stored in
@@ -49,7 +55,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                        discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"sloan_singleband-11"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]], @"5514521e2f0eef2012000001",
+                      [[ConfigSubjectGroup alloc] init:@"sloan_tree.xml"
+                                      useForNewQueries:NO
+                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"sloan-11"
+                                                                                     yesAnswerId:@"a-0"
+                                                                                      noAnswerId:@"a-1"]], @"50251c3b516bcb6ecb000002",
+
                       nil];
+    
 }
 
 - (Config *)init {
