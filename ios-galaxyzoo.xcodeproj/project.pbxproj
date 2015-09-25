@@ -3427,17 +3427,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ios-galaxyzoo/ios-galaxyzoo-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)/**",
-					"\"${PODS_ROOT}/Headers/Public\"/**",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"/**",
-					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"/**",
-					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"/**",
-					"\"${PODS_ROOT}/Headers/Public/RestKit\"/**",
-					"\"${PODS_ROOT}/Headers/Public/SOCKit\"/**",
-					"\"${PODS_ROOT}/Headers/Public/SSKeychain\"/**",
-					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"/**",
-				);
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3456,17 +3445,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ios-galaxyzoo/ios-galaxyzoo-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)/**",
-					"\"${PODS_ROOT}/Headers/Public\"/**",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"/**",
-					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"/**",
-					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"/**",
-					"\"${PODS_ROOT}/Headers/Public/RestKit\"/**",
-					"\"${PODS_ROOT}/Headers/Public/SOCKit\"/**",
-					"\"${PODS_ROOT}/Headers/Public/SSKeychain\"/**",
-					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"/**",
-				);
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
