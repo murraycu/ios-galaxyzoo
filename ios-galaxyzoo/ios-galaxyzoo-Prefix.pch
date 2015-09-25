@@ -1,0 +1,27 @@
+//
+//  ios-galaxyzoo-Prefix.pch
+//  ios-galaxyzoo
+//
+//  Created by Murray Cumming on 25/09/2015.
+//  Copyright © 2015 Murray Cumming. All rights reserved.
+//
+
+#ifndef ios_galaxyzoo_Prefix_pch
+#define ios_galaxyzoo_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <Availability.h>
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#else
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <CoreServices/CoreServices.h>
+#endif
+
+// If using Core Data, you may also wish to append
+#import <CoreData/CoreData.h>
+
+#endif /* ios_galaxyzoo_Prefix_pch */

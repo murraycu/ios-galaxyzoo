@@ -837,6 +837,7 @@
 		F24829901AF8B54B0060D9B0 /* DecisionTreeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionTreeParser.h; path = DecisionTree/DecisionTreeParser.h; sourceTree = "<group>"; };
 		F24829911AF8B54B0060D9B0 /* DecisionTreeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionTreeParser.m; path = DecisionTree/DecisionTreeParser.m; sourceTree = "<group>"; };
 		F248FAD11AF9EEB100E8733A /* ZooniverseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZooniverseModel.xcdatamodel; sourceTree = "<group>"; };
+		F26152431BB5292A0088D307 /* ios-galaxyzoo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ios-galaxyzoo-Prefix.pch"; path = "ios-galaxyzoo/ios-galaxyzoo-Prefix.pch"; sourceTree = "<group>"; };
 		F27ADB061B09348A00ADE133 /* ZooniverseNameValuePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseNameValuePair.h; path = client/ZooniverseNameValuePair.h; sourceTree = "<group>"; };
 		F27ADB071B09348A00ADE133 /* ZooniverseNameValuePair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseNameValuePair.m; path = client/ZooniverseNameValuePair.m; sourceTree = "<group>"; };
 		F2892E221B4E6F7B00B7C56D /* sloan_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sloan_tree.xml; sourceTree = "<group>"; };
@@ -1542,6 +1543,7 @@
 		F21F87911AF3657400C95B52 = {
 			isa = PBXGroup;
 			children = (
+				F26152431BB5292A0088D307 /* ios-galaxyzoo-Prefix.pch */,
 				E3A6F259A91A31B9D91FC016 /* Frameworks */,
 				F21F879C1AF3657400C95B52 /* ios-galaxyzoo */,
 				F21F87B61AF3657400C95B52 /* ios-galaxyzooTests */,
@@ -3423,6 +3425,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ios-galaxyzoo/ios-galaxyzoo-Prefix.pch";
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3439,6 +3443,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ios-galaxyzoo/ios-galaxyzoo-Prefix.pch";
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
