@@ -45,4 +45,4 @@ SPEC CHECKSUMS:
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
   TransitionKit: 3a14b6acc7cf2d1dd3e454e24dbad1cfab9a1ef1
 
-COCOAPODS: 0.39.0.beta.4
+COCOAPODS: 0.38.2
