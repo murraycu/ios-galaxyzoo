@@ -88,7 +88,7 @@
     NSError *error; //TODO: Check this.
     [self.fetchedResultsController performFetch:&error];
 
-    NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
+    //NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
 
     NSAssert(!error, @"Error performing fetch request: %@", error);
 
