@@ -203,6 +203,9 @@ NSString * currentTimeAsIso8601(void)
         imageLocation:(ImageLocation)imageLocation
                 localFile:(NSString*)localFile
 {
+    //localFile is only the last part of the filepath,
+    //because the parent folder name can change between application launches.
+    //See http://stackoverflow.com/questions/31452098/nsdocumentdirectory-files-disappear-in-ios
     switch (imageLocation) {
         case ImageLocationStandard:
             subject.locationStandard = localFile;
@@ -767,7 +770,7 @@ NSString * currentTimeAsIso8601(void)
 - (void)onImageDownloadedAndMoved:(NSArray*)array
 {
     NSString *taskId = [array objectAtIndex:0];
-    NSString *permanentPath = [array objectAtIndex:1];
+    NSString *partialPermanentPath = [array objectAtIndex:1];
 
     ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:taskId];
     ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:taskId];
@@ -787,7 +790,7 @@ NSString * currentTimeAsIso8601(void)
     //TODO: Check response and error.
     [self onImageDownloaded:download.subject
               imageLocation:download.imageLocation
-                  localFile:permanentPath];
+                  localFile:partialPermanentPath];
 
     [self onImageDownloadFinished:taskId
                          set:set];
@@ -797,7 +800,7 @@ NSString * currentTimeAsIso8601(void)
                      forImageLocation:(ImageLocation)imageLocation {
     NSURL *remoteUri = [NSURL URLWithString:remoteUrlStr];
     NSString *imagesDir = [ZooniverseClient imagesDir];
-    NSString * permanentPath = [ZooniverseClient localPathForRemotePath:remoteUri
+    NSString * permanentPath = [ZooniverseClient fullLocalPathForRemotePath:remoteUri
                                                        forImageLocation:imageLocation
                                                               forAppDir:imagesDir];
 
@@ -833,18 +836,28 @@ NSString * currentTimeAsIso8601(void)
     return result;
 }
 
-+ (NSString *)localPathForRemotePath:(NSURL *)remoteUrl
++ (NSString *)fullLocalPathForRemotePath:(NSURL *)remoteUrl
                     forImageLocation:(ImageLocation)imageLocation
                            forAppDir:(NSString *)appDir {
-    return [ZooniverseClient localPathForRemotePath:remoteUrl
+    return [ZooniverseClient fullLocalPathForRemotePath:remoteUrl
                                    forImageLocation:imageLocation
                                           forAppDir:appDir
                                withFallbackBasename:nil];
 }
 
-+ (NSString *)localPathForRemotePath:(NSURL *)remoteUrl
++ (NSString *)fullLocalPathForRemotePath:(NSURL *)remoteUrl
                     forImageLocation:(ImageLocation)imageLocation
                            forAppDir:(NSString *)appDir
+                withFallbackBasename:(NSString *)fallbackBaseName {
+    NSString *partial = [ZooniverseClient partialLocalPathForRemotePath:remoteUrl
+                         forImageLocation:imageLocation
+                                                   withFallbackBasename:fallbackBaseName];
+
+    return [appDir stringByAppendingFormat:@"/%@", partial];
+}
+
++ (NSString *)partialLocalPathForRemotePath:(NSURL *)remoteUrl
+                    forImageLocation:(ImageLocation)imageLocation
                 withFallbackBasename:(NSString *)fallbackBaseName {
     NSString *basename = remoteUrl.lastPathComponent;
     if (basename.length == 0) {
@@ -854,8 +867,19 @@ NSString * currentTimeAsIso8601(void)
     }
 
     NSString *locationPrefix = [ZooniverseClient prefixForImageLocation:imageLocation];
-    return [appDir stringByAppendingFormat:@"/%@_%@", locationPrefix, basename];
+    return [locationPrefix stringByAppendingFormat:@"_%@", basename];
 }
+
++ (NSString *)fullLocalPath:(NSString *)partialLocalPath
+                               forAppDir:(NSString *)appDir {
+    return [appDir stringByAppendingFormat:@"/%@", partialLocalPath];
+}
+
++ (NSString *)fullLocalImagePath:(NSString *)partialLocalPath {
+    NSString *appDir = [ZooniverseClient imagesDir];
+    return [appDir stringByAppendingFormat:@"/%@", partialLocalPath];
+}
+
 
 #pragma mark - NSURLSessionDownloadDelegate
 
@@ -887,6 +911,7 @@ NSString * currentTimeAsIso8601(void)
 
 
 
+    NSString *partialPermanentPath;
     NSString *permanentPath;
     if(!error) {
         // Build a local filepath.
@@ -896,10 +921,11 @@ NSString * currentTimeAsIso8601(void)
         ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks objectForKey:taskId];
         ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:taskId];
 
-        permanentPath = [ZooniverseClient localPathForRemotePath:response.URL
-                                                forImageLocation:download.imageLocation
-                                                       forAppDir:appDir
-                                            withFallbackBasename:[response suggestedFilename]];
+        partialPermanentPath = [ZooniverseClient partialLocalPathForRemotePath:response.URL
+                                                                        forImageLocation:download.imageLocation
+                                                                    withFallbackBasename:[response suggestedFilename]];
+        permanentPath = [ZooniverseClient fullLocalPath:partialPermanentPath
+                                              forAppDir:appDir];
 
         // Delete the file if it already exists:
         if([fileManager fileExistsAtPath:permanentPath])
@@ -930,7 +956,7 @@ NSString * currentTimeAsIso8601(void)
     NSString *strTaskId = [self getTaskIdAsString:downloadTask];
     if(!error) {
         [self performSelectorOnMainThread:@selector(onImageDownloadedAndMoved:)
-                       withObject:@[strTaskId, permanentPath]
+                       withObject:@[strTaskId, partialPermanentPath]
                     waitUntilDone:NO];
     } else {
         [self performSelectorOnMainThread:@selector(onImageDownloadedAndAbandoned:)
@@ -979,17 +1005,31 @@ NSString * currentTimeAsIso8601(void)
     [callbackBlock invoke];
 }
 
++ (BOOL)checkSingleSubjectImageStillExists:(NSString *)partialLocalPath
+                      withFileManager:(NSFileManager *)fileManager {
+    NSString *fullPath = [ZooniverseClient fullLocalImagePath:partialLocalPath];
+    BOOL result = [fileManager fileExistsAtPath:fullPath];
+    if (!result) {
+        NSLog(@"checkSingleSubjectImageStillExists(): file does not exist: %@", fullPath);
+    }
+
+    return result;
+}
+
 - (BOOL)checkSubjectImagesStillExists:(ZooniverseSubject *)subject {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:subject.locationStandard]) {
+    if (![ZooniverseClient checkSingleSubjectImageStillExists:subject.locationStandard
+                                              withFileManager:fileManager]) {
         return NO;
     }
 
-    if (![fileManager fileExistsAtPath:subject.locationInverted]) {
+    if (![ZooniverseClient checkSingleSubjectImageStillExists:subject.locationInverted
+        withFileManager:fileManager]) {
         return NO;
     }
 
-    if (![fileManager fileExistsAtPath:subject.locationThumbnail]) {
+    if (![ZooniverseClient checkSingleSubjectImageStillExists:subject.locationThumbnail
+                                              withFileManager:fileManager]) {
         return NO;
     }
 
@@ -1012,6 +1052,7 @@ NSString * currentTimeAsIso8601(void)
     BOOL somethingChanged = false;
     for (ZooniverseSubject *subject in results) {
         if (![self checkSubjectImagesStillExists:subject]) {
+            NSLog(@"checkImagesStillExist(): abandoning because checkSubjectImagesStillExists() failed.");
             [self abandonSubject:subject
                 withCoreDataSave:NO]; //We save after deleting them all.
             somethingChanged = true;

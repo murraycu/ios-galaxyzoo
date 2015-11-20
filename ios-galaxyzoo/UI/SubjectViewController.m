@@ -28,11 +28,14 @@
 
 + (NSString *)getImagePath:(ZooniverseSubject *)subject
                forInverted:(BOOL)inverted {
+    NSString *partialPath = nil;
     if (inverted) {
-        return subject.locationInverted;
+        partialPath = subject.locationInverted;
     } else {
-        return subject.locationStandard;
+        partialPath = subject.locationStandard;
     }
+
+    return [ZooniverseClient fullLocalImagePath:partialPath];
 }
 
 - (BOOL) setSubjectWithCheck:(ZooniverseSubject *)subject
