@@ -38,9 +38,9 @@ insets:(UIEdgeInsets)insets {
     UIEdgeInsets titleInsets = [QuestionAnswerButton realTitleInset];
     UIEdgeInsets imageInsets = [QuestionAnswerButton realImageInset];
 
-    CGRect parentFrame = self.frame;
+    //CGRect parentFrame = self.frame;
     CGRect parentBounds = self.bounds;
-    NSLog(@"parentFrame.origin.x=%f", parentFrame.origin.x);
+    //NSLog(@"parentFrame.origin.x=%f", parentFrame.origin.x);
 
     CGSize parentSize = parentBounds.size;
     CGSize imageSize = self.imageView.image.size;
