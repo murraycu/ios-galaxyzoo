@@ -17,6 +17,7 @@
 
     CGSize _buttonSize;
     UIFont *_buttonFont;
+    CGFloat _cachedFrameWidth;
 }
 @end
 
@@ -167,8 +168,11 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
 }
 
 - (CGSize)cellSize:(UICollectionViewFlowLayout*)flowLayout {
+    CGFloat frame_width = self.frame.size.width;
+
     //Return the cached size if it has already been calculated:
-    if (_buttonSize.height != 0 && _buttonSize.width != 0) {
+    if (_buttonSize.height != 0 && _buttonSize.width != 0
+        && frame_width == _cachedFrameWidth) {
         return _buttonSize;
     }
 
@@ -188,7 +192,7 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
     //and dividing.
     CGFloat spacing = flowLayout.minimumInteritemSpacing;
     CGFloat totalSpacing = spacing * (itemsPerRow - 1);
-    CGFloat buttonWidth = (self.frame.size.width - totalSpacing) / itemsPerRow;
+    CGFloat buttonWidth = (frame_width - totalSpacing) / itemsPerRow;
 
 
     //Calculate the height of the highest item, based on that width:

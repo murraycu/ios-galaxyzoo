@@ -104,6 +104,12 @@
     [self resetClassification];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self updateCollectionViewAnswersHeight];
+    [self.collectionViewAnswers.collectionViewLayout invalidateLayout];
+}
+
+
 - (void)updateCollectionViewAnswersHeight {
     //Make it tall enough to avoid any truncation
     //(its scrolling is turned off)
