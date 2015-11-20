@@ -210,6 +210,9 @@
     // Connect the RestKit object manager to our Core Data model:
     _rkObjectManager.managedObjectStore = [self rkManagedObjectStore];
 
+    //Turn off all RestKit logging:
+    RKLogConfigureByName("*", RKLogLevelOff);
+
     return _rkObjectManager;
 }
 
