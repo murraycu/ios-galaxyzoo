@@ -695,8 +695,14 @@ NSString * currentTimeAsIso8601(void)
     NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
                         error:&error];
+    if (results == nil) {
+        NSLog(@"downloadMissingImages(): executeFetchRequest failed: %@", error);
+        [callbackBlock invoke];
+        return;
+    }
+
     if (results.count == 0) {
-         NSLog(@"downloadMissingImages(): executeFetchRequest failed: %@", error);
+         //This is normal: NSLog(@"downloadMissingImages(): executeFetchRequest returned no items: %@", error);
         [callbackBlock invoke];
         return;
     }
