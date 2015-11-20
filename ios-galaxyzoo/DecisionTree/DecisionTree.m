@@ -40,6 +40,7 @@
     DecisionTreeParser *parser = [[DecisionTreeParser alloc]init:url
                                                         intoTree:self];
     if(![parser parse]) {
+        NSLog(@"DecisionTree:init(): DecisionTreeParser.parse() failed: %@", [parser parserError]);
         return nil;
     }
 
