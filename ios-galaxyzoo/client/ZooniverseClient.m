@@ -904,7 +904,7 @@ NSString * currentTimeAsIso8601(void)
         // Delete the file if it already exists:
         if([fileManager fileExistsAtPath:permanentPath])
         {
-            if(![fileManager removeItemAtPath:appDir
+            if(![fileManager removeItemAtPath:permanentPath
                                         error:&error]) {
                 NSLog(@"Could not delete existing cache file: %@: error: %@", permanentPath,
                       [error description]);
