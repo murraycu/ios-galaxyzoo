@@ -1,7 +1,14 @@
+0.7:
+
+* Really hopefully fix the layout of the answers row.
+* Prevent the unnecessary clean and refresh of the
+  cached subjects. The list view should be fairly stable
+  now.
+
 0,6:
 
 * Hopefully fix a layout problem.
-  The questions row was sometimes too wide for the screen.
+  The answers row was sometimes too wide for the screen.
 
 0.5:
 
