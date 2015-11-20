@@ -134,11 +134,15 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
 
     NSString *storePath = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Zooniverse.sqlite"];
 
-    NSError *error;
+    NSError *error = nil;
     [managedObjectStore addSQLitePersistentStoreAtPath:storePath
                                                                      fromSeedDatabaseAtPath:nil
                                                                           withConfiguration:nil
                                                                                     options:@{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES} error:&error];
+    if (error) {
+        NSLog(@"setupRestkit(): addSQLitePersistentStoreAtPath failed: %@", error);
+    }
+
 
     //NSAssert(persistentStore, @"Failed to add persistent store with error: %@", error);
 
@@ -410,8 +414,9 @@ NSString * currentTimeAsIso8601(void)
 
                                  //Save the Subjects to disk:
                                  NSError *error = nil;
-                                 [[self managedObjectContext] save:&error];  //saves the context to disk
-                                 //TODO: Check error.
+                                 if(![[self managedObjectContext] save:&error]) {
+                                     NSLog(@"querySubjects(): save failed: %@", error);
+                                 }
 
                                  if (tasks.count == 0) {
                                      //Call the callback, just to stop it waiting for ever.
@@ -623,10 +628,13 @@ NSString * currentTimeAsIso8601(void)
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestDoneNotUploaded"] copy];
     [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
-    NSError *error = nil; //TODO: Check this.
+    NSError *error = nil;
     NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
                         error:&error];
+    if (results == nil) {
+        NSLog(@"uploadOutstandingClassifications(): executeFetchRequest failed: %@", error);
+    }
 
     //If there are no classifications to upload then just return:
     if (results.count == 0) {
@@ -652,10 +660,14 @@ NSString * currentTimeAsIso8601(void)
     fetchRequest.fetchLimit = minCachedNotDone;
 
     //Get more items from the server if necessary:
-    NSError *error = nil; //TODO: Check this.
+    NSError *error = nil;
     NSArray *results = [[self managedObjectContext]
                         executeFetchRequest:fetchRequest
                         error:&error];
+    if (results == nil) {
+        NSLog(@"downloadMinimumSubjects(): executeFetchRequest failed: %@", error);
+    }
+
     NSInteger count = results.count;
     if (count < minCachedNotDone) {
         [self querySubjects:(minCachedNotDone - count)
@@ -679,11 +691,12 @@ NSString * currentTimeAsIso8601(void)
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestMissingImages"] copy];
     [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
-    NSError *error = nil; //TODO: Check this.
+    NSError *error = nil;
     NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
                         error:&error];
     if (results.count == 0) {
+         NSLog(@"downloadMissingImages(): executeFetchRequest failed: %@", error);
         [callbackBlock invoke];
         return;
     }
@@ -931,12 +944,13 @@ NSString * currentTimeAsIso8601(void)
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestUploaded"] copy];
     [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
-    NSError *error = nil; //TODO: Check this.
+    NSError *error = nil;
     NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
                         error:&error];
-
-
+    if (results == nil) {
+        NSLog(@"removeOldSubjects(): executeFetchRequest failed: %@", error);
+    }
 
     NSInteger countToRemove = results.count - maxKept;
     //If there are no classifications to remove then just return:
@@ -981,10 +995,13 @@ NSString * currentTimeAsIso8601(void)
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestDownloadsDone"] copy];
     [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
-    NSError *error = nil; //TODO: Check this.
+    NSError *error = nil;
     NSArray *results = [[self managedObjectContext]
                         executeFetchRequest:fetchRequest
                         error:&error];
+    if (results == nil) {
+        NSLog(@"checkImagesStillExist(): executeFetchRequest failed: %@", error);
+    }
 
     BOOL somethingChanged = false;
     for (ZooniverseSubject *subject in results) {

@@ -207,9 +207,9 @@
 
     //Save the ZooniverseClassification and the Subject to disk:
     NSError *error = nil;
-    [[self managedObjectContext] save:&error];  //saves the context to disk
-    //TODO: Check error.
-
+    if(![[self managedObjectContext] save:&error]) {
+        NSLog(@"saveClassification(): save failed: %@", error);
+    }
 
     //Tell the parent ViewController to start another subject:
     UIViewController <ClassifyViewControllerDelegate> *parent = (UIViewController <ClassifyViewControllerDelegate> *)self.parentViewController;

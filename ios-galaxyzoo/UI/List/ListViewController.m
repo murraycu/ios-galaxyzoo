@@ -85,12 +85,12 @@
                                                                                    cacheName:nil];
     self.fetchedResultsController.delegate = self;
 
-    NSError *error; //TODO: Check this.
-    [self.fetchedResultsController performFetch:&error];
+    NSError *error = nil;
+    if(![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"fetchedResultsController(): performFetch failed: %@", error);
+    }
 
     //NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
-
-    NSAssert(!error, @"Error performing fetch request: %@", error);
 
     return _fetchedResultsController;
 }

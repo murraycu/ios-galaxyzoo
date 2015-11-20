@@ -187,10 +187,15 @@
     fetchRequest.fetchLimit = 1;
 
     //Get more items from the server if necessary:
-    NSError *error = nil; //TODO: Check this.
+    NSError *error = nil;
     NSArray *results = [[self managedObjectContext]
                         executeFetchRequest:fetchRequest
                         error:&error];
+    if (results == nil) {
+        NSLog(@"showNextSubject(): executeFetchRequest failed: %@", error);
+        [self setSpinnerVisible:NO];
+        return;
+    }
 
     NSUInteger count = [results count];
 
