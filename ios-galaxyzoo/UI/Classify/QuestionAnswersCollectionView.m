@@ -176,6 +176,8 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
         return _buttonSize;
     }
 
+    _cachedFrameWidth = frame_width;
+
     CGFloat heightMax = 0;
 
     NSInteger count = self.question.answers.count + self.question.checkboxes.count;
