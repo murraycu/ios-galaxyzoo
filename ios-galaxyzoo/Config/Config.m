@@ -39,7 +39,7 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                        discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"decals-11"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]], @"55db7cf01766276e7b000001",
-                      [[ConfigSubjectGroup alloc] init:@"illustris_tree"
+                      [[ConfigSubjectGroup alloc] init:@"illustris_tree.xml"
                                       useForNewQueries:YES
                                        discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"illustris-11"
                                                                                      yesAnswerId:@"a-0"

@@ -37,6 +37,8 @@ static Singleton *sharedSingleton = nil;    // static instance variable
         NSURL *url = [[NSBundle mainBundle] URLForResource:[subjectGroup filename]
                                              withExtension:nil];
         if (!url) {
+            NSLog(@"Singleton: Could not find decision tree XML file in assets: %@",
+                  [subjectGroup filename]);
             continue;
         }
 
