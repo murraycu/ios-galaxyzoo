@@ -67,6 +67,10 @@
 
 - (void)resetQuestionToFirst {
     DecisionTree *decisionTree = [self getDecisionTree];
+    if (decisionTree == nil) {
+        NSLog(@"resetQuestionToFirst(): No decision tree found for groupId:%@", self.subject.groupId);
+    }
+
     self.question = [decisionTree getQuestion:decisionTree.firstQuestionId];
     if (self.question == nil) { //Will also happen if decisiontree is nil.
         //If we have no questions for this subject then maybe the subject is so old (cached)
@@ -131,7 +135,13 @@
 
 - (DecisionTree *)getDecisionTree {
     Singleton *singleton = [Singleton sharedSingleton];
-    return [singleton getDecisionTree:self.subject.groupId];
+
+    DecisionTree *result = [singleton getDecisionTree:self.subject.groupId];
+    if (result == nil) {
+        NSLog(@"getDecisionTree(): No decision tree found for groupId:%@", self.subject.groupId);
+    }
+
+    return result;
 }
 
 -(void)onAnswerClicked:(DecisionTreeQuestionAnswer *)answer {
