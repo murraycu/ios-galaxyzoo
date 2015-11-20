@@ -204,6 +204,8 @@
         BOOL noNetworkBecauseNoWiFi = NO;
         if ([ZooniverseClient networkIsConnected:&noNetworkBecauseNoWiFi]) {
             //TODO: Handle failure:
+            [self setSpinnerVisible:NO];
+
             [self getOneSubjectAndShow];
             return;
         } else {
@@ -239,6 +241,7 @@
     if(![_subjectViewController setSubjectWithCheck:self.subject
                                         forInverted:NO]) {
         //If setSubjectWithCheck failed then it would trigger a new showNextSubject call already.
+        [self setSpinnerVisible:NO];
         return;
     }
 
