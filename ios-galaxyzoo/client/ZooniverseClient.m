@@ -395,7 +395,7 @@ NSString * currentTimeAsIso8601(void)
                                  NSMutableArray *tasks = [[NSMutableArray alloc] init];
 
                                  for (ZooniverseSubject *subject in subjects) {
-                                     NSLog(@"  debug: subject zooniverseId: %@", [subject zooniverseId]);
+                                     //NSLog(@"  debug: subject zooniverseId: %@", [subject zooniverseId]);
 
                                      //Remember when we downloaded it, so we can always look at the earliest ones first:
                                      subject.datetimeRetrieved = iso8601String;
@@ -762,7 +762,7 @@ NSString * currentTimeAsIso8601(void)
         return;
     }
 
-    NSLog(@"onImageDownloadedAndMoved: imageLocation: %ld: %@", (long)download.imageLocation, permanentPath, nil);
+    //NSLog(@"onImageDownloadedAndMoved: imageLocation: %ld: %@", (long)download.imageLocation, permanentPath, nil);
 
 
     //TODO: Check response and error.
@@ -902,7 +902,7 @@ NSString * currentTimeAsIso8601(void)
             NSLog(@"Couldn't copy file: %@", location.path, nil);
             NSLog(@"  Error: %@", [error description]);
         } else {
-            NSLog(@"debug: file stored: %@", permanentPath);
+            //NSLog(@"debug: file stored: %@", permanentPath);
         }
     }
 
