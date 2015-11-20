@@ -260,6 +260,11 @@
 
     self.navigationItem.rightBarButtonItems = arrayItems;
 
+    [self addChildViewControllerConstraints:_subjectViewController
+                            toContainerView:self.containerViewSubject];
+    [self addChildViewControllerConstraints:_questionViewController
+                            toContainerView:self.containerViewQuestion];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -287,12 +292,9 @@
     NSString *segueName = segue.identifier;
     if ([segueName isEqualToString:@"subjectViewEmbed"]) {
         _subjectViewController = [segue destinationViewController];
-        [self addChildViewControllerConstraints:_subjectViewController
-                                toContainerView:self.containerViewSubject];
+
     } else if ([segueName isEqualToString:@"questionViewEmbed"]) {
         _questionViewController = [segue destinationViewController];
-        [self addChildViewControllerConstraints:_questionViewController
-                                toContainerView:self.containerViewQuestion];
 
         [self updateIsFavoriteUI];
 
@@ -310,6 +312,10 @@
 
     UIView *subView = childController.view;
     UIView *parent = containerView;
+
+    if (subView.superview != parent) {
+        NSLog(@"GalaxyZoo: addChildViewControllerConstraints: Cannot set constraints until the subView is in the parent view: parent=%p, subview.superview=%p", parent, subView.superview);
+    }
 
     //add constraints
     subView.translatesAutoresizingMaskIntoConstraints = NO;
