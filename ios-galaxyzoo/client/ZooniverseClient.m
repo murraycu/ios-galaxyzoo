@@ -284,14 +284,22 @@ NSString * currentTimeAsIso8601(void)
         //be called but the task will no longer be in our list of downloads in progress,
         //so we wouldn't be able to know what subject (and imageLocatino) it's for.
         NSLog(@"Found existing image download for uri: %@", strUrlRemote);
+
+        NSURL *remoteUri = [NSURL URLWithString:strUrlRemote];
+        NSString *partialPermanentPath = [ZooniverseClient partialLocalPathForRemotePath:remoteUri
+                                                                        forImageLocation:imageLocation                                                                    withFallbackBasename:nil];
+
         switch (imageLocation) {
             case ImageLocationStandard:
+                subject.locationStandard = partialPermanentPath;
                 subject.locationStandardDownloaded = true;
                 break;
             case ImageLocationInverted:
+                subject.locationInverted = partialPermanentPath;
                 subject.locationInvertedDownloaded = true;
                 break;
             case ImageLocationThumbnail:
+                subject.locationThumbnail = partialPermanentPath;
                 subject.locationThumbnailDownloaded = true;
                 break;
             default:
@@ -1066,13 +1074,14 @@ NSString * currentTimeAsIso8601(void)
     [callbackBlock invoke];
 }
 
-- (void)deleteImageFile:(NSString *)path {
+- (void)deleteImageFile:(NSString *)partialLocalPath {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     //We don't care whether this succeeds - we just want
     //to do our best to delete it.
-    //Also, the behaviour if the file doesn't exist is not documented,
-    [fileManager removeItemAtPath:path
+    //Also, the behaviour if the file doesn't exist is not documented.
+    NSString *fullLocalPath = [ZooniverseClient fullLocalImagePath:partialLocalPath];
+    [fileManager removeItemAtPath:fullLocalPath
                                error:nil];
 }
 
