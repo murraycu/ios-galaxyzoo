@@ -86,11 +86,11 @@ static const NSInteger ICON_HEIGHT = 50;
         UIButton *button = (UIButton *)clickedButton;
         button.selected = !(button.selected);
 
-        DecisionTreeQuestionCheckbox *checkbox = [_question.checkboxes objectAtIndex:i];
+        DecisionTreeQuestionCheckbox *checkbox = (_question.checkboxes)[i];
         _callbackBlockCheckboxClicked(checkbox, button.selected);
     } else {
         NSInteger answerIndex = i - _question.checkboxes.count;
-        DecisionTreeQuestionAnswer *answer = [_question.answers objectAtIndex:answerIndex];
+        DecisionTreeQuestionAnswer *answer = (_question.answers)[answerIndex];
 
         _callbackBlockAnswerClicked(answer);
     }
@@ -112,10 +112,10 @@ static const NSInteger ICON_HEIGHT = 50;
     DecisionTreeQuestionBaseButton *answer;
 
     if (index < _question.checkboxes.count) {
-        answer = [_question.checkboxes objectAtIndex:index];
+        answer = (_question.checkboxes)[index];
     } else {
         NSInteger answerIndex = index - _question.checkboxes.count;
-        answer = [_question.answers objectAtIndex:answerIndex];
+        answer = (_question.answers)[answerIndex];
     }
 
     return answer;

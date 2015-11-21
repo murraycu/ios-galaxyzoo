@@ -11,7 +11,7 @@
 
 @interface DecisionTreeParser : NSXMLParser <NSXMLParserDelegate>
 
-- (DecisionTreeParser *)init:(NSURL *)url intoTree:(DecisionTree *)intoTree;
+- (DecisionTreeParser *)init:(NSURL *)url intoTree:(DecisionTree *)intoTree NS_DESIGNATED_INITIALIZER;
 
 
 @end

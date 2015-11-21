@@ -57,12 +57,12 @@
 */
 
 - (NSManagedObjectContext*)managedObjectContext {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return appDelegate.managedObjectContext;
 }
 
 - (NSManagedObjectModel*)managedObjectModel {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return appDelegate.managedObjectModel;
 }
 
@@ -191,10 +191,10 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSArray *sections = [self.fetchedResultsController sections];
-    id<NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+    NSArray *sections = (self.fetchedResultsController).sections;
+    id<NSFetchedResultsSectionInfo> sectionInfo = sections[section];
 
-    return [sectionInfo numberOfObjects];
+    return sectionInfo.numberOfObjects;
 }
 
 -(void)onSubjectButtonClick:(UIView*)clickedButton
@@ -253,7 +253,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *segueName = segue.identifier;
     if ([segueName isEqualToString:@"subjectViewerShow"]) {
-        SubjectViewerViewController *viewController = [segue destinationViewController];
+        SubjectViewerViewController *viewController = segue.destinationViewController;
         viewController.subject = self.subjectToShow;
     }
 }

@@ -61,13 +61,13 @@
 
             //The parent ClassifyViewController will respond to the Core Data deletion,
             //and show a different subject:
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [[appDelegate zooniverseClient] abandonSubject:self.subject
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [appDelegate.zooniverseClient abandonSubject:self.subject
                                           withCoreDataSave:YES];
         }
     }
 
-    [self.imageView setImage:image];
+    (self.imageView).image = image;
 
     return (image != nil);
 }

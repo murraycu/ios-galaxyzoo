@@ -62,7 +62,7 @@
 
 + (void)setRequestContent:(NSString *)content forRequest:(NSMutableURLRequest *)request {
     NSData* postData= [content dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:postData];
+    request.HTTPBody = postData;
     NSString *contentLength = [NSString stringWithFormat:@"%lu", (unsigned long)postData.length];
     [request setValue:contentLength forHTTPHeaderField:@"Content-Length"];
 }

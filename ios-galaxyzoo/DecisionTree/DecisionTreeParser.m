@@ -58,7 +58,7 @@ static NSString *TAG_TEXT = @"text";
     _answersInProgress = [[NSMutableArray alloc] init];
     _checkboxesInProgress = [[NSMutableArray alloc] init];
 
-    [self setDelegate:self];
+    self.delegate = self;
 
     return self;
 }
@@ -87,11 +87,11 @@ static NSString *TAG_TEXT = @"text";
 }
 
 - (void)parseBaseButton:(NSDictionary *)attributeDict {
-    _answerIdInProgress = [attributeDict objectForKey:@"id"];
-    _answerIconInProgress = [attributeDict objectForKey:@"icon"];
+    _answerIdInProgress = attributeDict[@"id"];
+    _answerIconInProgress = attributeDict[@"icon"];
 
-    NSString *strCount = [attributeDict objectForKey:@"examplesCount"];
-    _answerExamplesCountInProgress = [strCount integerValue];
+    NSString *strCount = attributeDict[@"examplesCount"];
+    _answerExamplesCountInProgress = strCount.integerValue;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict
@@ -99,11 +99,11 @@ static NSString *TAG_TEXT = @"text";
     //NSLog(@"Did start element");
     if ( [elementName isEqualToString:TAG_QUESTION]) {
         [self clearQuestionInProgress];
-        _questionIdInProgress = [attributeDict objectForKey:@"id"];
+        _questionIdInProgress = attributeDict[@"id"];
     } else if ( [elementName isEqualToString:TAG_ANSWER]) {
         [self clearAnswerInProgress];
         [self parseBaseButton:attributeDict];
-        _answerLeadsToQuestionIdInProgress = [attributeDict objectForKey:@"leadsTo"];
+        _answerLeadsToQuestionIdInProgress = attributeDict[@"leadsTo"];
     } else if ( [elementName isEqualToString:TAG_CHECKBOX]) {
         [self clearAnswerInProgress];
         [self parseBaseButton:attributeDict];
@@ -180,11 +180,11 @@ static NSString *TAG_TEXT = @"text";
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    NSLog(@"Value %@", [parseError userInfo]);
+    NSLog(@"Value %@", parseError.userInfo);
 }
 
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validError {
-    NSLog(@"Value %@", [validError userInfo]);
+    NSLog(@"Value %@", validError.userInfo);
 }
 
 @end

@@ -32,20 +32,19 @@ static Singleton *sharedSingleton = nil;    // static instance variable
     for (NSString *groupId in dict) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
-        ConfigSubjectGroup *subjectGroup = [dict objectForKey:groupId];
+        ConfigSubjectGroup *subjectGroup = dict[groupId];
 
-        NSURL *url = [[NSBundle mainBundle] URLForResource:[subjectGroup filename]
+        NSURL *url = [[NSBundle mainBundle] URLForResource:subjectGroup.filename
                                              withExtension:nil];
         if (!url) {
             NSLog(@"Singleton: Could not find decision tree XML file in assets: %@",
-                  [subjectGroup filename]);
+                  subjectGroup.filename);
             continue;
         }
 
         DecisionTree *tree = [[DecisionTree alloc] init:url
                               withDiscussQuestion:subjectGroup.discussQuestion];
-        [_decisionTrees setObject:tree
-                           forKey:groupId];
+        _decisionTrees[groupId] = tree;
     }
 
     return self;
@@ -61,7 +60,7 @@ static Singleton *sharedSingleton = nil;    // static instance variable
 }
 
 - (DecisionTree *) getDecisionTree:(NSString *)groupId {
-    return [_decisionTrees objectForKey:groupId];
+    return _decisionTrees[groupId];
 }
 
 @end

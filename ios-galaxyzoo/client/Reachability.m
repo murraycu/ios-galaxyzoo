@@ -106,7 +106,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 + (instancetype)reachabilityWithHostName:(NSString *)hostName
 {
 	Reachability* returnValue = NULL;
-	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
+	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, hostName.UTF8String);
 	if (reachability != NULL)
 	{
 		returnValue= [[self alloc] init];

@@ -24,7 +24,7 @@
                           text:(NSString *)text
                           help:(NSString *)help
                        answers:(NSArray *)answers
-                    checkboxes:(NSArray *)checkboxes;
+                    checkboxes:(NSArray *)checkboxes NS_DESIGNATED_INITIALIZER;
 
 
 @end

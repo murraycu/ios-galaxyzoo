@@ -14,7 +14,7 @@
 @interface DecisionTree : NSObject
 
 - (DecisionTree *)init:(NSURL *)url
-   withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
+   withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, copy, readonly) NSString *firstQuestionId;
 @property (nonatomic, copy, readonly) DecisionTreeDiscussQuestion *discussQuestion;
@@ -22,7 +22,7 @@
 
 
 //TODO: Create a read-only property instead?
-- (NSArray *)getAllQuestions;
+@property (NS_NONATOMIC_IOSONLY, getter=getAllQuestions, readonly, copy) NSArray *allQuestions;
 
 - (DecisionTreeQuestion *) getQuestion:(NSString *)questionId;
 
@@ -32,6 +32,6 @@
 
 - (BOOL)isDiscussQuestion:(NSString *)questionId;
 - (BOOL)isDiscussQuestionYesAnswer:(NSString *)answerId;
-- (NSString *)discussQuestionNoAnswerId;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *discussQuestionNoAnswerId;
 
 @end

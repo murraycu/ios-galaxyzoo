@@ -21,7 +21,7 @@
     NSURL *url = [NSURL URLWithString:strUrl];
 
     if (![[UIApplication sharedApplication] openURL:url]) {
-        NSLog(@"openUrlInBrowser: Failed to open url: %@", [url description]);
+        NSLog(@"openUrlInBrowser: Failed to open url: %@", url.description);
     }
 }
 

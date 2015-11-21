@@ -40,7 +40,7 @@
     DecisionTreeParser *parser = [[DecisionTreeParser alloc]init:url
                                                         intoTree:self];
     if(![parser parse]) {
-        NSLog(@"DecisionTree:init(): DecisionTreeParser.parse() failed: %@", [parser parserError]);
+        NSLog(@"DecisionTree:init(): DecisionTreeParser.parse() failed: %@", parser.parserError);
         return nil;
     }
 
@@ -56,7 +56,7 @@
     for (NSString *questionId in _questions) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
-        DecisionTreeQuestion *question = [_questions objectForKey:questionId];
+        DecisionTreeQuestion *question = _questions[questionId];
         [result addObject:question];
     }
 
@@ -64,7 +64,7 @@
 }
 
 - (DecisionTreeQuestion *) getQuestion:(NSString *)questionId {
-    return [_questions objectForKey:questionId];
+    return _questions[questionId];
 }
 
 - (DecisionTreeQuestion *) getNextQuestion:(NSString *)questionId forAnswer:(NSString *)answerId {
@@ -80,8 +80,7 @@
 }
 
 - (void)addQuestion:(DecisionTreeQuestion *)question {
-    [_questions setObject:question
-                   forKey:[question questionId]];
+    _questions[question.questionId] = question;
 
     if (!self.firstQuestionId) {
         self.firstQuestionId = question.questionId;

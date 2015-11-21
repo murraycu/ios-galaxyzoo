@@ -78,8 +78,8 @@
         //The parent ClassifyViewController will respond to the Core Data deletion,
         //and show a different subject:
         NSLog(@"resetQuestionToFirst(): Abandoning subject because we have no questions for it.");
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [[appDelegate zooniverseClient] abandonSubject:self.subject
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.zooniverseClient abandonSubject:self.subject
                                       withCoreDataSave:YES];
     }
 }
@@ -236,12 +236,12 @@
 }
 
 - (NSManagedObjectContext*)managedObjectContext {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return appDelegate.managedObjectContext;
 }
 
 - (NSManagedObjectModel*)managedObjectModel {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return appDelegate.managedObjectModel;
 }
 

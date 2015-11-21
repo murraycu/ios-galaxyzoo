@@ -47,7 +47,7 @@
     NSURL *url = [NSURL URLWithString:[Config forgotPasswordUri]];
 
     if (![[UIApplication sharedApplication] openURL:url]) {
-        NSLog(@"Failed to open url: %@", [url description]);
+        NSLog(@"Failed to open url: %@", url.description);
     }
 }
 
@@ -55,7 +55,7 @@
     NSURL *url = [NSURL URLWithString:[Config registerUri]];
 
     if (![[UIApplication sharedApplication] openURL:url]) {
-        NSLog(@"Failed to open url: %@", [url description]);
+        NSLog(@"Failed to open url: %@", url.description);
     }
 }
 
@@ -66,14 +66,14 @@
                                                          options:kNilOptions
                                                            error:&error];
     if (error) {
-        NSLog(@"Error parsing JSON: %@", [error description]);
+        NSLog(@"Error parsing JSON: %@", error.description);
         return;
     }
 
-    BOOL success = [[jsonDict objectForKey:@"success"] boolValue];
-    NSString *message = [jsonDict objectForKey:@"message"];
-    NSString *name = [jsonDict objectForKey:@"name"];
-    NSString *apiKey = [jsonDict objectForKey:@"api_key"];
+    BOOL success = [jsonDict[@"success"] boolValue];
+    NSString *message = jsonDict[@"message"];
+    NSString *name = jsonDict[@"name"];
+    NSString *apiKey = jsonDict[@"api_key"];
 
     if (!success) {
         NSLog(@"Login failed with message:%@", message);
@@ -122,7 +122,7 @@
     NSString *content = [ZooniverseHttpUtils generateContentForNameValuePairs:nameValuePairs];
 
     NSMutableURLRequest *request = [ZooniverseHttpUtils createURLRequest:postLoginUri];
-    [request setHTTPMethod:@"POST"];
+    request.HTTPMethod = @"POST";
 
     //This breaks things, so the server doesn't accept our username and password:
     //[request setValue:@"application/x-www-form-urlencoded charset=utf-8"

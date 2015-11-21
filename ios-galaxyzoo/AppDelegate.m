@@ -51,16 +51,15 @@
     }
 
     NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
-    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+    NSArray *preferences = settings[@"PreferenceSpecifiers"];
 
-    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:preferences.count];
     for(NSDictionary *prefSpecification in preferences) {
-        NSString *key = [prefSpecification objectForKey:@"Key"];
+        NSString *key = prefSpecification[@"Key"];
         if (key) {
-            NSObject *object = [prefSpecification objectForKey:@"DefaultValue"];
+            NSObject *object = prefSpecification[@"DefaultValue"];
             if (object) {
-                [defaultsToRegister setObject:object
-                                       forKey:key];
+                defaultsToRegister[key] = object;
             }
         }
     }
@@ -114,7 +113,7 @@
 
 - (NSURL *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "com.murrayc.Model" in the application's documents directory.
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
 }
 
 - (NSManagedObjectModel *)managedObjectModel {
@@ -208,7 +207,7 @@
     _rkObjectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
 
     // Connect the RestKit object manager to our Core Data model:
-    _rkObjectManager.managedObjectStore = [self rkManagedObjectStore];
+    _rkObjectManager.managedObjectStore = self.rkManagedObjectStore;
 
     //Turn off all RestKit logging:
     RKLogConfigureByName("*", RKLogLevelOff);
@@ -223,7 +222,7 @@
     else
         count--;
 
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:(count > 0)];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = (count > 0);
 }
 
 #pragma mark - Core Data Saving support
@@ -232,10 +231,10 @@
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
         NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+        if (managedObjectContext.hasChanges && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            NSLog(@"Unresolved error %@, %@", error, error.userInfo);
             abort();
         }
     }
@@ -297,7 +296,7 @@ static NSString *const kKeyChainKeyApiKey = @"api_key";
     NSArray *accounts = [SSKeychain accountsForService:kKeyChainServiceName];
 
     for (NSDictionary *dict in accounts) {
-        NSString *accountName = [dict objectForKey:kSSKeychainAccountKey];
+        NSString *accountName = dict[kSSKeychainAccountKey];
 
         //This actually deletes the account, which we can check by
         //calling accountsForService again.
@@ -319,7 +318,7 @@ static NSString *const kKeyChainKeyApiKey = @"api_key";
 }
 
 + (BOOL)isLoggedIn {
-    return [[self loginApiKey] length] != 0;
+    return [self loginApiKey].length != 0;
 }
 
 + (void)clearLogin {
@@ -334,7 +333,7 @@ static NSString *const kKeyChainKeyApiKey = @"api_key";
     }
 
     NSDictionary *dict = accounts[0];
-    return [dict objectForKey:kSSKeychainAccountKey];
+    return dict[kSSKeychainAccountKey];
 }
 
 + (NSString *)loginApiKey {

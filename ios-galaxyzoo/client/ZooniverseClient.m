@@ -89,7 +89,7 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
     //let AFNetworking manage the activity indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
 
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     RKObjectManager *objectManager = appDelegate.rkObjectManager;
     RKManagedObjectStore *managedObjectStore = appDelegate.rkManagedObjectStore;
 
@@ -113,7 +113,7 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
     for (NSString *groupId in dict) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
-        ConfigSubjectGroup *subjectGroup = [dict objectForKey:groupId];
+        ConfigSubjectGroup *subjectGroup = dict[groupId];
         if (!subjectGroup.useForNewQueries) {
             continue;
         }
@@ -169,22 +169,22 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
     for (NSString *groupId in dict) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
         //See http://stackoverflow.com/a/12454766/1123654
-        ConfigSubjectGroup *subjectGroup = [dict objectForKey:groupId];
+        ConfigSubjectGroup *subjectGroup = dict[groupId];
         if (subjectGroup.useForNewQueries) {
             [groupIds addObject:groupId];
         }
     }
 
-    NSUInteger idx = arc4random_uniform((u_int32_t)[groupIds count]);
-    return [groupIds objectAtIndex:idx];
+    NSUInteger idx = arc4random_uniform((u_int32_t)groupIds.count);
+    return groupIds[idx];
 }
 
 NSString * currentTimeAsIso8601(void)
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    [dateFormatter setLocale:enUSPOSIXLocale];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+    dateFormatter.locale = enUSPOSIXLocale;
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
 
     NSDate *now = [NSDate date];
     NSString *iso8601String = [dateFormatter stringFromDate:now];
@@ -195,7 +195,7 @@ NSString * currentTimeAsIso8601(void)
 {
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Could not save core data: error: %@", [error description]);
+        NSLog(@"Could not save core data: error: %@", error.description);
     }
 }
 
@@ -233,7 +233,7 @@ NSString * currentTimeAsIso8601(void)
     //Note: The ID is unique only within the session,
     //so never use this with multiple sessions:
     //https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSURLSessionTask_class/index.html#//apple_ref/occ/instp/NSURLSessionTask/taskIdentifier
-    NSString *strTaskId = [NSString stringWithFormat:@"%lu", (unsigned long)[task taskIdentifier], nil];
+    NSString *strTaskId = [NSString stringWithFormat:@"%lu", (unsigned long)task.taskIdentifier, nil];
     return strTaskId;
 }
 
@@ -319,8 +319,7 @@ NSString * currentTimeAsIso8601(void)
 
     //Store details about the task, so we can get them when it's finished:
     NSString *strTaskId = [self getTaskIdAsString:task];
-    [_dictDownloadTasks setObject:set
-                           forKey:strTaskId];
+    _dictDownloadTasks[strTaskId] = set;
 
     //Remember the task details, so we can mark the files as downloaded in the task,
     //and call our callback block when all tasks are finished:
@@ -328,8 +327,7 @@ NSString * currentTimeAsIso8601(void)
     download.subject = subject;
     download.imageLocation = imageLocation;
     download.remoteUrl = strUrlRemote;
-    [set.dictTasks setObject:download
-                      forKey:strTaskId];
+    (set.dictTasks)[strTaskId] = download;
 
     //Remember that we are downloading this image, to avoid trying to download it again
     //at the same time:
@@ -388,7 +386,7 @@ NSString * currentTimeAsIso8601(void)
     NSString *path = [self getQueryMoreItemsPath];
     NSDictionary *queryParams = @{@"limit" : countAsStr};
 
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     RKObjectManager *objectManager = appDelegate.rkObjectManager;
 
     [ZooniverseClient setNetworkActivityIndicatorVisibleOnMainThread:YES];
@@ -425,7 +423,7 @@ NSString * currentTimeAsIso8601(void)
 
                                  //Save the Subjects to disk:
                                  NSError *error = nil;
-                                 if(![[self managedObjectContext] save:&error]) {
+                                 if(![self.managedObjectContext save:&error]) {
                                      NSLog(@"querySubjects(): save failed: %@", error);
                                  }
 
@@ -450,7 +448,7 @@ NSString * currentTimeAsIso8601(void)
                              }
                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                 message:[error localizedDescription]
+                                                                                 message:error.localizedDescription
                                                                                 delegate:nil
                                                                        cancelButtonTitle:@"OK"
                                                                        otherButtonTitles:nil];
@@ -531,7 +529,7 @@ NSString * currentTimeAsIso8601(void)
     //Add each answer and its checkboxes:
     NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence"
                                                                        ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortNameDescriptor, nil];
+    NSArray *sortDescriptors = @[sortNameDescriptor];
     NSArray *sortedClassificationQuestions = [classification.classificationQuestions sortedArrayUsingDescriptors:sortDescriptors];
     
     
@@ -580,7 +578,7 @@ NSString * currentTimeAsIso8601(void)
     
     
     NSMutableURLRequest *request = [ZooniverseHttpUtils createURLRequest:postUploadUri];
-    [request setHTTPMethod:@"POST"];
+    request.HTTPMethod = @"POST";
     
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
@@ -672,7 +670,7 @@ NSString * currentTimeAsIso8601(void)
 
     //Get more items from the server if necessary:
     NSError *error = nil;
-    NSArray *results = [[self managedObjectContext]
+    NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
                         error:&error];
     if (results == nil) {
@@ -722,7 +720,7 @@ NSString * currentTimeAsIso8601(void)
     set.callbackBlock = callbackBlock;
     NSMutableArray *tasks = [[NSMutableArray alloc] init];
     for (ZooniverseSubject *subject in results) {
-        NSLog(@"  debug: download missing images for subject zooniverseId: %@", [subject zooniverseId]);
+        NSLog(@"  debug: download missing images for subject zooniverseId: %@", subject.zooniverseId);
 
         NSArray *subjectTasks = [self downloadImages:subject
                      session:_session
@@ -745,7 +743,7 @@ NSString * currentTimeAsIso8601(void)
 - (void)onImageDownloadFinished:(NSString*)taskId
                             set:(ZooniverseClientImageDownloadSet*)set
 {
-    ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:taskId];
+    ZooniverseClientImageDownload *download = (set.dictTasks)[taskId];
 
     [set.dictTasks removeObjectForKey:taskId];
     [_dictDownloadTasks removeObjectForKey:taskId];
@@ -762,7 +760,7 @@ NSString * currentTimeAsIso8601(void)
 
 - (void)onImageDownloadedAndAbandoned:(NSString*)taskId
 {
-    ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks objectForKey:taskId];
+    ZooniverseClientImageDownloadSet *set = _dictDownloadTasks[taskId];
     if (!set) {
         //Maybe this is a background task that has been resumed after the app has restarted,
         //but which we no longer have any information about, but we don't care because
@@ -777,11 +775,11 @@ NSString * currentTimeAsIso8601(void)
 
 - (void)onImageDownloadedAndMoved:(NSArray*)array
 {
-    NSString *taskId = [array objectAtIndex:0];
-    NSString *partialPermanentPath = [array objectAtIndex:1];
+    NSString *taskId = array[0];
+    NSString *partialPermanentPath = array[1];
 
-    ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks  objectForKey:taskId];
-    ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:taskId];
+    ZooniverseClientImageDownloadSet *set = _dictDownloadTasks[taskId];
+    ZooniverseClientImageDownload *download = (set.dictTasks)[taskId];
 
     if (!set) {
         //Maybe this is a background task that has been resumed after the app has restarted,
@@ -820,8 +818,8 @@ NSString * currentTimeAsIso8601(void)
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // Create the directory if necessary:
-    NSURL *urlDocsDir = [[fileManager URLsForDirectory:NSCachesDirectory
-                                             inDomains:NSUserDomainMask] lastObject];
+    NSURL *urlDocsDir = [fileManager URLsForDirectory:NSCachesDirectory
+                                             inDomains:NSUserDomainMask].lastObject;
 
     NSString *docsDir = urlDocsDir.path;
     return [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"];
@@ -913,7 +911,7 @@ NSString * currentTimeAsIso8601(void)
                withIntermediateDirectories:NO
                                 attributes:nil
                                      error:&error]) {
-            NSLog(@"  Error from createDirectoryAtPath(): %@", [error description]);
+            NSLog(@"  Error from createDirectoryAtPath(): %@", error.description);
         }
     }
 
@@ -926,12 +924,12 @@ NSString * currentTimeAsIso8601(void)
         // We ignore the suggested filename in [response suggestedFilename]
         // because we want to identify the files later by their name only.
         NSString *taskId = [self getTaskIdAsString:downloadTask];
-        ZooniverseClientImageDownloadSet *set = [_dictDownloadTasks objectForKey:taskId];
-        ZooniverseClientImageDownload *download = [set.dictTasks objectForKey:taskId];
+        ZooniverseClientImageDownloadSet *set = _dictDownloadTasks[taskId];
+        ZooniverseClientImageDownload *download = (set.dictTasks)[taskId];
 
         partialPermanentPath = [ZooniverseClient partialLocalPathForRemotePath:response.URL
                                                                         forImageLocation:download.imageLocation
-                                                                    withFallbackBasename:[response suggestedFilename]];
+                                                                    withFallbackBasename:response.suggestedFilename];
         permanentPath = [ZooniverseClient fullLocalPath:partialPermanentPath
                                               forAppDir:appDir];
 
@@ -941,7 +939,7 @@ NSString * currentTimeAsIso8601(void)
             if(![fileManager removeItemAtPath:permanentPath
                                         error:&error]) {
                 NSLog(@"Could not delete existing cache file: %@: error: %@", permanentPath,
-                      [error description]);
+                      error.description);
             }
         }
     }
@@ -953,7 +951,7 @@ NSString * currentTimeAsIso8601(void)
                                                 error:&error];
         if (!fileCopied) {
             NSLog(@"Couldn't copy file: %@", location.path, nil);
-            NSLog(@"  Error: %@", [error description]);
+            NSLog(@"  Error: %@", error.description);
         } else {
             //NSLog(@"debug: file stored: %@", permanentPath);
         }
@@ -1050,7 +1048,7 @@ NSString * currentTimeAsIso8601(void)
     [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
 
     NSError *error = nil;
-    NSArray *results = [[self managedObjectContext]
+    NSArray *results = [self.managedObjectContext
                         executeFetchRequest:fetchRequest
                         error:&error];
     if (results == nil) {

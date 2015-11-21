@@ -67,10 +67,10 @@
 -(DecisionTreeQuestionBaseButton *)getAnswerForSection:(NSInteger)section {
     DecisionTreeQuestionBaseButton *answer = nil;
     if (section < _question.checkboxes.count) {
-        answer = [_question.checkboxes objectAtIndex:section];
+        answer = (_question.checkboxes)[section];
     } else {
         NSInteger answerIndex = section - _question.checkboxes.count;
-        answer = [_question.answers objectAtIndex:answerIndex];
+        answer = (_question.answers)[answerIndex];
     }
 
     return answer;

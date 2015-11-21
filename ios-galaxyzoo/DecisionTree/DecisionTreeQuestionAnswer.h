@@ -17,6 +17,6 @@
                                 icon:(NSString *)icon
                        examplesCount:(NSUInteger)examplesCount
                                 text:(NSString *)text
-                             leadsToQuestionId:(NSString *)leadsToQuestionId;
+                             leadsToQuestionId:(NSString *)leadsToQuestionId NS_DESIGNATED_INITIALIZER;
 
 @end

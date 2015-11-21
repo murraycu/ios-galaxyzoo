@@ -24,7 +24,7 @@
 @property (readonly, strong, nonatomic) ZooniverseClient *zooniverseClient;
 
 - (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSURL *applicationDocumentsDirectory;
 
 + (void)setNetworkActivityIndicatorVisible:(BOOL)setVisible;
 

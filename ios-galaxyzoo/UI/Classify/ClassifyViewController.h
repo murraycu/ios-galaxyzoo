@@ -13,7 +13,7 @@
 @interface ClassifyViewController : UIViewController <ClassifyViewControllerDelegate>
 
 
-- (ClassifyViewController *)init;
+- (ClassifyViewController *)init NS_DESIGNATED_INITIALIZER;
 - (ClassifyViewController *)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 - (ClassifyViewController *)initWithCoder:(NSCoder *)aDecoder;
 

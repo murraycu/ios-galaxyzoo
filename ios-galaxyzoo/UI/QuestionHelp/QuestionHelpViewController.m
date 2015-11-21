@@ -62,7 +62,7 @@
  - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      NSString *segueName = segue.identifier;
      if ([segueName isEqualToString:@"exampleViewEmbed"]) {
-         ExampleViewerViewController *viewController = [segue destinationViewController];
+         ExampleViewerViewController *viewController = segue.destinationViewController;
          viewController.url = self.exampleUrlToShow;
      }
  }

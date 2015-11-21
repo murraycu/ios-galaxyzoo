@@ -14,6 +14,6 @@
 @property (nonatomic, copy) NSString *yesAnswerId;
 @property (nonatomic, copy) NSString *noAnswerId;
 
-- (DecisionTreeDiscussQuestion *)init:(NSString *)questionId yesAnswerId:(NSString *)yesAnswerId noAnswerId:(NSString *)noAnswerId;
+- (DecisionTreeDiscussQuestion *)init:(NSString *)questionId yesAnswerId:(NSString *)yesAnswerId noAnswerId:(NSString *)noAnswerId NS_DESIGNATED_INITIALIZER;
 
 @end

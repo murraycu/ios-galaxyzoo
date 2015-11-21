@@ -18,6 +18,6 @@
 - (DecisionTreeQuestionBaseButton *)init:(NSString *)answerId
                                     icon:(NSString *)icon
                            examplesCount:(NSUInteger)examplesCount
-                                   text:(NSString *)text;
+                                   text:(NSString *)text NS_DESIGNATED_INITIALIZER;
 
 @end

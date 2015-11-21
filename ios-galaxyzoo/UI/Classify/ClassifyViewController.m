@@ -49,8 +49,7 @@
 {
     //NSArray* insertedObjects = [[notification userInfo]
     //                            objectForKey:NSInsertedObjectsKey] ;
-    NSArray* deletedObjects = [[notification userInfo]
-                               objectForKey:NSDeletedObjectsKey] ;
+    NSArray* deletedObjects = notification.userInfo[NSDeletedObjectsKey] ;
     //NSArray* updatedObjects = [[notification userInfo]
     //                           objectForKey:NSUpdatedObjectsKey] ;
     //NSLog(@"insertObjects: %@", [insertedObjects description]);
@@ -72,7 +71,7 @@
 }
 
 - (void)setup {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     _client = appDelegate.zooniverseClient;
 
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -197,7 +196,7 @@
         return;
     }
 
-    NSUInteger count = [results count];
+    NSUInteger count = results.count;
 
     //We need at least one not-done subject to show anything:
     if (count == 0) {
@@ -235,7 +234,7 @@
 
     self.classificationsDoneInSession++;
 
-    self.subject = (ZooniverseSubject *)[results objectAtIndex:0];
+    self.subject = (ZooniverseSubject *)results[0];
 
     //Show the subject's image:
     if(![_subjectViewController setSubjectWithCheck:self.subject
@@ -287,29 +286,29 @@
 }
 
 - (NSManagedObjectModel*)managedObjectModel {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return appDelegate.managedObjectModel;
 }
 
 - (NSManagedObjectContext*)managedObjectContext {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return appDelegate.managedObjectContext;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString *segueName = segue.identifier;
     if ([segueName isEqualToString:@"subjectViewEmbed"]) {
-        _subjectViewController = [segue destinationViewController];
+        _subjectViewController = segue.destinationViewController;
 
     } else if ([segueName isEqualToString:@"questionViewEmbed"]) {
-        _questionViewController = [segue destinationViewController];
+        _questionViewController = segue.destinationViewController;
 
         [self updateIsFavoriteUI];
 
         // Respond to changes to the child view controller's "favorite" property:
         [_questionViewController addObserver:self forKeyPath:@"favorite" options:0 context:nil];
     } else if ([segueName isEqualToString:@"helpShowEmbed"]) {
-        QuestionHelpViewController *viewController = [segue destinationViewController];
+        QuestionHelpViewController *viewController = segue.destinationViewController;
         viewController.question = _questionViewController.question;
     }
 }
