@@ -105,6 +105,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
     [self updateCollectionViewAnswersHeight];
     [self.collectionViewAnswers.collectionViewLayout invalidateLayout];
 }
