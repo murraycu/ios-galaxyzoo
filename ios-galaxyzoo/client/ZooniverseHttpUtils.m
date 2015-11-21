@@ -26,8 +26,6 @@
 }
 
 + (NSString *) generateContentForNameValuePairs:(NSArray *)nameValuePairs {
-
-    //TODO: Put this somewhere reusable so LoginViewController can use it too.
     NSMutableString *content;
     for (ZooniverseNameValuePair *pair in nameValuePairs) {
         NSString *str = [NSString stringWithFormat:@"%@=%@",

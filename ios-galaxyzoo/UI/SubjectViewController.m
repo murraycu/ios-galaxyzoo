@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-//TODO: Why is this extra import necessary - shouldnt UIKit.h get this?
 #import "UIImageView+AFNetworking.h"
 #import "SubjectViewController.h"
 #import "AppDelegate.h"
