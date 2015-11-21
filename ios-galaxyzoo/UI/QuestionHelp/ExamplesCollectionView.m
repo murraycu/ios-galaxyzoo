@@ -12,6 +12,7 @@
 #import "ExamplesCollectionViewCell.h"
 #import "ExamplesCollectionViewCellButton.h"
 #import "ExamplesCollectionViewHeaderCell.h"
+#import "Utils.h"
 
 @interface ExamplesCollectionView() {
     ZooniverseExamplesCollectionViewClickedBlock _callbackBlockExampleClicked;
@@ -136,8 +137,7 @@
     DecisionTreeQuestionBaseButton *answer = [self getAnswerForIndexPath:indexPath];
     NSInteger index = [indexPath indexAtPosition:1];
     if (index == 0) {
-        //TODO: Move the adding of the icon_ prefix into a reusable method.
-        NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", answer.icon, nil];
+        NSString *filenameIcon = [Utils filenameForIconName:answer.icon];
         image = [UIImage imageNamed:filenameIcon];
 
         button.hidden = YES;
@@ -147,8 +147,7 @@
                                           forAnswerId:answer.answerId
                                       forExampleIndex:exampleIndex];
 
-        //TODO: Move the adding of the icon_ prefix into a reusable method.
-        NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", iconName, nil];
+        NSString *filenameIcon = [Utils filenameForIconName:iconName];
         image = [UIImage imageNamed:filenameIcon];
 
         //Respond to clicks, to show the full image:

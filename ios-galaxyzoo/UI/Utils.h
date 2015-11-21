@@ -17,4 +17,6 @@
 
 + (void)openUrlInBrowser:(NSString *)strUrl;
 
++ (NSString *)filenameForIconName:(NSString *)iconName;
+
 @end

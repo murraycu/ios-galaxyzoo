@@ -32,4 +32,8 @@
     [Utils openUrlInBrowser:strUrl];
 }
 
++ (NSString *)filenameForIconName:(NSString *)iconName {
+    return [NSString stringWithFormat:@"icon_%@", iconName, nil];
+}
+
 @end

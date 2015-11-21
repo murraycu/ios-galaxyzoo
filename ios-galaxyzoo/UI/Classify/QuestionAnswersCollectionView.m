@@ -9,6 +9,7 @@
 #import "QuestionAnswersCollectionView.h"
 #import "QuestionAnswersCollectionViewCell.h"
 #import "QuestionAnswerButton.h"
+#import "Utils.h"
 
 
 @interface QuestionAnswersCollectionView () {
@@ -140,7 +141,8 @@ cellBase.contentView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | U
     button.titleLabel.font = [self buttonFont];
 
     //TODO: Move the adding of the icon_ prefix into a reusable method.
-    NSString *filenameIcon = [NSString stringWithFormat:@"icon_%@", answer.icon, nil];
+    NSString *filenameIcon = [Utils filenameForIconName:answer.icon];
+
     UIImage *image = [UIImage imageNamed:filenameIcon];
     [button setImage:image
             forState:UIControlStateNormal];
