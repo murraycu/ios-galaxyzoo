@@ -10,7 +10,7 @@
 
 @implementation ZooniverseClientImageDownload
 
-- (ZooniverseClientImageDownload *) init;
+- (instancetype) init;
 {
     self = [super init];
 

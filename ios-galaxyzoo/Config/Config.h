@@ -12,7 +12,7 @@
 
 + (void)initialize;
 
-- (Config *) init;
+- (instancetype) init;
 
 + (NSDictionary *)subjectGroups; //Of Group ID to ConfigSubjectGroup.
 

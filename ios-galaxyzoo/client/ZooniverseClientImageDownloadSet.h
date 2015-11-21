@@ -10,7 +10,7 @@
 
 @interface ZooniverseClientImageDownloadSet : NSObject
 
-- (ZooniverseClientImageDownloadSet *) init;
+- (instancetype) init;
 
 //Mapping task id (NSString) to ZooniverseClientImageDownload.
 @property (nonatomic, strong) NSMutableDictionary *dictTasks;

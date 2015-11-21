@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, ImageLocation) {
 @property (nonatomic) ImageLocation imageLocation;
 @property (nonatomic, strong) NSString *remoteUrl;
 
-- (ZooniverseClientImageDownload *) init;
+- (instancetype) init;
 
 
 @end

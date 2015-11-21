@@ -16,7 +16,7 @@
 
 @interface ZooniverseClient : NSObject
 
-- (ZooniverseClient *) init;
+- (instancetype) init;
 
 typedef void (^ ZooniverseClientDoneBlock)();
 

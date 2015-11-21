@@ -10,7 +10,7 @@
 
 @implementation ZooniverseClientImageDownloadSet
 
-- (ZooniverseClientImageDownloadSet *) init;
+- (instancetype) init;
 {
     self = [super init];
     self.dictTasks = [[NSMutableDictionary alloc] init];
