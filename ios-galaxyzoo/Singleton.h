@@ -11,7 +11,7 @@
 @interface Singleton : NSObject
 
 //TODO: Make this private?
-- (instancetype) init;
+- (instancetype) init NS_DESIGNATED_INITIALIZER;
 
 + (Singleton *) sharedSingleton;
 
