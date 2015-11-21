@@ -13,9 +13,9 @@
 @interface ClassifyViewController : UIViewController <ClassifyViewControllerDelegate>
 
 
-- (ClassifyViewController *)init NS_DESIGNATED_INITIALIZER;
-- (ClassifyViewController *)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
-- (ClassifyViewController *)initWithCoder:(NSCoder *)aDecoder;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 - (void)onClassificationFinished;
 

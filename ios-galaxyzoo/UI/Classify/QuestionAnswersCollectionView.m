@@ -38,7 +38,7 @@ static const NSInteger ICON_HEIGHT = 50;
 }
 */
 
-- (QuestionAnswersCollectionView *)initWithFrame:(CGRect)aRect {
+- (instancetype)initWithFrame:(CGRect)aRect {
     self = [super initWithFrame:aRect];
 
     [self setupCollectionView];
@@ -46,7 +46,7 @@ static const NSInteger ICON_HEIGHT = 50;
     return self;
 }
 
-- (QuestionAnswersCollectionView *)initWithCoder:(NSCoder *)decoder {
+- (instancetype)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
 
     [self setupCollectionView];

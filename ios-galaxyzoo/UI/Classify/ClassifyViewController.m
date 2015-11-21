@@ -83,20 +83,20 @@
     _imageIconFavoriteUnselected = [UIImage imageNamed:@"imageIconFavoriteUnselected"];
 }
 
-- (ClassifyViewController *)init {
+- (instancetype)init {
     self = [super init];
     [self setup];
     return self;
 }
 
-- (ClassifyViewController *)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil
                 bundle:nibBundleOrNil];
     [self setup];
     return self;
 }
 
-- (ClassifyViewController *)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     [self setup];
     return self;

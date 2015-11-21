@@ -13,8 +13,9 @@
 //TODO: Separate the parser?
 @interface DecisionTree : NSObject
 
-- (DecisionTree *)init:(NSURL *)url
-   withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion NS_DESIGNATED_INITIALIZER;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithUrl:(NSURL *)url
+   withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
 
 @property (nonatomic, copy, readonly) NSString *firstQuestionId;
 @property (nonatomic, copy, readonly) DecisionTreeDiscussQuestion *discussQuestion;

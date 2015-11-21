@@ -32,7 +32,7 @@
 */
 
 
-- (ExamplesCollectionView *)initWithFrame:(CGRect)aRect {
+- (instancetype)initWithFrame:(CGRect)aRect {
     self = [super initWithFrame:aRect];
 
     [self setupCollectionView];
@@ -40,7 +40,7 @@
     return self;
 }
 
-- (ExamplesCollectionView *)initWithCoder:(NSCoder *)decoder {
+- (instancetype)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
 
     [self setupCollectionView];

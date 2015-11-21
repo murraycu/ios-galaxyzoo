@@ -25,11 +25,15 @@
 
 @implementation DecisionTree
 
-- (DecisionTree *)init:(NSURL *)url
+- (instancetype)init
+{
+    return [super init];
+}
+
+- (instancetype)initWithUrl:(NSURL *)url
    withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
 {
-
-    self = [super init];
+    self = [self init];
 
     _questions = [[NSMutableDictionary alloc] init];
 
@@ -37,7 +41,7 @@
     //NSString *fullPath = @"Assets/DecisionTrees";
     //fullPath = [fullPath stringByAppendingString:filename];
 
-    DecisionTreeParser *parser = [[DecisionTreeParser alloc]init:url
+    DecisionTreeParser *parser = [[DecisionTreeParser alloc]initWithUrlIntoTree:url
                                                         intoTree:self];
     if(![parser parse]) {
         NSLog(@"DecisionTree:init(): DecisionTreeParser.parse() failed: %@", parser.parserError);

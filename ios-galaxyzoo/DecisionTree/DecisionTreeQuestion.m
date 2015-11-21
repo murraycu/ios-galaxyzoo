@@ -10,13 +10,17 @@
 
 @implementation DecisionTreeQuestion
 
-- (DecisionTreeQuestion *)init:(NSString *)questionId
+- (instancetype)init {
+    return [super init];
+}
+
+- (instancetype)initWithDetails:(NSString *)questionId
                          title:(NSString *)title
                           text:(NSString *)text
                           help:(NSString *)help
                        answers:(NSArray *)answers
                     checkboxes:(NSArray *)checkboxes {
-    self = [super init];
+    self = [self init];
     self.questionId = questionId;
     self.title = title;
     self.text = text;

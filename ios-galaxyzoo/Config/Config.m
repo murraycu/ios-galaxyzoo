@@ -20,14 +20,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
         return;
     }
 
-    _subjectGroups = @{@"55db7cf01766276e7b000001": [[ConfigSubjectGroup alloc] init:@"decals_tree.xml"
+    _subjectGroups = @{@"55db7cf01766276e7b000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
                                       useForNewQueries:YES
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"decals-11"
+                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"decals-11"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]],
-                      @"55db71251766276613000001": [[ConfigSubjectGroup alloc] init:@"illustris_tree.xml"
+                      @"55db71251766276613000001": [[ConfigSubjectGroup alloc] initWithFilename:@"illustris_tree.xml"
                                       useForNewQueries:YES
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"illustris-11"
+                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"illustris-11"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]],
 
@@ -36,14 +36,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                       //trees so we can ask questions about items that have already been downloaded and stored in
                       //the cache.
                       //At some point we can remove some when we are sure they are unnecessary.
-                      @"5514521e2f0eef2012000001": [[ConfigSubjectGroup alloc] init:@"sloan_singleband_tree.xml"
+                      @"5514521e2f0eef2012000001": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_singleband_tree.xml"
                                       useForNewQueries:NO
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"sloan_singleband-11"
+                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan_singleband-11"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]],
-                      @"50251c3b516bcb6ecb000002": [[ConfigSubjectGroup alloc] init:@"sloan_tree.xml"
+                      @"50251c3b516bcb6ecb000002": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_tree.xml"
                                       useForNewQueries:NO
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] init:@"sloan-11"
+                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan-11"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]]};
     

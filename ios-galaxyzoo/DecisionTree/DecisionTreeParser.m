@@ -50,7 +50,8 @@ static NSString *TAG_TEXT = @"text";
 
 @implementation DecisionTreeParser
 
-- (DecisionTreeParser *)init:(NSURL *)url intoTree:(DecisionTree *)intoTree {
+
+- (instancetype)initWithUrlIntoTree:(NSURL *)url intoTree:(DecisionTree *)intoTree {
 
     self = [super initWithContentsOfURL:url];
 
@@ -122,7 +123,7 @@ static NSString *TAG_TEXT = @"text";
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
     if ( [elementName isEqualToString:TAG_QUESTION]) {
-        DecisionTreeQuestion *question = ([[DecisionTreeQuestion alloc] init:_questionIdInProgress
+        DecisionTreeQuestion *question = ([[DecisionTreeQuestion alloc] initWithDetails:_questionIdInProgress
                                                                        title:_questionTitleInProgress
                                                                         text:_questionTextInProgress
                                                                         help:_questionHelpInProgress
@@ -131,7 +132,7 @@ static NSString *TAG_TEXT = @"text";
         [_decisionTree addQuestion:question];
         [self clearQuestionInProgress];
     } else if ( [elementName isEqualToString:TAG_ANSWER]) {
-        DecisionTreeQuestionAnswer *answer = [[DecisionTreeQuestionAnswer alloc] init:_answerIdInProgress
+        DecisionTreeQuestionAnswer *answer = [[DecisionTreeQuestionAnswer alloc] initWithDetails:_answerIdInProgress
                                                                                  icon:_answerIconInProgress
                                                                         examplesCount:_answerExamplesCountInProgress
                                                                                  text:_answerTextInProgress
@@ -139,7 +140,7 @@ static NSString *TAG_TEXT = @"text";
         [_answersInProgress addObject:answer];
         [self clearAnswerInProgress];
     } else if ( [elementName isEqualToString:TAG_CHECKBOX]) {
-        DecisionTreeQuestionCheckbox *checkbox = [[DecisionTreeQuestionCheckbox alloc] init:_answerIdInProgress
+        DecisionTreeQuestionCheckbox *checkbox = [[DecisionTreeQuestionCheckbox alloc] initWithDetails:_answerIdInProgress
                                                                                        icon:_answerIconInProgress
                                                                               examplesCount:_answerExamplesCountInProgress
                                                                                        text:_answerTextInProgress];

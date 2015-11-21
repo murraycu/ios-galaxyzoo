@@ -10,11 +10,16 @@
 
 @implementation ZooniverseNameValuePair
 
-
-- (ZooniverseNameValuePair *) init:name
-                             value:(NSString*)value
+- (instancetype) init
 {
-    self = [super init];
+    return [super init];
+}
+
+
+- (instancetype) initWithNameAndValue:name
+                value:(NSString*)value
+{
+    self = [self init];
 
     self.name = name;
     self.value = value;

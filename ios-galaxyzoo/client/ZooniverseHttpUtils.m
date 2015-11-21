@@ -20,8 +20,8 @@
 + (void)addNameValuePairToArray:(NSMutableArray *)array
                     name:(NSString *)name
                    value:(NSString *)value {
-    ZooniverseNameValuePair *pair = [[ZooniverseNameValuePair alloc] init:name
-                                                                    value:value];
+    ZooniverseNameValuePair *pair = [[ZooniverseNameValuePair alloc] initWithNameAndValue:name
+                                                                                    value:value];
     [array addObject:pair];
 }
 

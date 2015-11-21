@@ -13,10 +13,15 @@
 
 @property (nonatomic, copy) NSString *leadsToQuestionId;
 
-- (DecisionTreeQuestionAnswer *)init:(NSString *)answerId
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDetails:(NSString *)answerId
+                                           icon:(NSString *)icon
+                                  examplesCount:(NSUInteger)examplesCount
+                                           text:(NSString *)text NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDetails:(NSString *)answerId
                                 icon:(NSString *)icon
                        examplesCount:(NSUInteger)examplesCount
                                 text:(NSString *)text
-                             leadsToQuestionId:(NSString *)leadsToQuestionId NS_DESIGNATED_INITIALIZER;
+                             leadsToQuestionId:(NSString *)leadsToQuestionId;
 
 @end

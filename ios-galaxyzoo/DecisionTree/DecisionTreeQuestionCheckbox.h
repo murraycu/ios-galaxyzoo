@@ -10,7 +10,8 @@
 
 @interface DecisionTreeQuestionCheckbox : DecisionTreeQuestionBaseButton
 
-- (DecisionTreeQuestionCheckbox *)init:(NSString *)answerId
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDetails:(NSString *)answerId
                                   icon:(NSString *)icon
                          examplesCount:(NSUInteger)examplesCount
                                   text:(NSString *)text NS_DESIGNATED_INITIALIZER;

@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL useForNewQueries;
 @property (nonatomic, strong) DecisionTreeDiscussQuestion *discussQuestion;
 
-- (ConfigSubjectGroup *)init:(NSString *)filename useForNewQueries:(BOOL)useForNewQueries discussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion NS_DESIGNATED_INITIALIZER;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFilename:(NSString *)filename useForNewQueries:(BOOL)useForNewQueries discussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
 
 @end

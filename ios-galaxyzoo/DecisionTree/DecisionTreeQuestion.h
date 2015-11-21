@@ -19,12 +19,13 @@
 @property (nonatomic, copy) NSArray *answers; //of DecisionTreeAnswer
 @property (nonatomic, copy) NSArray *checkboxes; //of DecisionTreeCheckbox
 
-- (DecisionTreeQuestion *)init:(NSString *)questionId
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDetails:(NSString *)questionId
                          title:(NSString *)title
                           text:(NSString *)text
                           help:(NSString *)help
                        answers:(NSArray *)answers
-                    checkboxes:(NSArray *)checkboxes NS_DESIGNATED_INITIALIZER;
+                    checkboxes:(NSArray *)checkboxes;
 
 
 @end

@@ -11,7 +11,11 @@
 
 @implementation DecisionTreeQuestionBaseButton
 
-- (DecisionTreeQuestionBaseButton *)init:(NSString *)answerId
+- (instancetype)init {
+    return [super init];
+}
+
+- (instancetype)initWithDetails:(NSString *)answerId
                                     icon:(NSString *)icon
                            examplesCount:(NSUInteger)examplesCount
                                     text:(NSString *)text {

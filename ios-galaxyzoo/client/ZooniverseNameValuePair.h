@@ -13,8 +13,9 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *value;
 
-- (ZooniverseNameValuePair *) init:name
-                                   value:(NSString*)value NS_DESIGNATED_INITIALIZER;
+- (ZooniverseNameValuePair *) init NS_DESIGNATED_INITIALIZER;
+- (ZooniverseNameValuePair *) initWithNameAndValue:name
+                                   value:(NSString*)value ;
 
 
 @end

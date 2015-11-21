@@ -10,11 +10,15 @@
 
 @implementation DecisionTreeQuestionCheckbox
 
-- (DecisionTreeQuestionCheckbox *)init:(NSString *)answerId
+- (instancetype )init {
+    return [super init];
+}
+
+- (instancetype )initWithDetails:(NSString *)answerId
                                   icon:(NSString *)icon
                          examplesCount:(NSUInteger)examplesCount
                                   text:(NSString *)text {
-    self = [super init:answerId
+    self = [super initWithDetails:answerId
                   icon:icon
          examplesCount:examplesCount
                   text:text];

@@ -10,8 +10,12 @@
 
 @implementation DecisionTreeDiscussQuestion
 
-- (DecisionTreeDiscussQuestion *)init:(NSString *)questionId yesAnswerId:(NSString *)yesAnswerId noAnswerId:(NSString *)noAnswerId {
-    self = [super init];
+- (instancetype)init {
+    return [super init];
+}
+
+- (instancetype)initWithIDs:(NSString *)questionId yesAnswerId:(NSString *)yesAnswerId noAnswerId:(NSString *)noAnswerId {
+    self = [self init];
 
     self.questionId = questionId;
     self.yesAnswerId = yesAnswerId;
