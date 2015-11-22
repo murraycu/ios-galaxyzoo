@@ -2,8 +2,8 @@
 //  ZooniverseClassificationQuestion.h
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 19/05/2015.
-//  Copyright (c) 2015 Murray Cumming. All rights reserved.
+//  Created by Murray Cumming on 22/11/2015.
+//  Copyright © 2015 Murray Cumming. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,20 +11,14 @@
 
 @class ZooniverseClassification, ZooniverseClassificationAnswer, ZooniverseClassificationCheckbox;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ZooniverseClassificationQuestion : NSManagedObject
 
-@property (nonatomic, retain) NSString * questionId;
-@property (nonatomic) int16_t sequence;
-@property (nonatomic, retain) ZooniverseClassificationAnswer *answer;
-@property (nonatomic, retain) NSSet *checkboxes;
-@property (nonatomic, retain) ZooniverseClassification *classification;
-@end
-
-@interface ZooniverseClassificationQuestion (CoreDataGeneratedAccessors)
-
-- (void)addCheckboxesObject:(ZooniverseClassificationCheckbox *)value;
-- (void)removeCheckboxesObject:(ZooniverseClassificationCheckbox *)value;
-- (void)addCheckboxes:(NSSet *)values;
-- (void)removeCheckboxes:(NSSet *)values;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "ZooniverseClassificationQuestion+CoreDataProperties.h"

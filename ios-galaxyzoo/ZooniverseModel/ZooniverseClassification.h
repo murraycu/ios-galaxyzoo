@@ -2,8 +2,8 @@
 //  ZooniverseClassification.h
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 19/05/2015.
-//  Copyright (c) 2015 Murray Cumming. All rights reserved.
+//  Created by Murray Cumming on 22/11/2015.
+//  Copyright © 2015 Murray Cumming. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,18 +11,14 @@
 
 @class ZooniverseClassificationQuestion, ZooniverseSubject;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ZooniverseClassification : NSManagedObject
 
-@property (nonatomic) BOOL favorite;
-@property (nonatomic, retain) NSSet *classificationQuestions;
-@property (nonatomic, retain) ZooniverseSubject *subject;
-@end
-
-@interface ZooniverseClassification (CoreDataGeneratedAccessors)
-
-- (void)addClassificationQuestionsObject:(ZooniverseClassificationQuestion *)value;
-- (void)removeClassificationQuestionsObject:(ZooniverseClassificationQuestion *)value;
-- (void)addClassificationQuestions:(NSSet *)values;
-- (void)removeClassificationQuestions:(NSSet *)values;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "ZooniverseClassification+CoreDataProperties.h"

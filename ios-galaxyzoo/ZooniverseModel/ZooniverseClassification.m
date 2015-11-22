@@ -2,19 +2,16 @@
 //  ZooniverseClassification.m
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 19/05/2015.
-//  Copyright (c) 2015 Murray Cumming. All rights reserved.
+//  Created by Murray Cumming on 22/11/2015.
+//  Copyright © 2015 Murray Cumming. All rights reserved.
 //
 
 #import "ZooniverseClassification.h"
 #import "ZooniverseClassificationQuestion.h"
 #import "ZooniverseSubject.h"
 
-
 @implementation ZooniverseClassification
 
-@dynamic favorite;
-@dynamic classificationQuestions;
-@dynamic subject;
+// Insert code here to add functionality to your managed object subclass
 
 @end

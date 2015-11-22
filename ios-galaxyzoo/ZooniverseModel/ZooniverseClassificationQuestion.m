@@ -2,8 +2,8 @@
 //  ZooniverseClassificationQuestion.m
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 19/05/2015.
-//  Copyright (c) 2015 Murray Cumming. All rights reserved.
+//  Created by Murray Cumming on 22/11/2015.
+//  Copyright © 2015 Murray Cumming. All rights reserved.
 //
 
 #import "ZooniverseClassificationQuestion.h"
@@ -11,13 +11,8 @@
 #import "ZooniverseClassificationAnswer.h"
 #import "ZooniverseClassificationCheckbox.h"
 
-
 @implementation ZooniverseClassificationQuestion
 
-@dynamic questionId;
-@dynamic sequence;
-@dynamic answer;
-@dynamic checkboxes;
-@dynamic classification;
+// Insert code here to add functionality to your managed object subclass
 
 @end

@@ -2,8 +2,8 @@
 //  ZooniverseSubject.h
 //  ios-galaxyzoo
 //
-//  Created by Murray Cumming on 19/05/2015.
-//  Copyright (c) 2015 Murray Cumming. All rights reserved.
+//  Created by Murray Cumming on 22/11/2015.
+//  Copyright © 2015 Murray Cumming. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,25 +11,14 @@
 
 @class ZooniverseClassification;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ZooniverseSubject : NSManagedObject
 
-@property (nonatomic, retain) NSString * datetimeDone;
-@property (nonatomic, retain) NSString * datetimeRetrieved;
-@property (nonatomic) BOOL done;
-@property (nonatomic) BOOL favorite;
-@property (nonatomic, retain) NSString * groupId;
-@property (nonatomic, retain) NSString * locationInverted;
-@property (nonatomic) BOOL locationInvertedDownloaded;
-@property (nonatomic, retain) NSString * locationInvertedRemote;
-@property (nonatomic, retain) NSString * locationStandard;
-@property (nonatomic) BOOL locationStandardDownloaded;
-@property (nonatomic, retain) NSString * locationStandardRemote;
-@property (nonatomic, retain) NSString * locationThumbnail;
-@property (nonatomic) BOOL locationThumbnailDownloaded;
-@property (nonatomic, retain) NSString * locationThumbnailRemote;
-@property (nonatomic, retain) NSString * subjectId;
-@property (nonatomic) BOOL uploaded;
-@property (nonatomic, retain) NSString * zooniverseId;
-@property (nonatomic, retain) ZooniverseClassification *classification;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "ZooniverseSubject+CoreDataProperties.h"
