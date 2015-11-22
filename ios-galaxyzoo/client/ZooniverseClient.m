@@ -196,6 +196,13 @@ NSString * currentTimeAsIso8601(void)
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Could not save core data: error: %@", error.description);
+        return;
+    }
+
+    //managedObjectContext is RestKit's child NSManagedObjectStore,
+    //so just calling save() on it doesn't really make the parent save itself to the store.
+    if(![self.managedObjectContext saveToPersistentStore:&error]) {
+        NSLog(@"Could not save core data to persistent store: error: %@", error.description);
     }
 }
 
