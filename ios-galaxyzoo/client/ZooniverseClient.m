@@ -243,7 +243,7 @@ NSString * currentTimeAsIso8601(void)
  *
  * Runs in main thread.
  */
-- (NSURLSessionDownloadTask*)downloadImage:(ZooniverseSubject*)subject
+- (NSURLSessionDownloadTask*)createDownloadImageTask:(ZooniverseSubject*)subject
              imageLocation:(ImageLocation)imageLocation
               session:(NSURLSession *)session
                   set:(ZooniverseClientImageDownloadSet *)set
@@ -355,7 +355,7 @@ NSString * currentTimeAsIso8601(void)
     NSMutableArray *result = [[NSMutableArray alloc] init];
     NSURLSessionDownloadTask* task;
 
-    task = [self downloadImage:subject
+    task = [self createDownloadImageTask:subject
                  imageLocation:ImageLocationStandard
                        session:session
                            set:set];
@@ -363,18 +363,20 @@ NSString * currentTimeAsIso8601(void)
         [result addObject:task];
     }
 
-    task = [self downloadImage:subject
+    task = [self createDownloadImageTask:subject
                  imageLocation:ImageLocationInverted
                        session:session
                            set:set];
+
     if (task) {
         [result addObject:task];
     }
 
-    task = [self downloadImage:subject
+    task = [self createDownloadImageTask:subject
                  imageLocation:ImageLocationThumbnail
                        session:session
                            set:set];
+
     if (task) {
         [result addObject:task];
     }
