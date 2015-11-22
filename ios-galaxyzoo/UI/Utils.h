@@ -12,6 +12,7 @@
 @interface Utils : NSObject
 
 + (void)fetchRequestSortByDateTimeRetrieved:(NSFetchRequest *)fetchRequest;
++ (void)fetchRequestSortByDoneAndDateTimeRetrieved:(NSFetchRequest *)fetchRequest;
 
 + (void)openDiscussionPage:(NSString *)zooniverseId;
 

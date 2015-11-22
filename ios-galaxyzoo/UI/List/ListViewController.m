@@ -77,7 +77,10 @@
     // There doesn't seem to be a way to set the sort order in the data model GUI editor.
     NSFetchRequest *fetchRequest = [[[self managedObjectModel] fetchRequestTemplateForName:@"fetchRequestSubjects"] copy];
 
-    [Utils fetchRequestSortByDateTimeRetrieved:fetchRequest];
+    //Make sure that the Done subjects are always at the top,
+    //though that should happen anyway, because we should always choose the earliest subjects
+    //to classify first.
+    [Utils fetchRequestSortByDoneAndDateTimeRetrieved:fetchRequest];
 
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                         managedObjectContext:[self managedObjectContext]
