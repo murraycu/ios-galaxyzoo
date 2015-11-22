@@ -191,7 +191,7 @@ NSString * currentTimeAsIso8601(void)
     return iso8601String;
 }
 
-- (void)saveCoreData
+- (void)saveCoreDataInMainThread
 {
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
@@ -226,7 +226,7 @@ NSString * currentTimeAsIso8601(void)
             break;
     }
 
-    [self saveCoreData];
+    [self saveCoreDataInMainThread];
 }
 
 - (NSString *)getTaskIdAsString:(NSURLSessionDownloadTask *)task
@@ -309,7 +309,7 @@ NSString * currentTimeAsIso8601(void)
                 break;
         }
 
-        [self saveCoreData];
+        [self saveCoreDataInMainThread];
 
         //TODO: Instead check its validity whenever we try to use it in a UIImageView.
         return nil;
@@ -485,7 +485,7 @@ NSString * currentTimeAsIso8601(void)
         subject.uploaded = YES;
 
         //Save the ZooniverseClassification and the Subject to disk:
-        [self saveCoreData];
+        [self saveCoreDataInMainThread];
     } else {
         NSInteger statusCode = response.statusCode;
         NSLog(@"debug: unexpected upload response for subject=%@: %ld", subject.subjectId,
@@ -1026,7 +1026,7 @@ NSString * currentTimeAsIso8601(void)
         }
     }
 
-    [self saveCoreData];
+    [self saveCoreDataInMainThread];
     [callbackBlock invoke];
 }
 
@@ -1079,14 +1079,14 @@ NSString * currentTimeAsIso8601(void)
     for (ZooniverseSubject *subject in results) {
         if (![self checkSubjectImagesStillExists:subject]) {
             NSLog(@"checkImagesStillExist(): abandoning because checkSubjectImagesStillExists() failed.");
-            [self abandonSubject:subject
-                withCoreDataSave:NO]; //We save after deleting them all.
+            [self abandonSubjectInMainThread:subject
+                            withCoreDataSave:NO]; //We save after deleting them all.
             somethingChanged = true;
         }
     }
 
     if (somethingChanged) {
-        [self saveCoreData];
+        [self saveCoreDataInMainThread];
     }
 
     [callbackBlock invoke];
@@ -1136,7 +1136,7 @@ NSString * currentTimeAsIso8601(void)
     [self.managedObjectContext deleteObject:subject];
 
     if (coreDataSave) {
-        [self saveCoreData];
+        [self saveCoreDataInMainThread];
     }
 }
 
