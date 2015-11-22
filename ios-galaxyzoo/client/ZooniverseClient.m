@@ -295,15 +295,15 @@ NSString * currentTimeAsIso8601(void)
         switch (imageLocation) {
             case ImageLocationStandard:
                 subject.locationStandard = partialPermanentPath;
-                subject.locationStandardDownloaded = true;
+                subject.locationStandardDownloaded = YES;
                 break;
             case ImageLocationInverted:
                 subject.locationInverted = partialPermanentPath;
-                subject.locationInvertedDownloaded = true;
+                subject.locationInvertedDownloaded = YES;
                 break;
             case ImageLocationThumbnail:
                 subject.locationThumbnail = partialPermanentPath;
-                subject.locationThumbnailDownloaded = true;
+                subject.locationThumbnailDownloaded = YES;
                 break;
             default:
                 break;
@@ -1077,13 +1077,13 @@ NSString * currentTimeAsIso8601(void)
         NSLog(@"checkImagesStillExist(): executeFetchRequest failed: %@", error);
     }
 
-    BOOL somethingChanged = false;
+    BOOL somethingChanged = NO;
     for (ZooniverseSubject *subject in results) {
         if (![self checkSubjectImagesStillExists:subject]) {
             NSLog(@"checkImagesStillExist(): abandoning because checkSubjectImagesStillExists() failed.");
             [self abandonSubjectInMainThread:subject
                             withCoreDataSave:NO]; //We save after deleting them all.
-            somethingChanged = true;
+            somethingChanged = YES;
         }
     }
 
@@ -1165,7 +1165,7 @@ NSString * currentTimeAsIso8601(void)
     NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
     if (networkStatus == NotReachable) {
         NSLog(@"There IS NO internet connection");
-        return FALSE;
+        return NO;
     }
 
     BOOL wifiOnly = [AppDelegate preferenceWiFiOnly];
