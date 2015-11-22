@@ -13,13 +13,12 @@
 @implementation Utils
 
 + (void)fetchRequestSortByDateTimeRetrieved:(NSFetchRequest *)fetchRequest {
-    //TODO: Move this to somewhere reusable for ClassifyViewController?
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"datetimeRetrieved" ascending:YES]];
 }
 
 + (void)fetchRequestSortByDoneAndDateTimeRetrieved:(NSFetchRequest *)fetchRequest {
-    //TODO: Move this to somewhere reusable for ClassifyViewController?
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"done" ascending:NO],
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"uploaded" ascending:NO],
+                                     [NSSortDescriptor sortDescriptorWithKey:@"done" ascending:NO],
                                      [NSSortDescriptor sortDescriptorWithKey:@"datetimeRetrieved" ascending:YES]];
 }
 
