@@ -309,6 +309,8 @@ NSString * currentTimeAsIso8601(void)
                 break;
         }
 
+        //TODO: For one subject, *Downloaded are not still set to YES after we restart the app,
+        //so we always have to check and reset it in this method.
         [self saveCoreDataInMainThread];
 
         //TODO: Instead check its validity whenever we try to use it in a UIImageView.
