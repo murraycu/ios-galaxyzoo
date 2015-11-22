@@ -1000,8 +1000,9 @@ NSString * currentTimeAsIso8601(void)
     NSInteger i = 0;
     for (ZooniverseSubject *subject in results) {
         [self abandonSubject:subject
-            withCoreDataSave:NO]; //We save after deleting them all.        i++;
+            withCoreDataSave:NO]; //We save after deleting them all.
 
+        i++;
         if (i == countToRemove) {
             break;
         }
