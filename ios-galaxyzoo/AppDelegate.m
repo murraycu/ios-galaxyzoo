@@ -240,10 +240,12 @@
     }
 }
 
+// Runs on main thread.
 - (void)onCheckImagesStillExistDone {
     self.regularWorkInProgress = NO;
 }
 
+// Runs on main thread.
 - (void)onRemoveOldSubjectsDone {
     ZooniverseClient *client = self.zooniverseClient;
     [client checkImagesStillExist:^ {
@@ -251,12 +253,14 @@
     }];
 }
 
+// Runs on main thread.
 - (void)onDownloadMinimumSubjectsDone {
     ZooniverseClient *client = self.zooniverseClient;
     [client removeOldSubjects:^ {
         [self onRemoveOldSubjectsDone];
     }];}
 
+// Runs on main thread.
 - (void)onDownloadMissingImagesDone {
     ZooniverseClient *client = self.zooniverseClient;
     [client downloadMinimumSubjects:^ {
@@ -264,6 +268,7 @@
     }];
 }
 
+// Runs on main thread.
 - (void)onUploadOutstandingClassificationsDone {
     //Download any subjects' missing image,
     //and only then download extra subjects:
@@ -273,6 +278,7 @@
     }];
 }
 
+// Runs on main thread, via a timer.
 - (void)doRegularTasks {
     //Don't start more tasks if they are already in progress:
     if (self.regularWorkInProgress) {

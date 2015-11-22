@@ -199,6 +199,7 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
+// Runs on main thread.
 - (void)onImageDownloaded:(ZooniverseSubject*)subject
         imageLocation:(ImageLocation)imageLocation
                 localFile:(NSString*)localFile
@@ -239,6 +240,8 @@ NSString * currentTimeAsIso8601(void)
 
 /* Returns a task to be resumed,
  * or nil if no download was started, for instance if it's already in progress.
+ *
+ * Runs in main thread.
  */
 - (NSURLSessionDownloadTask*)downloadImage:(ZooniverseSubject*)subject
              imageLocation:(ImageLocation)imageLocation
@@ -339,6 +342,11 @@ NSString * currentTimeAsIso8601(void)
 /* Returns an array of NSURLSessionDownloadTask tasks to be resumed,
  * or an empty array if no downloads were started, for instance if, for some strange reason,
  * all downloads are already in progress.
+ *
+ * Runs in the main thread.
+ * TODO: Is RKObjectManager's getObjectsAtPath's success callback really called in the main thread?
+ * The documentation doesn't say:
+ *  http://cocoadocs.org/docsets/RestKit/0.20.0/Classes/RKObjectManager.html#//api/name/getObjectsAtPath:parameters:success:failure:
  */
 - (NSArray*)downloadImages:(ZooniverseSubject*)subject
                session:(NSURLSession *)session
@@ -374,6 +382,7 @@ NSString * currentTimeAsIso8601(void)
     return result;
 }
 
+// Runs on main thread.
 - (void)querySubjects:(NSUInteger)count
          withCallback:(ZooniverseClientDoneBlock)callbackBlock
 {
@@ -466,7 +475,7 @@ NSString * currentTimeAsIso8601(void)
 }
 
 
-
+// TODO: Runs on the main thread. TODO: Maybe it shouldn't.
 - (void)parseUploadResponse:(NSArray *)array {
     NSHTTPURLResponse *response = array[0];
     ZooniverseSubject *subject = array[1];
@@ -498,6 +507,7 @@ NSString * currentTimeAsIso8601(void)
     });
 }
 
+// Runs on the main thread. TODO: Maybe it shouldn't.
 - (void)uploadClassificationForSubject:(ZooniverseSubject *)subject {
     NSString *subjectId = subject.subjectId;
     
@@ -614,6 +624,7 @@ NSString * currentTimeAsIso8601(void)
                            }];
 }
 
+// Runs on the main thread.
 - (void)uploadOutstandingClassifications:(ZooniverseClientDoneBlock)callbackBlock; {
     //If a set of uploads is already in prgoress then just return,
     //because we don't track each set of uploads separately,
@@ -660,6 +671,7 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
+// Runs on main thread.
 - (void)downloadMinimumSubjects:(ZooniverseClientDoneBlock)callbackBlock
 {
     NSInteger minCachedNotDone = [AppDelegate preferenceDownloadInAdvance];
@@ -686,6 +698,7 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
+// Runs on main thread.
 - (void)downloadMissingImages:(ZooniverseClientDoneBlock)callbackBlock
 {
     if(![ZooniverseClient networkIsConnected]) {
@@ -740,6 +753,7 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
+// Runs on main thread:
 - (void)onImageDownloadFinished:(NSString*)taskId
                             set:(ZooniverseClientImageDownloadSet*)set
 {
@@ -758,6 +772,7 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
+// Runs on main thread.
 - (void)onImageDownloadedAndAbandoned:(NSString*)taskId
 {
     ZooniverseClientImageDownloadSet *set = _dictDownloadTasks[taskId];
@@ -773,6 +788,7 @@ NSString * currentTimeAsIso8601(void)
                          set:set];
 }
 
+// Runs on main thread.
 - (void)onImageDownloadedAndMoved:(NSArray*)array
 {
     NSString *taskId = array[0];
@@ -802,6 +818,7 @@ NSString * currentTimeAsIso8601(void)
                          set:set];
 }
 
+// Runs on main thread.
 + (BOOL) downloadedImageExistsAlready:(NSString*)remoteUrlStr
                      forImageLocation:(ImageLocation)imageLocation {
     NSURL *remoteUri = [NSURL URLWithString:remoteUrlStr];
@@ -971,6 +988,7 @@ NSString * currentTimeAsIso8601(void)
     }
 }
 
+// Runs in main thread.
 - (void)removeOldSubjects:(ZooniverseClientDoneBlock)callbackBlock
 {
     NSInteger maxKept = [AppDelegate preferenceKeep];
@@ -1043,6 +1061,7 @@ NSString * currentTimeAsIso8601(void)
     return YES;
 }
 
+// Runs on main thread.
 - (void)checkImagesStillExist:(ZooniverseClientDoneBlock)callbackBlock
 {
     NSFetchRequest *fetchRequest = [[self.managedObjectModel fetchRequestTemplateForName:@"fetchRequestDownloadsDone"] copy];
