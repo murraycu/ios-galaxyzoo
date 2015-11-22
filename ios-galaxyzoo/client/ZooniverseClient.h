@@ -35,7 +35,7 @@ typedef void (^ ZooniverseClientDoneBlock)();
 /* Abandon any subjects whose images have been deleted from the cache by the system. */
 - (void)checkImagesStillExist:(ZooniverseClientDoneBlock)callbackBlock;
 
-- (void)abandonSubject:(ZooniverseSubject *)subject
+- (void)abandonSubjectInMainThread:(ZooniverseSubject *)subject
       withCoreDataSave:(BOOL)coreDataSave;
 
 + (NSString *)fullLocalImagePath:(NSString *)partialLocalPath;

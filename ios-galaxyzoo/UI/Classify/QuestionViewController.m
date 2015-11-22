@@ -79,7 +79,7 @@
         //and show a different subject:
         NSLog(@"resetQuestionToFirst(): Abandoning subject because we have no questions for it.");
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate.zooniverseClient abandonSubject:self.subject
+        [appDelegate.zooniverseClient abandonSubjectInMainThread:self.subject
                                       withCoreDataSave:YES];
     }
 }

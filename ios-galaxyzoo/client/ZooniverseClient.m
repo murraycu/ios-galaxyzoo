@@ -1017,8 +1017,8 @@ NSString * currentTimeAsIso8601(void)
 
     NSInteger i = 0;
     for (ZooniverseSubject *subject in results) {
-        [self abandonSubject:subject
-            withCoreDataSave:NO]; //We save after deleting them all.
+        [self abandonSubjectInMainThread:subject
+                        withCoreDataSave:NO]; //We save after deleting them all.
 
         i++;
         if (i == countToRemove) {
@@ -1124,7 +1124,9 @@ NSString * currentTimeAsIso8601(void)
     subject.locationThumbnailDownloaded = NO;
 }
 
-- (void)abandonSubject:(ZooniverseSubject *)subject
+/* This should only be called from the main thread.
+ */
+- (void)abandonSubjectInMainThread:(ZooniverseSubject *)subject
       withCoreDataSave:(BOOL)coreDataSave
 {
     NSLog(@"abandonSubject: Abandoning subject with subjectId: %@", subject.subjectId, nil);

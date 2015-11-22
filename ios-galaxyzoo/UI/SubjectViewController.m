@@ -62,7 +62,7 @@
             //The parent ClassifyViewController will respond to the Core Data deletion,
             //and show a different subject:
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate.zooniverseClient abandonSubject:self.subject
+            [appDelegate.zooniverseClient abandonSubjectInMainThread:self.subject
                                           withCoreDataSave:YES];
         }
     }
