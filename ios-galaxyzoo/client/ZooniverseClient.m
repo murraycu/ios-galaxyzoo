@@ -348,7 +348,7 @@ NSString * currentTimeAsIso8601(void)
  * The documentation doesn't say:
  *  http://cocoadocs.org/docsets/RestKit/0.20.0/Classes/RKObjectManager.html#//api/name/getObjectsAtPath:parameters:success:failure:
  */
-- (NSArray*)downloadImages:(ZooniverseSubject*)subject
+- (NSArray*)createDownloadImagesTasks:(ZooniverseSubject*)subject
                session:(NSURLSession *)session
                    set:(ZooniverseClientImageDownloadSet *)set
 {
@@ -424,7 +424,7 @@ NSString * currentTimeAsIso8601(void)
                                      //Remember when we downloaded it, so we can always look at the earliest ones first:
                                      subject.datetimeRetrieved = iso8601String;
 
-                                     NSArray *subjectTasks = [self downloadImages:subject
+                                     NSArray *subjectTasks = [self createDownloadImagesTasks:subject
                                                                           session:_session
                                                                               set:set];
                                      if (subjectTasks) {
@@ -737,9 +737,9 @@ NSString * currentTimeAsIso8601(void)
     for (ZooniverseSubject *subject in results) {
         NSLog(@"  debug: download missing images for subject zooniverseId: %@", subject.zooniverseId);
 
-        NSArray *subjectTasks = [self downloadImages:subject
-                     session:_session
-                         set:set];
+        NSArray *subjectTasks = [self createDownloadImagesTasks:subject
+                                             session:_session
+                                                 set:set];
         if (subjectTasks) {
             [tasks addObjectsFromArray:subjectTasks];
         }
