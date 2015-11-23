@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[ios-galaxyzoo.strings]
+file_filter = xliff_for_translators/ios-galaxyzoo/<lang>.xliff
+source_file = xliff_for_translators/ios-galaxyzoo/en.xliff
+source_lang = en
+type = XLIFF
+
