@@ -164,9 +164,9 @@
 
 - (void)updateIsLoggedInUI {
     if ([AppDelegate isLoggedIn]) {
-        barButtonItemLogin.title = @"Log Out";
+        barButtonItemLogin.title = NSLocalizedString(@"Log Out", @"A log out button on the bottom toolbar.");
     } else {
-        barButtonItemLogin.title = @"Log In";
+        barButtonItemLogin.title = NSLocalizedString(@"Log In", @"A log in button on the bottom toolbar.");
     }
 }
 
@@ -210,15 +210,15 @@
         } else {
             NSString *errorTitle;
             if (noNetworkBecauseNoWiFi) {
-                errorTitle = @"No Wi-Fi network connection.";
+                errorTitle = NSLocalizedString(@"No Wi-Fi network connection.", @"A title for an error dialog.");
             } else {
-                errorTitle = @"No network connection.";
+                errorTitle = NSLocalizedString(@"No network connection.", @"A title for an error dialog.");
             }
 
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorTitle
-                                                            message:@"Cannot download new subjects to classify without a network connection."
+                                                            message:NSLocalizedString(@"Cannot download new subjects to classify without a network connection.", @"An error message.")
                                                            delegate:nil
-                                                  cancelButtonTitle:@"OK"
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", @"A title for a dialog button.")
                                                   otherButtonTitles:nil];
             [alert show];
         }

@@ -78,10 +78,10 @@
     if (!success) {
         NSLog(@"Login failed with message:%@", message);
 
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed"
-                                                        message:@"The server did not accept that username and password."
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login Failed", @"An error dialog title.")
+                                                        message:NSLocalizedString(@"The server did not accept that username and password.", @"Text for an error dialog.")
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:NSLocalizedString(@"OK", @"A title for a dialog button.")
                                               otherButtonTitles:nil];
         [alert show];
 

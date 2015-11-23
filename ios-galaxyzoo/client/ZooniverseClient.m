@@ -465,10 +465,10 @@ NSString * currentTimeAsIso8601(void)
 
                              }
                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"A title for an error dialog.")
                                                                                  message:error.localizedDescription
                                                                                 delegate:nil
-                                                                       cancelButtonTitle:@"OK"
+                                                                cancelButtonTitle:NSLocalizedString(@"OK", @"A title for a dialog button.")
                                                                        otherButtonTitles:nil];
                                  [alert show];
                                  NSLog(@"ZooniverseClient.query_subjects: error: %@", error);
