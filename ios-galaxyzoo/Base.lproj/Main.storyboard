@@ -35,7 +35,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-2T-OaH" userLabel="containerViewQuestion">
-                                <rect key="frame" x="16" y="317" width="568" height="226"/>
+                                <rect key="frame" x="8" y="317" width="584" height="226"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="XN1-Ge-G0W" kind="embed" identifier="questionViewEmbed" id="WlM-lJ-dLY"/>
@@ -394,11 +394,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Noc-ep-P9D"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BaE-tr-Tgr">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="226"/>
+                        <rect key="frame" x="0.0" y="0.0" width="584" height="226"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="501" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-nN-vq3" userLabel="labelTitle">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="584" height="26"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="S17-Hb-eKh"/>
@@ -408,7 +408,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-nW-ODq" userLabel="collectionViewAnswers" customClass="QuestionAnswersCollectionView">
-                                <rect key="frame" x="0.0" y="54" width="568" height="172"/>
+                                <rect key="frame" x="0.0" y="54" width="584" height="172"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -435,7 +435,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="501" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhT-fb-vs7" userLabel="labelText">
-                                <rect key="frame" x="0.0" y="26" width="568" height="20"/>
+                                <rect key="frame" x="0.0" y="26" width="584" height="20"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
