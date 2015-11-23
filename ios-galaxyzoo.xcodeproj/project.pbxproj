@@ -732,6 +732,9 @@
 		F2F643461BB4499A00E4D2DC /* icon_overlapping in Resources */ = {isa = PBXBuildFile; fileRef = F2F641E41BB4499A00E4D2DC /* icon_overlapping */; };
 		F2F643491BB449AD00E4D2DC /* decals_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F2F643471BB449AD00E4D2DC /* decals_tree.xml */; };
 		F2F6434A1BB449AD00E4D2DC /* illustris_tree.xml in Resources */ = {isa = PBXBuildFile; fileRef = F2F643481BB449AD00E4D2DC /* illustris_tree.xml */; };
+		F2FEA5C91C039802002BD835 /* de.json in Resources */ = {isa = PBXBuildFile; fileRef = F2FEA5C61C039802002BD835 /* de.json */; };
+		F2FEA5CA1C039802002BD835 /* fr.json in Resources */ = {isa = PBXBuildFile; fileRef = F2FEA5C71C039802002BD835 /* fr.json */; };
+		F2FEA5CB1C039802002BD835 /* it.json in Resources */ = {isa = PBXBuildFile; fileRef = F2FEA5C81C039802002BD835 /* it.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1525,6 +1528,9 @@
 		F2F641E41BB4499A00E4D2DC /* icon_overlapping */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_overlapping; path = Icons/icon_overlapping; sourceTree = "<group>"; };
 		F2F643471BB449AD00E4D2DC /* decals_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = decals_tree.xml; sourceTree = "<group>"; };
 		F2F643481BB449AD00E4D2DC /* illustris_tree.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = illustris_tree.xml; sourceTree = "<group>"; };
+		F2FEA5C61C039802002BD835 /* de.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = de.json; sourceTree = "<group>"; };
+		F2FEA5C71C039802002BD835 /* fr.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fr.json; sourceTree = "<group>"; };
+		F2FEA5C81C039802002BD835 /* it.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = it.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1718,12 +1724,15 @@
 		F24829791AF759110060D9B0 /* DecisionTrees */ = {
 			isa = PBXGroup;
 			children = (
-				F2F643471BB449AD00E4D2DC /* decals_tree.xml */,
-				F2F643481BB449AD00E4D2DC /* illustris_tree.xml */,
-				F2892E221B4E6F7B00B7C56D /* sloan_tree.xml */,
 				F248297A1AF759110060D9B0 /* candels_tree.xml */,
+				F2FEA5C61C039802002BD835 /* de.json */,
+				F2F643471BB449AD00E4D2DC /* decals_tree.xml */,
+				F2FEA5C71C039802002BD835 /* fr.json */,
 				F248297B1AF759110060D9B0 /* goods_full_tree.xml */,
+				F2F643481BB449AD00E4D2DC /* illustris_tree.xml */,
+				F2FEA5C81C039802002BD835 /* it.json */,
 				F2173A021B0738A200C1F947 /* sloan_singleband_tree.xml */,
+				F2892E221B4E6F7B00B7C56D /* sloan_tree.xml */,
 			);
 			path = DecisionTrees;
 			sourceTree = "<group>";
@@ -2892,6 +2901,7 @@
 				F2F642D51BB4499A00E4D2DC /* icon_illustris-4_a-2_2 in Resources */,
 				F2D6FE741AFD44D3002E3E15 /* icon_sloan-6_x-6_1 in Resources */,
 				F2D6FE401AFD44D3002E3E15 /* icon_goods_full-18_x-3_1 in Resources */,
+				F2FEA5CB1C039802002BD835 /* it.json in Resources */,
 				F2F6429F1BB4499A00E4D2DC /* icon_illustris-0_a-0_1 in Resources */,
 				F2F643321BB4499A00E4D2DC /* icon_illustris-9_a-3_2 in Resources */,
 				F2F6420F1BB4499A00E4D2DC /* icon_decals-3_a-0_0 in Resources */,
@@ -3030,6 +3040,7 @@
 				F2D6FDC71AFD44D3002E3E15 /* icon_candels-16_a-0_2 in Resources */,
 				F2F643431BB4499A00E4D2DC /* icon_illustris-10_a-1_1 in Resources */,
 				F2D6FE541AFD44D3002E3E15 /* icon_sloan-1_a-0_0 in Resources */,
+				F2FEA5C91C039802002BD835 /* de.json in Resources */,
 				F2D6FE581AFD44D3002E3E15 /* icon_sloan-2_a-0_1 in Resources */,
 				F2D6FDC81AFD44D3002E3E15 /* icon_candels-16_a-0_3 in Resources */,
 				F2D6FE011AFD44D3002E3E15 /* icon_goods_full-4_a-3_0 in Resources */,
@@ -3069,6 +3080,7 @@
 				F2D6FE561AFD44D3002E3E15 /* icon_sloan-1_a-1_1 in Resources */,
 				F2D6FE1B1AFD44D3002E3E15 /* icon_goods_full-11_a-0_1 in Resources */,
 				F2D6FE971AFD44D3002E3E15 /* icon_spiral_loose in Resources */,
+				F2FEA5CA1C039802002BD835 /* fr.json in Resources */,
 				F2F642F41BB4499A00E4D2DC /* icon_illustris-6_a-0_0 in Resources */,
 				F2D6FDAD1AFD44D3002E3E15 /* icon_candels-4_a-2_0 in Resources */,
 				F2D6FDDC1AFD44D3002E3E15 /* icon_feature in Resources */,
