@@ -1,0 +1,60 @@
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "5Va-Vo-ZWd"; */
+"5Va-Vo-ZWd.placeholder" = "Username";
+
+/* Class = "UINavigationItem"; title = "List"; ObjectID = "MDb-LC-lWS"; */
+"MDb-LC-lWS.title" = "List";
+
+/* Class = "UIButton"; normalTitle = "Examine"; ObjectID = "MhE-UI-lXl"; */
+"MhE-UI-lXl.normalTitle" = "Examine";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "OG2-kI-ELs"; */
+"OG2-kI-ELs.normalTitle" = "Sign In";
+
+/* Class = "UITabBarItem"; title = "Classify"; ObjectID = "PP1-eV-duA"; */
+"PP1-eV-duA.title" = "Classify";
+
+/* Class = "UIButton"; normalTitle = "Discuss"; ObjectID = "aoe-tZ-R3s"; */
+"aoe-tZ-R3s.normalTitle" = "Discuss";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "bW1-Sp-uzS"; */
+"bW1-Sp-uzS.title" = "Login";
+
+/* Class = "UIViewController"; title = "Subject"; ObjectID = "c3U-5R-8c9"; */
+"c3U-5R-8c9.title" = "Subject";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dky-Sy-4s3"; */
+"dky-Sy-4s3.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "dnQ-AM-4rB"; */
+"dnQ-AM-4rB.normalTitle" = "Register";
+
+/* Class = "UIBarButtonItem"; title = "List"; ObjectID = "frd-78-rxo"; */
+"frd-78-rxo.title" = "List";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "j2Y-2y-lKp"; */
+"j2Y-2y-lKp.normalTitle" = "Forgot Password?";
+
+/* Class = "UILabel"; text = "Zooniverse ID:"; ObjectID = "k0p-1i-GLX"; */
+"k0p-1i-GLX.text" = "Zooniverse ID:";
+
+/* Class = "UINavigationItem"; title = "Classify"; ObjectID = "k2p-mG-A4H"; */
+"k2p-mG-A4H.title" = "Classify";
+
+/* Class = "UILabel"; text = "help text"; ObjectID = "nMH-aR-Cyh"; */
+"nMH-aR-Cyh.text" = "help text";
+
+/* Class = "UIViewController"; title = "Example"; ObjectID = "oeA-bE-tAS"; */
+"oeA-bE-tAS.title" = "Example";
+
+/* Class = "UILabel"; text = "Login or create an account to receive credit for your work."; ObjectID = "uW3-h1-TCL"; */
+"uW3-h1-TCL.text" = "Login or create an account to receive credit for your work.";
+
+/* Class = "UIViewController"; title = "Help"; ObjectID = "uoU-Fq-DjU"; */
+"uoU-Fq-DjU.title" = "Help";
+
+/* Class = "UIBarButtonItem"; title = "Log In"; ObjectID = "x7I-DC-9Ja"; */
+"x7I-DC-9Ja.title" = "Log In";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "yWb-tP-Ubu"; */
+"yWb-tP-Ubu.placeholder" = "Password";
+

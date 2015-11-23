@@ -61,6 +61,8 @@
 		F21F87AB1AF3657400C95B52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AA1AF3657400C95B52 /* Images.xcassets */; };
 		F21F87AE1AF3657400C95B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F21F87AC1AF3657400C95B52 /* LaunchScreen.xib */; };
 		F21F87BA1AF3657400C95B52 /* ios_galaxyzooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */; };
+		F2204F891C036D1600839253 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2204F8B1C036D1600839253 /* InfoPlist.strings */; };
+		F2204F8E1C036D1700839253 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2204F901C036D1700839253 /* InfoPlist.strings */; };
 		F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */; };
 		F24742CC1B0C6F0D000FD3C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */; };
 		F24742D51B0E6EF7000FD3C7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742D41B0E6EF7000FD3C7 /* Reachability.m */; };
@@ -806,6 +808,10 @@
 		F21F87B81AF3657400C95B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_galaxyzooTests.m; sourceTree = "<group>"; };
 		F21F87D01AF3850300C95B52 /* ZooniverseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZooniverseClient.h; path = client/ZooniverseClient.h; sourceTree = "<group>"; };
+		F2204F8A1C036D1600839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2204F8F1C036D1700839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2204F911C036D1700839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		F2204F921C036D1800839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClient.m; path = client/ZooniverseClient.m; sourceTree = "<group>"; };
 		F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F24742D31B0E6EF7000FD3C7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = client/Reachability.h; sourceTree = "<group>"; };
@@ -1602,6 +1608,7 @@
 		F21F879D1AF3657400C95B52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2204F8B1C036D1600839253 /* InfoPlist.strings */,
 				F21F879E1AF3657400C95B52 /* Info.plist */,
 				F21F879F1AF3657400C95B52 /* main.m */,
 			);
@@ -1623,6 +1630,7 @@
 		F21F87B71AF3657400C95B52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2204F901C036D1700839253 /* InfoPlist.strings */,
 				F21F87B81AF3657400C95B52 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -3124,6 +3132,7 @@
 				F2F642901BB4499A00E4D2DC /* icon_decals-10_x-4_0 in Resources */,
 				F2D6FE991AFD44D3002E3E15 /* icon_spiral_tight in Resources */,
 				F2F641F51BB4499A00E4D2DC /* icon_decals-0_a-2_4 in Resources */,
+				F2204F891C036D1600839253 /* InfoPlist.strings in Resources */,
 				F2D6FE961AFD44D3002E3E15 /* icon_spiral_cant-tell in Resources */,
 				F2173A431B0738FE00C1F947 /* icon_sloan_singleband-5_a-0_1 in Resources */,
 				F2D6FE3A1AFD44D3002E3E15 /* icon_goods_full-18_x-0_1 in Resources */,
@@ -3232,6 +3241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2D6FC8F1AFCA40C002E3E15 /* test_decision_tree.xml in Resources */,
+				F2204F8E1C036D1700839253 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3350,6 +3360,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F21F87A81AF3657400C95B52 /* Base */,
+				F2204F911C036D1700839253 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3358,8 +3369,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				F21F87AD1AF3657400C95B52 /* Base */,
+				F2204F921C036D1800839253 /* de */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		F2204F8B1C036D1600839253 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2204F8A1C036D1600839253 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F2204F901C036D1700839253 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2204F8F1C036D1700839253 /* de */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
