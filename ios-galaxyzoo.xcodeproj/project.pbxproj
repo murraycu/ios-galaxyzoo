@@ -63,6 +63,7 @@
 		F21F87BA1AF3657400C95B52 /* ios_galaxyzooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F21F87B91AF3657400C95B52 /* ios_galaxyzooTests.m */; };
 		F2204F891C036D1600839253 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2204F8B1C036D1600839253 /* InfoPlist.strings */; };
 		F2204F8E1C036D1700839253 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2204F901C036D1700839253 /* InfoPlist.strings */; };
+		F2204F951C03765C00839253 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2204F971C03765C00839253 /* Localizable.strings */; };
 		F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */; };
 		F24742CC1B0C6F0D000FD3C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */; };
 		F24742D51B0E6EF7000FD3C7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742D41B0E6EF7000FD3C7 /* Reachability.m */; };
@@ -812,6 +813,7 @@
 		F2204F8F1C036D1700839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F2204F911C036D1700839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		F2204F921C036D1800839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F2204F961C03765C00839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClient.m; path = client/ZooniverseClient.m; sourceTree = "<group>"; };
 		F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F24742D31B0E6EF7000FD3C7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = client/Reachability.h; sourceTree = "<group>"; };
@@ -1608,6 +1610,7 @@
 		F21F879D1AF3657400C95B52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2204F971C03765C00839253 /* Localizable.strings */,
 				F2204F8B1C036D1600839253 /* InfoPlist.strings */,
 				F21F879E1AF3657400C95B52 /* Info.plist */,
 				F21F879F1AF3657400C95B52 /* main.m */,
@@ -3055,6 +3058,7 @@
 				F2F6425F1BB4499A00E4D2DC /* icon_decals-7_a-2_4 in Resources */,
 				F2F642C51BB4499A00E4D2DC /* icon_illustris-3_a-1_1 in Resources */,
 				F2D6FDBD1AFD44D3002E3E15 /* icon_candels-12_a-0_0 in Resources */,
+				F2204F951C03765C00839253 /* Localizable.strings in Resources */,
 				F2F643091BB4499A00E4D2DC /* icon_illustris-7_a-1_1 in Resources */,
 				F2D6FE111AFD44D3002E3E15 /* icon_goods_full-9_a-0_0 in Resources */,
 				F2F6421E1BB4499A00E4D2DC /* icon_decals-4_a-0_5 in Resources */,
@@ -3388,6 +3392,14 @@
 				F2204F8F1C036D1700839253 /* de */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F2204F971C03765C00839253 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2204F961C03765C00839253 /* de */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

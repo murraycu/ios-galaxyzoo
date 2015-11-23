@@ -1,0 +1,15 @@
+/* An error message. */
+"Cannot download new subjects to classify without a network connection." = "Es können keine neuen Objekte zum Klassifizieren heruntergeladen werden.";
+
+/* A log in button on the bottom toolbar. */
+"Log In" = "Anmelden";
+
+/* A log out button on the bottom toolbar. */
+"Log Out" = "Abmelden";
+
+/* A title for an error dialog. */
+"No Wi-Fi network connection." = "Keine WLAN-Verbindung.";
+
+/* A title for an error dialog. */
+"No network connection." = "Keine Netzwerkverbindung.";
+
