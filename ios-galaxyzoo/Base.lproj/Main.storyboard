@@ -76,6 +76,7 @@
                             <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="3Jk-Sq-vwa"/>
                             <constraint firstItem="4He-Zn-x54" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" id="61U-pa-lEQ"/>
                             <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7vB-Fh-E0I"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="8g4-v2-9h3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4He-Zn-x54" secondAttribute="bottom" id="DoI-h6-S8R"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" symbolic="YES" id="Fmv-tY-zbi"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="GjK-iw-gyc"/>
@@ -84,6 +85,7 @@
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="317" id="OdA-kn-OhX"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="centerX" secondItem="1qV-Rr-NAo" secondAttribute="centerX" id="RTF-mM-Fip"/>
                             <constraint firstAttribute="width" secondItem="4He-Zn-x54" secondAttribute="width" id="TQb-cT-Bf2"/>
+                            <constraint firstAttribute="trailing" secondItem="Ycy-2T-OaH" secondAttribute="trailing" constant="8" id="XPo-ti-ck2"/>
                             <constraint firstAttribute="trailing" secondItem="1qV-Rr-NAo" secondAttribute="trailing" id="YwH-NH-wZS"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZC8-qQ-OXd"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="1qV-Rr-NAo" secondAttribute="bottom" constant="8" symbolic="YES" id="pqv-74-Z1W"/>
@@ -94,6 +96,8 @@
                                 <exclude reference="3Jk-Sq-vwa"/>
                                 <exclude reference="GjK-iw-gyc"/>
                                 <exclude reference="OdA-kn-OhX"/>
+                                <exclude reference="RTF-mM-Fip"/>
+                                <exclude reference="ZC8-qQ-OXd"/>
                                 <exclude reference="xdz-Zb-H3w"/>
                                 <exclude reference="Fmv-tY-zbi"/>
                             </mask>
