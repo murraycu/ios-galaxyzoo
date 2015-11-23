@@ -3,11 +3,11 @@
 We use Transifex, who generously support open-source projects.
 Please visit our Transifex page to create or correct translations for your
 language:
-https://www.transifex.com/projects/p/android-galaxyzoo/
+https://www.transifex.com/projects/p/ios-galaxyzoo/
 
 
 There are some sample screenshots here to help you to understand the context:
-https://github.com/murraycu/android-galaxyzoo/tree/master/screenshots_for_translators
+https://github.com/murraycu/ios-galaxyzoo/tree/master/screenshots_for_translators
 
 
 *** Translating the website, to complete the app translation
@@ -36,7 +36,4 @@ https://github.com/zooniverse/Galaxy-Zoo/blob/master/app/lib/sloan_tree.coffee
 
 
 Many thanks for all your help.
-
-
-Android is a trademark of Google Inc.
 
