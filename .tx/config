@@ -7,3 +7,8 @@ source_file = xliff_for_translators/ios-galaxyzoo/en.xliff
 source_lang = en
 type = XLIFF
 
+[ios-galaxyzoo.settings-strings]
+file_filter = ios-galaxyzoo/Settings.bundle/<lang>.lproj/Root.strings
+source_file = ios-galaxyzoo/Settings.bundle/en.lproj/Root.strings
+source_lang = en
+type = STRINGS
