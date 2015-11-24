@@ -103,7 +103,8 @@
     });
 }
 
-- (IBAction)onLoginButton:(id)sender {
+- (void)doLogin {
+
     NSString *postLoginUriStr =
     [NSString stringWithFormat:@"%@login",
      [Config baseUrl], nil];
@@ -154,6 +155,19 @@
                                }
                            }];
 
+}
+
+- (IBAction)onLoginButton:(id)sender {
+    [self doLogin];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+
+    [self doLogin];
+
+    return YES;
 }
 
 @end
