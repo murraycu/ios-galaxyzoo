@@ -1616,8 +1616,7 @@
 		F21F879D1AF3657400C95B52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F2204F971C03765C00839253 /* Localizable.strings */,
-				F2204F8B1C036D1600839253 /* InfoPlist.strings */,
+				F2C8B20A1C050089003D6274 /* Localizations */,
 				F21F879E1AF3657400C95B52 /* Info.plist */,
 				F21F879F1AF3657400C95B52 /* main.m */,
 			);
@@ -1818,6 +1817,23 @@
 				F28A55431B2EF44F000E9626 /* ListCollectionViewCellButton.m */,
 			);
 			name = List;
+			sourceTree = "<group>";
+		};
+		F2C8B20A1C050089003D6274 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				F2C8B20B1C050094003D6274 /* de */,
+			);
+			name = Localizations;
+			sourceTree = "<group>";
+		};
+		F2C8B20B1C050094003D6274 /* de */ = {
+			isa = PBXGroup;
+			children = (
+				F2204F8B1C036D1600839253 /* InfoPlist.strings */,
+				F2204F971C03765C00839253 /* Localizable.strings */,
+			);
+			name = de;
 			sourceTree = "<group>";
 		};
 		F2D6FC8D1AFCA3F8002E3E15 /* Assets */ = {
