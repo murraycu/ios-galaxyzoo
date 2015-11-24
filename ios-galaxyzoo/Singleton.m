@@ -28,6 +28,23 @@ static Singleton *sharedSingleton = nil;    // static instance variable
 
     _decisionTrees = [[NSMutableDictionary alloc] init];
 
+    NSString *translationFilename;
+
+    //[NSLocale preferredLanguages] would give the system's preferred language, but we actually
+    //want the language used by the app, which depends on whether we have provided a
+    //localization, thus avoiding using a translated decision tree if we have not translated
+    //the app's UI itself. This also seems to give us the actual localization locale, such as
+    //"de", instead of the specific desired locale, such as "de_DE".
+    [[NSBundle mainBundle] preferredLocalizations];
+    NSString *language = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
+
+    if (language != nil) {
+        translationFilename = [NSString stringWithFormat:@"%@.json", language];
+    }
+
+    NSURL *urlTranslation = [[NSBundle mainBundle] URLForResource:translationFilename
+                                                    withExtension:nil];
+
     NSDictionary *dict = [Config subjectGroups];
     for (NSString *groupId in dict) {
         //Apparently it's (now) OK to do this extra lookup due to some optimization:
@@ -43,6 +60,7 @@ static Singleton *sharedSingleton = nil;    // static instance variable
         }
 
         DecisionTree *tree = [[DecisionTree alloc] initWithUrl:url
+                                                withTranslationUrl:urlTranslation
                               withDiscussQuestion:subjectGroup.discussQuestion];
         _decisionTrees[groupId] = tree;
     }

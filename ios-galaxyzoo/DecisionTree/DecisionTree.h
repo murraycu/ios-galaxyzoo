@@ -14,7 +14,15 @@
 @interface DecisionTree : NSObject
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
+
+/*!
+ * @param url The XMl file containing the decision tree.
+ * @param translationUrl A JSON file containing translations of the question and answers,
+ *                       such as https://github.com/zooniverse/Galaxy-Zoo/blob/master/public/locales/es.json
+ * @param discussQuestion The question that ask the user whether they want to discuss the subject with other people.
+ */
 - (instancetype)initWithUrl:(NSURL *)url
+         withTranslationUrl:(NSURL *)translationUrl
    withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
 
 @property (nonatomic, copy, readonly) NSString *firstQuestionId;

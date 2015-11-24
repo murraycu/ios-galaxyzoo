@@ -30,7 +30,96 @@
     return [super init];
 }
 
+
+- (void)readJsonAnswers:(DecisionTreeQuestion *)question
+            withAnswers:(NSDictionary *)jsonAnswers
+{
+    for (NSString *answerId in jsonAnswers) {
+        NSString *value = [jsonAnswers objectForKey:answerId];
+
+        DecisionTreeQuestionAnswer *answer = [question answerForId:answerId];
+        answer.text = value;
+    }
+}
+
+- (void)readJsonCheckboxes:(DecisionTreeQuestion *)question
+               withAnswers:(NSDictionary *)jsonCheckboxes
+{
+    for (NSString *answerId in jsonCheckboxes) {
+        NSString *value = [jsonCheckboxes objectForKey:answerId];
+
+        DecisionTreeQuestionCheckbox *checkbox = [question checkboxForId:answerId];
+        checkbox.text = value;
+    }
+}
+
+- (void)readJsonQuestion:(DecisionTreeQuestion *)question
+              withValues:(NSDictionary *)jsonQuestion
+{
+    for (NSString *name in jsonQuestion) {
+        if ([name isEqualToString:@"text"]) {
+            NSString *value = [jsonQuestion objectForKey:name];
+            [question setText:value];
+        } else if ([name isEqualToString:@"title"]) {
+            NSString *value = [jsonQuestion objectForKey:name];
+            [question setTitle:value];
+        } else if ([name isEqualToString:@"help"]) {
+            NSString *value = [jsonQuestion objectForKey:name];
+            [question setHelp:value];
+        } else if ([name isEqualToString:@"answers"]) {
+            NSDictionary *jsonAnswers = [jsonQuestion objectForKey:name];
+            [self readJsonAnswers:question
+                      withAnswers:jsonAnswers];
+        } else if ([name isEqualToString:@"checkboxes"]) {
+            NSDictionary *jsonCheckboxes = [jsonQuestion objectForKey:name];
+            [self readJsonCheckboxes:question
+                      withAnswers:jsonCheckboxes];
+        }
+    }
+
+}
+
+- (BOOL)readJsonQuestions:(NSDictionary *)jsonQuestions
+{
+    for (NSString *questionId in jsonQuestions) {
+        DecisionTreeQuestion *question = [self getQuestion:questionId];
+        if (question == nil) {
+            continue;
+        }
+
+        [self readJsonQuestion:question
+                    withValues:[jsonQuestions objectForKey:questionId]];
+    }
+
+    return YES;
+}
+
+- (BOOL)loadTranslation:(NSURL *)translationUrl
+{
+    NSInputStream *inputStreamTranslations = [NSInputStream inputStreamWithURL:translationUrl];
+    if (inputStreamTranslations == nil) {
+        NSLog(@"DecisionTree:initWithUrl(): Could not open an input stream for the translation URL.");
+        return NO;
+    }
+
+    [inputStreamTranslations open];
+    NSError *error = nil;
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithStream:inputStreamTranslations
+                                                               options:0
+                                                                 error:&error];
+    [inputStreamTranslations close];
+    if (error) {
+        NSLog(@"DecisionTree:initWithUrl(): NSJSONSerialization failed: %@", error);
+        return NO;
+    }
+
+    //We ignore the "zooniverse" and "quiz_questions" objects.
+    NSDictionary *jsonQuestions = [jsonDict objectForKey:@"questions"];
+    return [self readJsonQuestions:jsonQuestions];
+}
+
 - (instancetype)initWithUrl:(NSURL *)url
+         withTranslationUrl:(NSURL *)translationUrl
    withDiscussQuestion:(DecisionTreeDiscussQuestion *)discussQuestion;
 {
     self = [self init];
@@ -43,9 +132,14 @@
 
     DecisionTreeParser *parser = [[DecisionTreeParser alloc]initWithUrlIntoTree:url
                                                         intoTree:self];
-    if(![parser parse]) {
-        NSLog(@"DecisionTree:init(): DecisionTreeParser.parse() failed: %@", parser.parserError);
+    if (![parser parse]) {
+        NSLog(@"DecisionTree:initWithUrl(): DecisionTreeParser.parse() failed: %@", parser.parserError);
         return nil;
+    }
+
+    if (![self loadTranslation:translationUrl]) {
+        NSLog(@"DecisionTree:initWithUrl(): Could not load decision tree translations: %@", translationUrl);
+        //Continue, because this should not be a fatal error.
     }
 
     self.discussQuestion = discussQuestion;

@@ -27,5 +27,9 @@
                        answers:(NSArray *)answers
                     checkboxes:(NSArray *)checkboxes;
 
+- (DecisionTreeQuestionAnswer*) answerForId:(NSString *)answerId;
+- (DecisionTreeQuestionCheckbox*) checkboxForId:(NSString *)answerId;
+
+
 
 @end

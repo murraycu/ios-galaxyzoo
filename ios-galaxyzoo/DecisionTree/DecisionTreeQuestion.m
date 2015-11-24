@@ -30,4 +30,28 @@
     return self;
 }
 
+
+- (DecisionTreeQuestionAnswer*) answerForId:(NSString *)answerId {
+    //TODO: Performance
+    for (DecisionTreeQuestionAnswer *answer in self.answers) {
+        if ([answer.answerId isEqualToString:answerId]) {
+            return answer;
+        }
+    }
+
+    return nil;
+}
+
+
+- (DecisionTreeQuestionCheckbox*) checkboxForId:(NSString *)answerId {
+    //TODO: Performance
+    for (DecisionTreeQuestionCheckbox *checkbox in self.checkboxes) {
+        if ([checkbox.answerId isEqualToString:answerId]) {
+            return checkbox;
+        }
+    }
+
+    return nil;
+}
+
 @end
