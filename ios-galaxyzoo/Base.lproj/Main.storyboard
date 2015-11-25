@@ -411,7 +411,7 @@
                                     <action selector="onButtonClick:" destination="tdd-TB-MLp" eventType="touchUpInside" id="k2L-Jg-GDj"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I6z-DG-hlX" userLabel="imageView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
                                 <animations/>
                                 <constraints>
