@@ -22,14 +22,6 @@
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1qV-Rr-NAo" userLabel="containerViewSubject">
                                 <rect key="frame" x="0.0" y="64" width="600" height="245"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="nOK-hD-3nz"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="nOK-hD-3nz"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <segue destination="tdd-TB-MLp" kind="embed" identifier="subjectViewEmbed" id="McU-Of-BYW"/>
                                 </connections>
@@ -73,33 +65,109 @@
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="1qV-Rr-NAo" secondAttribute="trailing" constant="8" id="2x4-5S-o7g"/>
                             <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="3Jk-Sq-vwa"/>
                             <constraint firstItem="4He-Zn-x54" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" id="61U-pa-lEQ"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="1qV-Rr-NAo" secondAttribute="trailing" constant="8" id="7D1-FB-pSX"/>
                             <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7vB-Fh-E0I"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="8g4-v2-9h3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ycy-2T-OaH" secondAttribute="trailing" constant="-37" id="Beb-Ix-d5t"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="width" secondItem="Ycy-2T-OaH" secondAttribute="width" id="BgY-bi-Yn0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4He-Zn-x54" secondAttribute="bottom" id="DoI-h6-S8R"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" symbolic="YES" id="Fmv-tY-zbi"/>
+                            <constraint firstItem="4He-Zn-x54" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="bottom" constant="8" id="GKz-BL-Eir"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="GjK-iw-gyc"/>
+                            <constraint firstItem="4He-Zn-x54" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HVl-WA-js7"/>
+                            <constraint firstItem="4He-Zn-x54" firstAttribute="top" secondItem="1qV-Rr-NAo" secondAttribute="bottom" constant="8" id="KQJ-0R-QmJ"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Kuu-Tl-8c7"/>
+                            <constraint firstItem="4He-Zn-x54" firstAttribute="top" secondItem="1qV-Rr-NAo" secondAttribute="bottom" constant="8" id="LBs-ed-LeN"/>
                             <constraint firstItem="1qV-Rr-NAo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LsQ-2X-hln"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="O3A-Ju-WbA"/>
                             <constraint firstItem="4He-Zn-x54" firstAttribute="leading" secondItem="1qV-Rr-NAo" secondAttribute="leading" id="OdA-Rl-gkD"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="317" id="OdA-kn-OhX"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="P0w-BQ-SJj"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="top" secondItem="Ycy-2T-OaH" secondAttribute="top" id="Po2-va-hYg"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="centerX" secondItem="1qV-Rr-NAo" secondAttribute="centerX" id="RTF-mM-Fip"/>
                             <constraint firstAttribute="width" secondItem="4He-Zn-x54" secondAttribute="width" id="TQb-cT-Bf2"/>
                             <constraint firstAttribute="trailing" secondItem="Ycy-2T-OaH" secondAttribute="trailing" constant="8" id="XPo-ti-ck2"/>
-                            <constraint firstAttribute="trailing" secondItem="1qV-Rr-NAo" secondAttribute="trailing" id="YwH-NH-wZS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ycy-2T-OaH" secondAttribute="trailing" id="YeZ-76-5jb"/>
+                            <constraint firstAttribute="trailing" secondItem="1qV-Rr-NAo" secondAttribute="trailing" id="YwH-NH-wZS">
+                                <variation key="heightClass=regular-widthClass=regular" constant="327"/>
+                            </constraint>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZC8-qQ-OXd"/>
-                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="1qV-Rr-NAo" secondAttribute="bottom" constant="8" symbolic="YES" id="pqv-74-Z1W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ycy-2T-OaH" secondAttribute="trailing" constant="-20" id="d4w-Nh-xjk"/>
+                            <constraint firstItem="1qV-Rr-NAo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="fAr-oK-73s"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="iBZ-m4-bee"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="1qV-Rr-NAo" secondAttribute="bottom" constant="8" symbolic="YES" id="pqv-74-Z1W">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-692"/>
+                            </constraint>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="width" secondItem="1qV-Rr-NAo" secondAttribute="width" id="sf4-kx-oLd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1qV-Rr-NAo" secondAttribute="trailing" constant="307" id="tHl-TT-ybg"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="1qV-Rr-NAo" secondAttribute="trailing" constant="8" symbolic="YES" id="wjt-HG-8MQ"/>
                             <constraint firstItem="Ycy-2T-OaH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="xdz-Zb-H3w"/>
+                            <constraint firstItem="Ycy-2T-OaH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="461" id="zUe-HW-zjw"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="3Jk-Sq-vwa"/>
+                                <exclude reference="BgY-bi-Yn0"/>
+                                <exclude reference="Kuu-Tl-8c7"/>
+                                <exclude reference="O3A-Ju-WbA"/>
+                                <exclude reference="P0w-BQ-SJj"/>
+                                <exclude reference="Po2-va-hYg"/>
+                                <exclude reference="fAr-oK-73s"/>
+                                <exclude reference="tHl-TT-ybg"/>
+                                <exclude reference="2x4-5S-o7g"/>
+                                <exclude reference="7D1-FB-pSX"/>
+                                <exclude reference="Beb-Ix-d5t"/>
                                 <exclude reference="GjK-iw-gyc"/>
                                 <exclude reference="OdA-kn-OhX"/>
                                 <exclude reference="RTF-mM-Fip"/>
+                                <exclude reference="YeZ-76-5jb"/>
                                 <exclude reference="ZC8-qQ-OXd"/>
+                                <exclude reference="d4w-Nh-xjk"/>
+                                <exclude reference="iBZ-m4-bee"/>
+                                <exclude reference="sf4-kx-oLd"/>
+                                <exclude reference="wjt-HG-8MQ"/>
                                 <exclude reference="xdz-Zb-H3w"/>
+                                <exclude reference="zUe-HW-zjw"/>
+                                <exclude reference="GKz-BL-Eir"/>
+                                <exclude reference="HVl-WA-js7"/>
+                                <exclude reference="KQJ-0R-QmJ"/>
+                                <exclude reference="LBs-ed-LeN"/>
                                 <exclude reference="Fmv-tY-zbi"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="7vB-Fh-E0I"/>
+                                <include reference="BgY-bi-Yn0"/>
+                                <exclude reference="Kuu-Tl-8c7"/>
+                                <exclude reference="LsQ-2X-hln"/>
+                                <include reference="O3A-Ju-WbA"/>
+                                <include reference="P0w-BQ-SJj"/>
+                                <exclude reference="Po2-va-hYg"/>
+                                <exclude reference="YwH-NH-wZS"/>
+                                <exclude reference="fAr-oK-73s"/>
+                                <exclude reference="tHl-TT-ybg"/>
+                                <exclude reference="2x4-5S-o7g"/>
+                                <include reference="7D1-FB-pSX"/>
+                                <exclude reference="8g4-v2-9h3"/>
+                                <include reference="Beb-Ix-d5t"/>
+                                <exclude reference="XPo-ti-ck2"/>
+                                <exclude reference="YeZ-76-5jb"/>
+                                <exclude reference="d4w-Nh-xjk"/>
+                                <include reference="iBZ-m4-bee"/>
+                                <exclude reference="pqv-74-Z1W"/>
+                                <exclude reference="sf4-kx-oLd"/>
+                                <exclude reference="wjt-HG-8MQ"/>
+                                <exclude reference="zUe-HW-zjw"/>
+                                <exclude reference="61U-pa-lEQ"/>
+                                <include reference="GKz-BL-Eir"/>
+                                <include reference="HVl-WA-js7"/>
+                                <include reference="KQJ-0R-QmJ"/>
+                                <exclude reference="LBs-ed-LeN"/>
+                                <exclude reference="OdA-Rl-gkD"/>
                             </mask>
                         </variation>
                     </view>
@@ -116,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="195"/>
+            <point key="canvasLocation" x="1705.5" y="184.5"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="GPb-vw-gAh">
@@ -285,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2Q-eK-elW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3402" y="209"/>
+            <point key="canvasLocation" x="3270" y="-997.5"/>
         </scene>
         <!--Example Viewer Controller-->
         <scene sceneID="aEW-gC-aU5">
@@ -383,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9E-0y-QaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2718" y="35.5"/>
+            <point key="canvasLocation" x="2805" y="-151.125"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="v9M-16-AGV">
@@ -467,7 +535,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvg-m2-V6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702" y="396"/>
+            <point key="canvasLocation" x="2646.375" y="450"/>
         </scene>
         <!--Subject Viewer View Controller-->
         <scene sceneID="Ymc-G5-Ti1">
@@ -558,7 +626,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvh-kr-XpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2712" y="903"/>
+            <point key="canvasLocation" x="3396" y="1023"/>
         </scene>
         <!--Classify-->
         <scene sceneID="bs1-fl-HbV">
@@ -702,7 +770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cp4-Mw-Ndu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2718" y="-480"/>
+            <point key="canvasLocation" x="2628" y="-993"/>
         </scene>
     </scenes>
     <resources>
