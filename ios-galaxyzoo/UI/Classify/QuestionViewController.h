@@ -20,4 +20,13 @@
 
 - (void) revertClassification;
 
+/** This is a hacky workaround, to call reloadData,
+ * to avoid truncation of the text in the buttons when they are first shown.
+ * See https://github.com/murraycu/ios-galaxyzoo/issues/19
+ *
+ * This might be relevant:
+ * See http://stackoverflow.com/questions/32060037/uitableviewcell-needs-reloaddata-to-resize-to-correct-height
+ */
+- (void) useCorrectHeight;
+
 @end

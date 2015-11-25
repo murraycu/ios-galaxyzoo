@@ -134,6 +134,11 @@
     [self updateCollectionViewAnswersHeight];
 }
 
+// This is a hack - see the comment in the header.
+- (void)useCorrectHeight {
+    [self.collectionViewAnswers reloadData];
+}
+
 - (void)setQuestion:(DecisionTreeQuestion *)question {
     _question = question;
 

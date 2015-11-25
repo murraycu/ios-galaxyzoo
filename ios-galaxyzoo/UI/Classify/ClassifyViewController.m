@@ -271,13 +271,16 @@
                             toContainerView:self.containerViewSubject];
     [self addChildViewControllerConstraints:_questionViewController
                             toContainerView:self.containerViewQuestion];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
     [self updateIsLoggedInUI];
+
+    //A nasty hack to make sure we have the correct button heights,
+    //with no truncated text:
+    [_questionViewController useCorrectHeight];
 }
 
 - (void)didReceiveMemoryWarning {
