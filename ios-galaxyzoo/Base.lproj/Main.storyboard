@@ -619,7 +619,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2Y-2y-lKp" userLabel="buttonForgot">
-                                <rect key="frame" x="20" y="177" width="560" height="30"/>
+                                <rect key="frame" x="457" y="177" width="123" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -629,7 +629,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnQ-AM-4rB" userLabel="buttonRegister">
-                                <rect key="frame" x="20" y="208" width="560" height="30"/>
+                                <rect key="frame" x="523" y="208" width="57" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Register">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -639,7 +639,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OG2-kI-ELs" userLabel="buttonLogin">
-                                <rect key="frame" x="20" y="246" width="560" height="30"/>
+                                <rect key="frame" x="277" y="246" width="47" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -653,24 +653,44 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dnQ-AM-4rB" firstAttribute="trailing" secondItem="j2Y-2y-lKp" secondAttribute="trailing" id="0Nj-RL-up6"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="yWb-tP-Ubu" secondAttribute="leading" id="1Xd-ef-cJB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yWb-tP-Ubu" secondAttribute="trailing" id="4Ko-pO-ldp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OG2-kI-ELs" secondAttribute="trailing" id="9s4-Nu-T7r"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="uW3-h1-TCL" secondAttribute="leading" id="BHy-zi-QTL"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="5Va-Vo-ZWd" secondAttribute="leading" id="CPV-Tz-uVM"/>
                             <constraint firstItem="OG2-kI-ELs" firstAttribute="trailing" secondItem="dnQ-AM-4rB" secondAttribute="trailing" id="EXW-N2-CU8"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="OG2-kI-ELs" secondAttribute="leading" id="HRT-YI-NNt"/>
                             <constraint firstItem="yWb-tP-Ubu" firstAttribute="trailing" secondItem="j2Y-2y-lKp" secondAttribute="trailing" id="Lki-I1-nak"/>
                             <constraint firstItem="5Va-Vo-ZWd" firstAttribute="leading" secondItem="yWb-tP-Ubu" secondAttribute="leading" id="LoQ-RM-WJG"/>
                             <constraint firstItem="dnQ-AM-4rB" firstAttribute="leading" secondItem="j2Y-2y-lKp" secondAttribute="leading" id="Lxj-QX-pcY"/>
                             <constraint firstItem="uW3-h1-TCL" firstAttribute="leading" secondItem="5Va-Vo-ZWd" secondAttribute="leading" id="M7j-cX-ngY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j2Y-2y-lKp" secondAttribute="trailing" id="Me4-mA-CQv"/>
                             <constraint firstItem="5Va-Vo-ZWd" firstAttribute="trailing" secondItem="yWb-tP-Ubu" secondAttribute="trailing" id="Mxo-iW-MbV"/>
                             <constraint firstItem="dnQ-AM-4rB" firstAttribute="top" secondItem="j2Y-2y-lKp" secondAttribute="bottom" constant="1" id="Rp8-YX-ykq"/>
                             <constraint firstItem="uW3-h1-TCL" firstAttribute="trailing" secondItem="5Va-Vo-ZWd" secondAttribute="trailing" id="SEk-LC-YNb"/>
                             <constraint firstItem="OG2-kI-ELs" firstAttribute="top" secondItem="dnQ-AM-4rB" secondAttribute="bottom" constant="8" symbolic="YES" id="ToA-cH-S1q"/>
+                            <constraint firstItem="OG2-kI-ELs" firstAttribute="centerX" secondItem="yZg-tZ-Mjo" secondAttribute="centerX" id="WtN-be-JAM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dnQ-AM-4rB" secondAttribute="trailing" id="Xrx-ow-5W3"/>
                             <constraint firstItem="OG2-kI-ELs" firstAttribute="leading" secondItem="dnQ-AM-4rB" secondAttribute="leading" id="Ycn-Id-sG1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Va-Vo-ZWd" secondAttribute="trailing" id="evF-Gt-Zg0"/>
                             <constraint firstItem="yWb-tP-Ubu" firstAttribute="top" secondItem="5Va-Vo-ZWd" secondAttribute="bottom" constant="8" symbolic="YES" id="fsf-Vj-G1w"/>
-                            <constraint firstItem="j2Y-2y-lKp" firstAttribute="leading" secondItem="yZg-tZ-Mjo" secondAttribute="leadingMargin" id="hqA-z4-6aS"/>
                             <constraint firstItem="yWb-tP-Ubu" firstAttribute="leading" secondItem="j2Y-2y-lKp" secondAttribute="leading" id="iAP-Tg-m0n"/>
                             <constraint firstItem="uW3-h1-TCL" firstAttribute="trailing" secondItem="yZg-tZ-Mjo" secondAttribute="trailingMargin" id="iZW-sV-ROp"/>
                             <constraint firstItem="5Va-Vo-ZWd" firstAttribute="top" secondItem="uW3-h1-TCL" secondAttribute="bottom" constant="8" symbolic="YES" id="o0c-df-dRq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uW3-h1-TCL" secondAttribute="trailing" id="v4F-vB-ugf"/>
                             <constraint firstItem="j2Y-2y-lKp" firstAttribute="top" secondItem="yWb-tP-Ubu" secondAttribute="bottom" constant="8" symbolic="YES" id="xpr-a9-h5e"/>
                             <constraint firstItem="uW3-h1-TCL" firstAttribute="top" secondItem="pDY-SM-biI" secondAttribute="bottom" constant="8" symbolic="YES" id="yvd-cR-ocm"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="iAP-Tg-m0n"/>
+                                <exclude reference="9s4-Nu-T7r"/>
+                                <exclude reference="EXW-N2-CU8"/>
+                                <exclude reference="HRT-YI-NNt"/>
+                                <exclude reference="Ycn-Id-sG1"/>
+                                <exclude reference="Lxj-QX-pcY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="buttonForgot" destination="j2Y-2y-lKp" id="rqo-M1-dEf"/>
