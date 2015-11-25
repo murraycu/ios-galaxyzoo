@@ -1572,11 +1572,11 @@
 		F21F87911AF3657400C95B52 = {
 			isa = PBXGroup;
 			children = (
-				F241BBB71C05B820000D34C9 /* NEWS */,
-				F26152431BB5292A0088D307 /* ios-galaxyzoo-Prefix.pch */,
 				E3A6F259A91A31B9D91FC016 /* Frameworks */,
 				F21F879C1AF3657400C95B52 /* ios-galaxyzoo */,
+				F26152431BB5292A0088D307 /* ios-galaxyzoo-Prefix.pch */,
 				F21F87B61AF3657400C95B52 /* ios-galaxyzooTests */,
+				F241BBB71C05B820000D34C9 /* NEWS */,
 				D17636F3096CD1E9762DF410 /* Pods */,
 				F21F879B1AF3657400C95B52 /* Products */,
 			);
