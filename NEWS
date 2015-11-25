@@ -1,3 +1,11 @@
+0.10
+
+* Login: Use Next and Go buttons on the keyboard, in case the
+  Sign In button is obscured by the keyboard.
+  https://github.com/murraycu/ios-galaxyzoo/issues/18
+* Login: Make the buttons only clickable where their text is.
+* Added a German translation.
+
 0.9:
 
 * Avoid some loss of data and unnecessary repeated downloads.
