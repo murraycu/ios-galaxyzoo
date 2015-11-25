@@ -65,6 +65,7 @@
 		F2204F8E1C036D1700839253 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2204F901C036D1700839253 /* InfoPlist.strings */; };
 		F2204F951C03765C00839253 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2204F971C03765C00839253 /* Localizable.strings */; };
 		F22CAF221AFA1E0900EB6B20 /* ZooniverseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */; };
+		F241BBB81C05B820000D34C9 /* NEWS in Resources */ = {isa = PBXBuildFile; fileRef = F241BBB71C05B820000D34C9 /* NEWS */; };
 		F24742CC1B0C6F0D000FD3C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */; };
 		F24742D51B0E6EF7000FD3C7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F24742D41B0E6EF7000FD3C7 /* Reachability.m */; };
 		F24829701AF754D60060D9B0 /* DecisionTreeQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = F248296C1AF754D60060D9B0 /* DecisionTreeQuestion.m */; };
@@ -375,7 +376,6 @@
 		F2D6FE9A1AFD44D3002E3E15 /* icon_star in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FD981AFD44D3002E3E15 /* icon_star */; };
 		F2D6FE9B1AFD44D3002E3E15 /* icon_tidal-debris in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FD991AFD44D3002E3E15 /* icon_tidal-debris */; };
 		F2D6FE9C1AFD44D3002E3E15 /* icon_yes in Resources */ = {isa = PBXBuildFile; fileRef = F2D6FD9A1AFD44D3002E3E15 /* icon_yes */; };
-		F2DDBFFB1BA6E654003FBE75 /* NEWS in Resources */ = {isa = PBXBuildFile; fileRef = F2DDBFFA1BA6E654003FBE75 /* NEWS */; };
 		F2F641E51BB4499A00E4D2DC /* icon_decals-0_a-0_0 in Resources */ = {isa = PBXBuildFile; fileRef = F2F640831BB4499600E4D2DC /* icon_decals-0_a-0_0 */; };
 		F2F641E61BB4499A00E4D2DC /* icon_decals-0_a-0_1 in Resources */ = {isa = PBXBuildFile; fileRef = F2F640841BB4499600E4D2DC /* icon_decals-0_a-0_1 */; };
 		F2F641E71BB4499A00E4D2DC /* icon_decals-0_a-0_2 in Resources */ = {isa = PBXBuildFile; fileRef = F2F640851BB4499600E4D2DC /* icon_decals-0_a-0_2 */; };
@@ -818,6 +818,7 @@
 		F2204F921C036D1800839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F2204F961C03765C00839253 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F22CAF211AFA1E0900EB6B20 /* ZooniverseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZooniverseClient.m; path = client/ZooniverseClient.m; sourceTree = "<group>"; };
+		F241BBB71C05B820000D34C9 /* NEWS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
 		F24742CB1B0C6F0D000FD3C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F24742D31B0E6EF7000FD3C7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = client/Reachability.h; sourceTree = "<group>"; };
 		F24742D41B0E6EF7000FD3C7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = client/Reachability.m; sourceTree = "<group>"; };
@@ -1171,7 +1172,6 @@
 		F2D6FD981AFD44D3002E3E15 /* icon_star */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_star; path = Icons/icon_star; sourceTree = "<group>"; };
 		F2D6FD991AFD44D3002E3E15 /* icon_tidal-debris */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_tidal-debris"; path = "Icons/icon_tidal-debris"; sourceTree = "<group>"; };
 		F2D6FD9A1AFD44D3002E3E15 /* icon_yes */ = {isa = PBXFileReference; lastKnownFileType = file; name = icon_yes; path = Icons/icon_yes; sourceTree = "<group>"; };
-		F2DDBFFA1BA6E654003FBE75 /* NEWS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
 		F2F640831BB4499600E4D2DC /* icon_decals-0_a-0_0 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_decals-0_a-0_0"; path = "Icons/icon_decals-0_a-0_0"; sourceTree = "<group>"; };
 		F2F640841BB4499600E4D2DC /* icon_decals-0_a-0_1 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_decals-0_a-0_1"; path = "Icons/icon_decals-0_a-0_1"; sourceTree = "<group>"; };
 		F2F640851BB4499600E4D2DC /* icon_decals-0_a-0_2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "icon_decals-0_a-0_2"; path = "Icons/icon_decals-0_a-0_2"; sourceTree = "<group>"; };
@@ -1572,6 +1572,7 @@
 		F21F87911AF3657400C95B52 = {
 			isa = PBXGroup;
 			children = (
+				F241BBB71C05B820000D34C9 /* NEWS */,
 				F26152431BB5292A0088D307 /* ios-galaxyzoo-Prefix.pch */,
 				E3A6F259A91A31B9D91FC016 /* Frameworks */,
 				F21F879C1AF3657400C95B52 /* ios-galaxyzoo */,
@@ -1593,7 +1594,6 @@
 		F21F879C1AF3657400C95B52 /* ios-galaxyzoo */ = {
 			isa = PBXGroup;
 			children = (
-				F2DDBFFA1BA6E654003FBE75 /* NEWS */,
 				F21F87A11AF3657400C95B52 /* AppDelegate.h */,
 				F21F87A21AF3657400C95B52 /* AppDelegate.m */,
 				F24829781AF759110060D9B0 /* Assets */,
@@ -2864,6 +2864,7 @@
 				F2D6FDAF1AFD44D3002E3E15 /* icon_candels-4_a-3_0 in Resources */,
 				F2D6FE0C1AFD44D3002E3E15 /* icon_goods_full-7_a-1_0 in Resources */,
 				F2F642441BB4499A00E4D2DC /* icon_decals-6_a-2_2 in Resources */,
+				F241BBB81C05B820000D34C9 /* NEWS in Resources */,
 				F2D6FE721AFD44D3002E3E15 /* icon_sloan-6_x-5_5 in Resources */,
 				F2F643401BB4499A00E4D2DC /* icon_illustris-10_a-0_4 in Resources */,
 				F2173A401B0738FE00C1F947 /* icon_sloan_singleband-4_a-2_0 in Resources */,
@@ -3238,7 +3239,6 @@
 				F2D6FE681AFD44D3002E3E15 /* icon_sloan-6_x-3_0 in Resources */,
 				F2D6FDD01AFD44D3002E3E15 /* icon_clump_4 in Resources */,
 				F2F642DF1BB4499A00E4D2DC /* icon_illustris-5_x-0_2 in Resources */,
-				F2DDBFFB1BA6E654003FBE75 /* NEWS in Resources */,
 				F2F6429B1BB4499A00E4D2DC /* icon_decals-10_x-6_3 in Resources */,
 				F2F6432D1BB4499A00E4D2DC /* icon_illustris-9_a-2_2 in Resources */,
 				F2D6FDEE1AFD44D3002E3E15 /* icon_goods_full-2_a-1_1 in Resources */,
