@@ -165,7 +165,14 @@
 {
     [textField resignFirstResponder];
 
-    [self doLogin];
+    //"Next" in the username field should move us to the password field.
+    //"Go" in the password field should do the login.
+    //TODO: Is there no way to specify the "next" sequence in the Storyboard?
+    if (textField == self.textfieldUsername) {
+        [self.textfieldPassword becomeFirstResponder];
+    } else if (textField == self.textfieldPassword) {
+        [self doLogin];
+    }
 
     return YES;
 }
