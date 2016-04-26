@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="ios-galaxyzoo/Base.lproj/LaunchScreen.xib" source-language="en" datatype="plaintext" target-language="de">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1.1" build-num="7B1005"/>
+    </header>
+    <body>
+      <trans-unit id="3Yq-J9-xQD.title">
+        <source>List</source>
+        <target>Liste</target>
+        <note>Class = "UIBarButtonItem"; title = "List"; ObjectID = "3Yq-J9-xQD";</note>
+      </trans-unit>
+      <trans-unit id="Unm-eO-po5.title">
+        <source>Classify</source>
+        <target>Klassifizieren</target>
+        <note>Class = "UINavigationItem"; title = "Classify"; ObjectID = "Unm-eO-po5";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ios-galaxyzoo/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="de">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1.1" build-num="7B1005"/>
+    </header>
+    <body>
+      <trans-unit id="5Va-Vo-ZWd.placeholder">
+        <source>Username</source>
+        <target>Benutzername</target>
+        <note>Class = "UITextField"; placeholder = "Username"; ObjectID = "5Va-Vo-ZWd";</note>
+      </trans-unit>
+      <trans-unit id="MDb-LC-lWS.title">
+        <source>List</source>
+        <target>Liste</target>
+        <note>Class = "UINavigationItem"; title = "List"; ObjectID = "MDb-LC-lWS";</note>
+      </trans-unit>
+      <trans-unit id="MhE-UI-lXl.normalTitle">
+        <source>Examine</source>
+        <target>Untersuchen</target>
+        <note>Class = "UIButton"; normalTitle = "Examine"; ObjectID = "MhE-UI-lXl";</note>
+      </trans-unit>
+      <trans-unit id="OG2-kI-ELs.normalTitle">
+        <source>Sign In</source>
+        <target>Anmelden</target>
+        <note>Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "OG2-kI-ELs";</note>
+      </trans-unit>
+      <trans-unit id="PP1-eV-duA.title">
+        <source>Classify</source>
+        <target>Klassifizieren</target>
+        <note>Class = "UITabBarItem"; title = "Classify"; ObjectID = "PP1-eV-duA";</note>
+      </trans-unit>
+      <trans-unit id="aoe-tZ-R3s.normalTitle">
+        <source>Discuss</source>
+        <target>Diskutieren</target>
+        <note>Class = "UIButton"; normalTitle = "Discuss"; ObjectID = "aoe-tZ-R3s";</note>
+      </trans-unit>
+      <trans-unit id="bW1-Sp-uzS.title">
+        <source>Login</source>
+        <target>Anmelden</target>
+        <note>Class = "UIViewController"; title = "Login"; ObjectID = "bW1-Sp-uzS";</note>
+      </trans-unit>
+      <trans-unit id="c3U-5R-8c9.title">
+        <source>Subject</source>
+        <target>Objekt</target>
+        <note>Class = "UIViewController"; title = "Subject"; ObjectID = "c3U-5R-8c9";</note>
+      </trans-unit>
+      <trans-unit id="dky-Sy-4s3.text">
+        <source>Label</source>
+        <target>Label</target>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "dky-Sy-4s3";</note>
+      </trans-unit>
+      <trans-unit id="dnQ-AM-4rB.normalTitle">
+        <source>Register</source>
+        <target>Registrieren</target>
+        <note>Class = "UIButton"; normalTitle = "Register"; ObjectID = "dnQ-AM-4rB";</note>
+      </trans-unit>
+      <trans-unit id="frd-78-rxo.title">
+        <source>List</source>
+        <target>Liste</target>
+        <note>Class = "UIBarButtonItem"; title = "List"; ObjectID = "frd-78-rxo";</note>
+      </trans-unit>
+      <trans-unit id="j2Y-2y-lKp.normalTitle">
+        <source>Forgot Password?</source>
+        <target>Passwort vergessen?</target>
+        <note>Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "j2Y-2y-lKp";</note>
+      </trans-unit>
+      <trans-unit id="k0p-1i-GLX.text">
+        <source>Zooniverse ID:</source>
+        <target>Zooniverse ID:</target>
+        <note>Class = "UILabel"; text = "Zooniverse ID:"; ObjectID = "k0p-1i-GLX";</note>
+      </trans-unit>
+      <trans-unit id="k2p-mG-A4H.title">
+        <source>Classify</source>
+        <target>Klassifizieren</target>
+        <note>Class = "UINavigationItem"; title = "Classify"; ObjectID = "k2p-mG-A4H";</note>
+      </trans-unit>
+      <trans-unit id="nMH-aR-Cyh.text">
+        <source>help text</source>
+        <target>help text</target>
+        <note>Class = "UILabel"; text = "help text"; ObjectID = "nMH-aR-Cyh";</note>
+      </trans-unit>
+      <trans-unit id="oeA-bE-tAS.title">
+        <source>Example</source>
+        <target>Beispiel</target>
+        <note>Class = "UIViewController"; title = "Example"; ObjectID = "oeA-bE-tAS";</note>
+      </trans-unit>
+      <trans-unit id="uW3-h1-TCL.text">
+        <source>Login or create an account to receive credit for your work.</source>
+        <target>Loggen Sie sich ein oder erstellen Sie ein Konto um Anerkennung für ihre Arbeit zu erhalten.</target>
+        <note>Class = "UILabel"; text = "Login or create an account to receive credit for your work."; ObjectID = "uW3-h1-TCL";</note>
+      </trans-unit>
+      <trans-unit id="uoU-Fq-DjU.title">
+        <source>Help</source>
+        <target>Hilfe</target>
+        <note>Class = "UIViewController"; title = "Help"; ObjectID = "uoU-Fq-DjU";</note>
+      </trans-unit>
+      <trans-unit id="x7I-DC-9Ja.title">
+        <source>Log In</source>
+        <target>Anmelden</target>
+        <note>Class = "UIBarButtonItem"; title = "Log In"; ObjectID = "x7I-DC-9Ja";</note>
+      </trans-unit>
+      <trans-unit id="yWb-tP-Ubu.placeholder">
+        <source>Password</source>
+        <target>Passwort</target>
+        <note>Class = "UITextField"; placeholder = "Password"; ObjectID = "yWb-tP-Ubu";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ios-galaxyzoo/Info.plist" source-language="en" datatype="plaintext" target-language="de">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1.1" build-num="7B1005"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>0.9</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ios-galaxyzoo/Localizable.strings" source-language="en" datatype="plaintext" target-language="de">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1.1" build-num="7B1005"/>
+    </header>
+    <body>
+      <trans-unit id="Cannot download new subjects to classify without a network connection.">
+        <source>Cannot download new subjects to classify without a network connection.</source>
+        <target>Es können keine neuen Objekte zum Klassifizieren heruntergeladen werden.</target>
+        <note>An error message.</note>
+      </trans-unit>
+      <trans-unit id="Error">
+        <source>Error</source>
+        <note>A title for an error dialog.</note>
+      </trans-unit>
+      <trans-unit id="Log In">
+        <source>Log In</source>
+        <target>Anmelden</target>
+        <note>A log in button on the bottom toolbar.</note>
+      </trans-unit>
+      <trans-unit id="Log Out">
+        <source>Log Out</source>
+        <target>Abmelden</target>
+        <note>A log out button on the bottom toolbar.</note>
+      </trans-unit>
+      <trans-unit id="Login Failed">
+        <source>Login Failed</source>
+        <note>An error dialog title.</note>
+      </trans-unit>
+      <trans-unit id="No Wi-Fi network connection.">
+        <source>No Wi-Fi network connection.</source>
+        <target>Keine WLAN-Verbindung.</target>
+        <note>A title for an error dialog.</note>
+      </trans-unit>
+      <trans-unit id="No network connection.">
+        <source>No network connection.</source>
+        <target>Keine Netzwerkverbindung.</target>
+        <note>A title for an error dialog.</note>
+      </trans-unit>
+      <trans-unit id="OK">
+        <source>OK</source>
+        <note>A title for a dialog button.</note>
+      </trans-unit>
+      <trans-unit id="The server did not accept that username and password.">
+        <source>The server did not accept that username and password.</source>
+        <note>Text for an error dialog.</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ios-galaxyzooTests/Info.plist" source-language="en" datatype="plaintext" target-language="de">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.1.1" build-num="7B1005"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
