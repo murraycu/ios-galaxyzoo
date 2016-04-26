@@ -20,33 +20,43 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
         return;
     }
 
-    _subjectGroups = @{@"55db7cf01766276e7b000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
-                                      useForNewQueries:YES
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"decals-11"
-                                                                                     yesAnswerId:@"a-0"
-                                                                                      noAnswerId:@"a-1"]],
-                      @"55db71251766276613000001": [[ConfigSubjectGroup alloc] initWithFilename:@"illustris_tree.xml"
-                                      useForNewQueries:YES
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"illustris-11"
-                                                                                     yesAnswerId:@"a-0"
-                                                                                      noAnswerId:@"a-1"]],
+    _subjectGroups =
+                        //Decals DR2:
+                        @{@"56f3d4645925d95984000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
+                                                                                useForNewQueries:YES
+                                                                                 discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"decals-11"
+                                                                                    yesAnswerId:@"a-0"
+                                                                                    noAnswerId:@"a-1"]],
 
+                       //We don't request items for all these groups any more, but we still want to load the
+                       //trees so we can ask questions about items that have already been downloaded and stored in
+                       //the cache.
+                       //At some point we can remove some when we are sure they are unnecessary.
 
-                      //We don't request items for all these groups any more, but we still want to load the
-                      //trees so we can ask questions about items that have already been downloaded and stored in
-                      //the cache.
-                      //At some point we can remove some when we are sure they are unnecessary.
-                      @"5514521e2f0eef2012000001": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_singleband_tree.xml"
-                                      useForNewQueries:NO
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan_singleband-11"
-                                                                                     yesAnswerId:@"a-0"
-                                                                                      noAnswerId:@"a-1"]],
-                      @"50251c3b516bcb6ecb000002": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_tree.xml"
-                                      useForNewQueries:NO
-                                       discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan-11"
-                                                                                     yesAnswerId:@"a-0"
-                                                                                      noAnswerId:@"a-1"]]};
-    
+                       //Decals:
+                       @"55db7cf01766276e7b000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
+                                                                                useForNewQueries:NO
+                                                                                 discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"decals-11"
+                                                                                    yesAnswerId:@"a-0"
+                                                                                    noAnswerId:@"a-1"]],
+                       //Illustris:
+                       @"55db71251766276613000001": [[ConfigSubjectGroup alloc] initWithFilename:@"illustris_tree.xml"
+                                                                                useForNewQueries:NO
+                                                                                 discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"illustris-11"
+                                                                                    yesAnswerId:@"a-0"
+                                                                                    noAnswerId:@"a-1"]],
+                       //Sloan singleband:
+                       @"5514521e2f0eef2012000001": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_singleband_tree.xml"
+                                                                                useForNewQueries:NO
+                                                                                 discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan_singleband-11"
+                                                                                    yesAnswerId:@"a-0"
+                                                                                    noAnswerId:@"a-1"]],
+                       //Sloan:
+                       @"50251c3b516bcb6ecb000002": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_tree.xml"
+                                                                                useForNewQueries:NO
+                                                                                 discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan-11"
+                                                                                    yesAnswerId:@"a-0"
+                                                                                    noAnswerId:@"a-1"]]};
 }
 
 - (Config *)init {
