@@ -77,7 +77,7 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
 }
 
 + (NSString *)baseUrl {
-    return @"https://api.zooniverse.org/projects/galaxy_zoo/";
+    return @"https://www.galaxyzoo.org/_ouroboros_api/projects/galaxy_zoo/";
 }
 
 + (NSString *)fullExampleUri {
