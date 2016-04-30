@@ -3528,7 +3528,7 @@
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.murrayc.galaxyzoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.galaxyzoo.galaxyzoo;
 				PRODUCT_NAME = "Galaxy Zoo";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3546,7 +3546,7 @@
 				INFOPLIST_FILE = "ios-galaxyzoo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.murrayc.galaxyzoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.galaxyzoo.galaxyzoo;
 				PRODUCT_NAME = "Galaxy Zoo";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3566,7 +3566,7 @@
 				);
 				INFOPLIST_FILE = "ios-galaxyzooTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.murrayc.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.galaxyzoo.galaxyzoo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Galaxy Zoo.app/Galaxy Zoo";
 			};
@@ -3575,14 +3575,13 @@
 		F21F87C21AF3657400C95B52 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ios-galaxyzooTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.murrayc.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.galaxyzoo.galaxyzoo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Galaxy Zoo.app/Galaxy Zoo";
 			};
