@@ -1,5 +1,5 @@
 # ios-galaxyzoo
-This IOS app should let you classify Galaxy Zoo subjects. It is official and approved by the Zooniverse project.
+This iOS app lets you classify Galaxy Zoo subjects on an iPhone or iPad. It is official and approved by the Zooniverse project.
 
 Feedback and source code pull requests (or patches) are very welcome.
 
