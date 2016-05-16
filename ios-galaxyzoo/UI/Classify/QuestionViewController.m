@@ -165,7 +165,7 @@
         [decisionTree isDiscussQuestionYesAnswer:answer.answerId]) {
         [Utils openDiscussionPage:self.subject.zooniverseId];
     }
-    
+
     [self showNextQuestion:_question.questionId
                   answerId:answer.answerId];
 }

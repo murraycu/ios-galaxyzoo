@@ -519,7 +519,7 @@ NSString * currentTimeAsIso8601(void)
 // Runs on the main thread. TODO: Maybe it shouldn't.
 - (void)uploadClassificationForSubject:(ZooniverseSubject *)subject {
     NSString *subjectId = subject.subjectId;
-    
+
     //If the upload for this subject is in progress then ignore it.
     if ([_classificationUploadsInProgress containsObject:subjectId]) {
         NSLog(@"uploadClassifications: classification upload already in progress: %@", subjectId);
@@ -527,39 +527,39 @@ NSString * currentTimeAsIso8601(void)
     } else {
         [_classificationUploadsInProgress addObject:subjectId];
     }
-    
+
     ZooniverseClassification *classification = subject.classification;
-    
+
     //An array of ZooniverseNameValuePair:
     NSMutableArray *nameValuePairs = [[NSMutableArray alloc] init];
-    
+
     NSString *subjectKey = [NSString stringWithFormat:@"%@[subject_ids][]",
                             PARAM_PART_CLASSIFICATION];;
     [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                             name:subjectKey
                                            value:subjectId];
-    
+
     if (subject.favorite) {
         [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                                 name:@"[favorite][]"
                                                value:@"true"];
     }
-    
+
     //Add each answer and its checkboxes:
     NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence"
                                                                        ascending:YES];
     NSArray *sortDescriptors = @[sortNameDescriptor];
     NSArray *sortedClassificationQuestions = [classification.classificationQuestions sortedArrayUsingDescriptors:sortDescriptors];
-    
-    
-    
+
+
+
     NSInteger maxSequence = 0;
     for (ZooniverseClassificationQuestion *classificationQuestion in sortedClassificationQuestions) {
         NSInteger sequence = classificationQuestion.sequence;
         if (sequence > maxSequence) {
             maxSequence = sequence;
         }
-        
+
         //The answer:
         ZooniverseClassificationAnswer *answer = classificationQuestion.answer;
         NSLog(@"debug: answer: %@", answer.answerId);
@@ -569,38 +569,38 @@ NSString * currentTimeAsIso8601(void)
         [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                                 name:questionKey
                                                value:answer.answerId];
-        
+
         //Add any checkboxes that were selected with the answer:
         for (ZooniverseClassificationCheckbox *checkbox in classificationQuestion.checkboxes) {
             [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                                     name:questionKey
                                                    value:checkbox.checkboxId];
         }
-        
+
         sequence++;
     }
-    
+
     NSString *userAgentKey = [NSString stringWithFormat:@"%@[%@]",
                               [ZooniverseClient getAnnotationPart:(maxSequence + 1)],
                               @"user_agent"];
     [ZooniverseHttpUtils addNameValuePairToArray:nameValuePairs
                                             name:userAgentKey
                                            value:[Config userAgent]];
-    
+
     NSString *content = [ZooniverseHttpUtils generateContentForNameValuePairs:nameValuePairs];
-    
+
     NSString *postUploadUriStr =
     [NSString stringWithFormat:@"%@workflows/%@/classifications",
      [Config baseUrl],
      subject.groupId, nil];
     NSURL *postUploadUri = [NSURL URLWithString:postUploadUriStr];
-    
-    
+
+
     NSMutableURLRequest *request = [ZooniverseHttpUtils createURLRequest:postUploadUri];
     request.HTTPMethod = @"POST";
-    
+
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    
+
     NSString *authName = [AppDelegate loginUsername];
     NSString *authApiKey = [AppDelegate loginApiKey];
     if (authName && authApiKey) {
@@ -609,10 +609,10 @@ NSString * currentTimeAsIso8601(void)
         [request setValue:authHeader
        forHTTPHeaderField:@"Authorization"];
     }
-    
+
     [ZooniverseHttpUtils setRequestContent:content
                                 forRequest:request];
-    
+
     //NSDictionary *debugHeaderFields = request.allHTTPHeaderFields;
 
     [ZooniverseClient setNetworkActivityIndicatorVisibleOnMainThread:YES];
@@ -626,7 +626,7 @@ NSString * currentTimeAsIso8601(void)
                                if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                                    httpResponse = (NSHTTPURLResponse *)response;
                                }
-                               
+
                                [self performSelectorOnMainThread:@selector(parseUploadResponse:)
                                                       withObject:@[(httpResponse != nil ? httpResponse : [NSNull null]), subject]
                                                    waitUntilDone:NO];
