@@ -221,6 +221,7 @@
                                                   cancelButtonTitle:NSLocalizedString(@"OK", @"A title for a dialog button.")
                                                   otherButtonTitles:nil];
             [alert show];
+            return;
         }
     }
 
