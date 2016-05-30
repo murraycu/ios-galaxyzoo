@@ -1138,6 +1138,10 @@ NSString * currentTimeAsIso8601(void)
 - (void)abandonSubjectInMainThread:(ZooniverseSubject *)subject
       withCoreDataSave:(BOOL)coreDataSave
 {
+    if (subject == nil) {
+        NSLog(@"abandonSubject: subject is nil.");
+    }
+
     NSLog(@"abandonSubject: Abandoning subject with subjectId: %@", subject.subjectId, nil);
 
     //Start asynchronous deletion of the image files.
