@@ -64,6 +64,7 @@
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             [appDelegate.zooniverseClient abandonSubjectInMainThread:self.subject
                                           withCoreDataSave:YES];
+            self.subject = nil;
         }
     }
 
