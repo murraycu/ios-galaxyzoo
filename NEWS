@@ -1,3 +1,13 @@
+1.12:
+
+* Some stability improvements, fixing a crash when there is
+  no suitable connection, and hopefully fixing an occasional
+  crash when using the revert button.
+
+1.11:
+
+* First real release on App Store.
+
 0.11
 
 * Use the latest survey (Decals DR2) and the latest server URIs.
