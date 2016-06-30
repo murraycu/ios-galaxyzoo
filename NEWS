@@ -1,3 +1,7 @@
+1.13:
+
+* Avoid another occasional crash.
+
 1.12:
 
 * Some stability improvements, fixing a crash when there is
