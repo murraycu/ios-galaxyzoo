@@ -486,8 +486,27 @@ NSString * currentTimeAsIso8601(void)
 
 // TODO: Runs on the main thread. TODO: Maybe it shouldn't.
 - (void)parseUploadResponse:(NSArray *)array {
+    if (array == nil) {
+        NSLog(@"parseUploadResponse: array is unexpectedly nil.");
+        return;
+    }
+
+    if ([array count] < 2) {
+        NSLog(@"parseUploadResponse: array is unexpectedly smaller than 2.");
+        return;
+    }
+
     NSHTTPURLResponse *response = array[0];
+    if (response == nil) {
+        NSLog(@"parseUploadResponse: response is unexpectedly nil.");
+        return;
+    }
+
     ZooniverseSubject *subject = array[1];
+    if (subject == nil) {
+        NSLog(@"parseUploadResponse: subject is unexpectedly nil.");
+        return;
+    }
 
     if (response.statusCode == 201 /* Created */) {
         //TODO: Do this when we know the upload has succeeded:
