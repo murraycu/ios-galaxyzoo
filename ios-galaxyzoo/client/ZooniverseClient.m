@@ -1159,6 +1159,7 @@ NSString * currentTimeAsIso8601(void)
 {
     if (subject == nil) {
         NSLog(@"abandonSubject: subject is nil.");
+        return;
     }
 
     NSLog(@"abandonSubject: Abandoning subject with subjectId: %@", subject.subjectId, nil);
