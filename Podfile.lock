@@ -1,48 +1,64 @@
 PODS:
-  - AFNetworking (1.3.4)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - ISO8601DateFormatterValueTransformer (0.6.1):
     - RKValueTransformers (~> 1.1.0)
-  - RestKit (0.24.1):
-    - RestKit/Core (= 0.24.1)
-  - RestKit/Core (0.24.1):
+  - RestKit (0.27.0):
+    - RestKit/Core (= 0.27.0)
+  - RestKit/Core (0.27.0):
     - RestKit/CoreData
     - RestKit/Network
     - RestKit/ObjectMapping
-  - RestKit/CoreData (0.24.1):
+  - RestKit/CoreData (0.27.0):
     - RestKit/ObjectMapping
-  - RestKit/Network (0.24.1):
-    - AFNetworking (~> 1.3.0)
+  - RestKit/Network (0.27.0):
     - RestKit/ObjectMapping
     - RestKit/Support
     - SOCKit
-  - RestKit/ObjectMapping (0.24.1):
-    - ISO8601DateFormatterValueTransformer (~> 0.6.0)
+  - RestKit/ObjectMapping (0.27.0):
+    - ISO8601DateFormatterValueTransformer (~> 0.6.1)
     - RestKit/Support
     - RKValueTransformers (~> 1.1.0)
-  - RestKit/Search (0.24.1):
+  - RestKit/Search (0.27.0):
     - RestKit/CoreData
-  - RestKit/Support (0.24.1):
-    - TransitionKit (~> 2.1.0)
-  - RestKit/Testing (0.24.1):
+  - RestKit/Support (0.27.0):
+    - TransitionKit (~> 2.2)
+  - RestKit/Testing (0.27.0):
     - RestKit/Network
-  - RKValueTransformers (1.1.2)
+  - RKValueTransformers (1.1.3)
   - SOCKit (1.1)
-  - SSKeychain (1.2.3)
-  - TransitionKit (2.1.1)
+  - SSKeychain (1.4.1)
+  - TransitionKit (2.2.1)
 
 DEPENDENCIES:
-  - RestKit (~> 0.24.1)
-  - RestKit/Search (~> 0.24.1)
-  - RestKit/Testing (~> 0.24.1)
+  - AFNetworking (~> 3.0)
+  - RestKit (~> 0.27.0)
+  - RestKit/Search (~> 0.27.0)
+  - RestKit/Testing (~> 0.27.0)
   - SSKeychain
 
 SPEC CHECKSUMS:
-  AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
-  RestKit: 1987b5efef289c6b27bd980714d6ca48d3871b78
-  RKValueTransformers: 66ac5e4f077fdbe3496e792d89eeff4c3eb67701
+  RestKit: a0244db34e14ed9cf059fcee2be6733cc162c34a
+  RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
-  SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
-  TransitionKit: 3a14b6acc7cf2d1dd3e454e24dbad1cfab9a1ef1
+  SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
+  TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 06b706df360dd58dc3f5ff01f9b036b5f36e31a6
+
+COCOAPODS: 1.1.0.beta.1

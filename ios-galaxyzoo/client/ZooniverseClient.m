@@ -87,7 +87,7 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
 
 
     //let AFNetworking manage the activity indicator
-    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    [AFRKNetworkActivityIndicatorManager sharedManager].enabled = YES;
 
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     RKObjectManager *objectManager = appDelegate.rkObjectManager;

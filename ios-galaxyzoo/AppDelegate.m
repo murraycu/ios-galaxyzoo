@@ -193,7 +193,7 @@
 
     // Initialize HTTPClient
     NSURL *baseURL = [NSURL URLWithString:[Config baseUrl]];
-    AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    AFRKHTTPClient* client = [[AFRKHTTPClient alloc] initWithBaseURL:baseURL];
 
     // Set User-Agent:
     [client setDefaultHeader:@"User-Agent"
