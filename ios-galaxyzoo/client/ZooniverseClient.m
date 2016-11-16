@@ -854,6 +854,10 @@ NSString * currentTimeAsIso8601(void)
     NSString * permanentPath = [ZooniverseClient fullLocalPathForRemotePath:remoteUri
                                                        forImageLocation:imageLocation
                                                               forAppDir:imagesDir];
+    if (permanentPath == nil) {
+        NSLog(@"deleteImageFile(): fullLocalPathForRemotePath(): Returned nil.");
+        return NO;
+    }
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     return [fileManager fileExistsAtPath:permanentPath];
@@ -875,7 +879,7 @@ NSString * currentTimeAsIso8601(void)
         return nil;
     }
 
-    NSString *docsDir = urlDocsDir.path;
+    NSString *docsDir = [urlDocsDir path];
     return [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"];
 }
 
@@ -986,10 +990,13 @@ NSString * currentTimeAsIso8601(void)
                                                                     withFallbackBasename:response.suggestedFilename];
         permanentPath = [ZooniverseClient fullLocalPath:partialPermanentPath
                                               forAppDir:appDir];
+        if (permanentPath == nil) {
+            NSLog(@"downloadTask(): fullLocalPath(): Returned nil.");
+            return;
+        }
 
         // Delete the file if it already exists:
-        if([fileManager fileExistsAtPath:permanentPath])
-        {
+        if([fileManager fileExistsAtPath:permanentPath]) {
             if(![fileManager removeItemAtPath:permanentPath
                                         error:&error]) {
                 NSLog(@"Could not delete existing cache file: %@: error: %@", permanentPath,
@@ -1070,6 +1077,11 @@ NSString * currentTimeAsIso8601(void)
 + (BOOL)checkSingleSubjectImageStillExists:(NSString *)partialLocalPath
                       withFileManager:(NSFileManager *)fileManager {
     NSString *fullPath = [ZooniverseClient fullLocalImagePath:partialLocalPath];
+    if (fullPath == nil) {
+        NSLog(@"checkSingleSubjectImageStillExists(): fullLocalImagePath(): Returned nil.");
+        return NO;
+    }
+
     BOOL result = [fileManager fileExistsAtPath:fullPath];
     if (!result) {
         NSLog(@"checkSingleSubjectImageStillExists(): file does not exist: %@", fullPath);
@@ -1136,6 +1148,11 @@ NSString * currentTimeAsIso8601(void)
     //to do our best to delete it.
     //Also, the behaviour if the file doesn't exist is not documented.
     NSString *fullLocalPath = [ZooniverseClient fullLocalImagePath:partialLocalPath];
+    if (fullLocalPath == nil) {
+        NSLog(@"deleteImageFile(): fullLocalImagePath(): Returned nil.");
+        return;
+    }
+
     [fileManager removeItemAtPath:fullLocalPath
                                error:nil];
 }
