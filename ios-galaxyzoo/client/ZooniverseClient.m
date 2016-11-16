@@ -863,8 +863,17 @@ NSString * currentTimeAsIso8601(void)
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     // Create the directory if necessary:
-    NSURL *urlDocsDir = [fileManager URLsForDirectory:NSCachesDirectory
-                                             inDomains:NSUserDomainMask].lastObject;
+    NSArray *array = [fileManager URLsForDirectory:NSCachesDirectory
+                                         inDomains:NSUserDomainMask];
+    if (array == nil || array.count == 0) {
+        NSLog(@"URLsForDirectory() returned an empty array.");
+        return nil;
+    }
+
+    NSURL *urlDocsDir = [array lastObject];
+    if (urlDocsDir == nil) {
+        return nil;
+    }
 
     NSString *docsDir = urlDocsDir.path;
     return [docsDir stringByAppendingPathComponent:@"/GalaxyZooImages/"];
