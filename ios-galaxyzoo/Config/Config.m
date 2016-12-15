@@ -28,6 +28,12 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                         initWithIDs:@"ferengi-16"
                                                                                      yesAnswerId:@"a-0"
                                                                                       noAnswerId:@"a-1"]],
+                        //SDSS Lost Set:
+                        @"56f2b5ed5925d9004200c775": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_tree.xml"
+                                                                                   useForNewQueries:YES
+                                                                                    discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan-11"
+                                                                                      yesAnswerId:@"a-0"
+                                                                                       noAnswerId:@"a-1"]],
                         //Decals DR2:
                         @"56f3d4645925d95984000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
                                                                                 useForNewQueries:YES
