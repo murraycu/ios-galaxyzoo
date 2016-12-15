@@ -176,6 +176,10 @@ static const NSString *PARAM_PART_CLASSIFICATION = @"classification";
     }
 
     NSUInteger idx = arc4random_uniform((u_int32_t)groupIds.count);
+    // I saw this happen while debugging. murrayc.
+    if (idx >= groupIds.count) {
+        idx = groupIds.count - 1;
+    }
     return groupIds[idx];
 }
 
