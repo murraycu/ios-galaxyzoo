@@ -46,6 +46,7 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                        //the cache.
                        //At some point we can remove some when we are sure they are unnecessary.
 
+                        /*
                        //Decals:
                        @"55db7cf01766276e7b000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
                                                                                 useForNewQueries:NO
@@ -63,7 +64,8 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                 useForNewQueries:NO
                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan-11"
                                                                                     yesAnswerId:@"a-0"
-                                                                                    noAnswerId:@"a-1"]]};
+                                                                                    noAnswerId:@"a-1"]]
+                         */};
 }
 
 - (Config *)init {
