@@ -22,7 +22,7 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
 
     _subjectGroups =
                         //Ferengi 2:
-                        @{@"5249cbc33ae74070ed000001": [[ConfigSubjectGroup alloc] initWithFilename:@"ferengi_tree.xml"
+                        @{@"58417dcb9afc3a007d000001": [[ConfigSubjectGroup alloc] initWithFilename:@"ferengi_tree.xml"
                                                                                    useForNewQueries:YES
                                                                                     discussQuestion:[[DecisionTreeDiscussQuestion alloc]
                                                                                         initWithIDs:@"ferengi-16"
