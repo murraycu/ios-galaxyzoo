@@ -21,8 +21,15 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
     }
 
     _subjectGroups =
+                        //Ferengi 2:
+                        @{@"5249cbc33ae74070ed000001": [[ConfigSubjectGroup alloc] initWithFilename:@"ferengi_tree.xml"
+                                                                                   useForNewQueries:YES
+                                                                                    discussQuestion:[[DecisionTreeDiscussQuestion alloc]
+                                                                                        initWithIDs:@"ferengi-16"
+                                                                                     yesAnswerId:@"a-0"
+                                                                                      noAnswerId:@"a-1"]],
                         //Decals DR2:
-                        @{@"56f3d4645925d95984000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
+                        @"56f3d4645925d95984000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
                                                                                 useForNewQueries:YES
                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"decals-11"
                                                                                     yesAnswerId:@"a-0"
