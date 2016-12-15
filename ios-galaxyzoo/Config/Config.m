@@ -52,12 +52,6 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"decals-11"
                                                                                     yesAnswerId:@"a-0"
                                                                                     noAnswerId:@"a-1"]],
-                       //Illustris:
-                       @"55db71251766276613000001": [[ConfigSubjectGroup alloc] initWithFilename:@"illustris_tree.xml"
-                                                                                useForNewQueries:NO
-                                                                                 discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"illustris-11"
-                                                                                    yesAnswerId:@"a-0"
-                                                                                    noAnswerId:@"a-1"]],
                        //Sloan singleband:
                        @"5514521e2f0eef2012000001": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_singleband_tree.xml"
                                                                                 useForNewQueries:NO
