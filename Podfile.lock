@@ -45,20 +45,30 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
-  - RestKit (~> 0.27.0)
-  - RestKit/Search (~> 0.27.0)
-  - RestKit/Testing (~> 0.27.0)
+  - RestKit (from `https://github.com/RestKit/RestKit.git`, commit `13d98d5a6a5e06656ad040013dcae149b7cf8b99`)
+  - RestKit/Search (from `https://github.com/RestKit/RestKit.git`, commit `13d98d5a6a5e06656ad040013dcae149b7cf8b99`)
+  - RestKit/Testing (from `https://github.com/RestKit/RestKit.git`, commit `13d98d5a6a5e06656ad040013dcae149b7cf8b99`)
   - SSKeychain
+
+EXTERNAL SOURCES:
+  RestKit:
+    :commit: 13d98d5a6a5e06656ad040013dcae149b7cf8b99
+    :git: https://github.com/RestKit/RestKit.git
+
+CHECKOUT OPTIONS:
+  RestKit:
+    :commit: 13d98d5a6a5e06656ad040013dcae149b7cf8b99
+    :git: https://github.com/RestKit/RestKit.git
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
-  RestKit: a0244db34e14ed9cf059fcee2be6733cc162c34a
+  RestKit: 9539fb2ca8cd53431a1fdc7f55bba4af3646cfa9
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
 
-PODFILE CHECKSUM: 06b706df360dd58dc3f5ff01f9b036b5f36e31a6
+PODFILE CHECKSUM: 83e57fd4417a1275613f0aebb1de6eb392ba1098
 
-COCOAPODS: 1.1.0.beta.1
+COCOAPODS: 1.2.0.beta.1
