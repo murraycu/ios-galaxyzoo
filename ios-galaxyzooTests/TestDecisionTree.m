@@ -31,9 +31,9 @@
     NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"test_decision_tree.xml"
                                          withExtension:nil];
     XCTAssert(url != nil, @"Pass");
-
-    DecisionTree *result = [[DecisionTree alloc] init:url
-                            withDiscussQuestion:nil];
+    DecisionTree *result = [[DecisionTree alloc] initWithUrl:url
+                                        withTranslationUrl:nil
+                                       withDiscussQuestion:nil];
     XCTAssert(result != nil, @"Pass");
 
     return result;
