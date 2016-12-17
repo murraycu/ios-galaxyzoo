@@ -588,7 +588,7 @@ NSString * currentTimeAsIso8601(void)
 
         //The answer:
         ZooniverseClassificationAnswer *answer = classificationQuestion.answer;
-        NSLog(@"debug: answer: %@", answer.answerId);
+        //NSLog(@"debug: answer: %@", answer.answerId);
         NSString *questionKey = [NSString stringWithFormat:@"%@[%@]",
                                  [ZooniverseClient getAnnotationPart:sequence],
                                  classificationQuestion.questionId];
