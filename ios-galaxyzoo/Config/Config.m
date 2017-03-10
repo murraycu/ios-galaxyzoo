@@ -20,14 +20,7 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
         return;
     }
 
-    _subjectGroups =
-                        //Ferengi 2:
-                        @{@"58417dcb9afc3a007d000001": [[ConfigSubjectGroup alloc] initWithFilename:@"ferengi_tree.xml"
-                                                                                   useForNewQueries:YES
-                                                                                    discussQuestion:[[DecisionTreeDiscussQuestion alloc]
-                                                                                        initWithIDs:@"ferengi-16"
-                                                                                     yesAnswerId:@"a-0"
-                                                                                      noAnswerId:@"a-1"]],
+    _subjectGroups = @{
                         //SDSS Lost Set:
                         @"56f2b5ed5925d9004200c775": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_tree.xml"
                                                                                    useForNewQueries:YES
@@ -55,6 +48,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                                      initWithIDs:@"decals-11"
                                                                                                      yesAnswerId:@"a-0"
                                                                                                      noAnswerId:@"a-1"]],
+
+                       //Ferengi 2:
+                       @"58417dcb9afc3a007d000001": [[ConfigSubjectGroup alloc] initWithFilename:@"ferengi_tree.xml"
+                                                                                 useForNewQueries:NO
+                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc]
+                                                                                                   initWithIDs:@"ferengi-16"
+                                                                                                   yesAnswerId:@"a-0"
+                                                                                                   noAnswerId:@"a-1"]],
 
                         /*
                        //Decals:
