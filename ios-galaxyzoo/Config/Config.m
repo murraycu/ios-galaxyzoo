@@ -35,6 +35,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                       yesAnswerId:@"a-0"
                                                                                        noAnswerId:@"a-1"]],
 
+                        //Illustris:
+                        @"55db71251766276613000001": [[ConfigSubjectGroup alloc] initWithFilename:@"illustris_tree.xml"
+                                                                                 useForNewQueries:YES
+                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc]
+                                                                                                   initWithIDs:@"illustris-11"
+                                                                                                   yesAnswerId:@"a-0"
+                                                                                                   noAnswerId:@"a-1"]],
+
                        //We don't request items for all these groups any more, but we still want to load the
                        //trees so we can ask questions about items that have already been downloaded and stored in
                        //the cache.
