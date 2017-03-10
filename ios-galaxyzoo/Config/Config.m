@@ -41,6 +41,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                     yesAnswerId:@"a-0"
                                                                                     noAnswerId:@"a-1"]],
 
+
+                        //Gama 09:
+                        @"5853fa7b95ad361930000001": [[ConfigSubjectGroup alloc] initWithFilename:@"gama_tree.xml"
+                                                                                   useForNewQueries:YES
+                                                                                    discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"gama-11"
+                                                                                                                                         yesAnswerId:@"a-0"
+                                                                                                                                          noAnswerId:@"a-1"]],
+
                        //We don't request items for all these groups any more, but we still want to load the
                        //trees so we can ask questions about items that have already been downloaded and stored in
                        //the cache.
