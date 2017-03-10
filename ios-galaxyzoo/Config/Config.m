@@ -34,12 +34,6 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                     discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan-11"
                                                                                       yesAnswerId:@"a-0"
                                                                                        noAnswerId:@"a-1"]],
-                        //Decals DR2:
-                        @"56f3d4645925d95984000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
-                                                                                useForNewQueries:YES
-                                                                                 discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"decals-11"
-                                                                                    yesAnswerId:@"a-0"
-                                                                                    noAnswerId:@"a-1"]],
 
 
                         //Gama 09:
@@ -53,6 +47,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                        //trees so we can ask questions about items that have already been downloaded and stored in
                        //the cache.
                        //At some point we can remove some when we are sure they are unnecessary.
+
+                       //Decals DR2:
+                       @"56f3d4645925d95984000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
+                                                                                   useForNewQueries:NO
+                                                                                    discussQuestion:[[DecisionTreeDiscussQuestion alloc]
+                                                                                                     initWithIDs:@"decals-11"
+                                                                                                     yesAnswerId:@"a-0"
+                                                                                                     noAnswerId:@"a-1"]],
 
                         /*
                        //Decals:
