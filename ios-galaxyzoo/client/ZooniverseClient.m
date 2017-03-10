@@ -872,6 +872,10 @@ NSString * currentTimeAsIso8601(void)
 
 + (NSString *)imagesDir {
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (fileManager == nil) {
+        NSLog(@"NSFileManager.defaultManager() returned nil.");
+        return nil;
+    }
 
     // Create the directory if necessary:
     NSArray *array = [fileManager URLsForDirectory:NSCachesDirectory
