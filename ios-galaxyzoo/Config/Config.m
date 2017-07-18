@@ -21,8 +21,8 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
     }
 
     _subjectGroups = @{
-                        //Gama 09:
-                        @"5853fa7b95ad361930000001": [[ConfigSubjectGroup alloc] initWithFilename:@"gama_tree.xml"
+                        //Gama 12:
+                        @"5853faaf95ad361930000002": [[ConfigSubjectGroup alloc] initWithFilename:@"gama_tree.xml"
                                                                                 useForNewQueries:YES
                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"gama-11"
                                                                                                                                       yesAnswerId:@"a-0"
@@ -47,6 +47,14 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                        //trees so we can ask questions about items that have already been downloaded and stored in
                        //the cache.
                        //At some point we can remove some when we are sure they are unnecessary.
+
+                       //Gama 09:
+                       // TODO: Avoid re-parsing the whole XML tree when surveys share a tree.
+                       @"5853fa7b95ad361930000001": [[ConfigSubjectGroup alloc] initWithFilename:@"gama_tree.xml"
+                                                                                 useForNewQueries:NO
+                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"gama-11"
+                                                                                                                                       yesAnswerId:@"a-0"
+                                                                                                                                        noAnswerId:@"a-1"]],
 
                        //Decals DR2:
                        @"56f3d4645925d95984000001": [[ConfigSubjectGroup alloc] initWithFilename:@"decals_tree.xml"
