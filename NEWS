@@ -1,4 +1,9 @@
-1.17:
+1.18:
+
+* Show web pages inside the app instead of in the
+  browser.
+
+1.17 (Not released):
 
 * Use the latest Galaxy Zoo surveys.
   (Gama 12, SDSS Lost Set, and Illustris surveys.)
