@@ -11,6 +11,7 @@
 #import "../client/ZooniverseNameValuePair.h"
 #import "../client/ZooniverseHttpUtils.h"
 #import "Config.h"
+#import "Utils.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textfieldUsername;
@@ -52,11 +53,8 @@
 }
 
 - (IBAction)onRegisterButton:(id)sender {
-    NSURL *url = [NSURL URLWithString:[Config registerUri]];
-
-    if (![[UIApplication sharedApplication] openURL:url]) {
-        NSLog(@"Failed to open url: %@", url.description);
-    }
+    [Utils openUrlInBrowser:self
+                        url:[Config registerUri]];
 }
 
 - (void)parseLoginResponseData:(NSData*)data
