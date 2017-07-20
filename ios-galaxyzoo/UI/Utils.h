@@ -23,4 +23,8 @@
 
 + (NSString *)filenameForIconName:(NSString *)iconName;
 
++ (void)showErrorDialog:(UIViewController *)viewController
+                  title:(NSString *)title
+                message:(NSString *)message;
+
 @end

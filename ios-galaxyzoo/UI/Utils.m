@@ -52,4 +52,19 @@
     return [NSString stringWithFormat:@"icon_%@", iconName, nil];
 }
 
++ (void)showErrorDialog:(UIViewController *)viewController
+                  title:(NSString *)title
+                message:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *button = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"A title for a dialog button.")
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil];
+    [alert addAction:button];
+    [viewController presentViewController:alert
+                                 animated:YES
+                               completion:nil];
+}
+
 @end

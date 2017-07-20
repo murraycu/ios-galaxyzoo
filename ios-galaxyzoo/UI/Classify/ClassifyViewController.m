@@ -215,12 +215,9 @@
                 errorTitle = NSLocalizedString(@"No network connection.", @"A title for an error dialog.");
             }
 
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorTitle
-                                                            message:NSLocalizedString(@"Cannot download new subjects to classify without a network connection.", @"An error message.")
-                                                           delegate:nil
-                                                  cancelButtonTitle:NSLocalizedString(@"OK", @"A title for a dialog button.")
-                                                  otherButtonTitles:nil];
-            [alert show];
+            [Utils showErrorDialog:self
+                             title:errorTitle
+                           message:NSLocalizedString(@"Cannot download new subjects to classify without a network connection.", @"An error message.")];
             return;
         }
     }
