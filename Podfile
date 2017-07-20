@@ -6,7 +6,7 @@ target "ios-galaxyzoo" do
   # Testing and Search are optional components
   pod 'RestKit/Testing', '~> 0.27.0'
   pod 'RestKit/Search',  '~> 0.27.0'
-  pod 'SSKeychain'
+  pod 'SAMKeychain'
   pod 'AFNetworking', '~> 3.0'
 
   # Added by murrayc.

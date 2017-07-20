@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Config.h"
-#import <SSKeychain.h>
+#import <SAMKeychain.h>
 
 @interface AppDelegate ()
 
@@ -298,27 +298,27 @@ static NSString *const kKeyChainKeyName = @"name";
 static NSString *const kKeyChainKeyApiKey = @"api_key";
 
 
-+ (void)removAllSSKeychainAccounts {
-    NSArray *accounts = [SSKeychain accountsForService:kKeyChainServiceName];
++ (void)removAllSAMKeychainAccounts {
+    NSArray *accounts = [SAMKeychain accountsForService:kKeyChainServiceName];
 
     for (NSDictionary *dict in accounts) {
-        NSString *accountName = dict[kSSKeychainAccountKey];
+        NSString *accountName = dict[kSAMKeychainAccountKey];
 
         //This actually deletes the account, which we can check by
         //calling accountsForService again.
-        [SSKeychain deletePasswordForService:kKeyChainServiceName
+        [SAMKeychain deletePasswordForService:kKeyChainServiceName
                                      account:accountName];
     }
 
-    //accounts = [SSKeychain accountsForService:kKeyChainServiceName];
+    //accounts = [SAMKeychain accountsForService:kKeyChainServiceName];
     //NSLog(@"debug: accounts count:%lu", (unsigned long)accounts.count);
 }
 
 + (void)setLogin:(NSString *)username
           apiKey:(NSString *)apiKey {
-    [AppDelegate removAllSSKeychainAccounts];
+    [AppDelegate removAllSAMKeychainAccounts];
 
-    [SSKeychain setPassword:apiKey
+    [SAMKeychain setPassword:apiKey
                  forService:kKeyChainServiceName
                     account:username];
 }
@@ -333,13 +333,13 @@ static NSString *const kKeyChainKeyApiKey = @"api_key";
 }
 
 + (NSString *)loginUsername {
-    NSArray *accounts = [SSKeychain accountsForService:kKeyChainServiceName];
+    NSArray *accounts = [SAMKeychain accountsForService:kKeyChainServiceName];
     if (!accounts || accounts.count == 0) {
         return nil;
     }
 
     NSDictionary *dict = accounts[0];
-    return dict[kSSKeychainAccountKey];
+    return dict[kSAMKeychainAccountKey];
 }
 
 + (NSString *)loginApiKey {
@@ -348,7 +348,7 @@ static NSString *const kKeyChainKeyApiKey = @"api_key";
         return nil;
     }
 
-    return [SSKeychain passwordForService:kKeyChainServiceName
+    return [SAMKeychain passwordForService:kKeyChainServiceName
                                   account:username];
 }
 
