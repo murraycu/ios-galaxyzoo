@@ -50,11 +50,13 @@
                         [Config examineUri],
                         self.subject.zooniverseId,
                         nil];
-    [Utils openUrlInBrowser:strUrl];
+    [Utils openUrlInBrowser:self
+                        url:strUrl];
 }
 
 - (IBAction)onButtonDiscussClicked:(UIButton *)sender {
-    [Utils openDiscussionPage:self.subject.zooniverseId];
+    [Utils openDiscussionPage:self
+                          zooniverseId:self.subject.zooniverseId];
 }
 
 #pragma mark - Navigation

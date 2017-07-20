@@ -9,6 +9,7 @@
 #import "Utils.h"
 #import "Config.h"
 #import <UIKit/UIKit.h>
+@import SafariServices;
 
 @implementation Utils
 
@@ -22,19 +23,29 @@
                                      [NSSortDescriptor sortDescriptorWithKey:@"datetimeRetrieved" ascending:YES]];
 }
 
-+ (void)openUrlInBrowser:(NSString *)strUrl {
++ (void)openUrlInBrowser:(UIViewController *)viewController
+                     url:(NSString *)strUrl {
     NSURL *url = [NSURL URLWithString:strUrl];
 
+    SFSafariViewController *sf = [[SFSafariViewController alloc]initWithURL:url
+                                                          entersReaderIfAvailable:NO];
+    //sf.delegate(self);
+    [viewController presentViewController:sf animated:NO completion:nil];
+
+    /*
     if (![[UIApplication sharedApplication] openURL:url]) {
         NSLog(@"openUrlInBrowser: Failed to open url: %@", url.description);
     }
+    */
 }
 
-+ (void)openDiscussionPage:(NSString *)zooniverseId {
++ (void)openDiscussionPage:(UIViewController *)viewController
+              zooniverseId:(NSString *)zooniverseId {
     NSString *strUrl = [NSString stringWithFormat:@"%@%@",
                         [Config talkUri],
                         zooniverseId];
-    [Utils openUrlInBrowser:strUrl];
+    [Utils openUrlInBrowser:viewController
+                        url:strUrl];
 }
 
 + (NSString *)filenameForIconName:(NSString *)iconName {

@@ -164,7 +164,8 @@
     DecisionTree *decisionTree = [self getDecisionTree];
     if ([decisionTree isDiscussQuestion:_question.questionId] &&
         [decisionTree isDiscussQuestionYesAnswer:answer.answerId]) {
-        [Utils openDiscussionPage:self.subject.zooniverseId];
+        [Utils openDiscussionPage:self
+                     zooniverseId:self.subject.zooniverseId];
     }
 
     [self showNextQuestion:_question.questionId
