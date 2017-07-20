@@ -14,7 +14,7 @@
 
 + (NSString *)urlEncodeValue:(NSString *)str
 {
-    return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return [str stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 + (void)addNameValuePairToArray:(NSMutableArray *)array
