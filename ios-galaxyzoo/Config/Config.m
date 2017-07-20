@@ -124,7 +124,7 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
 }
 
 + (NSString *)registerUri {
-    return @"https://zooniverse.org/signup";
+    return @"https://www.zooniverse.org/accounts/register";
 
 }
 
