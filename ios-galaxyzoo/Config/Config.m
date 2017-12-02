@@ -28,28 +28,28 @@ static NSString *USER_AGENT = @"murrayc.com-ios-galaxyzoo";
                                                                                                                                       yesAnswerId:@"a-0"
                                                                                                                                        noAnswerId:@"a-1"]],
 
-                        //SDSS Lost Set:
-                        @"56f2b5ed5925d9004200c775": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_tree.xml"
-                                                                                   useForNewQueries:YES
-                                                                                    discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan-11"
-                                                                                      yesAnswerId:@"a-0"
-                                                                                       noAnswerId:@"a-1"]],
-
-                        //Illustris:
-                        @"55db71251766276613000001": [[ConfigSubjectGroup alloc] initWithFilename:@"illustris_tree.xml"
-                                                                                 useForNewQueries:YES
-                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc]
-                                                                                                   initWithIDs:@"illustris-11"
-                                                                                                   yesAnswerId:@"a-0"
-                                                                                                   noAnswerId:@"a-1"]],
 
                        //We don't request items for all these groups any more, but we still want to load the
                        //trees so we can ask questions about items that have already been downloaded and stored in
                        //the cache.
                        //At some point we can remove some when we are sure they are unnecessary.
-
-                       //Gama 09:
                        // TODO: Avoid re-parsing the whole XML tree when surveys share a tree.
+
+                       //SDSS Lost Set:
+                       @"56f2b5ed5925d9004200c775": [[ConfigSubjectGroup alloc] initWithFilename:@"sloan_tree.xml"
+                                                                                   useForNewQueries:NO
+                                                                                    discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"sloan-11"
+                                                                                      yesAnswerId:@"a-0"
+                                                                                      noAnswerId:@"a-1"]],
+
+                       //Illustris:
+                       @"55db71251766276613000001": [[ConfigSubjectGroup alloc] initWithFilename:@"illustris_tree.xml"
+                                                                                 useForNewQueries:NO
+                                                                                  discussQuestion:[[DecisionTreeDiscussQuestion alloc]
+                                                                                                   initWithIDs:@"illustris-11"
+                                                                                                   yesAnswerId:@"a-0"
+                                                                                                   noAnswerId:@"a-1"]],
+                       //Gama 09:
                        @"5853fa7b95ad361930000001": [[ConfigSubjectGroup alloc] initWithFilename:@"gama_tree.xml"
                                                                                  useForNewQueries:NO
                                                                                   discussQuestion:[[DecisionTreeDiscussQuestion alloc] initWithIDs:@"gama-11"
