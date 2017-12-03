@@ -18,7 +18,7 @@
 
 - (instancetype) init NS_DESIGNATED_INITIALIZER;
 
-typedef void (^ ZooniverseClientDoneBlock)();
+typedef void (^ZooniverseClientDoneBlock)(void);
 
 //This gets new subjects from the server asynchronously,
 //calling callbackBlock when it has finished.

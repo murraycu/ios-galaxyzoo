@@ -15,7 +15,7 @@
 //Mapping task id (NSString) to ZooniverseClientImageDownload.
 @property (nonatomic, strong) NSMutableDictionary *dictTasks;
 
-typedef void (^ ZooniverseClientImageDownloadSetQueryDoneBlock)();
+typedef void (^ ZooniverseClientImageDownloadSetQueryDoneBlock)(void);
 
 @property (nonatomic, strong) ZooniverseClientImageDownloadSetQueryDoneBlock callbackBlock;
 
