@@ -1,4 +1,7 @@
 # ios-galaxyzoo
+
+Update (2021): The zooniverse team changed their server API a couple of years ago, and I never found time to update the app to make it work again. Pull requests are always welcome.
+
 This iOS app lets you classify Galaxy Zoo subjects on an iPhone or iPad. It is official and approved by the Zooniverse project.
 
 Feedback and source code pull requests (or patches) are very welcome.
